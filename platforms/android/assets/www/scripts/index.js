@@ -11,7 +11,13 @@
 
     function onDeviceReady() {
         try {
+
+            alert('onDeviceReady');
+
             pushNotification = window.plugins.pushNotification;
+
+            alert('paso push notification');
+
             if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos') {
                 alert('Android');
                 pushNotification.register(successHandler, errorHandler, {
