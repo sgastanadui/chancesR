@@ -95,4 +95,8 @@
   <vs:plugin name="org.apache.cordova.inappbrowser" version="0.6.0" />
   <vs:plugin name="com.phonegap.plugins.PushPlugin" version="2.4.0" />
   <vs:plugin name="org.apache.cordova.media" version="0.2.16" />
+  <vs:plugin name="org.apache.cordova.device-motion" version="0.2.11" />
+  <vs:plugin name="org.apache.cordova.device-orientation" version="0.3.11" />
+  <vs:plugin name="org.apache.cordova.network-information" version="0.2.15" />
+  <vs:plugin name="org.apache.cordova.dialogs" version="0.3.0" />
 </widget>
