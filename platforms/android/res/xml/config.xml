@@ -4,15 +4,6 @@
     <feature name="PushPlugin">
         <param name="android-package" value="com.plugin.gcm.PushPlugin" />
     </feature>
-    <feature name="Device">
-        <param name="android-package" value="org.apache.cordova.device.Device" />
-    </feature>
-    <feature name="Accelerometer">
-        <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
-    </feature>
-    <feature name="Compass">
-        <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
-    </feature>
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
@@ -28,6 +19,9 @@
     </feature>
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
     <icon density="ldpi" src="res/icons/android/icon-36-ldpi.png" />
     <icon density="mdpi" src="res/icons/android/icon-48-mdpi.png" />
@@ -51,12 +45,10 @@
     <preference name="windows-target-version" value="8.1" />
     <preference name="windows-phone-target-version" value="8.1" />
     <vs:plugin name="org.apache.cordova.console" version="0.2.13" />
-    <vs:plugin name="org.apache.cordova.device" version="0.3.0" />
     <vs:plugin name="org.apache.cordova.inappbrowser" version="0.6.0" />
     <vs:plugin name="com.phonegap.plugins.PushPlugin" version="2.4.0" />
     <vs:plugin name="org.apache.cordova.media" version="0.2.16" />
-    <vs:plugin name="org.apache.cordova.device-motion" version="0.2.11" />
-    <vs:plugin name="org.apache.cordova.device-orientation" version="0.3.11" />
     <vs:plugin name="org.apache.cordova.network-information" version="0.2.15" />
     <vs:plugin name="org.apache.cordova.dialogs" version="0.3.0" />
+    <vs:plugin name="cordova-plugin-device" version="1.0.1-dev" />
 </widget>
