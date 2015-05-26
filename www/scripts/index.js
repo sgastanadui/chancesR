@@ -11,6 +11,8 @@
 
         alert('onDeviceReady');
 
+        
+
         //try {
         //    pushNotification = window.plugins.pushNotification;
 
@@ -45,6 +47,7 @@
         // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
     };
 
+   
     function onPause() {
         // TODO: This application has been suspended. Save application state here.
     };

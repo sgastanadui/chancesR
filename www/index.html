@@ -6,10 +6,15 @@
 
     <!-- NotificationPushTeste references -->
     <link href="css/index.css" rel="stylesheet" />
+    <script type="text/javascript">
+        function pushnotifi() {
+            alert('push')
+        }
+    </script>
 </head>
 <body>
     <p>Hello, your application is ready!</p>
-
+    <input type="button" id="btnmess" onclick="pushnotifi();" value="push" />
     <!-- Cordova reference, this is added to your app when it's built. -->
     <script src="cordova.js"></script>
     <script src="scripts/platformOverrides.js"></script>
