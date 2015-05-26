@@ -7,8 +7,13 @@
     <!-- NotificationPushTeste references -->
     <link href="css/index.css" rel="stylesheet" />
     <script type="text/javascript">
+
+        var pushNotification;
+
         function pushnotifi() {
-            alert('push')
+            alert('push');
+            pushNotification = window.plugins.pushNotification;
+            alert('push notification');
         }
     </script>
 </head>
