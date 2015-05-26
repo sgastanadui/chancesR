@@ -8,34 +8,35 @@
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
     function onDeviceReady() {
+
         alert('onDeviceReady');
 
-        try {
-            pushNotification = window.plugins.pushNotification;
+        //try {
+        //    pushNotification = window.plugins.pushNotification;
 
-            alert('paso push notification');
+        //    alert('paso push notification');
 
-            if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos') {
-                alert('Android');
-                pushNotification.register(successHandler, errorHandler, {
-                    "senderID": "xxxxxxxxxxxxx",
-                    "ecb": "onNotification"
-                }); // required!
-                alert('register');
-            } else {
-                alert('IOS');
-                pushNotification.register(tokenHandler, errorHandler, {
-                    "badge": "true",
-                    "sound": "true",
-                    "alert": "true",
-                    "ecb": "onNotificationAPN"
-                }); // required!
-            }
-        } catch (err) {
-            txt = "There was an error on this page.\n\n";
-            txt += "Error description: " + err.message + "\n\n";
-            alert(txt);
-        }
+        //    if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos') {
+        //        alert('Android');
+        //        pushNotification.register(successHandler, errorHandler, {
+        //            "senderID": "xxxxxxxxxxxxx",
+        //            "ecb": "onNotification"
+        //        }); // required!
+        //        alert('register');
+        //    } else {
+        //        alert('IOS');
+        //        pushNotification.register(tokenHandler, errorHandler, {
+        //            "badge": "true",
+        //            "sound": "true",
+        //            "alert": "true",
+        //            "ecb": "onNotificationAPN"
+        //        }); // required!
+        //    }
+        //} catch (err) {
+        //    txt = "There was an error on this page.\n\n";
+        //    txt += "Error description: " + err.message + "\n\n";
+        //    alert(txt);
+        //}
 
         // Handle the Cordova pause and resume events
         document.addEventListener( 'pause', onPause.bind( this ), false );
