@@ -94,4 +94,5 @@
   <vs:plugin name="org.apache.cordova.device" version="0.3.0" />
   <vs:plugin name="org.apache.cordova.inappbrowser" version="0.6.0" />
   <vs:plugin name="com.phonegap.plugins.PushPlugin" version="2.4.0" />
+  <vs:plugin name="org.apache.cordova.media" version="0.2.16" />
 </widget>
