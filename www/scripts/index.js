@@ -4,11 +4,15 @@
 // and then run "window.location.reload()" in the JavaScript Console.
 (function () {
     "use strict";
-
+    var pushNotification;
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
     function onDeviceReady() {
         alert('onDeviceReady');
+
+        pushNotification = window.plugins.pushNotification;
+
+        alert('paso push notification');
 
         // Handle the Cordova pause and resume events
         document.addEventListener( 'pause', onPause.bind( this ), false );
