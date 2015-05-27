@@ -23,28 +23,31 @@ var app = {
     },
 
     // Bind Event Listeners
-    //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
+
     // deviceready Event Handler
-    //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
         app.receivedEvent('deviceready');
     },
 
+    // handle APNS notifications for result iOS
     tokenHandler : function (result) {
-        alert('device token = ' + result);
+        //alert('device token = ' + result);
+        $("#app-status-ul").append('<li>Token: ' + result + '</li>');
         // Your iOS push server needs to know the token before it can push to this device
         // here is where you might want to send it the token for later use.
     },
 
+    // handle GCM notifications for result Android
     successHandler: function (result) {
-        alert('device token = ' + result);
+        //alert('device token = ' + result);
+        $("#app-status-ul").append('<li>Callback Success Android! Result: ' + result + '</li>');
     },
 
     errorHandler: function (error) {
@@ -70,8 +73,6 @@ var app = {
 
     // handle GCM notifications for Android
     onNotification: function (e) {
-        alert(e.event);
-
         switch (e.event) {
             case 'registered':
                 if (e.regid.length > 0) {
@@ -121,7 +122,6 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-        //alert('receivedEvent');
 
         $("#app-status-ul").append('<li>Received Event: ' + id + '</li>');
 
@@ -133,10 +133,10 @@ var app = {
             if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos') {
                 //alert('Android');
                 pushNotification.register(this.successHandler, this.errorHandler, {
-                    "senderID": "AIzaSyB-hL3Uys5TTB2lpm59VkuE4q-He9YxzCw",
+                    "senderID": "smiling-box-93721",
                     "ecb": "app.onNotification"
                 }); // required!
-                alert('register');
+                //alert('register');
             } else if (device.platform == "iOS") {
                 //alert('IOS');
                 pushNotification.register(this.tokenHandler, this.errorHandler, {
@@ -152,7 +152,6 @@ var app = {
             txt += "Error description: " + err.message + "\n\n";
             alert(txt);
         }
-
         console.log('Received Event: ' + id);
     }
 
