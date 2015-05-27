@@ -73,13 +73,16 @@ var app = {
 
     // handle GCM notifications for Android
     onNotification: function (e) {
+        
+        $("#app-status-ul").append('<li>onNotification -> event:' + e.event + "</li>");
+
         switch (e.event) {
             case 'registered':
                 if (e.regid.length > 0) {
                     $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
                     // Your GCM push server needs to know the regID before it can push to this device
                     // here is where you might want to send it the regID for later use.
-                    console.log("regID = " + e.regid);
+                    //console.log("regID = " + e.regid);
                 }
             break;
             case 'message':
@@ -129,16 +132,12 @@ var app = {
             var pushNotification = window.plugins.pushNotification;
 
             $("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
-
             if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos') {
-                //alert('Android');
                 pushNotification.register(this.successHandler, this.errorHandler, {
-                    "senderID": "smiling-box-93721",
+                    "senderID": "1052124741578",
                     "ecb": "app.onNotification"
                 }); // required!
-                //alert('register');
             } else if (device.platform == "iOS") {
-                //alert('IOS');
                 pushNotification.register(this.tokenHandler, this.errorHandler, {
                     "badge": "true",
                     "sound": "true",
@@ -152,7 +151,6 @@ var app = {
             txt += "Error description: " + err.message + "\n\n";
             alert(txt);
         }
-        console.log('Received Event: ' + id);
     }
 
 };
