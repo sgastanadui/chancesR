@@ -1,70 +1,51 @@
 {
-    "org.apache.cordova.console": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.console"
-        }
-    },
-    "org.apache.cordova.device": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.device"
-        }
-    },
-    "org.apache.cordova.inappbrowser": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.inappbrowser"
-        }
-    },
     "com.phonegap.plugins.PushPlugin": {
         "source": {
             "type": "git",
-            "url": "https://github.com/phonegap-build/PushPlugin",
+            "url": "https://github.com/phonegap-build/PushPlugin.git",
             "subdir": "."
-        }
+        },
+        "is_top_level": true,
+        "variables": {}
     },
     "org.apache.cordova.media": {
         "source": {
             "type": "registry",
             "id": "org.apache.cordova.media"
-        }
-    },
-    "org.apache.cordova.device-motion": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.device-motion"
-        }
-    },
-    "org.apache.cordova.device-orientation": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.device-orientation"
-        }
-    },
-    "org.apache.cordova.network-information": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.network-information"
-        }
-    },
-    "org.apache.cordova.dialogs": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.dialogs"
-        }
+        },
+        "is_top_level": true,
+        "variables": {}
     },
     "org.apache.cordova.file": {
         "source": {
             "type": "registry",
             "id": "org.apache.cordova.file"
-        }
+        },
+        "is_top_level": false,
+        "variables": {}
     },
-    "cordova-plugin-device": {
+    "org.apache.cordova.dialogs": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/apache/cordova-plugin-device",
-            "subdir": "."
-        }
+            "type": "registry",
+            "id": "org.apache.cordova.dialogs"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.console": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.console"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.device": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.device"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

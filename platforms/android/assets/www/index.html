@@ -1,118 +1,46 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
 <html>
-<head>
-    <meta charset="utf-8" />
-    <title>NotificationPushTeste</title>
-
-    <!-- NotificationPushTeste references -->
-    <link href="css/index.css" rel="stylesheet" />
-    <script type="text/javascript">
-
-        var pushNotification;
-
-        function pushnotifi() {
-            alert('push');
-            pushNotification = window.plugins.pushNotification;
-
-            try {
-                pushNotification = window.plugins.pushNotification;
-
-                alert('paso push notification');
-
-                //if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos') {
-                //    alert('Android');
-                    pushNotification.register(successHandler, errorHandler, {
-                        "senderID": "xxxxxxxxxxxxx",
-                        "ecb": "onNotification"
-                    }); // required!
-                    //alert('register');
-                //} else {
-                //    alert('IOS');
-                //    pushNotification.register(tokenHandler, errorHandler, {
-                //        "badge": "true",
-                //        "sound": "true",
-                //        "alert": "true",
-                //        "ecb": "onNotificationAPN"
-                //    }); // required!
-                //}
-            } catch (err) {
-                txt = "There was an error on this page.\n\n";
-                txt += "Error description: " + err.message + "\n\n";
-                alert(txt);
-            }
-
-            alert('push notification');
-        }
-
-        function tokenHandler(result) {
-            alert('device token = ' + result);
-            // Your iOS push server needs to know the token before it can push to this device
-            // here is where you might want to send it the token for later use.
-        }
-
-        function successHandler(result) {
-            alert('device token = ' + result);
-        }
-
-        function errorHandler(error) {
-            alert(error);
-        }
-
-        // handle APNS notifications for iOS
-        function onNotificationAPN(e) {
-            if (e.alert) {
-                // showing an alert also requires the org.apache.cordova.dialogs plugin
-                navigator.notification.alert(e.alert);
-            }
-            if (e.sound) {
-                // playing a sound also requires the org.apache.cordova.media plugin
-                var snd = new Media(e.sound);
-                snd.play();
-            }
-            if (e.badge) {
-                pushNotification.setApplicationIconBadgeNumber(successHandler, e.badge);
-            }
-        }
-
-        // handle GCM notifications for Android
-        function onNotification(e) {
-            switch (e.event) {
-                case 'registered':
-                    if (e.regid.length > 0) {
-                        // Your GCM push server needs to know the regID before it can push to this device
-                        // here is where you might want to send it the regID for later use.
-                        alert("regID = " + e.regid);
-                    }
-                    break;
-                case 'message':
-                    // if this flag is set, this notification happened while we were in the foreground.
-                    // you might want to play a sound to get the user's attention, throw up a dialog, etc.
-                    if (e.foreground) {
-                        // on Android soundname is outside the payload.
-                        // On Amazon FireOS all custom attributes are contained within payload
-                        var soundfile = e.soundname || e.payload.sound;
-                        // if the notification contains a soundname, play it.
-                        // playing a sound also requires the org.apache.cordova.media plugin
-                        var my_media = new Media("/android_asset/www/" + soundfile);
-                        my_media.play();
-                    }
-                    break;
-                case 'error':
-                    break;
-                default:
-                    break;
-            }
-        }
-
-    </script>
-</head>
-<body>
-    <p>Hello, your application is ready!</p>
-    <input type="button" id="btnmess" onclick="pushnotifi();" value="push" />
-    <!-- Cordova reference, this is added to your app when it's built. -->
-    <script src="cordova.js"></script>
-    <script src="scripts/platformOverrides.js"></script>
-    <script src="scripts/PushNotification.js"></script>
-    <script src="scripts/index.js"></script>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>PhoneGap</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
 </html>
