@@ -34,36 +34,6 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
-        alert('onDeviceReady');
-
-        try {
-            var pushNotification = window.plugins.pushNotification;
-
-            $("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
-
-            if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos') {
-                //alert('Android');
-                pushNotification.register(app.successHandler, app.errorHandler, {
-                    "senderID": "AIzaSyBcJzo8GpAqy76BGtYfEtWkTe6WOLyXe_k",
-                    "ecb": "app.onNotification"
-                }); // required!
-                alert('register');
-            } else {
-                //alert('IOS');
-                pushNotification.register(app.tokenHandler, app.errorHandler, {
-                    "badge": "true",
-                    "sound": "true",
-                    "alert": "true",
-                    "ecb": "app.onNotificationAPN"
-                }); // required!
-            }
-
-        } catch (err) {
-            txt = "There was an error on this page.\n\n";
-            txt += "Error description: " + err.message + "\n\n";
-            alert(txt);
-        }
-
         app.receivedEvent('deviceready');
     },
 
@@ -83,8 +53,7 @@ var app = {
 
     // handle APNS notifications for iOS
     onNotificationAPN: function (e) {
-        alert(e.event);
-
+        var pushNotification = window.plugins.pushNotification;
         if (e.alert) {
             // showing an alert also requires the org.apache.cordova.dialogs plugin
             navigator.notification.alert(e.alert);
@@ -95,7 +64,7 @@ var app = {
             snd.play();
         }
         if (e.badge) {
-            pushNotification.setApplicationIconBadgeNumber(app.successHandler, app.errorHandler, e.badge);
+            pushNotification.setApplicationIconBadgeNumber(this.successHandler, this.errorHandler, e.badge);
         }
     },
 
@@ -154,13 +123,37 @@ var app = {
     receivedEvent: function (id) {
         //alert('receivedEvent');
 
-        //var parentElement = document.getElementById(id);
-        //var listeningElement = parentElement.querySelector('.listening');
-        //var receivedElement = parentElement.querySelector('.received');
-
-        //listeningElement.setAttribute('style', 'display:none;');
-        //receivedElement.setAttribute('style', 'display:block;');
         $("#app-status-ul").append('<li>Received Event: ' + id + '</li>');
+
+        try {
+            var pushNotification = window.plugins.pushNotification;
+
+            $("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
+
+            if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos') {
+                //alert('Android');
+                pushNotification.register(this.successHandler, this.errorHandler, {
+                    "senderID": "AIzaSyB-hL3Uys5TTB2lpm59VkuE4q-He9YxzCw",
+                    "ecb": "app.onNotification"
+                }); // required!
+                alert('register');
+            } else if (device.platform == "iOS") {
+                //alert('IOS');
+                pushNotification.register(this.tokenHandler, this.errorHandler, {
+                    "badge": "true",
+                    "sound": "true",
+                    "alert": "true",
+                    "ecb": "app.onNotificationAPN"
+                }); // required!
+            }
+
+        } catch (err) {
+            txt = "There was an error on this page.\n\n";
+            txt += "Error description: " + err.message + "\n\n";
+            alert(txt);
+        }
+
         console.log('Received Event: ' + id);
     }
+
 };
