@@ -33,6 +33,85 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
+
+        $("#btnLogin").click(function () {
+
+            if ($("#txtUsername").val().trim() == "") {
+                //navigator.notification.alert("Enter a Username", function () { });
+                alert("Enter a Username");
+                return false;
+            }
+
+            if ($("#txtPassword").val().trim() == "") {
+                //navigator.notification.alert("Enter a Password", function () { });
+                alert("Enter a Password");
+                return false;
+            }
+
+            wcfServiceUrl = "http://23.253.204.98/wcfphonegap/AutenticationMobile.svc/";
+            //wcfServiceUrl = "http://localhost:10786/AutenticationMobile.svc/";
+
+            var urlk1 = wcfServiceUrl + "AutenticationUser?IdUsername=" + $("#txtUsername").val() + "&Password=" + $("#txtPassword").val() + "&IdAplication=2";
+
+            $.ajax({
+                cache: true,
+                url: urlk1,
+                crossDomain: true,
+                data: "{ UserName: " + $("#txtUsername").val() + ", Password: " + $("#txtPassword").val() + ", IdAplication: 4 }",
+                type: "GET",
+                jsonpCallback: "UserApplication",
+                contentType: "application/json; charset=utf-8",
+                dataType: "jsonp",
+                beforeSend: function () {
+                    $("#imgAjaxLoader").show();
+                },
+                error: function (xhr, textStatus, err) {
+                    var mensaje = "readyState: " + xhr.readyState + "\n";
+                    mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                    mensaje = mensaje + "status: " + xhr.status + "\n";
+                    mensaje = mensaje + "text status: " + textStatus + "\n";
+                    mensaje = mensaje + "error: " + err + "\n";
+                    alert(mensaje);
+                    $('#results').html("");
+                },
+                success: function (obj) {
+                    if (obj.AutenticationUserResult.error.Descripcion == '') {
+                        window.localStorage["Username"] = obj.AutenticationUserResult.IdUsuario;
+                        window.localStorage["IdCompany"] = obj.AutenticationUserResult.IdCompany;
+                        window.localStorage["CompanyName"] = obj.AutenticationUserResult.CompanyName;
+                        window.localStorage["IdContact"] = obj.AutenticationUserResult.IdContact;
+                        window.localStorage["ContactName"] = obj.AutenticationUserResult.ContactName;
+                        window.localStorage["Email"] = obj.AutenticationUserResult.Email;
+                        $('#results').html("");
+                        window.location.href = 'home.html';
+                    } else {
+                        switch (obj.AutenticationUserResult.error.Descripcion) {
+                            case '1':
+                                $('#results').html("<span>Inactive Company. Please contact administrator.</span>");
+                                break;
+                            case '2':
+                                $('#results').html("<span>Incorrect password.</span>");
+                                break;
+                            case '3':
+                                $('#results').html("<span>Inactive User. Please contact administrator.</span>");
+                                break;
+                            case '4':
+                                $('#results').html("<span>Username not found.</span>");
+                                break;
+                        }
+                    }
+                },
+                complete: function () {
+                    $("#imgAjaxLoader").hide();
+                }
+            });
+
+        });
+
+        $("#imgUbicacion").click(function () {
+            $.mobile.changePage('geocalizacion.html');
+        })
+
         app.receivedEvent('deviceready');
     },
 
@@ -42,6 +121,7 @@ var app = {
         $("#app-status-ul").append('<li>Token: ' + result + '</li>');
         // Your iOS push server needs to know the token before it can push to this device
         // here is where you might want to send it the token for later use.
+        window.localStorage["etoken"] = result;
     },
 
     // handle GCM notifications for result Android
@@ -82,7 +162,7 @@ var app = {
                     $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
                     // Your GCM push server needs to know the regID before it can push to this device
                     // here is where you might want to send it the regID for later use.
-                    //console.log("regID = " + e.regid);
+                    window.localStorage["etoken"] = e.regid;
                 }
             break;
             case 'message':
@@ -125,8 +205,6 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function (id) {
-
-        $("#app-status-ul").append('<li>Received Event: ' + id + '</li>');
 
         try {
             var pushNotification = window.plugins.pushNotification;
