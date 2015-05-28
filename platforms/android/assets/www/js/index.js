@@ -120,7 +120,7 @@ var app = {
     // handle APNS notifications for result iOS
     tokenHandler : function (result) {
         //alert('device token = ' + result);
-        //$("#app-status-ul").append('<li>Token: ' + result + '</li>');
+        $("#app-status-ul").append('<li>Token: ' + result + '</li>');
 
         // Your iOS push server needs to know the token before it can push to this device
         // here is where you might want to send it the token for later use.
