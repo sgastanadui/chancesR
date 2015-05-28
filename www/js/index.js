@@ -230,13 +230,18 @@ var app = {
                     "ecb": "app.onNotification"
                 }); // required!
             } else if (device.platform == "iOS") {
-                pushNotification.register(this.tokenHandler, this.errorHandler, {
+                pushNotification.register(this.successHandlerIOS, this.errorHandler, {
+                    //"senderID": "1052124741578",
                     "senderID": "653317226796",
-                    "badge": "true",
-                    "sound": "true",
-                    "alert": "true",
                     "ecb": "app.onNotificationAPN"
                 }); // required!
+                //pushNotification.register(this.tokenHandler, this.errorHandler, {
+                //    "senderID": "653317226796",
+                //    "badge": "true",
+                //    "sound": "true",
+                //    "alert": "true",
+                //    "ecb": "app.onNotificationAPN"
+                //}); // required!
             }
 
         } catch (err) {
