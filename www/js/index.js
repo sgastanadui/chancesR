@@ -133,13 +133,21 @@ var app = {
         //$("#app-status-ul").append('<li>Callback Success Android! Result: ' + result + '</li>');
     },
 
+    // handle GCM notifications for result Android
+    successHandlerIOS: function (result) {
+        //alert('device token = ' + result);
+        $("#app-status-ul").append('<li>Callback Success IOS! Result: ' + result + '</li>');
+    },
+
     errorHandler: function (error) {
         alert(error);
     },
 
     // handle APNS notifications for iOS
     onNotificationAPN: function (e) {
+        $("#app-status-ul").append('<li>onNotificationAPN  e.alert : ' + e.alert + '</li>');
         var pushNotification = window.plugins.pushNotification;
+        $("#app-status-ul").append('<li>onNotificationAPN Result: ' + e.badge + '</li>');
         if (e.alert) {
             // showing an alert also requires the org.apache.cordova.dialogs plugin
             //navigator.notification.alert(e.alert);
@@ -151,7 +159,7 @@ var app = {
             snd.play();
         }
         if (e.badge) {
-            pushNotification.setApplicationIconBadgeNumber(this.successHandler, this.errorHandler, e.badge);
+            pushNotification.setApplicationIconBadgeNumber(this.successHandlerIOS, this.errorHandler, e.badge);
         }
     },
 
