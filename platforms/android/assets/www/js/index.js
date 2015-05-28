@@ -235,7 +235,7 @@ var app = {
     },
 
     RegisterIdxContact: function (IdCompany, IdContact, IdUser, eToken) {
-        alert('register');
+        
         var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
         //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
 
