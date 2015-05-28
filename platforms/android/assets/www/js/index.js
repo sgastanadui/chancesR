@@ -231,6 +231,7 @@ var app = {
                 }); // required!
             } else if (device.platform == "iOS") {
                 pushNotification.register(this.tokenHandler, this.errorHandler, {
+                    "senderID": "653317226796",
                     "badge": "true",
                     "sound": "true",
                     "alert": "true",
