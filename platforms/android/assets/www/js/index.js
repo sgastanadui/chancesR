@@ -120,7 +120,8 @@ var app = {
     // handle APNS notifications for result iOS
     tokenHandler : function (result) {
         //alert('device token = ' + result);
-        $("#app-status-ul").append('<li>Token: ' + result + '</li>');
+        //$("#app-status-ul").append('<li>Token: ' + result + '</li>');
+
         // Your iOS push server needs to know the token before it can push to this device
         // here is where you might want to send it the token for later use.
         window.localStorage["etoken"] = result;
@@ -162,7 +163,7 @@ var app = {
         switch (e.event) {
             case 'registered':
                 if (e.regid.length > 0) {
-                    $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
+                    //$("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
                     // Your GCM push server needs to know the regID before it can push to this device
                     // here is where you might want to send it the regID for later use.
                     window.localStorage["etoken"] = e.regid;
@@ -178,6 +179,7 @@ var app = {
                     // On Amazon FireOS all custom attributes are contained within payload
                     var soundfile = e.soundname || e.payload.sound;
                     // if the notification contains a soundname, play it.
+                    $("#app-status-ul").append('<li>Soundfile:' + soundfile + "</li>");
                     var my_media = new Media("/android_asset/www/" + soundfile);
                     my_media.play();
                 }
@@ -194,7 +196,7 @@ var app = {
                 //Only works for GCM
                 $("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
                 //Only works on Amazon Fire OS
-                $status.append('<li>MESSAGE -> TIME: ' + e.payload.timeStamp + '</li>');
+                //$status.append('<li>MESSAGE -> TIME: ' + e.payload.timeStamp + '</li>');
 
                 break;
             case 'error':
