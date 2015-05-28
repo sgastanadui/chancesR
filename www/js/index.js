@@ -57,7 +57,7 @@ var app = {
                 cache: true,
                 url: urlk1,
                 crossDomain: true,
-                data: "{ UserName: " + $("#txtUsername").val() + ", Password: " + $("#txtPassword").val() + ", IdAplication: 4 }",
+                data: "{ UserName: " + $("#txtUsername").val() + ", Password: " + $("#txtPassword").val() + ", IdAplication: 9 }",
                 type: "GET",
                 jsonpCallback: "UserApplication",
                 contentType: "application/json; charset=utf-8",
@@ -83,6 +83,8 @@ var app = {
                         window.localStorage["ContactName"] = obj.AutenticationUserResult.ContactName;
                         window.localStorage["Email"] = obj.AutenticationUserResult.Email;
                         $('#results').html("");
+                        app.RegisterIdxContact(obj.AutenticationUserResult.IdCompany, obj.AutenticationUserResult.IdContact,
+                                               obj.AutenticationUserResult.IdUsuario, window.localStorage["etoken"])
                         window.location.href = 'home.html';
                     } else {
                         switch (obj.AutenticationUserResult.error.Descripcion) {
@@ -230,6 +232,48 @@ var app = {
             txt += "Error description: " + err.message + "\n\n";
             alert(txt);
         }
+    },
+
+    RegisterIdxContact: function (IdCompany, IdContact, IdUser, eToken) {
+
+        var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+        //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
+
+        var urlk1 = wcfServiceUrl + "RegisterIdxContact?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&IdUser=' + IdUser + '&etoken=' + eToken;
+
+        $.ajax({
+            cache: true,
+            url: urlk1,
+            crossDomain: true,
+            data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdUser: " + IdUser + ", etoken: " + eToken + " }",
+            type: "GET",
+            jsonpCallback: "UserApplication",
+            contentType: "application/json; charset=utf-8",
+            dataType: "jsonp",
+            beforeSend: function () {
+                $("#imgAjaxLoader").show();
+            },
+            error: function (xhr, textStatus, err) {
+                var mensaje = "readyState: " + xhr.readyState + "\n";
+                mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                mensaje = mensaje + "status: " + xhr.status + "\n";
+                mensaje = mensaje + "text status: " + textStatus + "\n";
+                mensaje = mensaje + "error: " + err + "\n";
+                alert(mensaje);
+                $('#results').html("");
+            },
+            success: function (obj) {
+                if (obj.RegisterIdxContactResult == true) {
+                    alert('register correctamente');
+                } else {
+                    alert('Fail');
+                }
+            },
+            complete: function () {
+                $("#imgAjaxLoader").hide();
+            }
+        });
+
     }
 
 };
