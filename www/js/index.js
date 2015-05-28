@@ -215,7 +215,8 @@ var app = {
             //$("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
             if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos') {
                 pushNotification.register(this.successHandler, this.errorHandler, {
-                    "senderID": "1052124741578",
+                    //"senderID": "1052124741578",
+                    "senderID": "653317226796",
                     "ecb": "app.onNotification"
                 }); // required!
             } else if (device.platform == "iOS") {
