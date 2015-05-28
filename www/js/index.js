@@ -51,7 +51,7 @@ var app = {
             wcfServiceUrl = "http://23.253.204.98/wcfphonegap/AutenticationMobile.svc/";
             //wcfServiceUrl = "http://localhost:10786/AutenticationMobile.svc/";
 
-            var urlk1 = wcfServiceUrl + "AutenticationUser?IdUsername=" + $("#txtUsername").val() + "&Password=" + $("#txtPassword").val() + "&IdAplication=2";
+            var urlk1 = wcfServiceUrl + "AutenticationUser?IdUsername=" + $("#txtUsername").val() + "&Password=" + $("#txtPassword").val() + "&IdAplication=9";
 
             $.ajax({
                 cache: true,
@@ -85,7 +85,7 @@ var app = {
                         $('#results').html("");
                         app.RegisterIdxContact(obj.AutenticationUserResult.IdCompany, obj.AutenticationUserResult.IdContact,
                                                obj.AutenticationUserResult.IdUsuario, window.localStorage["etoken"])
-                        window.location.href = 'home.html';
+                        //window.location.href = 'home.html';
                     } else {
                         switch (obj.AutenticationUserResult.error.Descripcion) {
                             case '1':
@@ -235,7 +235,7 @@ var app = {
     },
 
     RegisterIdxContact: function (IdCompany, IdContact, IdUser, eToken) {
-
+        alert('register');
         var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
         //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
 
@@ -264,7 +264,7 @@ var app = {
             },
             success: function (obj) {
                 if (obj.RegisterIdxContactResult == true) {
-                    alert('register correctamente');
+                    window.location.href = 'home.html';
                 } else {
                     alert('Fail');
                 }
