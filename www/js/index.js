@@ -127,7 +127,7 @@ var app = {
     // handle GCM notifications for result Android
     successHandler: function (result) {
         //alert('device token = ' + result);
-        $("#app-status-ul").append('<li>Callback Success Android! Result: ' + result + '</li>');
+        //$("#app-status-ul").append('<li>Callback Success Android! Result: ' + result + '</li>');
     },
 
     errorHandler: function (error) {
@@ -139,7 +139,8 @@ var app = {
         var pushNotification = window.plugins.pushNotification;
         if (e.alert) {
             // showing an alert also requires the org.apache.cordova.dialogs plugin
-            navigator.notification.alert(e.alert);
+            //navigator.notification.alert(e.alert);
+            alert(e.alert);
         }
         if (e.sound) {
             // playing a sound also requires the org.apache.cordova.media plugin
@@ -154,7 +155,7 @@ var app = {
     // handle GCM notifications for Android
     onNotification: function (e) {
         
-        $("#app-status-ul").append('<li>onNotification -> event:' + e.event + "</li>");
+        //$("#app-status-ul").append('<li>onNotification -> event:' + e.event + "</li>");
 
         switch (e.event) {
             case 'registered':
@@ -209,7 +210,7 @@ var app = {
         try {
             var pushNotification = window.plugins.pushNotification;
 
-            $("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
+            //$("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
             if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos') {
                 pushNotification.register(this.successHandler, this.errorHandler, {
                     "senderID": "1052124741578",
