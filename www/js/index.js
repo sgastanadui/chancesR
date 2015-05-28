@@ -145,12 +145,12 @@ var app = {
 
     // handle APNS notifications for iOS
     onNotificationAPN: function (e) {
-        $("#app-status-ul").append('<li>onNotificationAPN  e.alert : ' + e.alert + '</li>');
         var pushNotification = window.plugins.pushNotification;
-        $("#app-status-ul").append('<li>onNotificationAPN Result: ' + e.badge + '</li>');
+
         if (e.alert) {
             // showing an alert also requires the org.apache.cordova.dialogs plugin
             //navigator.notification.alert(e.alert);
+            $("#app-status-ul").append('<li>onNotificationAPN  e.alert : ' + e.alert + '</li>');
             alert(e.alert);
         }
         if (e.sound) {
@@ -159,7 +159,7 @@ var app = {
             snd.play();
         }
         if (e.badge) {
-            pushNotification.setApplicationIconBadgeNumber(this.successHandlerIOS, this.errorHandler, e.badge);
+            pushNotification.setApplicationIconBadgeNumber(this.successHandlerIOS, e.badge);
         }
     },
 
@@ -230,17 +230,12 @@ var app = {
                     "ecb": "app.onNotification"
                 }); // required!
             } else if (device.platform == "iOS") {
-                pushNotification.register(this.successHandler, this.errorHandler, {
-                    //"senderID": "1052124741578",
-                    "senderID": "653317226796",
-                    "ecb": "app.onNotification"
+                pushNotification.register(this.tokenHandler, this.errorHandler, {
+                    "badge": "true",
+                    "sound": "true",
+                    "alert": "true",
+                    "ecb": "app.onNotificationAPN"
                 }); // required!
-                //pushNotification.register(this.tokenHandler, this.errorHandler, {
-                //    "badge": "true",
-                //    "sound": "true",
-                //    "alert": "true",
-                //    "ecb": "app.onNotificationAPN"
-                //}); // required!
             }
 
         } catch (err) {
