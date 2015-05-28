@@ -230,13 +230,12 @@ var app = {
                     "ecb": "app.onNotification"
                 }); // required!
             } else if (device.platform == "iOS") {
-                pushNotification.register(this.successHandlerIOS, this.errorHandler, {
+                pushNotification.register(this.successHandler, this.errorHandler, {
                     //"senderID": "1052124741578",
                     "senderID": "653317226796",
-                    "ecb": "app.onNotificationAPN"
+                    "ecb": "app.onNotification"
                 }); // required!
                 //pushNotification.register(this.tokenHandler, this.errorHandler, {
-                //    "senderID": "653317226796",
                 //    "badge": "true",
                 //    "sound": "true",
                 //    "alert": "true",
