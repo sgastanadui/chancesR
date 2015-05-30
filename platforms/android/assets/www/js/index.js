@@ -83,7 +83,7 @@ var app = {
                         window.localStorage["ContactName"] = obj.AutenticationUserResult.ContactName;
                         window.localStorage["Email"] = obj.AutenticationUserResult.Email;
                         $('#results').html("");
-                        app.RegisterIdxContact(obj.AutenticationUserResult.IdCompany, obj.AutenticationUserResult.IdContact,
+                        app.RegisterIdxContact(obj.AutenticationUserResult.IdCompany, obj.AutenticationUserResult.IdContact, window.localStorage["SystemOperation"],
                                                obj.AutenticationUserResult.IdUsuario, window.localStorage["etoken"])
                         //window.location.href = 'home.html';
                     } else {
@@ -120,7 +120,7 @@ var app = {
     // handle APNS notifications for result iOS
     tokenHandler : function (result) {
         //alert('device token = ' + result);
-        $("#app-status-ul").append('<li>Token: ' + result + '</li>');
+        //$("#app-status-ul").append('<li>Token: ' + result + '</li>');
 
         // Your iOS push server needs to know the token before it can push to this device
         // here is where you might want to send it the token for later use.
@@ -136,7 +136,7 @@ var app = {
     // handle GCM notifications for result Android
     successHandlerIOS: function (result) {
         //alert('device token = ' + result);
-        $("#app-status-ul").append('<li>Callback Success IOS! Result: ' + result + '</li>');
+        //$("#app-status-ul").append('<li>Callback Success IOS! Result: ' + result + '</li>');
     },
 
     errorHandler: function (error) {
@@ -150,7 +150,7 @@ var app = {
         if (e.alert) {
             // showing an alert also requires the org.apache.cordova.dialogs plugin
             //navigator.notification.alert(e.alert);
-            $("#app-status-ul").append('<li>onNotificationAPN  e.alert : ' + e.alert + '</li>');
+            //$("#app-status-ul").append('<li>onNotificationAPN  e.alert : ' + e.alert + '</li>');
             alert(e.alert);
         }
         if (e.sound) {
@@ -181,7 +181,7 @@ var app = {
                 // if this flag is set, this notification happened while we were in the foreground.
                 // you might want to play a sound to get the user's attention, throw up a dialog, etc.
                 if (e.foreground) {
-                    $("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
+                    //$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
 
                     // on Android soundname is outside the payload.
                     // On Amazon FireOS all custom attributes are contained within payload
@@ -193,16 +193,16 @@ var app = {
                 }
                 else {  // otherwise we were launched because the user touched a notification in the notification tray.
                     if (e.coldstart) {
-                        $("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
+                        //$("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
                     }
                     else {
-                        $("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
+                        //$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
                     }
                 }
 
                 $("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
                 //Only works for GCM
-                $("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
+                //$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
                 //Only works on Amazon Fire OS
                 //$status.append('<li>MESSAGE -> TIME: ' + e.payload.timeStamp + '</li>');
 
@@ -223,6 +223,7 @@ var app = {
             var pushNotification = window.plugins.pushNotification;
 
             //$("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
+            window.localStorage["SystemOperation"] = device.platform.toUpperCase();
             if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos') {
                 pushNotification.register(this.successHandler, this.errorHandler, {
                     //"senderID": "1052124741578",
@@ -245,18 +246,18 @@ var app = {
         }
     },
 
-    RegisterIdxContact: function (IdCompany, IdContact, IdUser, eToken) {
+    RegisterIdxContact: function (IdCompany, IdContact, SystemOperation, IdUser, eToken) {
         
         var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
         //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
 
-        var urlk1 = wcfServiceUrl + "RegisterIdxContact?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&IdUser=' + IdUser + '&etoken=' + eToken;
+        var urlk1 = wcfServiceUrl + "RegisterIdxContact?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&SystemOperation=' + SystemOperation + '&IdUser=' + IdUser + '&etoken=' + eToken;
 
         $.ajax({
             cache: true,
             url: urlk1,
             crossDomain: true,
-            data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdUser: " + IdUser + ", etoken: " + eToken + " }",
+            data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", SystemOperation: " + SystemOperation + ", IdUser: " + IdUser + ", etoken: " + eToken + " }",
             type: "GET",
             jsonpCallback: "UserApplication",
             contentType: "application/json; charset=utf-8",

@@ -129,6 +129,49 @@
                 .attr("title", HazardName));
         };
 
+        SendMessageGCMMobile = function (IdCompany, IdSite, Message, xType) {
+
+            var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+            //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
+
+            var urlk1 = wcfServiceUrl + "SendMsgGCM?IdCompany=" + IdCompany + '&IdSite=' + IdSite + '&Message=' + Message + '&xType=' + xType;
+
+            $.ajax({
+                cache: true,
+                url: urlk1,
+                crossDomain: true,
+                data: "{ IdCompany: " + IdCompany + ", IdSite: " + IdSite + ", Message: " + Message + ", xType: " + xType + " }",
+                type: "GET",
+                jsonpCallback: "SendGCM",
+                contentType: "application/json; charset=utf-8",
+                dataType: "jsonp",
+                beforeSend: function () {
+                    $("#imgAjaxLoader").show();
+                },
+                error: function (xhr, textStatus, err) {
+                    var mensaje = "error send to alert. \n";
+                    mensaje = mensaje + "readyState: " + xhr.readyState + "\n";
+                    mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                    mensaje = mensaje + "status: " + xhr.status + "\n";
+                    mensaje = mensaje + "text status: " + textStatus + "\n";
+                    mensaje = mensaje + "error: " + err + "\n";
+                    alert(mensaje + err.Message);
+                    $('#results').html("");
+                },
+                success: function (obj) {
+                    if (obj.SendMsgGCMResult == true) {
+                        alert('Send to alert.');
+                    } else {
+                        alert('Fail');
+                    }
+                },
+                complete: function () {
+                    $("#imgAjaxLoader").hide();
+                }
+            });
+
+        }
+
     //***************************************
         $(document).on("pageinit", "#map-page", function (event) {
         //***************************************
@@ -217,6 +260,9 @@
                     success: function (obj) {
                         //******************************
                         if (obj.SaveActivateERTResult == true) {
+                            //*************************
+                            var Message = window.localStorage["ContactName"] + ' has activated ERT for ' + $("#ddlHazard option:selected").text();
+                            SendMessageGCMMobile(window.localStorage["IdCompany"], $("#hdnIdSite").val(), Message, 'ERT');
                             //*************************
                             alert('ERP has been activated.')
                             //*************************
