@@ -242,11 +242,10 @@
 </head>
 <body>
     <div data-role="page" class="jqm-demos ui-responsive-panel" id="panel-responsive-page1" data-title="Panel responsive page" data-url="panel-responsive-page1">
-        <div data-role="header" style="background-color:#0065B3;color:white;">
+        <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;">
             <!--<br />-->
             <h1 id="span1"></h1>
-            <a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#0065B3;color:white;">Menu</a>
-            <!--<br />-->
+            <a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#0065B3;color:white;position:-ms-page;top: 12px !important;">Menu</a>
         </div><!-- /header -->
         <div role="main" class="ui-content jqm-content jqm-fullwidth">
             <br />
@@ -276,7 +275,6 @@
             ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
         </div>
     </div>
-
     <input type="hidden" id="hdnIdSite" />
     <input type="hidden" id="hdnSite" />
     <input type="hidden" id="hdnLatitude" />
