@@ -187,7 +187,7 @@ var app = {
                     // On Amazon FireOS all custom attributes are contained within payload
                     var soundfile = e.soundname || e.payload.sound;
                     // if the notification contains a soundname, play it.
-                    $("#app-status-ul").append('<li>Soundfile:' + soundfile + "</li>");
+                    //$("#app-status-ul").append('<li>Soundfile:' + soundfile + "</li>");
                     var my_media = new Media("/android_asset/www/" + soundfile);
                     my_media.play();
                 }
@@ -199,8 +199,8 @@ var app = {
                         //$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
                     }
                 }
-
-                $("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
+                alert(e.payload.message);
+                //$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
                 //Only works for GCM
                 //$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
                 //Only works on Amazon Fire OS
@@ -208,10 +208,12 @@ var app = {
 
                 break;
             case 'error':
-                $("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
+                alert(e.msg);
+                //$("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
                 break;
             default:
-                $("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
+                alert("Unknown, an event was received and we do not know what it is");
+                //$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
             break;
         }
     },

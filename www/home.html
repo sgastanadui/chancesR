@@ -10,7 +10,6 @@
     <script src="js/jquery-2.1.3.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/common.js"></script>
-
     <script type="text/javascript">
     //***************************************
     $(document).on("pageinit", "#panel-responsive-page1", function (event) {
@@ -214,7 +213,6 @@
     }
     //***************************************
     </script>
-
     <style>
         table {
             border-collapse: collapse;
@@ -238,7 +236,6 @@
             }
         }
     </style>
-
 </head>
 <body>
     <div data-role="page" class="jqm-demos ui-responsive-panel" id="panel-responsive-page1" data-title="Panel responsive page" data-url="panel-responsive-page1">
@@ -274,6 +271,12 @@
         <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
             ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
         </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/PushNotification.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
     </div>
     <input type="hidden" id="hdnIdSite" />
     <input type="hidden" id="hdnSite" />
