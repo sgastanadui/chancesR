@@ -160,7 +160,17 @@
                 },
                 success: function (obj) {
                     if (obj.SendMsgGCMResult == true) {
-                        alert('Send to alert.');
+                        //*************************
+                        alert('ERP has been activated.')
+                        //*************************
+                        var IdSite = $("#hdnIdSite").val();
+                        var Site = $("#hdnSite").val();
+                        var Latitude = $("#hdnLatitude").val();
+                        var Longitude = $("#hdnLongitude").val();
+                        var KeyBCP = $("#hdnKeywordERT").val();
+                        //*************************
+                        window.location.href = 'home.html?IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                        //*************************
                     } else {
                         alert('Fail');
                     }
@@ -262,20 +272,11 @@
                         if (obj.SaveActivateERTResult == true) {
                             //*************************
                             var Message = window.localStorage["ContactName"] + ' has activated ERT for ' + $("#ddlHazard option:selected").text();
-                            SendMessageGCMMobile(window.localStorage["IdCompany"], $("#hdnIdSite").val(), Message, 'ERT');
-                            //*************************
-                            alert('ERP has been activated.')
                             //*************************
                             $("#ddlHazard").val('-1');
                             $("#txtCommentERP").val('');
                             //*************************
-                            var IdSite = $("#hdnIdSite").val();
-                            var Site = $("#hdnSite").val();
-                            var Latitude = $("#hdnLatitude").val();
-                            var Longitude = $("#hdnLongitude").val();
-                            var KeyBCP = $("#hdnKeywordERT").val();
-                            //*************************
-                            window.location.href = 'home.html?IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                            SendMessageGCMMobile(window.localStorage["IdCompany"], $("#hdnIdSite").val(), Message, 'ERT');
                             //*************************
                         } else {
                             alert('fail')
