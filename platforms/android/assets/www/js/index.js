@@ -37,14 +37,14 @@ var app = {
         $("#btnLogin").click(function () {
 
             if ($("#txtUsername").val().trim() == "") {
-                //navigator.notification.alert("Enter a Username", function () { });
-                alert("Enter a Username");
+                navigator.notification.alert("Enter a Username", function () { });
+                //alert("Enter a Username");
                 return false;
             }
 
             if ($("#txtPassword").val().trim() == "") {
-                //navigator.notification.alert("Enter a Password", function () { });
-                alert("Enter a Password");
+                navigator.notification.alert("Enter a Password", function () { });
+                //alert("Enter a Password");
                 return false;
             }
 
