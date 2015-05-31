@@ -256,4 +256,7 @@
     <ItemGroup>
         <Compile Include="Plugins\org.apache.cordova.device\Device.cs" />
     </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Plugins\org.apache.cordova.network-information\NetworkStatus.cs" />
+    </ItemGroup>
 </Project>

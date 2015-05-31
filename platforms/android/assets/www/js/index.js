@@ -71,7 +71,8 @@ var app = {
                     mensaje = mensaje + "status: " + xhr.status + "\n";
                     mensaje = mensaje + "text status: " + textStatus + "\n";
                     mensaje = mensaje + "error: " + err + "\n";
-                    alert(mensaje);
+                    //alert(mensaje);
+                    navigator.notification.alert(mensaje, function () { }, "BCP Error");
                     $('#results').html("");
                 },
                 success: function (obj) {
@@ -140,7 +141,8 @@ var app = {
     },
 
     errorHandler: function (error) {
-        alert(error);
+        //alert(error);
+        navigator.notification.alert(error, function () { }, "BCP Error");
     },
 
     // handle APNS notifications for iOS
@@ -151,7 +153,8 @@ var app = {
             // showing an alert also requires the org.apache.cordova.dialogs plugin
             //navigator.notification.alert(e.alert);
             //$("#app-status-ul").append('<li>onNotificationAPN  e.alert : ' + e.alert + '</li>');
-            alert(e.alert);
+            //alert(e.alert);
+            navigator.notification.alert(e.alert, function () { }, "BCP Notification");
         }
         if (e.sound) {
             // playing a sound also requires the org.apache.cordova.media plugin
@@ -199,7 +202,9 @@ var app = {
                         //$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
                     }
                 }
-                alert(e.payload.message);
+                //alert(e.payload.message);
+                navigator.notification.alert(e.payload.message, function () { }, "BCP Notification");
+
                 //$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
                 //Only works for GCM
                 //$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
@@ -208,11 +213,13 @@ var app = {
 
                 break;
             case 'error':
-                alert(e.msg);
+                //alert(e.msg);
+                navigator.notification.alert(e.msg, function () { }, "BCP Error");
                 //$("#app-status-ul").append('<li>ERROR -> MSG:' + e.msg + '</li>');
                 break;
             default:
-                alert("Unknown, an event was received and we do not know what it is");
+                //alert("Unknown, an event was received and we do not know what it is");
+                navigator.notification.alert("Unknown, an event was received and we do not know what it is", function () { }, "BCP Error");
                 //$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
             break;
         }
@@ -244,7 +251,8 @@ var app = {
         } catch (err) {
             txt = "There was an error on this page.\n\n";
             txt += "Error description: " + err.message + "\n\n";
-            alert(txt);
+            //alert(txt);
+            navigator.notification.alert(txt, function () { }, "BCP Error");
         }
     },
 
@@ -273,14 +281,16 @@ var app = {
                 mensaje = mensaje + "status: " + xhr.status + "\n";
                 mensaje = mensaje + "text status: " + textStatus + "\n";
                 mensaje = mensaje + "error: " + err + "\n";
-                alert(mensaje);
+                //alert(mensaje);
+                navigator.notification.alert(mensaje, function () { }, "BCP Error");
                 $('#results').html("");
             },
             success: function (obj) {
                 if (obj.RegisterIdxContactResult == true) {
                     window.location.href = 'home.html';
                 } else {
-                    alert('Fail');
+                    //alert('Fail');
+                    navigator.notification.alert("Fail", function () { }, "BCP Error");
                 }
             },
             complete: function () {
