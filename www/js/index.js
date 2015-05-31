@@ -37,13 +37,13 @@ var app = {
         $("#btnLogin").click(function () {
 
             if ($("#txtUsername").val().trim() == "") {
-                navigator.notification.alert("Enter a Username", function () { });
+                navigator.notification.alert("Enter a Username", function () { },"BCP Alert");
                 //alert("Enter a Username");
                 return false;
             }
 
             if ($("#txtPassword").val().trim() == "") {
-                navigator.notification.alert("Enter a Password", function () { });
+                navigator.notification.alert("Enter a Password", function () { }, "BCP Alert");
                 //alert("Enter a Password");
                 return false;
             }
