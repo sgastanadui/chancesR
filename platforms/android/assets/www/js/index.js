@@ -35,6 +35,15 @@ var app = {
     onDeviceReady: function () {
 
         $("#btnLogin").click(function () {
+            //alert(navigator.connection.type);
+            //if (navigator.network.connection.type == Connection.NONE) {
+            //    // No tenemos conexión
+            //    navigator.notification.alert("No tenemos conexión", function () { }, "BCP Alert");
+            //} else {
+            //    // Si tenemos conexión
+            //    navigator.notification.alert("Si tenemos conexión", function () { }, "BCP Alert");
+            //}
+
 
             if ($("#txtUsername").val().trim() == "") {
                 navigator.notification.alert("Enter a Username", function () { },"BCP Alert");
