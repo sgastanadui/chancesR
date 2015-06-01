@@ -110,13 +110,15 @@
                         mensaje = mensaje + "status: " + xhr.status + "\n";
                         mensaje = mensaje + "text status: " + textStatus + "\n";
                         mensaje = mensaje + "error: " + err + "\n";
-                        alert(mensaje + err.Message);
+                        //alert(mensaje + err.Message);
+                        navigator.notification.alert(mensaje + err.Message, function () { }, "BCP Error");
                         $('#results').html("");
                     },
                     success: function (obj) {
                         if (obj.SendMsgGCMResult == true) {
                             //*************************
-                            alert('sucess');
+                            //alert('sucess');
+                            navigator.notification.alert("Sucess", function () { }, "BCP Mobile");
                             //*************************
                             var IdCompany = window.localStorage["IdCompany"];
                             var IdSite = $("#hdnIdSite").val();
@@ -128,10 +130,11 @@
                             var IdHazard = $("#hdnIdHazard").val();
                             var Hazard = $("#hdnHazard").val();
                             //*************************
-                            window.location.href = 'ertpanel.html?IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT + 'IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP + '&Hazard=' + escape(Hazard);
+                            window.location.href = 'ertpanel.html?IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT + 'IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&LatitudeSite=' + Latitude + '&LongitudeSite=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP + '&Hazard=' + escape(Hazard);
                             //*************************
                         } else {
-                            alert('Fail');
+                            //alert('Fail');
+                            navigator.notification.alert("Fail", function () { }, "BCP Error");
                         }
                     },
                     complete: function () {
@@ -210,7 +213,8 @@
                         mensaje = mensaje + "status: " + xhr.status + "\n";
                         mensaje = mensaje + "text status: " + textStatus + "\n";
                         mensaje = mensaje + "error: " + err + "\n";
-                        alert(mensaje);
+                        //alert(mensaje);
+                        navigator.notification.alert(mensaje, function () { }, "BCP Error");
                         $('#results').html("");
                     },
                     success: function (obj) {
@@ -264,7 +268,8 @@
                         mensaje = mensaje + "status: " + xhr.status + "\n";
                         mensaje = mensaje + "text status: " + textStatus + "\n";
                         mensaje = mensaje + "error: " + err + "\n";
-                        alert(mensaje);
+                        //alert(mensaje);
+                        navigator.notification.alert(mensaje, function () { }, "BCP Error");
                         $('#select_item').html("");
                     },
                     success: function (obj) {
@@ -296,12 +301,14 @@
                     var IdHazard = $("#hdnIdHazard").val();
                     //************************************************
                     if ($("#select_item").val().trim() == "-1") {
-                        alert("Select Status");
+                        //alert("Select Status");
+                        navigator.notification.alert("Select Status", function () { }, "BCP Mobile");
                         return false;
                     }
                     //************************************************
                     if ($("#textarea-1").val().trim() == "") {
-                        alert("Enter Comments");
+                        //alert("Enter Comments");
+                        navigator.notification.alert("Enter Comments", function () { }, "BCP Mobile");
                         return false;
                     }
                     //************************************************
@@ -328,7 +335,8 @@
                             mensaje = mensaje + "status: " + xhr.status + "\n";
                             mensaje = mensaje + "text status: " + textStatus + "\n";
                             mensaje = mensaje + "error: " + err + "\n";
-                            alert(mensaje);
+                            //alert(mensaje);
+                            navigator.notification.alert(mensaje, function () { }, "BCP Error");
                             $('#results').html("");
                         },
                         success: function (data) {
@@ -344,7 +352,8 @@
                                 SendMessageGCMMobile(window.localStorage["IdCompany"], $("#hdnIdSite").val(), Message, 'ERT');
                                 //*************************
                             } else {
-                                alert('fail')
+                                //alert('fail')
+                                navigator.notification.alert("Fail", function () { }, "BCP Error");
                             }
 
                         },
