@@ -8,3 +8,15 @@
     }
     return vars;
 }
+
+function showModal() {
+    $("body").append('<div class="modalWindow"/>');
+    $.mobile.showPageLoadingMsg();
+    setTimeout('hideModal()', 2000);
+}
+
+function hideModal() {
+    $(".modalWindow").remove();
+    $.mobile.hidePageLoadingMsg();
+
+}

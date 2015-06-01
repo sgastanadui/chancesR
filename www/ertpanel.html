@@ -56,10 +56,12 @@
                 var Latitude = $("#hdnLatitude").val();
                 var Longitude = $("#hdnLongitude").val();
                 var KeyBCP = $("#hdnKeyword").val();
+                var IdAlert = $("#hdnIdAlert").val();
+                var IdHazard = $("#hdnIdHazard").val();
                 //*****************************
                 html = html.trim() + '<tr>';
                 html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
-                html = html.trim() + ' <a href="#" data-transition="none" onclick="window.location.href = ' + "'" + 'commentsert.html?IdContact=' + IdContact + '&IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP + '' + "'" + '">' + Name.trim() + '</a>';
+                html = html.trim() + ' <a href="#" data-transition="none" onclick="window.location.href = ' + "'" + 'commentsert.html?IdContact=' + IdContact + '&IdCompany=' + IdCompany + '&IdAlert=' + IdAlert + '&IdHazard=' + IdHazard + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP + '' + "'" + '">' + Name.trim() + '</a>';
                 html = html.trim() + ' </td>';
                 html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + Rol.trim() + '</td>';
                 html = html.trim() + ' <td style="font-size:11px;font-weight:normal;"><a href="mailto:' + Email.trim() + '">' + Email.trim() + '</a></td>';
@@ -93,12 +95,16 @@
                 var Latitude = getUrlVars()["LatitudeSite"];
                 var Longitude = getUrlVars()["LongitudeSite"];
                 var KeyBCP = getUrlVars()["KeyBCP"];
+                var IdAlertsERT = getUrlVars()["IdAlertsERT"];
+                var IdHazard = getUrlVars()["IdHazard"];
                 //***************************************
                 $("#hdnIdSite").val(IdSite);
                 $("#hdnSite").val(unescape(Site));
                 $("#hdnLatitude").val(Latitude);
                 $("#hdnLongitude").val(Longitude);
                 $("#hdnKeyword").val(KeyBCP);
+                $("#hdnIdAlert").val(IdAlertsERT);
+                $("#hdnIdHazard").val(IdHazard);
                 //***************************************
 
                 $("#span1").html("" + Companyname + "");
@@ -231,6 +237,8 @@
                     //************************************************
                     var IdCompany = window.localStorage["IdCompany"];
                     var IdContact = window.localStorage["IdContact"];
+                    var IdAlertsERT = $("#hdnIdAlert").val();
+                    var IdHazard = $("#hdnIdHazard").val();
                     //************************************************
                     if ($("#select_item").val().trim() == "-1") {
                         alert("Select Status");
@@ -246,13 +254,13 @@
                     //wcfServiceUrl = "http://localhost:10786/AutenticationMobile.svc/";
 
                     //var urlk1 = wcfServiceUrl + "Login?UserName=" + $("#txtUsername").val() + "&Password=" + $("#txtPassword").val() + "";
-                    var urlk1 = wcfServiceUrl + "SaveCommentsERT?IdCompany=" + IdCompany + "&IdContact=" + IdContact + "&IdStatus=" + $("#select_item").val() + "&Comments=" + $("#textarea-1").val() + "";
+                    var urlk1 = wcfServiceUrl + "SaveCommentsERT?IdCompany=" + IdCompany + "&IdContact=" + IdContact + "&IdStatus=" + $("#select_item").val() + "&IdAlert=" + IdAlertsERT + "&IdHazard=" + IdHazard + "&Comments=" + encodeURIComponent($("#textarea-1").val()) + "";
 
                     $.ajax({
                         cache: false,
                         url: urlk1,
                         crossDomain: true,
-                        data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdStatus: " + $("#select_item").val() + ", Comments: " + $("#textarea-1").val() + " }",
+                        data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdStatus: " + $("#select_item").val() + ", IdAlert: " + IdAlert + ", IdHazard: " + IdHazard + ", Comments: " + encodeURIComponent($("#textarea-1").val()) + " }",
                         type: "GET",
                         jsonpCallback: "RowSaved",
                         contentType: "application/json; charset=utf-8",
@@ -286,7 +294,9 @@
                                 var Longitude = $("#hdnLongitude").val();
                                 var Site = $("#hdnSite").val();
                                 var KeyBCP = $("#hdnKeyword").val();
-                                window.location.href = 'ertpanel.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                                var IdAlertsERT = $("#hdnIdAlert").val();
+                                var IdHazard = $("#hdnIdHazard").val();
+                                window.location.href = 'ertpanel.html?IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT + 'IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
                                 //*************************
                             } else {
                                 alert('fail')
@@ -360,6 +370,8 @@
         <input type="hidden" id="hdnLatitude" />
         <input type="hidden" id="hdnLongitude" />
         <input type="hidden" id="hdnKeyword" />
+        <input type="hidden" id="hdnIdAlert" />
+        <input type="hidden" id="hdnIdHazard" />
     </div>
 </body>
 </html>

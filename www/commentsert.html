@@ -68,12 +68,16 @@
             var Latitude = getUrlVars()["Latitude"];
             var Longitude = getUrlVars()["Longitude"];
             var KeyBCP = getUrlVars()["KeyBCP"];
+            var IdAlert = getUrlVars()["IdAlert"];
+            var IdHazard = getUrlVars()["IdHazard"];
             //***************************************
             $("#hdnIdSite").val(IdSite);
             $("#hdnSite").val(unescape(Site));
             $("#hdnLatitude").val(Latitude);
             $("#hdnLongitude").val(Longitude);
             $("#hdnKeyword").val(KeyBCP);
+            $("#hdnIdAlert").val(IdAlert);
+            $("#hdnIdHazard").val(IdHazard);
             //***************************************
             var CompanyName = window.localStorage["CompanyName"];
             $("#span1").html("" + CompanyName + " <br/>" + unescape(Site));
@@ -87,21 +91,23 @@
                 var Longitude = $("#hdnLongitude").val();
                 var Site = $("#hdnSite").val();
                 var KeyBCP = $("#hdnKeyword").val();
-                window.location.href = 'ertpanel.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&LatitudeSite=' + Latitude + '&LongitudeSite=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                var IdAlert = $("#hdnIdAlert").val();
+                var IdHazard = $("#hdnIdHazard").val();
+                window.location.href = 'ertpanel.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&IdAlertsERT=' + IdAlert + '&IdHazard=' + IdHazard + '&LatitudeSite=' + Latitude + '&LongitudeSite=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
                 //************************************************
             });
             //***************************************
             var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/AutenticationMobile.svc/";
             //var wcfServiceUrl = "http://localhost:10786/AutenticationMobile.svc/";
 
-            var urlk1 = wcfServiceUrl + "ListCommentsERT?IdCompany=" + IdCompany + "&IdContact=" + IdContact + "";
+            var urlk1 = wcfServiceUrl + "ListCommentsERT?IdCompany=" + IdCompany + "&IdContact=" + IdContact + "&IdAlert=" + IdAlert + "&IdHazard=" + IdHazard;
             //alert(urlk1);
 
             $.ajax({
                 //cache: true,
                 url: urlk1,
                 crossDomain: true,
-                data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + " }",
+                data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdAlert: " + IdAlert + ", IdHazard:" + IdHazard + " }",
                 type: "GET",
                 jsonpCallback: "lsobjComments",
                 contentType: "application/json; charset=utf-8",
@@ -175,6 +181,8 @@
         <input type="hidden" id="hdnLatitude" />
         <input type="hidden" id="hdnLongitude" />
         <input type="hidden" id="hdnKeyword" />
+        <input type="hidden" id="hdnIdAlert" />
+        <input type="hidden" id="hdnIdHazard" />
     </div>
 </body>
 </html>

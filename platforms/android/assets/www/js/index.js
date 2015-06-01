@@ -44,7 +44,6 @@ var app = {
             //    navigator.notification.alert("Si tenemos conexión", function () { }, "BCP Alert");
             //}
 
-
             if ($("#txtUsername").val().trim() == "") {
                 navigator.notification.alert("Enter a Username", function () { },"BCP Alert");
                 //alert("Enter a Username");

@@ -80,6 +80,7 @@
                     $("#txtCriticalFunction").html(obj.SearchCriticalFunctionResult.ActivityLoss);
                     $("#txtActivityBy").html(obj.SearchCriticalFunctionResult.ContactName);
                     $("#txtMAO").html(obj.SearchCriticalFunctionResult.MAO);
+                    $("#txtComments").val(obj.SearchCriticalFunctionResult.CommentsCOOP);
                     $("#txtDescription").val(obj.SearchCriticalFunctionResult.Description);
                     $("#txtOutageMenorMAO").val(obj.SearchCriticalFunctionResult.OutageMayorMAO);
                     $("#txtOutageMayorMAO").val(obj.SearchCriticalFunctionResult.OutageMenorMAO);
@@ -140,6 +141,14 @@
                                 </td>
                             </tr>
                         </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Comments:</td>
+                </tr>
+                <tr>
+                    <td style="width:100%;">
+                        <textarea id="txtComments" rows="8" class="define-textarea" readonly="readonly"></textarea>
                     </td>
                 </tr>
                 <tr>

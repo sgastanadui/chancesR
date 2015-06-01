@@ -79,6 +79,7 @@
                     //$.each(obj.ListAlertsResult.AlertsERT, populateAlertsERT);
                     $("#txtHazard").html(obj.SearchHazardResult.HazardName);
                     $("#txtActivityBy").html(obj.SearchHazardResult.ContactName);
+                    $("#txtComments").val(obj.SearchHazardResult.CommentsERT);
                     $("#txtDescription").val(obj.SearchHazardResult.DescriptionHazard);
                     $("#txtProcedure").val(obj.SearchHazardResult.DescriptionProcedure);
                     //******************************
@@ -121,6 +122,14 @@
                                 </td>
                             </tr>
                         </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Comments:</td>
+                </tr>
+                <tr>
+                    <td style="width:100%;">
+                        <textarea id="txtComments" rows="8" class="define-textarea" readonly="readonly"></textarea>
                     </td>
                 </tr>
                 <tr>
