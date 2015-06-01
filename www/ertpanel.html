@@ -260,7 +260,7 @@
                         cache: false,
                         url: urlk1,
                         crossDomain: true,
-                        data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdStatus: " + $("#select_item").val() + ", IdAlert: " + IdAlert + ", IdHazard: " + IdHazard + ", Comments: " + encodeURIComponent($("#textarea-1").val()) + " }",
+                        data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdStatus: " + $("#select_item").val() + ", IdAlert: " + IdAlertsERT + ", IdHazard: " + IdHazard + ", Comments: " + encodeURIComponent($("#textarea-1").val()) + " }",
                         type: "GET",
                         jsonpCallback: "RowSaved",
                         contentType: "application/json; charset=utf-8",
