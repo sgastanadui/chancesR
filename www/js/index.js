@@ -194,7 +194,9 @@ var app = {
                 if (e.foreground) {
                     // on Android soundname is outside the payload.
                     // On Amazon FireOS all custom attributes are contained within payload
+                    navigator.notification.alert("/android_asset/www/" + e.soundname, function () { }, "BCP Notification sound1");
                     var soundfile = e.soundname || e.payload.sound;
+                    navigator.notification.alert("/android_asset/www/" + soundfile, function () { }, "BCP Notification sound2");
                     // if the notification contains a soundname, play it.
                     var my_media = new Media("/android_asset/www/" + e.soundname);
                     my_media.play();
