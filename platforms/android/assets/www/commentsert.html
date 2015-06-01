@@ -70,6 +70,7 @@
             var KeyBCP = getUrlVars()["KeyBCP"];
             var IdAlert = getUrlVars()["IdAlert"];
             var IdHazard = getUrlVars()["IdHazard"];
+            var Hazard = getUrlVars()["Hazard"];
             //***************************************
             $("#hdnIdSite").val(IdSite);
             $("#hdnSite").val(unescape(Site));
@@ -78,6 +79,7 @@
             $("#hdnKeyword").val(KeyBCP);
             $("#hdnIdAlert").val(IdAlert);
             $("#hdnIdHazard").val(IdHazard);
+            $("#hdnHazard").val(unescape(Hazard));
             //***************************************
             var CompanyName = window.localStorage["CompanyName"];
             $("#span1").html("" + CompanyName + " <br/>" + unescape(Site));
@@ -93,7 +95,8 @@
                 var KeyBCP = $("#hdnKeyword").val();
                 var IdAlert = $("#hdnIdAlert").val();
                 var IdHazard = $("#hdnIdHazard").val();
-                window.location.href = 'ertpanel.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&IdAlertsERT=' + IdAlert + '&IdHazard=' + IdHazard + '&LatitudeSite=' + Latitude + '&LongitudeSite=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                var Hazard = $("#hdnHazard").val();
+                window.location.href = 'ertpanel.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&IdAlertsERT=' + IdAlert + '&IdHazard=' + IdHazard + '&LatitudeSite=' + Latitude + '&LongitudeSite=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP + '&Hazard=' + escape(Hazard);
                 //************************************************
             });
             //***************************************
@@ -183,6 +186,7 @@
         <input type="hidden" id="hdnKeyword" />
         <input type="hidden" id="hdnIdAlert" />
         <input type="hidden" id="hdnIdHazard" />
+        <input type="hidden" id="hdnHazard" />
     </div>
 </body>
 </html>

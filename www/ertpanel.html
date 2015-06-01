@@ -58,10 +58,11 @@
                 var KeyBCP = $("#hdnKeyword").val();
                 var IdAlert = $("#hdnIdAlert").val();
                 var IdHazard = $("#hdnIdHazard").val();
+                var Hazard = $("#hdnHazard").val();
                 //*****************************
                 html = html.trim() + '<tr>';
                 html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
-                html = html.trim() + ' <a href="#" data-transition="none" onclick="window.location.href = ' + "'" + 'commentsert.html?IdContact=' + IdContact + '&IdCompany=' + IdCompany + '&IdAlert=' + IdAlert + '&IdHazard=' + IdHazard + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP + '' + "'" + '">' + Name.trim() + '</a>';
+                html = html.trim() + ' <a href="#" data-transition="none" onclick="window.location.href = ' + "'" + 'commentsert.html?IdContact=' + IdContact + '&IdCompany=' + IdCompany + '&IdAlert=' + IdAlert + '&IdHazard=' + IdHazard + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP + '&Hazard=' + escape(Hazard) + "'" + '">' + Name.trim() + '</a>';
                 html = html.trim() + ' </td>';
                 html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + Rol.trim() + '</td>';
                 html = html.trim() + ' <td style="font-size:11px;font-weight:normal;"><a href="mailto:' + Email.trim() + '">' + Email.trim() + '</a></td>';
@@ -83,6 +84,63 @@
                     .attr("title", Status));
             };
 
+            SendMessageGCMMobile = function (IdCompany, IdSite, Message, xType) {
+
+                var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+                //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
+
+                var urlk1 = wcfServiceUrl + "SendMsgGCM?IdCompany=" + IdCompany + '&IdSite=' + IdSite + '&Message=' + Message + '&xType=' + xType;
+
+                $.ajax({
+                    cache: true,
+                    url: urlk1,
+                    crossDomain: true,
+                    data: "{ IdCompany: " + IdCompany + ", IdSite: " + IdSite + ", Message: " + Message + ", xType: " + xType + " }",
+                    type: "GET",
+                    jsonpCallback: "SendGCM",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "jsonp",
+                    beforeSend: function () {
+                        $("#imgAjaxLoader").show();
+                    },
+                    error: function (xhr, textStatus, err) {
+                        var mensaje = "error send to alert. \n";
+                        mensaje = mensaje + "readyState: " + xhr.readyState + "\n";
+                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                        mensaje = mensaje + "status: " + xhr.status + "\n";
+                        mensaje = mensaje + "text status: " + textStatus + "\n";
+                        mensaje = mensaje + "error: " + err + "\n";
+                        alert(mensaje + err.Message);
+                        $('#results').html("");
+                    },
+                    success: function (obj) {
+                        if (obj.SendMsgGCMResult == true) {
+                            //*************************
+                            alert('sucess');
+                            //*************************
+                            var IdCompany = window.localStorage["IdCompany"];
+                            var IdSite = $("#hdnIdSite").val();
+                            var Latitude = $("#hdnLatitude").val();
+                            var Longitude = $("#hdnLongitude").val();
+                            var Site = $("#hdnSite").val();
+                            var KeyBCP = $("#hdnKeyword").val();
+                            var IdAlertsERT = $("#hdnIdAlert").val();
+                            var IdHazard = $("#hdnIdHazard").val();
+                            var Hazard = $("#hdnHazard").val();
+                            //*************************
+                            window.location.href = 'ertpanel.html?IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT + 'IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP + '&Hazard=' + escape(Hazard);
+                            //*************************
+                        } else {
+                            alert('Fail');
+                        }
+                    },
+                    complete: function () {
+                        $("#imgAjaxLoader").hide();
+                    }
+                });
+
+            }
+
             $("#newpage").bind("pageshow", function (event) {
 
                 var IdCompany = window.localStorage["IdCompany"];
@@ -97,6 +155,7 @@
                 var KeyBCP = getUrlVars()["KeyBCP"];
                 var IdAlertsERT = getUrlVars()["IdAlertsERT"];
                 var IdHazard = getUrlVars()["IdHazard"];
+                var Hazard = getUrlVars()["Hazard"];
                 //***************************************
                 $("#hdnIdSite").val(IdSite);
                 $("#hdnSite").val(unescape(Site));
@@ -105,6 +164,7 @@
                 $("#hdnKeyword").val(KeyBCP);
                 $("#hdnIdAlert").val(IdAlertsERT);
                 $("#hdnIdHazard").val(IdHazard);
+                $("#hdnHazard").val(unescape(Hazard));
                 //***************************************
 
                 $("#span1").html("" + Companyname + "");
@@ -158,8 +218,6 @@
                         $('#results').html('');
                         html = '';
                         html = html.trim() + '<table id="ERT-table" align="left" style="width:100%;">';
-                        //$("#results").append('<table class="ui-responsive" id="ERT-table" data-role="table" data-mode="reflow" style="font-size:9pt;font-weight:normal;">');
-                        //$("#results").append('<table id="ERT-table" style="border:solid #b3d1e7 1px;border-collapse:collapse;"');
                         html = html.trim() + '<thead>';
                         html = html.trim() + '<tr>';
                         html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Name</th>';
@@ -177,10 +235,7 @@
                         html = html.trim() + '</tbody>';
                         html = html.trim() + '</table>';
                         $("#results").append(html.trim());
-                        //console.log('html: ' + html.trim());
-                        //alert($("#results").html())
                         //******************************
-                        //alert(obj.ListMemberResult);
                     },
                     complete: function () {
                         $("#imgAjaxLoader").hide();
@@ -253,7 +308,6 @@
                     wcfServiceUrl = "http://23.253.204.98/wcfphonegap/AutenticationMobile.svc/";
                     //wcfServiceUrl = "http://localhost:10786/AutenticationMobile.svc/";
 
-                    //var urlk1 = wcfServiceUrl + "Login?UserName=" + $("#txtUsername").val() + "&Password=" + $("#txtPassword").val() + "";
                     var urlk1 = wcfServiceUrl + "SaveCommentsERT?IdCompany=" + IdCompany + "&IdContact=" + IdContact + "&IdStatus=" + $("#select_item").val() + "&IdAlert=" + IdAlertsERT + "&IdHazard=" + IdHazard + "&Comments=" + encodeURIComponent($("#textarea-1").val()) + "";
 
                     $.ajax({
@@ -281,22 +335,13 @@
 
                             if (data.SaveCommentsERTResult == true) {
                                 //*************************
-                                alert('sucess')
+                                var Hazard = $("#hdnHazard").val();
+                                var Message = window.localStorage["ContactName"] + ' has activated ERT for ' + Hazard;
                                 //*************************
                                 $("#select_item").val('Select');
                                 $("#textarea-1").val('');
                                 //*************************
-                                //$.mobile.changePage("default.html");
-                                //window.location.href = 'default.html';
-                                var IdCompany = window.localStorage["IdCompany"];
-                                var IdSite = $("#hdnIdSite").val();
-                                var Latitude = $("#hdnLatitude").val();
-                                var Longitude = $("#hdnLongitude").val();
-                                var Site = $("#hdnSite").val();
-                                var KeyBCP = $("#hdnKeyword").val();
-                                var IdAlertsERT = $("#hdnIdAlert").val();
-                                var IdHazard = $("#hdnIdHazard").val();
-                                window.location.href = 'ertpanel.html?IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT + 'IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                                SendMessageGCMMobile(window.localStorage["IdCompany"], $("#hdnIdSite").val(), Message, 'ERT');
                                 //*************************
                             } else {
                                 alert('fail')
@@ -372,6 +417,7 @@
         <input type="hidden" id="hdnKeyword" />
         <input type="hidden" id="hdnIdAlert" />
         <input type="hidden" id="hdnIdHazard" />
+        <input type="hidden" id="hdnHazard" />
     </div>
 </body>
 </html>

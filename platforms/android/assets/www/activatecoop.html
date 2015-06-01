@@ -238,13 +238,13 @@
                     //************************************************
                     var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
                     //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
-                    urlk1 = wcfServiceUrl + "SaveActivateCOOP?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdActivityLoos=' + IdCriticalFunction + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&CommentsCOOP=' + CommentsCOOP;
+                    urlk1 = wcfServiceUrl + "SaveActivateCOOP?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdActivityLoos=' + IdCriticalFunction + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&CommentsCOOP=' + encodeURIComponent(CommentsCOOP);
                     //************************************************
                     $.ajax({
                         cache: true,
                         url: urlk1,
                         crossDomain: true,
-                        data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation: " + IdSite + ", IdActivityLoos:" + IdCriticalFunction + ", Latitude: " + Latitude + ", Longitude: " + Longitude + ", CommentsCOOP: " + CommentsCOOP + " }",
+                        data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation: " + IdSite + ", IdActivityLoos:" + IdCriticalFunction + ", Latitude: " + Latitude + ", Longitude: " + Longitude + ", CommentsCOOP: " + encodeURIComponent(CommentsCOOP) + " }",
                         type: "GET",
                         jsonpCallback: "ActivateCOOP",
                         contentType: "application/json; charset=utf-8",
