@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sites</title>
+    <!-- InsightBCPMobile references -->
+    <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/common.js"></script>
+    <script type="text/javascript">
+        //***************************************
+        $(window).on("orientationchange", function () {
+            $('textarea').keyup();
+        });
+        //***************************************
+        $(document).on("pageinit", "#hazardID", function (event) {
+            //***************************************
+            var IdCompany = getUrlVars()["IdCompany"];
+            var IdSite = getUrlVars()["IdSite"];
+            var Site = getUrlVars()["Site"];
+            var Latitude = getUrlVars()["LatitudeSite"];
+            var Longitude = getUrlVars()["LongitudeSite"];
+            var KeyBCP = getUrlVars()["KeyBCP"];
+            var IdAlertsERT = getUrlVars()["IdAlertsERT"];
+            var IdHazard = getUrlVars()["IdHazard"];
+            //***************************************
+            $("#hdnIdSite").val(IdSite);
+            $("#hdnSite").val(unescape(Site));
+            $("#hdnLatitude").val(Latitude);
+            $("#hdnLongitude").val(Longitude);
+            $("#hdnKeyword").val(KeyBCP);
+            //***************************************
+            var CompanyName = window.localStorage["CompanyName"];
+            $("#span1").html("" + CompanyName + " <br/>" + unescape(Site));
+            //***************************************
+            $("#btnHome").off("click");
+            $("#btnHome").click(function () {
+                //************************************************
+                var IdCompany = window.localStorage["IdCompany"];
+                var IdSite = $("#hdnIdSite").val();
+                var Latitude = $("#hdnLatitude").val();
+                var Longitude = $("#hdnLongitude").val();
+                var Site = $("#hdnSite").val();
+                var KeyBCP = $("#hdnKeyword").val();
+                window.location.href = 'bcplog.html?IdCompany='+ IdCompany +'&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                //************************************************
+            });
+            //***************************************
+            var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+            //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
+
+            var urlk1 = wcfServiceUrl + "SearchHazard?IdCompany=" + IdCompany + '&IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT;
+
+            $.ajax({
+                cache: true,
+                url: urlk1,
+                crossDomain: true,
+                data: "{ IdCompany: " + IdCompany + ", IdHazard: " + IdHazard + ", IdAlertsERT: " + IdAlertsERT + " }",
+                type: "GET",
+                jsonpCallback: "objHazard",
+                contentType: "application/json; charset=utf-8",
+                dataType: "jsonp",
+                beforeSend: function () {
+                    $("#imgAjaxLoaderAlerts").show();
+                },
+                error: function (xhr, textStatus, err) {
+                    var mensaje = "readyState: " + xhr.readyState + "\n";
+                    mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                    mensaje = mensaje + "status: " + xhr.status + "\n";
+                    mensaje = mensaje + "text status: " + textStatus + "\n";
+                    mensaje = mensaje + "error: " + err + "\n";
+                    alert(mensaje);
+                },
+                success: function (obj) {
+                    //******************************
+                    //$.each(obj.ListAlertsResult.AlertsERT, populateAlertsERT);
+                    $("#txtHazard").html(obj.SearchHazardResult.HazardName);
+                    $("#txtActivityBy").html(obj.SearchHazardResult.ContactName);
+                    $("#txtComments").val(obj.SearchHazardResult.CommentsERT);
+                    $("#txtDescription").val(obj.SearchHazardResult.DescriptionHazard);
+                    $("#txtProcedure").val(obj.SearchHazardResult.DescriptionProcedure);
+                    //******************************
+                    $('textarea').keyup();
+                    //******************************
+                },
+                complete: function () {
+                    $("#imgAjaxLoaderAlerts").hide();
+                }
+            });
+
+            //***************************************
+        });
+        //***************************************
+    </script>
+</head>
+<body>
+    <div data-role="page" id="hazardID">
+        <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;font-size:11px;font-weight:normal;">
+            <h1 id="span1"></h1>
+            <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3;position:-ms-page;top: 12px !important;" data-role="button" role="button"></a>
+        </div>
+        <div role="main" class="ui-content" id="map-canvas">
+            <table>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td style="text-align:left;width:20%;">
+                                    Hazard By:
+                                </td>
+                                <td style="text-align:left;width:30%;">
+                                    <div id="txtHazard"></div>
+                                </td>
+                                <td style="text-align:left;width:20%;">
+                                    Activity By:
+                                </td>
+                                <td style="text-align:left;width:30%;">
+                                    <div id="txtActivityBy"></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Comments:</td>
+                </tr>
+                <tr>
+                    <td style="width:100%;">
+                        <textarea id="txtComments" rows="8" class="define-textarea" readonly="readonly"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                </tr>
+                <tr>
+                    <td style="width:100%;">
+                        <textarea id="txtDescription" rows="8" class="define-textarea" readonly="readonly"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hazard HEP Procedure:</td>
+                </tr>
+                <tr>
+                    <td style="width:100%;">
+                        <textarea id="txtProcedure" rows="8" class="define-textarea" readonly="readonly"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <img id="imgAjaxLoaderAlerts" class="ajaxLoader" src="images/ajax-loader.gif" />
+        </div>
+        <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
+            ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/PushNotification.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+        <input type="hidden" id="hdnIdSite" />
+        <input type="hidden" id="hdnSite" />
+        <input type="hidden" id="hdnLatitude" />
+        <input type="hidden" id="hdnLongitude" />
+        <input type="hidden" id="hdnKeyword" />
+    </div>
+</body>
+</html>

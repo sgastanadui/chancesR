@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />   
+        <title>BCP Mobile</title>     
+        <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+        <link href="css/index.css" rel="stylesheet" />
+    </head>
+    <body>
+
+        <div data-role="header" style="background-color:#0065B3">
+            <br /><br /><h1></h1>
+        </div>
+        <div data-role="content" style="background-color:white;">
+
+            <div align="center">
+                <img src="images/insightbcp.png" />
+            </div>
+            <div data-role="fieldcontain" class="ui-hide-label">
+                <label for="username">Username:</label>
+                <input type="text" name="txtUsername" id="txtUsername" value="" placeholder="Username" />
+            </div>
+
+            <div data-role="fieldcontain" class="ui-hide-label">
+                <label for="password">Password:</label>
+                <input type="password" name="txtPassword" id="txtPassword" value="" placeholder="Password" />
+            </div>
+
+            <input type="button" value="Login" id="btnLogin">
+
+            <div id="results"></div>
+            <div id="resultado"></div>
+            <img id="imgAjaxLoader" class="ajaxLoader" src="images/ajax-loader.gif" />
+            <br /><br />
+            <table style="width:100%;">
+                <tr>
+                    <td style="text-align:center;">
+                        <a href="tel:+1 863-225-0468"><img id="imgTelefono" src="images/telefono.jpg" /></a>
+                    </td>
+                    <td style="text-align:center;">
+                        <img id="imgUbicacion" src="images/ubicacion.png" />
+                    </td>
+                </tr>
+            </table>
+            <div id="app-status-div">
+                <ul id="app-status-ul"></ul>
+            </div>
+        </div>
+
+        <!--<div data-role="footer" style="background-color:#0065B3;color:white;text-size-adjust:auto;">
+        <h4>©ERT Insight Risk Technologies,LC</h4>
+    </div>-->
+        <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
+            ©ERT Insight Risk Technologies,LC <span class="jqm-version"></span>
+            <!--<a href="geolocalizar.html" class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext"></a>-->
+        </div>
+        <!-- Cordova reference, this is added to your app when it's built. -->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/PushNotification.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
