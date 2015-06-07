@@ -80,6 +80,7 @@
                     $("#txtCriticalFunction").html(obj.SearchCriticalFunctionResult.ActivityLoss);
                     $("#txtActivityBy").html(obj.SearchCriticalFunctionResult.ContactName);
                     $("#txtMAO").html(obj.SearchCriticalFunctionResult.MAO);
+                    $("#txtComments").val(obj.SearchCriticalFunctionResult.CommentsCOOP);
                     $("#txtDescription").val(obj.SearchCriticalFunctionResult.Description);
                     $("#txtOutageMenorMAO").val(obj.SearchCriticalFunctionResult.OutageMayorMAO);
                     $("#txtOutageMayorMAO").val(obj.SearchCriticalFunctionResult.OutageMenorMAO);
@@ -100,8 +101,8 @@
 <body>
     <div data-role="page" id="hazardID">
         <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;font-size:11px;font-weight:normal;">
-            <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3" data-role="button" role="button"></a>
             <h1 id="span1"></h1>
+            <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3;position:-ms-page;top: 12px !important;" data-role="button" role="button"></a>
         </div>
         <div role="main" class="ui-content" id="map-canvas">
             <table>
@@ -143,6 +144,14 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Comments:</td>
+                </tr>
+                <tr>
+                    <td style="width:100%;">
+                        <textarea id="txtComments" rows="8" class="define-textarea" readonly="readonly"></textarea>
+                    </td>
+                </tr>
+                <tr>
                     <td>Description:</td>
                 </tr>
                 <tr>
@@ -172,6 +181,12 @@
         <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
             ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
         </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/PushNotification.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
         <input type="hidden" id="hdnIdSite" />
         <input type="hidden" id="hdnSite" />
         <input type="hidden" id="hdnLatitude" />

@@ -61,7 +61,7 @@
                 html = html.trim() + ' <td style="font-size:11px;font-weight:normal;"><a href="mailto:' + Email.trim() + '">' + Email.trim() + '</a></td>';
                 html = html.trim() + ' <td style="font-size:11px;font-weight:normal;"><a href="tel:+1 '+ Phone.trim() +'">' + Phone.trim() + '</a></td>';
                 html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + Cell.trim() + '</td>';
-                html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + Status.trim() + '</td>';
+                //html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + Status.trim() + '</td>';
                 html = html.trim() + ' </tr>';
                 //*****************************
             };
@@ -144,7 +144,7 @@
                         html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Email</th>';
                         html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Phone</th>';
                         html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Cell</th>';
-                        html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Status</th>';
+                        //html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Status</th>';
                         html = html.trim() + '</tr>';
                         html = html.trim() + '</thead>';
                         html = html.trim() + '<tbody>';
@@ -167,8 +167,8 @@
         </script>
 
         <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;font-size:11px;font-weight:normal;">
-            <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3" data-role="button" role="button"></a>
             <h1 id="span1"></h1>
+            <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3;position:-ms-page;top: 12px !important;" data-role="button" role="button"></a>
         </div>
 
         <div data-role="content" style="background-color:white;">
@@ -180,6 +180,12 @@
         <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
             <p>©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span></p>
         </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/PushNotification.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
         <input type="hidden" id="hdnIdSite" />
         <input type="hidden" id="hdnSite" />
         <input type="hidden" id="hdnLatitude" />
