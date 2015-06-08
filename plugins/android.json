@@ -31,10 +31,6 @@
                         {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Vibration\"><param name=\"android-package\" value=\"org.apache.cordova.vibration.Vibration\" /></feature>",
-                            "count": 1
                         }
                     ]
                 }
@@ -56,7 +52,7 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
-                            "count": 2
+                            "count": 1
                         },
                         {
                             "xml": "<uses-permission android:name=\"com.google.android.c2dm.permission.RECEIVE\" />",
@@ -129,9 +125,6 @@
         },
         "org.apache.cordova.network-information": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
-        },
-        "org.apache.cordova.vibration": {
-            "PACKAGE_NAME": "R5TJ78M8V4.com.chancesrmis.bcpmobile"
         }
     },
     "dependent_plugins": {

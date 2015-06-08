@@ -35,10 +35,6 @@
                         {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
                             "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
-                            "count": 1
                         }
                     ]
                 }
@@ -60,7 +56,7 @@
                     "AudioToolbox.framework": [
                         {
                             "xml": true,
-                            "count": 2
+                            "count": 1
                         }
                     ],
                     "SystemConfiguration.framework": [
@@ -91,9 +87,6 @@
         },
         "org.apache.cordova.network-information": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
-        },
-        "org.apache.cordova.vibration": {
-            "PACKAGE_NAME": "R5TJ78M8V4.com.chancesrmis.bcpmobile"
         }
     },
     "dependent_plugins": {
