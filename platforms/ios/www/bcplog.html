@@ -45,7 +45,7 @@
             html = html.trim() + ' <a href="#" onclick="window.location.href = ' + "'" + 'hazard.html?IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT + '&IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">' + HazardName.trim() + '</a>';
             html = html.trim() + ' </td>';
             html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
-            html = html.trim() + ' <a href="#"  onclick="window.location.href = ' + "'" + 'ertpanel.html?IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT + '&IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">ERT</a>';
+            html = html.trim() + ' <a href="#"  onclick="window.location.href = ' + "'" + 'ertpanel.html?IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT + '&IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '&Hazard=' + escape(HazardName) + "'" + '">ERT</a>';
             html = html.trim() + ' </td>';
             html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
             html = html.trim() + ' <a href="#"  onclick="window.location.href = ' + "'" + 'emergencycalllist.html?IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">ECL</a>';
@@ -118,7 +118,7 @@
             });
             //***************************************
 
-            var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+            var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
             //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
 
             var urlk1 = wcfServiceUrl + "ListAlerts?IdCompany=" + IdCompany;
@@ -133,7 +133,8 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "jsonp",
                 beforeSend: function () {
-                    $("#imgAjaxLoaderAlerts").show();
+                    //$("#imgAjaxLoaderAlerts").show();
+                    $('#loader').show();
                 },
                 error: function (xhr, textStatus, err) {
                     var mensaje = "readyState: " + xhr.readyState + "\n";
@@ -144,6 +145,7 @@
                     alert(mensaje);
                     $('#resultERT').html("");
                     $('#resultCOOP').html('');
+                    $('#loader').hide();
                 },
                 success: function (obj) {
                     //******************************
@@ -192,7 +194,8 @@
                     //******************************
                 },
                 complete: function () {
-                    $("#imgAjaxLoaderAlerts").hide();
+                    //$("#imgAjaxLoaderAlerts").hide();
+                    $('#loader').hide();
                 }
             });
             //***************************************
@@ -204,8 +207,8 @@
 <body>
     <div data-role="page" id="pagebcplog">
         <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;font-size:11px;font-weight:normal;">
-            <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3" data-role="button" role="button"></a>
             <h1 id="span1"></h1>
+            <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3;position:-ms-page;top: 12px !important;" data-role="button" role="button"></a>
         </div>
         <div data-role="content" style="background-color:white;">
             <div data-theme="a" data-form="ui-body-a" class="ui-body ui-body-a ui-corner-all">
@@ -216,10 +219,21 @@
                 <div id="resultCOOP"></div>
             </div>
             <img id="imgAjaxLoaderAlerts" class="ajaxLoader" src="images/ajax-loader.gif" />
+            <div id="loader" style="display:none;">
+                <div id="center">
+                    <img src="images/ajax-loader.gif" />
+                </div>
             </div>
+        </div>
         <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
             ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
         </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/PushNotification.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
     </div>
     <input type="hidden" id="hdnIdSite" />
     <input type="hidden" id="hdnSite" />

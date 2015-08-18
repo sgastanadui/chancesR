@@ -49,7 +49,7 @@
                 //************************************************
             });
             //***************************************
-            var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+            var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
             //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
 
             var urlk1 = wcfServiceUrl + "SearchHazard?IdCompany=" + IdCompany + '&IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT;
@@ -64,7 +64,8 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "jsonp",
                 beforeSend: function () {
-                    $("#imgAjaxLoaderAlerts").show();
+                    //$("#imgAjaxLoaderAlerts").show();
+                    $('#loader').show();
                 },
                 error: function (xhr, textStatus, err) {
                     var mensaje = "readyState: " + xhr.readyState + "\n";
@@ -73,12 +74,14 @@
                     mensaje = mensaje + "text status: " + textStatus + "\n";
                     mensaje = mensaje + "error: " + err + "\n";
                     alert(mensaje);
+                    $('#loader').hide();
                 },
                 success: function (obj) {
                     //******************************
                     //$.each(obj.ListAlertsResult.AlertsERT, populateAlertsERT);
                     $("#txtHazard").html(obj.SearchHazardResult.HazardName);
                     $("#txtActivityBy").html(obj.SearchHazardResult.ContactName);
+                    $("#txtComments").val(obj.SearchHazardResult.CommentsERT);
                     $("#txtDescription").val(obj.SearchHazardResult.DescriptionHazard);
                     $("#txtProcedure").val(obj.SearchHazardResult.DescriptionProcedure);
                     //******************************
@@ -86,7 +89,8 @@
                     //******************************
                 },
                 complete: function () {
-                    $("#imgAjaxLoaderAlerts").hide();
+                    //$("#imgAjaxLoaderAlerts").hide();
+                    $('#loader').hide();
                 }
             });
 
@@ -98,8 +102,8 @@
 <body>
     <div data-role="page" id="hazardID">
         <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;font-size:11px;font-weight:normal;">
-            <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3" data-role="button" role="button"></a>
             <h1 id="span1"></h1>
+            <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3;position:-ms-page;top: 12px !important;" data-role="button" role="button"></a>
         </div>
         <div role="main" class="ui-content" id="map-canvas">
             <table>
@@ -107,13 +111,13 @@
                     <td>
                         <table>
                             <tr>
-                                <td style="text-align:left;width:20%;">
+                                <td style="text-align:left;width:20%;font-weight:bold;">
                                     Hazard By:
                                 </td>
                                 <td style="text-align:left;width:30%;">
                                     <div id="txtHazard"></div>
                                 </td>
-                                <td style="text-align:left;width:20%;">
+                                <td style="text-align:left;width:20%;font-weight:bold;">
                                     Activity By:
                                 </td>
                                 <td style="text-align:left;width:30%;">
@@ -124,7 +128,15 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Description:</td>
+                    <td style="text-align:left;font-weight:bold;">Comments:</td>
+                </tr>
+                <tr>
+                    <td style="width:100%;">
+                        <textarea id="txtComments" rows="8" class="define-textarea" readonly="readonly"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;font-weight:bold;">Description:</td>
                 </tr>
                 <tr>
                     <td style="width:100%;">
@@ -132,7 +144,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Hazard HEP Procedure:</td>
+                    <td style="text-align:left;font-weight:bold;">Hazard HEP Procedure:</td>
                 </tr>
                 <tr>
                     <td style="width:100%;">
@@ -141,10 +153,21 @@
                 </tr>
             </table>
             <img id="imgAjaxLoaderAlerts" class="ajaxLoader" src="images/ajax-loader.gif" />
+            <div id="loader" style="display:none;">
+                <div id="center">
+                    <img src="images/ajax-loader.gif" />
+                </div>
+            </div>
         </div>
         <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
             ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
         </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/PushNotification.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
         <input type="hidden" id="hdnIdSite" />
         <input type="hidden" id="hdnSite" />
         <input type="hidden" id="hdnLatitude" />

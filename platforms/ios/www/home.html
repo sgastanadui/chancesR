@@ -10,7 +10,6 @@
     <script src="js/jquery-2.1.3.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/common.js"></script>
-
     <script type="text/javascript">
     //***************************************
     $(document).on("pageinit", "#panel-responsive-page1", function (event) {
@@ -43,7 +42,7 @@
         $("#span1").html("" + CompanyName + "<br/>" + unescape(Site));
         //***************************************
 
-        var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+        var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
         //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
         var html = '';
         var urlk1 = wcfServiceUrl + "ListLocation?IdCompany=" + IdCompany + "";
@@ -58,7 +57,8 @@
             contentType: "application/json; charset=utf-8",
             dataType: "jsonp",
             beforeSend: function () {
-                $("#imgAjaxLoaderComments").show();
+                //$("#imgAjaxLoaderComments").show();
+                $('#loader').show();
             },
             error: function (xhr, textStatus, err) {
                 var mensaje = "readyState: " + xhr.readyState + "\n";
@@ -68,6 +68,7 @@
                 mensaje = mensaje + "error: " + err + "\n";
                 alert(mensaje);
                 $('#resultLocation').html("");
+                $('#loader').hide();
             },
             success: function (obj) {
                 //******************************
@@ -112,7 +113,8 @@
                 //******************************
             },
             complete: function () {
-                $("#imgAjaxLoaderComments").hide();
+                //$("#imgAjaxLoaderComments").hide();
+                $('#loader').hide();
             }
         });
 
@@ -214,7 +216,6 @@
     }
     //***************************************
     </script>
-
     <style>
         table {
             border-collapse: collapse;
@@ -238,15 +239,13 @@
             }
         }
     </style>
-
 </head>
 <body>
     <div data-role="page" class="jqm-demos ui-responsive-panel" id="panel-responsive-page1" data-title="Panel responsive page" data-url="panel-responsive-page1">
-        <div data-role="header" style="background-color:#0065B3;color:white;">
+        <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;">
             <!--<br />-->
             <h1 id="span1"></h1>
-            <a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#0065B3;color:white;">Menu</a>
-            <!--<br />-->
+            <a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#0065B3;color:white;position:-ms-page;top: 12px !important;">Menu</a>
         </div><!-- /header -->
         <div role="main" class="ui-content jqm-content jqm-fullwidth">
             <br />
@@ -262,21 +261,31 @@
                     <p class="event received"></p>
                 </div>
             </div>
-            <!-- /Push Notification -->
+            <!-- Div Loading -->
             <img id="imgAjaxLoaderComments" class="ajaxLoader" src="images/ajax-loader.gif" />
         </div><!-- /content -->
         <div data-role="panel" data-display="push" data-theme="a" id="nav-panel" style="background-color:#0065B3;color:white;">
         <div id="resultLocation"></div>
-            <ul data-role="listview" id="mylist" style="background-color:#0065B3;color:white;">
+            <input data-type="search" id="txtsearch" placeholder="Search location" /><br />
+            <ul data-role="listview" id="mylist" style="background-color:#0065B3;color:white;" data-filter="true" data-input="#txtsearch">
                 <li data-icon="delete"><a href="#" data-rel="close" id="closeListview" style="background-color:#0065B3;color:white;font-size:12px;font-weight:normal;">Close menu</a></li>
-                <!--<li><a href="#" onclick="SelectSite('32', 'Hasford');" style="background-color:#0065B3;color:white;font-size:11px;font-weight:normal;font-family:Arial;" data-rel="close">Hasford</a></li>-->
             </ul>
         </div><!-- /panel -->
         <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
             ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
         </div>
+        <div id="loader" style="display:none;">
+            <div id="center">
+                <img src="images/ajax-loader.gif" />
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/PushNotification.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
     </div>
-
     <input type="hidden" id="hdnIdSite" />
     <input type="hidden" id="hdnSite" />
     <input type="hidden" id="hdnLatitude" />

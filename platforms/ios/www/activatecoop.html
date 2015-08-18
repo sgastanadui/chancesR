@@ -54,12 +54,12 @@
                         position: google.maps.ControlPosition.RIGHT_TOP
                     },
                     navigationControlOptions: {
-                        position: google.maps.ControlPosition.TOP_LEFT,
+                        position: google.maps.ControlPosition.RIGHT_TOP,
                         style: google.maps.NavigationControlStyle.ANDROID
                     },
                     scaleControl: true,
                     scaleControlOptions: {
-                        position: google.maps.ControlPosition.TOP_LEFT,
+                        position: google.maps.ControlPosition.RIGHT_TOP,
                         style: google.maps.ScaleControlStyle.DEFAULT
                     }
                 };
@@ -120,6 +120,62 @@
                 .val(IdActivityLoss)
                 .html(ActivityLoss)
                 .attr("title", ActivityLoss));
+        };
+
+        SendMessageAPNSMobile = function (IdCompany, IdSite, Message, xType) {
+
+            var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+            //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
+
+            var urlk1 = wcfServiceUrl + "SendMsgGCM?IdCompany=" + IdCompany + '&IdSite=' + IdSite + '&Message=' + Message + '&xType=' + xType;
+
+            $.ajax({
+                cache: true,
+                url: urlk1,
+                crossDomain: true,
+                data: "{ IdCompany: " + IdCompany + ", IdSite: " + IdSite + ", Message: " + Message + ", xType: " + xType + " }",
+                type: "GET",
+                jsonpCallback: "SendGCM",
+                contentType: "application/json; charset=utf-8",
+                dataType: "jsonp",
+                beforeSend: function () {
+                    //$("#imgAjaxLoaderCOOP").show();
+                    $('#loader').show();
+                },
+                error: function (xhr, textStatus, err) {
+                    var mensaje = "error send to alert. \n";
+                    mensaje = mensaje + "readyState: " + xhr.readyState + "\n";
+                    mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                    mensaje = mensaje + "status: " + xhr.status + "\n";
+                    mensaje = mensaje + "text status: " + textStatus + "\n";
+                    mensaje = mensaje + "error: " + err + "\n";
+                    alert(mensaje + err.Message);
+                    $('#results').html("");
+                    $('#loader').hide();
+                },
+                success: function (obj) {
+                    if (obj.SendMsgGCMResult == true) {
+                        //*************************
+                        alert('COOP has been activated.')
+                        //*************************
+                        var IdSite = $("#hdnIdSite").val();
+                        var Site = $("#hdnSite").val();
+                        var Latitude = $("#hdnLatitude").val();
+                        var Longitude = $("#hdnLongitude").val();
+                        var KeyBCP = $("#hdnKeywordCOOP").val();
+                        //*************************
+                        window.location.href = 'home.html?IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                        //*************************
+                    } else {
+                        alert('Fail');
+                    }
+                },
+                complete: function () {
+                    //$("#imgAjaxLoaderCOOP").hide();
+                    $('#loader').hide();
+                }
+            });
+
         };
 
         //***************************************
@@ -183,21 +239,22 @@
                 //************************************************
                 if (confirm('Warning! If you activate the Continuity of Operations Plan (COOP), our automated system will notify and send alert messages via email to each coordinator of the COOP. Are you sure you want to activate the COOP ?')) {
                     //************************************************
-                    var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+                    var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
                     //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
-                    urlk1 = wcfServiceUrl + "SaveActivateCOOP?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdActivityLoos=' + IdCriticalFunction + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&CommentsCOOP=' + CommentsCOOP;
+                    urlk1 = wcfServiceUrl + "SaveActivateCOOP?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdActivityLoos=' + IdCriticalFunction + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&CommentsCOOP=' + encodeURIComponent(CommentsCOOP);
                     //************************************************
                     $.ajax({
                         cache: true,
                         url: urlk1,
                         crossDomain: true,
-                        data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation: " + IdSite + ", IdActivityLoos:" + IdCriticalFunction + ", Latitude: " + Latitude + ", Longitude: " + Longitude + ", CommentsCOOP: " + CommentsCOOP + " }",
+                        data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation: " + IdSite + ", IdActivityLoos:" + IdCriticalFunction + ", Latitude: " + Latitude + ", Longitude: " + Longitude + ", CommentsCOOP: " + encodeURIComponent(CommentsCOOP) + " }",
                         type: "GET",
                         jsonpCallback: "ActivateCOOP",
                         contentType: "application/json; charset=utf-8",
                         dataType: "jsonp",
                         beforeSend: function () {
-                            $("#imgAjaxLoaderERT").show();
+                            //$("#imgAjaxLoaderCOOP").show();
+                            $('#loader').show();
                         },
                         error: function (xhr, textStatus, err) {
                             var mensaje = "readyState: " + xhr.readyState + "\n";
@@ -206,23 +263,18 @@
                             mensaje = mensaje + "text status: " + textStatus + "\n";
                             mensaje = mensaje + "error: " + err + "\n";
                             alert(mensaje);
+                            $('#loader').hide();
                         },
                         success: function (obj) {
                             //******************************
                             if (obj.SaveActivateCOOPResult == true) {
                                 //*************************
-                                alert('COOP has been activated.')
+                                var Message = window.localStorage["ContactName"] + ' has activated COOP for ' + $("#ddlCriticalFunction option:selected").text();
                                 //*************************
-                                $("#ddlHazard").val('-1');
-                                $("#txtCommentERP").val('');
+                                $("#ddlCriticalFunction").val('-1');
+                                $("#txtCommentCOOP").val('');
                                 //*************************
-                                var IdSite = $("#hdnIdSite").val();
-                                var Site = $("#hdnSite").val();
-                                var Latitude = $("#hdnLatitude").val();
-                                var Longitude = $("#hdnLongitude").val();
-                                var KeyBCP = $("#hdnKeywordCOOP").val();
-                                //*************************
-                                window.location.href = 'home.html?IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                                SendMessageAPNSMobile(window.localStorage["IdCompany"], $("#hdnIdSite").val(), Message, 'COOP');
                                 //*************************
                             } else {
                                 alert('fail')
@@ -230,7 +282,8 @@
                             //******************************
                         },
                         complete: function () {
-                            $("#imgAjaxLoaderERT").hide();
+                            //$("#imgAjaxLoaderCOOP").hide();
+                            $('#loader').hide();
                         }
                     });
                     //***************************************
@@ -238,7 +291,7 @@
 
             });
             //***************************************
-            var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+            var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
             //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
             urlk1 = wcfServiceUrl + "ListCriticalFunction?IdCompany=" + IdCompany + '&IdSite=' + IdSite;
 
@@ -252,7 +305,8 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "jsonp",
                 beforeSend: function () {
-                    $("#imgAjaxLoader").show();
+                    //$("#imgAjaxLoaderCOOP").show();
+                    $('#loader').show();
                 },
                 error: function (xhr, textStatus, err) {
                     var mensaje = "readyState: " + xhr.readyState + "\n";
@@ -262,6 +316,7 @@
                     mensaje = mensaje + "error: " + err + "\n";
                     alert(mensaje);
                     $('#ddlCriticalFunction').html("");
+                    $('#loader').hide();
                 },
                 success: function (obj) {
                     //******************************
@@ -279,7 +334,8 @@
                     //******************************
                 },
                 complete: function () {
-                    $("#imgAjaxLoader").hide();
+                    //$("#imgAjaxLoaderCOOP").hide();
+                    $('#loader').hide();
                 }
             });
             //***************************************
@@ -290,8 +346,8 @@
 </head>
 <body>
     <div data-role="page" id="map-page" data-url="map-page">
-        <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;font-size:11px;font-weight:normal;">
-            <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3" data-role="button" role="button"></a>
+        <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;font-size:11px;font-weight:normal;vertical-align:super;">
+            <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3;position:-ms-page;top: 12px !important;" data-role="button" role="button"></a>
             <h1 id="span1"></h1>
             <table style="color:#0065B3;">
                 <tr>
@@ -320,6 +376,12 @@
                     </td>
                 </tr>
             </table>
+            <img id="imgAjaxLoaderCOOP" class="ajaxLoader" src="images/ajax-loader.gif" />
+            <div id="loader" style="display:none;">
+                <div id="center">
+                    <img src="images/ajax-loader.gif" />
+                </div>
+            </div>
         </div>
         <div role="main" class="ui-content" id="map-canvas">
             <!-- map loads here... -->
@@ -327,6 +389,12 @@
         <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
             ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
         </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/PushNotification.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
     </div>
     <input type="hidden" id="hdnIdSite" />
     <input type="hidden" id="hdnSite" />
