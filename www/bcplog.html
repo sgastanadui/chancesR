@@ -118,7 +118,7 @@
             });
             //***************************************
 
-            var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+            var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
             //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
 
             var urlk1 = wcfServiceUrl + "ListAlerts?IdCompany=" + IdCompany;
@@ -133,7 +133,8 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "jsonp",
                 beforeSend: function () {
-                    $("#imgAjaxLoaderAlerts").show();
+                    //$("#imgAjaxLoaderAlerts").show();
+                    $('#loader').show();
                 },
                 error: function (xhr, textStatus, err) {
                     var mensaje = "readyState: " + xhr.readyState + "\n";
@@ -144,6 +145,7 @@
                     alert(mensaje);
                     $('#resultERT').html("");
                     $('#resultCOOP').html('');
+                    $('#loader').hide();
                 },
                 success: function (obj) {
                     //******************************
@@ -192,7 +194,8 @@
                     //******************************
                 },
                 complete: function () {
-                    $("#imgAjaxLoaderAlerts").hide();
+                    //$("#imgAjaxLoaderAlerts").hide();
+                    $('#loader').hide();
                 }
             });
             //***************************************
@@ -216,7 +219,12 @@
                 <div id="resultCOOP"></div>
             </div>
             <img id="imgAjaxLoaderAlerts" class="ajaxLoader" src="images/ajax-loader.gif" />
+            <div id="loader" style="display:none;">
+                <div id="center">
+                    <img src="images/ajax-loader.gif" />
+                </div>
             </div>
+        </div>
         <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
             ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
         </div>

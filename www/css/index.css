@@ -8,6 +8,28 @@
 	font-size: 11px;
 }
 
+#center {
+     width: 300px;
+     height: 200px;
+     position: absolute;
+     top: 40%;
+     left: 0px;
+     width: 100%;
+}
+
+#loader {
+     background-color: #0065B3;
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+     opacity: 0.5;
+     filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90);
+}
+
 div.loading, .loading {
    background-color: #FFFFFF;
    background-image: url('images/ajax-loader.gif');

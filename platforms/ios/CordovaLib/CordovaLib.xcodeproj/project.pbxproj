@@ -41,6 +41,7 @@
 		8887FD741090FBE7009987E8 /* CDVInvokedUrlCommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 8887FD341090FBE7009987E8 /* CDVInvokedUrlCommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8887FD751090FBE7009987E8 /* CDVInvokedUrlCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 8887FD351090FBE7009987E8 /* CDVInvokedUrlCommand.m */; };
 		8887FD8F1090FBE7009987E8 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 8887FD501090FBE7009987E8 /* NSData+Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8887FD901090FBE7009987E8 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 8887FD511090FBE7009987E8 /* NSData+Base64.m */; };
 		EB3B3547161CB44D003DBE7D /* CDVCommandQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = EB3B3545161CB44D003DBE7D /* CDVCommandQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EB3B3548161CB44D003DBE7D /* CDVCommandQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3B3546161CB44D003DBE7D /* CDVCommandQueue.m */; };
 		EB3B357C161F2A45003DBE7D /* CDVCommandDelegateImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = EB3B357A161F2A44003DBE7D /* CDVCommandDelegateImpl.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -354,6 +355,7 @@
 			files = (
 				8887FD691090FBE7009987E8 /* NSDictionary+Extensions.m in Sources */,
 				8887FD751090FBE7009987E8 /* CDVInvokedUrlCommand.m in Sources */,
+				8887FD901090FBE7009987E8 /* NSData+Base64.m in Sources */,
 				1F92F4A11314023E0046367C /* CDVPluginResult.m in Sources */,
 				30E33AF313A7E24B00594D64 /* CDVPlugin.m in Sources */,
 				30E563D013E217EC00C949AA /* NSMutableArray+QueueAdditions.m in Sources */,
@@ -383,7 +385,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Alberto Moyano (R5TJ78M8V4)";
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = "/tmp/$(PROJECT_NAME).dst";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -397,7 +398,6 @@
 				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Cordova;
-				PROVISIONING_PROFILE = "ec03922b-46d8-4c0d-b4c4-cb91e4a2bfeb";
 				PUBLIC_HEADERS_FOLDER_PATH = include/Cordova;
 				SKIP_INSTALL = YES;
 			};
@@ -408,7 +408,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Alberto Moyano (R5TJ78M8V4)";
 				DSTROOT = "/tmp/$(PROJECT_NAME).dst";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -419,7 +418,6 @@
 				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = Cordova;
-				PROVISIONING_PROFILE = "ec03922b-46d8-4c0d-b4c4-cb91e4a2bfeb";
 				PUBLIC_HEADERS_FOLDER_PATH = include/Cordova;
 				SKIP_INSTALL = YES;
 			};

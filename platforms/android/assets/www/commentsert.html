@@ -100,7 +100,7 @@
                 //************************************************
             });
             //***************************************
-            var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/AutenticationMobile.svc/";
+            var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
             //var wcfServiceUrl = "http://localhost:10786/AutenticationMobile.svc/";
             //var mess = "IdCompany: " + IdCompany + "\n";
             //mess += "IdContact: " + IdContact + "\n";
@@ -121,7 +121,8 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "jsonp",
                 beforeSend: function () {
-                    $("#imgAjaxLoaderComments").show();
+                    //$("#imgAjaxLoaderComments").show();
+                    $('#loader').show();
                 },
                 error: function (xhr, textStatus, err) {
                     var mensaje = "readyState: " + xhr.readyState + "\n";
@@ -131,6 +132,7 @@
                     mensaje = mensaje + "error: " + err + "\n";
                     alert(mensaje);
                     $('#resultsComments').html("");
+                    $('#loader').hide();
                 },
                 success: function (obj) {
                     //******************************
@@ -157,7 +159,8 @@
                     //******************************
                 },
                 complete: function () {
-                    $("#imgAjaxLoaderComments").hide();
+                    //$("#imgAjaxLoaderComments").hide();
+                    $('#loader').hide();
                 }
             });
             //***************************************
@@ -174,6 +177,11 @@
         <div class="ui-content" role="main">
             <div id="resultsComments"></div>
             <img id="imgAjaxLoaderComments" class="ajaxLoader" src="images/ajax-loader.gif" />
+            <div id="loader" style="display:none;">
+                <div id="center">
+                    <img src="images/ajax-loader.gif" />
+                </div>
+            </div>
         </div>
         <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
             ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>

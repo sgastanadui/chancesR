@@ -56,10 +56,74 @@ var app = {
                 return false;
             }
 
-            wcfServiceUrl = "http://23.253.204.98/wcfphonegap/AutenticationMobile.svc/";
+            //$.soap({
+            //    url: "http://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/",
+            //    method: "AutenticationUser",
+            //    appendMethodToURL: true,
+            //    SOAPAction: "https://www.chancesrmis.com/wcfphonegap/AutenticationMobile/IAutenticationMobile/AutenticationUser",
+            //    async: false,
+            //    data: { IdUsername: $("#txtUsername").val(), Password: $('#txtPassword').val(), IdAplication: 9 },
+            //    namespaceURL: "https://www.chancesrmis.com/wcfphonegap/AutenticationMobile",
+            //    enableLogging: false,
+            //    success: function (SOAPResponse) {
+            //        var resp = $.xml2json(SOAPResponse.toXML().firstChild);
+            //        alert(resp);
+            //        window.location = "home.html"
+            //    },
+            //    error: function (SOAPResponse) {
+            //        //alert("Error: " + SOAPResponse);
+
+            //    }
+            //}).fail(function (jqXHR, textStatus, errorThrown) {
+            //    // do stuff on error here...
+            //    alert(jqXHR);
+            //    alert(errorThrown);
+            //});
+
+
+            //wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
+            wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
+            //wcfServiceUrl = "https://services.chancesrmis.com/WcfMobileBCP/AutenticationMobile.svc/";
             //wcfServiceUrl = "http://localhost:10786/AutenticationMobile.svc/";
 
             var urlk1 = wcfServiceUrl + "AutenticationUser?IdUsername=" + $("#txtUsername").val() + "&Password=" + $("#txtPassword").val() + "&IdAplication=9";
+
+            //var input =
+            // {
+            //     IdUsername: 'admincutrale',
+            //     Password: 'orm1978',
+            //     IdAplication: '9'
+            // };
+
+            //$.ajax({
+            //    cache: false,
+            //    type: "POST",
+            //    async: true,
+            //    url: "https://services.chancesrmis.com/WcfMobileBCP/AutenticationMobile.svc/AutenticationUser",
+            //    data: JSON.stringify(input),
+            //    contentType: "application/json",
+            //    dataType: "json",
+            //    beforeSend: function () {
+            //        $('#loader').show();
+            //    },
+            //    error: function (xhr, textStatus, err) {
+            //        var mensaje = "readyState: " + xhr.readyState + "\n";
+            //        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+            //        mensaje = mensaje + "status: " + xhr.status + "\n";
+            //        mensaje = mensaje + "text status: " + textStatus + "\n";
+            //        mensaje = mensaje + "error: " + err + "\n";
+            //        navigator.notification.alert(mensaje, function () { }, "BCP Error");
+            //        $('#loader').hide();
+            //    },
+            //    success: function (obj) {
+            //        if (obj.AutenticationUserResult.error.Descripcion == '') {
+            //            alert('true');
+            //        } else {
+            //            alert('false');
+            //        }
+            //    }
+            //});
+
 
             $.ajax({
                 cache: true,
@@ -72,12 +136,7 @@ var app = {
                 dataType: "jsonp",
                 beforeSend: function () {
                     //$("#imgAjaxLoader").show();
-                    $.mobile.loading('show', {
-                        text: "loading",
-                        textVisible: true,
-                        theme: 'a',
-                        html: ""
-                    });
+                    $('#loader').show();
                 },
                 error: function (xhr, textStatus, err) {
                     var mensaje = "readyState: " + xhr.readyState + "\n";
@@ -88,6 +147,7 @@ var app = {
                     //alert(mensaje);
                     navigator.notification.alert(mensaje, function () { }, "BCP Error");
                     $('#results').html("");
+                    $('#loader').hide();
                 },
                 success: function (obj) {
                     if (obj.AutenticationUserResult.error.Descripcion == '') {
@@ -119,9 +179,12 @@ var app = {
                     }
                 },
                 complete: function () {
-                    $("#imgAjaxLoader").hide();
+                    //$("#imgAjaxLoader").hide();
+                    $('#loader').hide();
                 }
             });
+
+
 
         });
 
@@ -270,7 +333,7 @@ var app = {
 
     RegisterIdxContact: function (IdCompany, IdContact, SystemOperation, IdUser, eToken) {
         
-        var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+        var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
         //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
 
         var urlk1 = wcfServiceUrl + "RegisterIdxContact?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&SystemOperation=' + SystemOperation + '&IdUser=' + IdUser + '&etoken=' + eToken;
@@ -285,7 +348,8 @@ var app = {
             contentType: "application/json; charset=utf-8",
             dataType: "jsonp",
             beforeSend: function () {
-                $("#imgAjaxLoader").show();
+                //$("#imgAjaxLoader").show();
+                $('#loader').show();
             },
             error: function (xhr, textStatus, err) {
                 var mensaje = "readyState: " + xhr.readyState + "\n";
@@ -296,6 +360,7 @@ var app = {
                 //alert(mensaje);
                 navigator.notification.alert(mensaje, function () { }, "BCP Error");
                 $('#results').html("");
+                $('#loader').hide();
             },
             success: function (obj) {
                 if (obj.RegisterIdxContactResult == true) {
@@ -306,7 +371,8 @@ var app = {
                 }
             },
             complete: function () {
-                $("#imgAjaxLoader").hide();
+                //$("#imgAjaxLoader").hide();
+                $('#loader').hide();
             }
         });
 

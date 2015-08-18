@@ -124,7 +124,7 @@
 
         SendMessageAPNSMobile = function (IdCompany, IdSite, Message, xType) {
 
-            var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+            var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
             //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
 
             var urlk1 = wcfServiceUrl + "SendMsgGCM?IdCompany=" + IdCompany + '&IdSite=' + IdSite + '&Message=' + Message + '&xType=' + xType;
@@ -139,7 +139,8 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "jsonp",
                 beforeSend: function () {
-                    $("#imgAjaxLoader").show();
+                    //$("#imgAjaxLoaderCOOP").show();
+                    $('#loader').show();
                 },
                 error: function (xhr, textStatus, err) {
                     var mensaje = "error send to alert. \n";
@@ -150,6 +151,7 @@
                     mensaje = mensaje + "error: " + err + "\n";
                     alert(mensaje + err.Message);
                     $('#results').html("");
+                    $('#loader').hide();
                 },
                 success: function (obj) {
                     if (obj.SendMsgGCMResult == true) {
@@ -169,7 +171,8 @@
                     }
                 },
                 complete: function () {
-                    $("#imgAjaxLoader").hide();
+                    //$("#imgAjaxLoaderCOOP").hide();
+                    $('#loader').hide();
                 }
             });
 
@@ -236,7 +239,7 @@
                 //************************************************
                 if (confirm('Warning! If you activate the Continuity of Operations Plan (COOP), our automated system will notify and send alert messages via email to each coordinator of the COOP. Are you sure you want to activate the COOP ?')) {
                     //************************************************
-                    var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+                    var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
                     //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
                     urlk1 = wcfServiceUrl + "SaveActivateCOOP?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdActivityLoos=' + IdCriticalFunction + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&CommentsCOOP=' + encodeURIComponent(CommentsCOOP);
                     //************************************************
@@ -250,7 +253,8 @@
                         contentType: "application/json; charset=utf-8",
                         dataType: "jsonp",
                         beforeSend: function () {
-                            $("#imgAjaxLoaderERT").show();
+                            //$("#imgAjaxLoaderCOOP").show();
+                            $('#loader').show();
                         },
                         error: function (xhr, textStatus, err) {
                             var mensaje = "readyState: " + xhr.readyState + "\n";
@@ -259,6 +263,7 @@
                             mensaje = mensaje + "text status: " + textStatus + "\n";
                             mensaje = mensaje + "error: " + err + "\n";
                             alert(mensaje);
+                            $('#loader').hide();
                         },
                         success: function (obj) {
                             //******************************
@@ -277,7 +282,8 @@
                             //******************************
                         },
                         complete: function () {
-                            $("#imgAjaxLoaderERT").hide();
+                            //$("#imgAjaxLoaderCOOP").hide();
+                            $('#loader').hide();
                         }
                     });
                     //***************************************
@@ -285,7 +291,7 @@
 
             });
             //***************************************
-            var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+            var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
             //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
             urlk1 = wcfServiceUrl + "ListCriticalFunction?IdCompany=" + IdCompany + '&IdSite=' + IdSite;
 
@@ -299,7 +305,8 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "jsonp",
                 beforeSend: function () {
-                    $("#imgAjaxLoader").show();
+                    //$("#imgAjaxLoaderCOOP").show();
+                    $('#loader').show();
                 },
                 error: function (xhr, textStatus, err) {
                     var mensaje = "readyState: " + xhr.readyState + "\n";
@@ -309,6 +316,7 @@
                     mensaje = mensaje + "error: " + err + "\n";
                     alert(mensaje);
                     $('#ddlCriticalFunction').html("");
+                    $('#loader').hide();
                 },
                 success: function (obj) {
                     //******************************
@@ -326,7 +334,8 @@
                     //******************************
                 },
                 complete: function () {
-                    $("#imgAjaxLoader").hide();
+                    //$("#imgAjaxLoaderCOOP").hide();
+                    $('#loader').hide();
                 }
             });
             //***************************************
@@ -367,6 +376,12 @@
                     </td>
                 </tr>
             </table>
+            <img id="imgAjaxLoaderCOOP" class="ajaxLoader" src="images/ajax-loader.gif" />
+            <div id="loader" style="display:none;">
+                <div id="center">
+                    <img src="images/ajax-loader.gif" />
+                </div>
+            </div>
         </div>
         <div role="main" class="ui-content" id="map-canvas">
             <!-- map loads here... -->
