@@ -213,7 +213,7 @@
             controlUI.addEventListener('click', function () {
                 if (navigator.geolocation) {
                     //*********************************************************
-                    waitingDialog({ title: "<%=Resources.Resource.GeneralInformation_title_lblLoading %>", message: "<%=Resources.Resource.GeneralInformation_title_lblLoadingMessage %>" });
+                    $('#loader').show();
                     //*********************************************************
                     document.getElementById("map-canvas").innerHTML = '';
                     //*********************************
