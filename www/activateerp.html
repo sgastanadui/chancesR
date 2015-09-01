@@ -69,6 +69,11 @@
                     scaleControlOptions: {
                         position: google.maps.ControlPosition.RIGHT_TOP,
                         style: google.maps.ScaleControlStyle.DEFAULT
+                    },
+                    zoomControl: true,
+                    zoomControlOptions: {
+                        //style: google.maps.ZoomControlStyle.LARGE,
+                        position: google.maps.ControlPosition.RIGHT_TOP
                     }
                 };
 
@@ -93,7 +98,7 @@
                         //*********************************************************
                     }
                 });
-                map.controls[google.maps.ControlPosition.LEFT_TOP].push(controlUI);
+                map.controls[google.maps.ControlPosition.RIGHT_TOP].push(controlUI);
 
 
                 // Add an overlay to the map of current lat/lng 
@@ -175,6 +180,11 @@
                 scaleControlOptions: {
                     position: google.maps.ControlPosition.RIGHT_TOP,
                     style: google.maps.ScaleControlStyle.DEFAULT
+                },
+                zoomControl: true,
+                zoomControlOptions: {
+                    //style: google.maps.ZoomControlStyle.LARGE,
+                    position: google.maps.ControlPosition.RIGHT_TOP
                 }
             }
 
@@ -261,6 +271,11 @@
                             scaleControlOptions: {
                                 position: google.maps.ControlPosition.RIGHT_TOP,
                                 style: google.maps.ScaleControlStyle.DEFAULT
+                            },
+                            zoomControl: true,
+                            zoomControlOptions: {
+                                //style: google.maps.ZoomControlStyle.LARGE,
+                                position: google.maps.ControlPosition.RIGHT_TOP
                             }
                         };
 
@@ -284,7 +299,7 @@
                                 navigator.geolocation.getCurrentPosition(showPosition);
                             }
                         });
-                        map.controls[google.maps.ControlPosition.LEFT_TOP].push(controlUI);
+                        map.controls[google.maps.ControlPosition.RIGHT_TOP].push(controlUI);
 
                         // Add an overlay to the map of current lat/lng 
                         var marker = new google.maps.Marker({
@@ -325,7 +340,7 @@
                     //*********************************************************
                 }
             });
-            map.controls[google.maps.ControlPosition.LEFT_TOP].push(controlUI);
+            map.controls[google.maps.ControlPosition.RIGHT_TOP].push(controlUI);
 
             $('#loader').hide();
         }
