@@ -114,7 +114,7 @@
                 var infowindow = new google.maps.InfoWindow({
                     content: contentString
                 });
-                infowindow.open(map, marker);
+                infowindow.open(map, marketActual);
                 google.maps.event.addListener(marketActual, 'click', function () {
                     infowindow.open(map, marketActual);
                     var pos = marketActual.getPosition();
