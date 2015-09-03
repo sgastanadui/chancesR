@@ -26,8 +26,8 @@
             if (navigator.geolocation) {
                 function success(pos) {
                     // Location found, show map with these coordinates
-                    //drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-                    drawMap(new google.maps.LatLng(latitude, longitude));
+                    drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+                    //drawMap(new google.maps.LatLng(latitude, longitude));
                 }
                 function fail(error) {
                     drawMap(defaultLatLng);  // Failed to find location, show default map
@@ -79,37 +79,26 @@
 
                 var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 
-                // Create the DIV to hold the control and call the map
-                // passing in this DIV.
-                var myLocationControlDiv = document.createElement('DIV');
-                var controlUI = document.createElement('DIV');
-                controlUI.style.backgroundColor = 'White';
-                controlUI.style.margin = '0% 0 0 1%';
-                controlUI.style.cursor = 'pointer';
-                controlUI.title = 'Click to set the map to Home';
-                controlUI.innerHTML = '<img src="images/currentlocation.png" />';
-                myLocationControlDiv.appendChild(controlUI);
-                controlUI.addEventListener('click', function () {
-                    if (navigator.geolocation) {
-                        //*********************************************************
-                        $('#loader').show();
-                        //*********************************************************
-                        navigator.geolocation.getCurrentPosition(showPosition, showError);
-                        //*********************************************************
-                    }
-                });
-                map.controls[google.maps.ControlPosition.RIGHT_TOP].push(controlUI);
-
-
                 // Add an overlay to the map of current lat/lng 
                 var marker = new google.maps.Marker({
                     position: latlng,
                     map: map,
                     animation: google.maps.Animation.DROP,
+                    title: 'Current Location',
+                    cursor: 'pointer',
+                    draggable: false,
+                    icon: 'img/bluecircle.png'
+                });
+
+                var latlngActual = new google.maps.LatLng(getUrlVars()["Latitude"], getUrlVars()["Longitude"]);
+                var marketActual = new google.maps.Marker({
+                    position: latlngActual,
+                    map: map,
+                    animation: google.maps.Animation.DROP,
                     title: 'Insight Risk Technologies, LLC',
                     cursor: 'pointer',
                     draggable: true
-                });
+                })
 
                 //var panorama;
                 //panorama = map.getStreetView();
@@ -126,18 +115,18 @@
                     content: contentString
                 });
                 infowindow.open(map, marker);
-                google.maps.event.addListener(marker, 'click', function () {
-                    infowindow.open(map, marker);
-                    var pos = marker.getPosition();
+                google.maps.event.addListener(marketActual, 'click', function () {
+                    infowindow.open(map, marketActual);
+                    var pos = marketActual.getPosition();
                     var lat = pos.lat();
                     var lng = pos.lng();
                     $("#hdnLatitudeERT").val(lat);
                     $("#hdnLongitudeERT").val(lng);
                 });
 
-                google.maps.event.addListener(marker, 'drag', function () {
-                    marker.setTitle(unescape(Site));
-                    var pos = marker.getPosition();
+                google.maps.event.addListener(marketActual, 'drag', function () {
+                    marketActual.setTitle(unescape(Site));
+                    var pos = marketActual.getPosition();
                     var lat = pos.lat();
                     var lng = pos.lng();
                     $("#hdnLatitudeERT").val(lat);
@@ -147,205 +136,7 @@
             }
         });
 
-        function showPosition(position) {
-            var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            var myOptions = {
-                zoom: 25,
-                center: latlng,
-                mapTypeId: google.maps.MapTypeId.SATELLITE,
-                backgroundColor: '#ffffff',
-                noClear: true,
-                disableDefaultUI: false,
-                keyboardShortcuts: true,
-                disableDoubleClickZoom: false,
-                draggable: true,
-                scrollwheel: true,
-                draggableCursor: 'pointer',
-                draggingCursor: 'crosshair',
-                mapTypeControl: true,
-                panControl: true,
-                panControlOptions: {
-                    position: google.maps.ControlPosition.TOP_RIGHT
-                },
-                navigationControl: true,
-                streetViewControl: true,
-                streetViewControlOptions: {
-                    position: google.maps.ControlPosition.RIGHT_TOP
-                },
-                navigationControlOptions: {
-                    position: google.maps.ControlPosition.RIGHT_TOP,
-                    style: google.maps.NavigationControlStyle.ANDROID
-                },
-                scaleControl: true,
-                scaleControlOptions: {
-                    position: google.maps.ControlPosition.RIGHT_TOP,
-                    style: google.maps.ScaleControlStyle.DEFAULT
-                },
-                zoomControl: true,
-                zoomControlOptions: {
-                    //style: google.maps.ZoomControlStyle.LARGE,
-                    position: google.maps.ControlPosition.RIGHT_TOP
-                }
-            }
-
-            var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
-
-            // Add an overlay to the map of current lat/lng 
-            var marker = new google.maps.Marker({
-                position: latlng,
-                map: map,
-                animation: google.maps.Animation.DROP,
-                title: 'Current Location',
-                cursor: 'pointer',
-                draggable: false,
-                icon: 'images/bluecircle.png'
-            });
-
-
-            var myLocationControlDiv = document.createElement('DIV');
-            var controlUI = document.createElement('DIV');
-            controlUI.style.backgroundColor = 'White';
-            controlUI.style.margin = '0% 0 0 1%';
-            controlUI.style.cursor = 'pointer';
-            controlUI.title = 'Click to set the map to Home';
-            controlUI.innerHTML = '<img src="images/home.png" />';
-            myLocationControlDiv.appendChild(controlUI);
-            controlUI.addEventListener('click', function () {
-                if (navigator.geolocation) {
-                    //*********************************************************
-                    $('#loader').show();
-                    //*********************************************************
-                    document.getElementById("map-canvas").innerHTML = '';
-                    //*********************************
-                    var longitude = getUrlVars()["Longitude"];
-                    var latitude = getUrlVars()["Latitude"];
-                    $("#hdnLatitudeERT").val(latitude);
-                    $("#hdnLongitudeERT").val(longitude);
-                    var Site = getUrlVars()["Site"];
-                    //*********************************
-                    var defaultLatLng = new google.maps.LatLng(latitude, longitude);  // Default to Hollywood, CA when no geolocation support
-                    //*********************************
-                    if (navigator.geolocation) {
-                        function success(pos) {
-                            // Location found, show map with these coordinates
-                            //drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-                            drawMap(new google.maps.LatLng(latitude, longitude));
-                        }
-                        function fail(error) {
-                            drawMap(defaultLatLng);  // Failed to find location, show default map
-                        }
-                        // Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
-                        navigator.geolocation.getCurrentPosition(success, fail, { maximumAge: 500000, enableHighAccuracy: true, timeout: 6000 });
-                    } else {
-                        drawMap(defaultLatLng);  // No geolocation support, show default map
-                    }
-                    function drawMap(latlng) {
-                        var myOptions = {
-                            zoom: 25,
-                            center: latlng,
-                            mapTypeId: google.maps.MapTypeId.SATELLITE,
-                            backgroundColor: '#ffffff',
-                            noClear: true,
-                            disableDefaultUI: false,
-                            keyboardShortcuts: true,
-                            disableDoubleClickZoom: false,
-                            draggable: true,
-                            scrollwheel: true,
-                            draggableCursor: 'pointer',
-                            draggingCursor: 'crosshair',
-                            mapTypeControl: true,
-                            panControl: true,
-                            panControlOptions: {
-                                position: google.maps.ControlPosition.TOP_RIGHT
-                            },
-                            navigationControl: true,
-                            streetViewControl: true,
-                            streetViewControlOptions: {
-                                position: google.maps.ControlPosition.RIGHT_TOP
-                            },
-                            navigationControlOptions: {
-                                position: google.maps.ControlPosition.RIGHT_TOP,
-                                style: google.maps.NavigationControlStyle.ANDROID
-                            },
-                            scaleControl: true,
-                            scaleControlOptions: {
-                                position: google.maps.ControlPosition.RIGHT_TOP,
-                                style: google.maps.ScaleControlStyle.DEFAULT
-                            },
-                            zoomControl: true,
-                            zoomControlOptions: {
-                                //style: google.maps.ZoomControlStyle.LARGE,
-                                position: google.maps.ControlPosition.RIGHT_TOP
-                            }
-                        };
-
-                        var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
-
-                        // Create the DIV to hold the control and call the map
-                        // passing in this DIV.
-                        var myLocationControlDiv = document.createElement('DIV');
-                        var controlUI = document.createElement('DIV');
-                        controlUI.style.backgroundColor = 'White';
-                        controlUI.style.margin = '0% 0 0 1%';
-                        controlUI.style.cursor = 'pointer';
-                        controlUI.title = 'Click to set the map to Home';
-                        controlUI.innerHTML = '<img src="images/currentlocation.png" />';
-                        myLocationControlDiv.appendChild(controlUI);
-                        controlUI.addEventListener('click', function () {
-                            if (navigator.geolocation) {
-                                //*********************************************************
-                                $('#loader').show();
-                                //*********************************************************
-                                navigator.geolocation.getCurrentPosition(showPosition);
-                            }
-                        });
-                        map.controls[google.maps.ControlPosition.RIGHT_TOP].push(controlUI);
-
-                        // Add an overlay to the map of current lat/lng 
-                        var marker = new google.maps.Marker({
-                            position: latlng,
-                            map: map,
-                            animation: google.maps.Animation.DROP,
-                            title: 'Insight Risk Technologies, LLC',
-                            cursor: 'pointer',
-                            draggable: true
-                        });
-
-                        var Site = getUrlVars()["Site"];
-                        var contentString = '<div id="content">' + unescape(Site) + '</div>';
-                        var infowindow = new google.maps.InfoWindow({
-                            content: contentString
-                        });
-                        infowindow.open(map, marker);
-                        google.maps.event.addListener(marker, 'click', function () {
-                            infowindow.open(map, marker);
-                            var pos = marker.getPosition();
-                            var lat = pos.lat();
-                            var lng = pos.lng();
-                            $("#hdnLatitudeERT").val(lat);
-                            $("#hdnLongitudeERT").val(lng);
-                        });
-
-                        google.maps.event.addListener(marker, 'drag', function () {
-                            marker.setTitle(unescape(Site));
-                            var pos = marker.getPosition();
-                            var lat = pos.lat();
-                            var lng = pos.lng();
-                            $("#hdnLatitudeERT").val(lat);
-                            $("#hdnLongitudeERT").val(lng);
-                        });
-                    }
-                    //*********************************************************
-                    $('#loader').hide();
-                    //*********************************************************
-                }
-            });
-            map.controls[google.maps.ControlPosition.RIGHT_TOP].push(controlUI);
-
-            $('#loader').hide();
-        }
-
-
+    
         function showError(error) {
             switch (error.code) {
                 case error.PERMISSION_DENIED:
