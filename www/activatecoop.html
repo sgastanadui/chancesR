@@ -15,15 +15,38 @@
     <script type="text/javascript">
         //***************************************
         $(document).on("pagecreate", "#map-page", function () {
+            //*********************************
             var longitude = getUrlVars()["Longitude"];
             var latitude = getUrlVars()["Latitude"];
+            var Site = getUrlVars()["Site"];
+            //*********************************
             var defaultLatLng = new google.maps.LatLng(latitude, longitude);  // Default to Hollywood, CA when no geolocation support
+            //*********************************
             if (navigator.geolocation) {
                 function success(pos) {
+                    // Location found, show map with these coordinates
                     drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
                     //drawMap(new google.maps.LatLng(latitude, longitude));
                 }
                 function fail(error) {
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            //alert("User denied the request for Geolocation.");
+                            navigator.notification.alert("User denied the request for Geolocation.", function () { }, "BCP Error");
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            //alert("Location information is unavailable.");
+                            navigator.notification.alert("Location information is unavailable.", function () { }, "BCP Error");
+                            break;
+                        case error.TIMEOUT:
+                            //alert("The request to get user location timed out.");
+                            navigator.notification.alert("The request to get user location timed out.", function () { }, "BCP Error");
+                            break;
+                        case error.UNKNOWN_ERROR:
+                            //alert("An unknown error occurred.");
+                            navigator.notification.alert("An unknown error occurred.", function () { }, "BCP Error");
+                            break;
+                    }
                     drawMap(defaultLatLng);
                 }
                 navigator.geolocation.getCurrentPosition(success, fail, { maximumAge: 500000, enableHighAccuracy: true, timeout: 6000 });
@@ -129,24 +152,6 @@
             }
         });
 
-       function showError(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("User denied the request for Geolocation.");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("Location information is unavailable.");
-                    break;
-                case error.TIMEOUT:
-                    alert("The request to get user location timed out.");
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("An unknown error occurred.");
-                    break;
-            }
-            $('#loader').hide();
-        }
-
         populateDropdown = function (data) {
             var IdActivityLoss, ActivityLoss;
             IdActivityLoss = this.IdActivityLoss;
@@ -185,14 +190,16 @@
                     mensaje = mensaje + "status: " + xhr.status + "\n";
                     mensaje = mensaje + "text status: " + textStatus + "\n";
                     mensaje = mensaje + "error: " + err + "\n";
-                    alert(mensaje + err.Message);
-                    $('#results').html("");
+                    //alert(mensaje + err.Message);
+                    navigator.notification.alert(mensaje, function () { }, "BCP Error");
+                    //$('#results').html("");
                     $('#loader').hide();
                 },
                 success: function (obj) {
                     if (obj.SendMsgGCMResult == true) {
                         //*************************
-                        alert('COOP has been activated.')
+                        //alert('COOP has been activated.')
+                        navigator.notification.alert("COOP has been activated.", function () { }, "BCP Alert");
                         //*************************
                         var IdSite = $("#hdnIdSite").val();
                         var Site = $("#hdnSite").val();
@@ -259,17 +266,20 @@
                 var CommentsCOOP = $("#txtCommentCOOP").val();
                 //************************************************
                 if (IdCriticalFunction == '-1') {
-                    alert('Select a Critical Function.');
+                    //alert('Select a Critical Function.');
+                    navigator.notification.alert("Select a Critical Function.", function () { }, "BCP Alert");
                     return false;
                 }
                 //************************************************
                 if (CommentsCOOP.trim() == '') {
-                    alert('Enter a comments.');
+                    //alert('Enter a comments.');
+                    navigator.notification.alert("Enter a comments.", function () { }, "BCP Alert");
                     return false;
                 }
                 //************************************************
                 if ($("#txtkeywordCOOP").val().trim() != $("#hdnKeywordCOOP").val().trim()) {
-                    alert('Invalid Key!.');
+                    //alert('Invalid Key!.');
+                    navigator.notification.alert("Invalid Key!.", function () { }, "BCP Alert");
                     return false;
                 }
                 //************************************************
@@ -298,7 +308,8 @@
                             mensaje = mensaje + "status: " + xhr.status + "\n";
                             mensaje = mensaje + "text status: " + textStatus + "\n";
                             mensaje = mensaje + "error: " + err + "\n";
-                            alert(mensaje);
+                            //alert(mensaje);
+                            navigator.notification.alert(mensaje, function () { }, "BCP Error");
                             $('#loader').hide();
                         },
                         success: function (obj) {
@@ -350,7 +361,8 @@
                     mensaje = mensaje + "status: " + xhr.status + "\n";
                     mensaje = mensaje + "text status: " + textStatus + "\n";
                     mensaje = mensaje + "error: " + err + "\n";
-                    alert(mensaje);
+                    //alert(mensaje);
+                    navigator.notification.alert(mensaje, function () { }, "BCP Error");
                     $('#ddlCriticalFunction').html("");
                     $('#loader').hide();
                 },

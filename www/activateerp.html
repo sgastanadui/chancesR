@@ -7,7 +7,6 @@
     <!-- InsightBCPMobile references -->
     <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
     <link href="css/index.css" rel="stylesheet" />
-    <!--<link href="css/InsightBCPMobile.css" rel="stylesheet" />-->
     <script src="js/jquery-2.1.3.min.js"></script>
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/common.js"></script>
@@ -30,6 +29,24 @@
                     //drawMap(new google.maps.LatLng(latitude, longitude));
                 }
                 function fail(error) {
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            //alert("User denied the request for Geolocation.");
+                            navigator.notification.alert("User denied the request for Geolocation.", function () { }, "BCP Error");
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            //alert("Location information is unavailable.");
+                            navigator.notification.alert("Location information is unavailable.", function () { }, "BCP Error");
+                            break;
+                        case error.TIMEOUT:
+                            //alert("The request to get user location timed out.");
+                            navigator.notification.alert("The request to get user location timed out.", function () { }, "BCP Error");
+                            break;
+                        case error.UNKNOWN_ERROR:
+                            //alert("An unknown error occurred.");
+                            navigator.notification.alert("An unknown error occurred.", function () { }, "BCP Error");
+                            break;
+                    }
                     drawMap(defaultLatLng);  // Failed to find location, show default map
                 }
                 // Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
@@ -137,25 +154,6 @@
         });
 
     
-        function showError(error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("User denied the request for Geolocation.");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("Location information is unavailable.");
-                    break;
-                case error.TIMEOUT:
-                    alert("The request to get user location timed out.");
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("An unknown error occurred.");
-                    break;
-            }
-            $('#loader').hide();
-        }
-
-
         populateDropdown = function (data) {
             var IdHazard, HazardName;
             IdHazard = this.IdHazard;
@@ -194,14 +192,16 @@
                     mensaje = mensaje + "status: " + xhr.status + "\n";
                     mensaje = mensaje + "text status: " + textStatus + "\n";
                     mensaje = mensaje + "error: " + err + "\n";
-                    alert(mensaje + err.Message);
+                    //alert(mensaje + err.Message);
+                    navigator.notification.alert(mensaje, function () { }, "BCP Error");
                     //$('#results').html("");
                     $('#loader').hide();
                 },
                 success: function (obj) {
                     if (obj.SendMsgGCMResult == true) {
                         //*************************
-                        alert('ERP has been activated.')
+                        //alert('ERP has been activated.')
+                        navigator.notification.alert("ERP has been activated.", function () { }, "BCP Alert");
                         //*************************
                         var IdSite = $("#hdnIdSite").val();
                         var Site = $("#hdnSite").val();
@@ -268,17 +268,20 @@
             var CommentsERP = $("#txtCommentERP").val();
             //************************************************
             if (IdHazard == '-1') {
-                alert('Select a Hazard.');
+                //alert('Select a Hazard.');
+                navigator.notification.alert("Select a Hazard.", function () { }, "BCP Alert");
                 return false;
             }
             //************************************************
             if (CommentsERP.trim() == '') {
-                alert('Enter a comments.');
+                //alert('Enter a comments.');
+                navigator.notification.alert("Enter a comments.", function () { }, "BCP Alert");
                 return false;
             }
             //************************************************
             if ($("#txtkeywordERT").val().trim() != $("#hdnKeywordERT").val().trim()) {
-                alert('Invalid key.');
+                //alert('Invalid key.');
+                navigator.notification.alert("Invalid key.", function () { }, "BCP Alert");
                 return false;
             }
             //************************************************
@@ -307,7 +310,8 @@
                         mensaje = mensaje + "status: " + xhr.status + "\n";
                         mensaje = mensaje + "text status: " + textStatus + "\n";
                         mensaje = mensaje + "error: " + err + "\n";
-                        alert(mensaje);
+                        //alert(mensaje);
+                        navigator.notification.alert(mensaje, function () { }, "BCP Error");
                         $('#loader').hide();
                     },
                     success: function (obj) {
@@ -358,7 +362,8 @@
                 mensaje = mensaje + "status: " + xhr.status + "\n";
                 mensaje = mensaje + "text status: " + textStatus + "\n";
                 mensaje = mensaje + "error: " + err + "\n";
-                alert(mensaje);
+                //alert(mensaje);
+                navigator.notification.alert(mensaje, function () { }, "BCP Error");
                 $('#ddlHazard').html("");
                 $('#loader').hide();
             },

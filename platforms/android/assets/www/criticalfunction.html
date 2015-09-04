@@ -73,7 +73,8 @@
                     mensaje = mensaje + "status: " + xhr.status + "\n";
                     mensaje = mensaje + "text status: " + textStatus + "\n";
                     mensaje = mensaje + "error: " + err + "\n";
-                    alert(mensaje);
+                    //alert(mensaje);
+                    navigator.notification.alert(mensaje, function () { }, "BCP Error");
                     $('#loader').hide();
                 },
                 success: function (obj) {
