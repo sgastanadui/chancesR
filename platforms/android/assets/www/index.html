@@ -6,6 +6,32 @@
         <title>BCP Mobile</title>     
         <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
         <link href="css/index.css" rel="stylesheet" />
+        <!--<script type='text/javascript' src='http://code.jquery.com/jquery-2.0.2.js'></script>-->
+        <!--<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">-->
+        <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.css">
+        <script type='text/javascript' src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+        <style type='text/css'>
+            .fa.form-control-feedback {
+                line-height: 34px;
+            }
+
+            .input-lg ~ .fa.form-control-feedback {
+                line-height: 46px;
+            }
+
+            .has-feedback-left input.form-control {
+                padding-left: 34px;
+                padding-right: 12px;
+            }
+
+            .has-feedback-left .form-control-feedback {
+                left: 0;
+            }
+
+            .form-horizontal .has-feedback-left .form-control-feedback {
+                left: 12px;
+            }
+        </style>
     </head>
     <body>
 
@@ -17,16 +43,24 @@
             <div align="center">
                 <img src="images/insightbcp.png" />
             </div>
-            <div data-role="fieldcontain" class="ui-hide-label">
+            <!--<div data-role="fieldcontain" class="ui-hide-label">
                 <label for="username">Username:</label>
                 <input type="text" name="txtUsername" id="txtUsername" value="" placeholder="Username" />
+            </div>-->
+            <div class="form-group has-feedback has-feedback-left">
+                <label class="control-label sr-only">Username:</label>
+                <input type="text" class="form-control" id="txtUsername" placeholder="Username" />
+                <i class="form-control-feedback glyphicon glyphicon-user"></i>
             </div>
-
-            <div data-role="fieldcontain" class="ui-hide-label">
+            <!--<div data-role="fieldcontain" class="ui-hide-label">
                 <label for="password">Password:</label>
                 <input type="password" name="txtPassword" id="txtPassword" value="" placeholder="Password" />
-            </div>
-
+            </div>-->
+            <div class="form-group has-feedback has-feedback-left">
+                <label class="control-label sr-only">Password:</label>
+                <input type="password" class="form-control" id="txtPassword" name="txtPassword" placeholder="Password" />
+                <i class="form-control-feedback glyphicon glyphicon-lock"></i>
+            </div>   
             <input type="button" value="Login" id="btnLogin">
 
             <div id="results"></div>
