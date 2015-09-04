@@ -18,19 +18,14 @@
     } else {
         $(document).ready(onDeviceReady);
     }
+
     function onDeviceReady() {
-        if (mobile) {
-            navigator.notification.alert("Mobile Debugging-ready for\n" + navigator.userAgent);
-        } else {
-            alert("Debugging-ready for\n" + navigator.userAgent);
-        }
-    };
-    </script>
+        //if (mobile) {
+        //    navigator.notification.alert("Mobile Debugging-ready for\n" + navigator.userAgent);
+        //} else {
+        //    alert("Debugging-ready for\n" + navigator.userAgent);
+        //}
 
-    <script type="text/javascript">
-
-    //***************************************
-    $(document).on("pageinit", "#panel-responsive-page1", function (event) {
         //***************************************
         var IdSite = getUrlVars()["IdSite"];
         var Latitude = getUrlVars()["Latitude"];
@@ -141,7 +136,7 @@
         $("#btnActivateERP").off("click");
         $("#btnActivateERP").click(function () {
             //************************************************
-            navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
+            navigator.notification.alert("estoes una prueba.", function () { }, "BCP Alert");
             var IdCompany = window.localStorage["IdCompany"];
             var IdSite = $("#hdnIdSite").val();
             var Latitude = $("#hdnLatitude").val();
@@ -221,6 +216,16 @@
             //************************************************
         });
         //***************************************
+
+    };
+
+    </script>
+
+    <script type="text/javascript">
+
+    //***************************************
+    $(document).on("pageinit", "#panel-responsive-page1", function (event) {
+ 
 
     });
     //***************************************
