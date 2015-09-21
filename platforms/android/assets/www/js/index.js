@@ -38,6 +38,7 @@ var app = {
         //alert(remember);
         if (remember == 'true') {
             // autofill the fields
+            alert(window.localStorage["Code"]);
             $("#txtCode").val(window.localStorage["Code"]);
             $("#txtUsername").val(window.localStorage["Username"]);
             $("#txtPassword").val(window.localStorage["Password"]);
@@ -58,7 +59,7 @@ var app = {
             //    // Si tenemos conexión
             //    navigator.notification.alert("Si tenemos conexión", function () { }, "BCP Alert");
             //}
-
+            //alert($('#remember').is(':checked'));
             if ($("#txtCode").val().trim() == "") {
                 navigator.notification.alert("Enter a Code", function () { }, "BCP Alert");
                 //alert("Enter a Code");
@@ -76,8 +77,8 @@ var app = {
                 //alert("Enter a Password");
                 return false;
             }
-
-            if ($('#remember').attr('checked')) {
+            
+            if ($('#remember').is(':checked')) {
                 window.localStorage["Code"] = $("#txtCode").val().trim();
                 window.localStorage["Username"] = $("#txtUsername").val().trim();
                 window.localStorage["Password"] = $("#txtPassword").val().trim();
