@@ -82,7 +82,7 @@ var app = {
                 window.localStorage["Code"] = $("#txtCode").val().trim();
                 window.localStorage["Username"] = $("#txtUsername").val().trim();
                 window.localStorage["Password"] = $("#txtPassword").val().trim();
-                window.localStorage["Remember"] = $('#remember').attr('checked');
+                window.localStorage["Remember"] = $('#remember').is(':checked');
             }
             else {
                 // reset localStorage
