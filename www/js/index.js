@@ -44,6 +44,12 @@ var app = {
             //    navigator.notification.alert("Si tenemos conexión", function () { }, "BCP Alert");
             //}
 
+            if ($("#txtCode").val().trim() == "") {
+                navigator.notification.alert("Enter a Code", function () { }, "BCP Alert");
+                //alert("Enter a Code");
+                return false;
+            }
+
             if ($("#txtUsername").val().trim() == "") {
                 navigator.notification.alert("Enter a Username", function () { },"BCP Alert");
                 //alert("Enter a Username");
@@ -86,7 +92,7 @@ var app = {
             //wcfServiceUrl = "https://services.chancesrmis.com/WcfMobileBCP/AutenticationMobile.svc/";
             //wcfServiceUrl = "http://localhost:10786/AutenticationMobile.svc/";
 
-            var urlk1 = wcfServiceUrl + "AutenticationUser?IdUsername=" + $("#txtUsername").val() + "&Password=" + $("#txtPassword").val() + "&IdAplication=9";
+            var urlk1 = wcfServiceUrl + "AutenticationUser?IdUsername=" + $("#txtUsername").val().trim() + "&Password=" + $("#txtPassword").val().trim() + "&IdAplication=9&Code=" + $("#txtCode").val().trim();
 
             //var input =
             // {
@@ -129,7 +135,7 @@ var app = {
                 cache: true,
                 url: urlk1,
                 crossDomain: true,
-                data: "{ UserName: " + $("#txtUsername").val() + ", Password: " + $("#txtPassword").val() + ", IdAplication: 9 }",
+                data: "{ UserName: " + $("#txtUsername").val().trim() + ", Password: " + $("#txtPassword").val().trim() + ", IdAplication: 9, Code: " + $("#txtCode").val().trim() + " }",
                 type: "GET",
                 jsonpCallback: "UserApplication",
                 contentType: "application/json; charset=utf-8",
