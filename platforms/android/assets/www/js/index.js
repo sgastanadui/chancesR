@@ -35,7 +35,7 @@ var app = {
     onDeviceReady: function () {
 
         var remember = window.localStorage["Remember"];
-        //alert(remember);
+        alert(remember);
         if (remember == 'true') {
             // autofill the fields
             alert(window.localStorage["Code"]);
