@@ -65,7 +65,15 @@
                 <label class="control-label sr-only">Password:</label>
                 <input type="password" class="form-control" id="txtPassword" name="txtPassword" placeholder="Password" />
                 <i class="form-control-feedback glyphicon glyphicon-lock"></i>
-            </div>   
+            </div>
+
+            <div data-role="form-group has-feedback has-feedback-left">
+                <!--<fieldset data-role="controlgroup">-->
+                    <input type="checkbox" name="remember" id="remember"  checked="checked" />
+                    <label for="remember">Remember me ?</label>
+                <!--</fieldset>-->
+            </div>
+
             <input type="button" value="Login" id="btnLogin">
 
             <div id="results"></div>

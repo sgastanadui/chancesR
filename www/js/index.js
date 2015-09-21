@@ -34,6 +34,21 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
 
+        var remember = window.localStorage["Remember"];
+        //alert(remember);
+        if (remember == 'true') {
+            // autofill the fields
+            $("#txtCode").val(window.localStorage["Code"]);
+            $("#txtUsername").val(window.localStorage["Username"]);
+            $("#txtPassword").val(window.localStorage["Password"]);
+            $('#remember').attr('checked', true)
+        } else {
+            $("#txtCode").val('');
+            $("#txtUsername").val('');
+            $("#txtPassword").val('');
+            $('#remember').attr('checked', false)
+        }
+
         $("#btnLogin").click(function () {
             //alert(navigator.connection.type);
             //if (navigator.network.connection.type == Connection.NONE) {
@@ -62,6 +77,20 @@ var app = {
                 return false;
             }
 
+            if ($('#remember').attr('checked')) {
+                window.localStorage["Code"] = $("#txtCode").val().trim();
+                window.localStorage["Username"] = $("#txtUsername").val().trim();
+                window.localStorage["Password"] = $("#txtPassword").val().trim();
+                window.localStorage["Remember"] = $('#remember').attr('checked');
+            }
+            else {
+                // reset localStorage
+                localStorage.removeItem('Code');
+                localStorage.removeItem('Username');
+                localStorage.removeItem('Password');
+                localStorage.removeItem('Remember');
+            }
+
             //$.soap({
             //    url: "http://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/",
             //    method: "AutenticationUser",
@@ -85,7 +114,6 @@ var app = {
             //    alert(jqXHR);
             //    alert(errorThrown);
             //});
-
 
             //wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
             wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
