@@ -42,12 +42,14 @@ var app = {
             $("#txtCode").val(window.localStorage["Code"]);
             $("#txtUsername").val(window.localStorage["Username"]);
             $("#txtPassword").val(window.localStorage["Password"]);
-            $('#remember').attr('checked', true)
+            //$('#remember').attr('checked', true)
+            $("#remember").prop("checked", true);
         } else {
             $("#txtCode").val('');
             $("#txtUsername").val('');
             $("#txtPassword").val('');
-            $('#remember').attr('checked', false)
+            //$('#remember').attr('checked', false)
+            $("#remember").prop("checked", false);
         }
 
         $("#btnLogin").click(function () {
@@ -77,7 +79,7 @@ var app = {
                 //alert("Enter a Password");
                 return false;
             }
-            
+            alert($("#remember").prop("checked"));
             if ($('#remember').is(':checked')) {
                 window.localStorage["Code"] = $("#txtCode").val().trim();
                 window.localStorage["Username"] = $("#txtUsername").val().trim();
