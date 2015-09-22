@@ -38,7 +38,6 @@ var app = {
         //alert(remember);
         if (remember == 'true') {
             // autofill the fields
-            alert(window.localStorage["Code"]);
             $("#txtCode").val(window.localStorage["Code"]);
             $("#txtUsername").val(window.localStorage["Username"]);
             $("#txtPassword").val(window.localStorage["Password"]);
