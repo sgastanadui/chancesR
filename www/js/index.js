@@ -35,7 +35,7 @@ var app = {
     onDeviceReady: function () {
 
         var remember = window.localStorage["Remember"];
-        alert(remember);
+        //alert(remember);
         if (remember == 'true') {
             // autofill the fields
             alert(window.localStorage["Code"]);
@@ -49,7 +49,11 @@ var app = {
             $("#txtUsername").val('');
             $("#txtPassword").val('');
             //$('#remember').attr('checked', false)
-            $("#remember").prop("checked", false);
+            if (remember == undefined) {
+                $("#remember").prop("checked", true);
+            } else {
+                $("#remember").prop("checked", false);
+            }
         }
 
         $("#btnLogin").click(function () {
@@ -61,7 +65,8 @@ var app = {
             //    // Si tenemos conexión
             //    navigator.notification.alert("Si tenemos conexión", function () { }, "BCP Alert");
             //}
-            //alert($('#remember').is(':checked'));
+            //alert($("#remember").prop("checked"));
+
             if ($("#txtCode").val().trim() == "") {
                 navigator.notification.alert("Enter a Code", function () { }, "BCP Alert");
                 //alert("Enter a Code");
@@ -79,7 +84,7 @@ var app = {
                 //alert("Enter a Password");
                 return false;
             }
-            alert($("#remember").prop("checked"));
+            
             if ($('#remember').is(':checked')) {
                 window.localStorage["Code"] = $("#txtCode").val().trim();
                 window.localStorage["Username"] = $("#txtUsername").val().trim();
