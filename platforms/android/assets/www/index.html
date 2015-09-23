@@ -31,6 +31,11 @@
             .form-horizontal .has-feedback-left .form-control-feedback {
                 left: 12px;
             }
+            input[type="checkbox"] {
+              margin: 0 0 0;
+              margin-top: 1px \9;
+              line-height: normal;
+            }
         </style>
     </head>
     <body>
@@ -67,10 +72,10 @@
                 <i class="form-control-feedback glyphicon glyphicon-lock"></i>
             </div>
 
-            <div data-role="form-group has-feedback has-feedback-left">
+            <div class="form-group has-feedback has-feedback-left">
                 <!--<fieldset data-role="controlgroup">-->
-                <label for="remember">Remember me ?</label>    
-                <input  id="remember" type="checkbox" checked />
+                <input id="remember" type="checkbox" checked />
+                <label for="remember">Remember me ?</label>
                 <!--</fieldset>-->
             </div>
 
