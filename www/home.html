@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sites</title>
     <!-- InsightBCPMobile references -->
-    <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <!--<link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />-->
+    <link href="css/jquery.mobile-1.4.5.css" rel="stylesheet" />
     <link href="css/index.css" rel="stylesheet" />
     <script src="js/jquery-2.1.3.min.js"></script>
-    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <!--<script src="js/jquery.mobile-1.4.5.min.js"></script>-->
+    <script src="js/jquery.mobile-1.4.5.js"></script>
     <script src="js/common.js"></script>
 
-    <script type="text/javascript" charset="utf-8">
+    <!--<script type="text/javascript" charset="utf-8">
     var mobile = false;
     if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) {
         document.addEventListener("deviceready", function(){mobile = true; onDeviceReady();}, false);
@@ -20,12 +22,20 @@
     }
 
     function onDeviceReady() {
-        //if (mobile) {
-        //    navigator.notification.alert("Mobile Debugging-ready for\n" + navigator.userAgent);
-        //} else {
-        //    alert("Debugging-ready for\n" + navigator.userAgent);
-        //}
+        if (mobile) {
+            navigator.notification.alert("Mobile Debugging-ready for\n" + navigator.userAgent);
+        } else {
+            alert("Debugging-ready for\n" + navigator.userAgent);
+        }
+    };
 
+    </script>-->
+
+    <script type="text/javascript">
+
+    //***************************************
+    $(document).on("pageinit", "#panel-responsive-page1", function (event) {
+ 
         //***************************************
         var IdSite = getUrlVars()["IdSite"];
         var Latitude = getUrlVars()["Latitude"];
@@ -79,9 +89,9 @@
                 mensaje = mensaje + "status: " + xhr.status + "\n";
                 mensaje = mensaje + "text status: " + textStatus + "\n";
                 mensaje = mensaje + "error: " + err + "\n";
-                //alert(mensaje);
-                navigator.notification.alert(mensaje, function () { }, "BCP Error");
-                $('#resultLocation').html("");
+                alert(mensaje);
+                //navigator.notification.alert(mensaje, function () { }, "BCP Error");
+                //$('#resultLocation').html("");
                 $('#loader').hide();
             },
             success: function (obj) {
@@ -145,14 +155,14 @@
             var KeyBCP = $("#hdnKeyword").val();
             //************************************************
             if (IdSite.trim() == '') {
-                //alert('Please select site.');
-                navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
+                alert('Please select site.');
+                //navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
                 return false;
             }
             //************************************************
             if (Site.trim() == '') {
-                //alert('Please select site.');
-                navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
+                alert('Please select site.');
+                //navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
                 return false;
             }
             //************************************************
@@ -173,14 +183,14 @@
             var KeyBCP = $("#hdnKeyword").val();
             //************************************************
             if (IdSite.trim() == '') {
-                //alert('Please select site.');
-                navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
+                alert('Please select site.');
+                //navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
                 return false;
             }
             //************************************************
             if (Site.trim() == '') {
-                //alert('Please select site.');
-                navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
+                alert('Please select site.');
+                //navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
                 return false;
             }
             //************************************************
@@ -201,14 +211,14 @@
             var KeyBCP = $("#hdnKeyword").val();
             //************************************************
             if (IdSite.trim() == '') {
-                //alert('Please select site.');
-                navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
+                alert('Please select site.');
+                //navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
                 return false;
             }
             //************************************************
             if (Site.trim() == '') {
-                //alert('Please select site.');
-                navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
+                alert('Please select site.');
+                //navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
                 return false;
             }
             //************************************************
@@ -216,17 +226,6 @@
             //************************************************
         });
         //***************************************
-
-    };
-
-    </script>
-
-    <script type="text/javascript">
-
-    //***************************************
-    $(document).on("pageinit", "#panel-responsive-page1", function (event) {
- 
-
     });
     //***************************************
     function SelectSite(IdSite, Latitude, Longitude, Site, KeyBCP) {
@@ -240,8 +239,8 @@
             $("#span1").html("" + CompanyName + " <br/> " + unescape(Site) + "");
             $("#closeListview").click();
         } catch (ex) {
-            //alert(ex.message);
-            navigator.notification.alert(ex.message, function () { }, "BCP Error");
+            alert(ex.message);
+            //navigator.notification.alert(ex.message, function () { }, "BCP Error");
         } finally {
             CompanyName = null;
         }
@@ -270,42 +269,46 @@
                 display: block;
             }
         }
+
     </style>
 </head>
 <body>
-    <div data-role="page" class="jqm-demos ui-responsive-panel" id="panel-responsive-page1" data-title="Panel responsive page" data-url="panel-responsive-page1">
+    <div data-role="page" id="panel-responsive-page1" class="jqm-demos ui-responsive-panel" data-title="Panel responsive page" data-url="panel-responsive-page1">
         <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;">
             <!--<br />-->
             <h1 id="span1"></h1>
             <a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#0065B3;color:white;position:-ms-page;top: 12px !important;">Menu</a>
-        </div><!-- /header -->
-        <div role="main" class="ui-content jqm-content jqm-fullwidth">
-            <br />
-            <input type="button" value="Activate ERP" id="btnActivateERP">
-            <br />
-            <input type="button" value="Activate COOP" id="btnActivateCOOP">
-            <br />
-            <input type="button" value="BCP Log" id="btnBCPLog">
-            <!-- /Push Notification -->
-            <div class="app">
-                <div id="deviceready" class="blink">
-                    <p class="event listening"></p>
-                    <p class="event received"></p>
+        </div>
+        <!-- /header -->
+        <!-- /content -->
+        <!--<div role="main" class="ui-content jqm-content jqm-fullwidth">-->
+        <div data-role="content" style="background-color:white;margin: 0 auto !important;margin-left:auto;margin-right:auto;align:center;text-align:center;">
+                <br />
+                <input type="button" value="Activate ERP" id="btnActivateERP">
+                <br />
+                <input type="button" value="Activate COOP" id="btnActivateCOOP">
+                <br />
+                <input type="button" value="BCP Log" id="btnBCPLog">
+
+                <div class="app">
+                    <div id="deviceready" class="blink">
+                        <p class="event listening"></p>
+                        <p class="event received"></p>
+                    </div>
                 </div>
-            </div>
-            <!-- Div Loading -->
-            <img id="imgAjaxLoaderComments" class="ajaxLoader" src="images/ajax-loader.gif" />
-        </div><!-- /content -->
+                <img id="imgAjaxLoaderComments" class="ajaxLoader" src="images/ajax-loader.gif" />
+        </div>
         <div data-role="panel" data-display="push" data-theme="a" id="nav-panel" style="background-color:#0065B3;color:white;">
-        <div id="resultLocation"></div>
             <input data-type="search" id="txtsearch" placeholder="Search location" /><br />
             <ul data-role="listview" id="mylist" style="background-color:#0065B3;color:white;" data-filter="true" data-input="#txtsearch">
                 <li data-icon="delete"><a href="#" data-rel="close" id="closeListview" style="background-color:#0065B3;color:white;font-size:12px;font-weight:normal;">Close menu</a></li>
             </ul>
-        </div><!-- /panel -->
+        </div>
+        <!-- /panel -->
         <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
             ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
         </div>
+        <!-- Div Loading -->
         <div id="loader" style="display:none;">
             <div id="center">
                 <img src="images/ajax-loader.gif" />

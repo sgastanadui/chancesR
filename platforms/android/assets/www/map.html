@@ -24,10 +24,28 @@
             if (navigator.geolocation) {
                 function success(pos) {
                     // Location found, show map with these coordinates
-                    //drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-                    drawMap(new google.maps.LatLng(latitude, longitude));
+                    drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+                    //drawMap(new google.maps.LatLng(latitude, longitude));
                 }
                 function fail(error) {
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            alert("User denied the request for Geolocation.");
+                            //navigator.notification.alert("User denied the request for Geolocation.", function () { }, "BCP Error");
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            alert("Location information is unavailable.");
+                            //navigator.notification.alert("Location information is unavailable.", function () { }, "BCP Error");
+                            break;
+                        case error.TIMEOUT:
+                            alert("The request to get user location timed out.");
+                            //navigator.notification.alert("The request to get user location timed out.", function () { }, "BCP Error");
+                            break;
+                        case error.UNKNOWN_ERROR:
+                            alert("An unknown error occurred.");
+                            //navigator.notification.alert("An unknown error occurred.", function () { }, "BCP Error");
+                            break;
+                    }
                     drawMap(defaultLatLng);  // Failed to find location, show default map
                 }
                 // Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
@@ -64,9 +82,9 @@
                         style: google.maps.NavigationControlStyle.ANDROID
                     },
                     scaleControl: true,
-                    scaleControlOptions: {
-                        position: google.maps.ControlPosition.TOP_LEFT,
-                        style: google.maps.ScaleControlStyle.DEFAULT
+                    zoomControlOptions: {
+                        //style: google.maps.ZoomControlStyle.LARGE,
+                        position: google.maps.ControlPosition.RIGHT_TOP
                     }
                 };
 
@@ -76,10 +94,21 @@
                     position: latlng,
                     map: map,
                     animation: google.maps.Animation.DROP,
+                    title: 'Current Location',
+                    cursor: 'pointer',
+                    draggable: false,
+                    icon: 'images/bluecircle.png'
+                });
+
+                var latlngActual = new google.maps.LatLng(getUrlVars()["Latitude"], getUrlVars()["Longitude"]);
+                var marketActual = new google.maps.Marker({
+                    position: latlngActual,
+                    map: map,
+                    animation: google.maps.Animation.DROP,
                     title: 'Insight Risk Technologies, LLC',
                     cursor: 'pointer',
                     draggable: true
-                });
+                })
 
                 //var panorama;
                 //panorama = map.getStreetView();
@@ -90,14 +119,39 @@
                 //}));
                 //panorama.setVisible(true);
 
-                google.maps.event.addListener(marker, 'mouseover', function () {
-                    marker.setTitle("Hi");
-                    var pos = marker.getPosition();
+                var Site = getUrlVars()["Site"];
+                var contentString = '<div id="content">' + unescape(Site) + '</div>';
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                infowindow.open(map, marketActual);
+                google.maps.event.addListener(marketActual, 'click', function () {
+                    infowindow.open(map, marketActual);
+                    var pos = marketActual.getPosition();
                     var lat = pos.lat();
                     var lng = pos.lng();
                     $("#hdnLatitude").val(lat);
                     $("#hdnLongitude").val(lng);
                 });
+
+                google.maps.event.addListener(marketActual, 'drag', function () {
+                    marketActual.setTitle(unescape(Site));
+                    var pos = marketActual.getPosition();
+                    var lat = pos.lat();
+                    var lng = pos.lng();
+                    $("#hdnLatitude").val(lat);
+                    $("#hdnLongitude").val(lng);
+                });
+
+                //google.maps.event.addListener(marker, 'mouseover', function () {
+                //    marker.setTitle("Hi");
+                //    var pos = marker.getPosition();
+                //    var lat = pos.lat();
+                //    var lng = pos.lng();
+                //    $("#hdnLatitude").val(lat);
+                //    $("#hdnLongitude").val(lng);
+                //});
 
             }
         });
