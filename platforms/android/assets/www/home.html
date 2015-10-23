@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sites</title>
     <!-- InsightBCPMobile references -->
-    <!--<link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />-->
-    <link href="css/jquery.mobile-1.4.5.css" rel="stylesheet" />
+    <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <!--<link href="css/jquery.mobile-1.4.5.css" rel="stylesheet" />-->
     <link href="css/index.css" rel="stylesheet" />
     <script src="js/jquery-2.1.3.min.js"></script>
-    <!--<script src="js/jquery.mobile-1.4.5.min.js"></script>-->
-    <script src="js/jquery.mobile-1.4.5.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <!--<script src="js/jquery.mobile-1.4.5.js"></script>-->
     <script src="js/common.js"></script>
 
     <!--<script type="text/javascript" charset="utf-8">
@@ -270,6 +270,11 @@
             }
         }
 
+        .ui-content {
+            margin: 0px 5px 0px 0px !important;
+            padding: 0px 5px 0px 0px !important;
+        }
+
     </style>
 </head>
 <body>
@@ -282,7 +287,7 @@
         <!-- /header -->
         <!-- /content -->
         <!--<div role="main" class="ui-content jqm-content jqm-fullwidth">-->
-        <div data-role="content" style="background-color:white;margin: 0 auto !important;margin-left:auto;margin-right:auto;align:center;text-align:center;">
+        <div role="main" class="ui-content" style="background-color:white;align-content:center;">
                 <br />
                 <input type="button" value="Activate ERP" id="btnActivateERP">
                 <br />
@@ -290,13 +295,13 @@
                 <br />
                 <input type="button" value="BCP Log" id="btnBCPLog">
 
-                <div class="app">
+                <!--<div class="app">
                     <div id="deviceready" class="blink">
                         <p class="event listening"></p>
                         <p class="event received"></p>
                     </div>
                 </div>
-                <img id="imgAjaxLoaderComments" class="ajaxLoader" src="images/ajax-loader.gif" />
+                <img id="imgAjaxLoaderComments" class="ajaxLoader" src="images/ajax-loader.gif" />-->
         </div>
         <div data-role="panel" data-display="push" data-theme="a" id="nav-panel" style="background-color:#0065B3;color:white;">
             <input data-type="search" id="txtsearch" placeholder="Search location" /><br />
