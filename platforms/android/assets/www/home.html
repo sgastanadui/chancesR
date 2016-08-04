@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -365,34 +365,34 @@
                               //******************************
                               },
                               complete: function () {
-                              $('#loader').hide();
+                                $('#loader').hide();
                               }
                               });
                        
                        //***************************************
                        $("#btnShooterERT").off("click");
                        $("#btnShooterERT").click(function () {
-                                                 //************************************************
-                                                 var IdCompany = window.localStorage["IdCompany"];
-                                                 var IdSite = $("#hdnIdSite").val();
-                                                 var Latitude = $("#hdnLatitude").val();
-                                                 var Longitude = $("#hdnLongitude").val();
-                                                 var Site = $("#hdnSite").val();
-                                                 var KeyBCP = $("#hdnKeyword").val();
-                                                 //************************************************
-                                                 if (IdSite.trim() == '') {
-                                                 navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
-                                                 return false;
-                                                 }
-                                                 //************************************************
-                                                 if (Site.trim() == '') {
-                                                 navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
-                                                 return false;
-                                                 }
-                                                 //************************************************
-                                                 window.location.href = 'activateerp.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&IdEvent=TH-SHO&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
-                                                 //************************************************
-                                                 });
+                             //************************************************
+                             var IdCompany = window.localStorage["IdCompany"];
+                             var IdSite = $("#hdnIdSite").val();
+                             var Latitude = $("#hdnLatitude").val();
+                             var Longitude = $("#hdnLongitude").val();
+                             var Site = $("#hdnSite").val();
+                             var KeyBCP = $("#hdnKeyword").val();
+                             //************************************************
+                             if (IdSite.trim() == '') {
+                                navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
+                                return false;
+                             }
+                             //************************************************
+                             if (Site.trim() == '') {
+                                navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
+                                return false;
+                             }
+                             //************************************************
+                             window.location.href = 'activateerp.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&IdEvent=TH-SHO&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                             //************************************************
+                        });
                        //***************************************
                        $("#btnKidnapERT").off("click");
                        $("#btnKidnapERT").click(function () {
