@@ -64,6 +64,10 @@
             }
         }
         //***************************************
+        function SalirSistema(){
+            navigator.app.exitApp();
+        }
+        //***************************************
         function drawMap(latlng) {
             //*********************************
             var pos = new google.maps.LatLng(latlng.coords.latitude, latlng.coords.longitude);
@@ -105,15 +109,16 @@
             controlUI.innerHTML = '<img src="images/exit.png" />';
             myLocationControlDiv.appendChild(controlUI);
             controlUI.addEventListener('click', function () {
-               //alert('This route has been completed.');
+            //********************************
                navigator.notification.confirm('Would you like to finalize this tracking?',
                     function(buttonIndex){
-                        //alert(buttonIndex);
                         if (buttonIndex == 1){
                         //************************************************
+                            //alert('Update Arrived Tracking.');
                             updateStatus('Arrived');
+                            setTimeout(SalirSistema,2000,'Arrived');
                             alert('Tracking completed.');
-                            navigator.app.exitApp();
+                            //navigator.app.exitApp();
                             //navigator.notification.alert("Tracking completed." function () { }, "TRACK Notification");
                         //************************************************
                         }
@@ -166,7 +171,8 @@
                 var urlk1 = wcfServiceUrl + "SaveStatusTracking?IdRoute=" + _IdRoute + '&Username=' + _Username + '&Status=' + nameStatus;
                 //************************************************
                 $.ajax({
-                   cache: true,
+                   //cache: true,
+                   async: true,
                    url: urlk1,
                    crossDomain: true,
                    data: "{ IdRoute: " + _IdRoute + ", Username: '" + _Username + "', Status: '"+ nameStatus +"' }",

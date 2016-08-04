@@ -244,7 +244,7 @@ var app = {
                        var dist = R * c * 1000 //in meters
                        //navigator.notification.alert(dist.toString(), function () { }, "TRACK Err");
                        //*************************************
-                       if (dist <= 50){
+                       if (dist <= 70){
                             updateStatus('Arrived');
                             navigator.app.exitApp();
                        }
