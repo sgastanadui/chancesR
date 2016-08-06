@@ -1,0 +1,49 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "org.flybuy.cordova.background-location-services": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+            "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+        },
+        "org.frd49.cordova.exitapp": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "cordova-plugin-actionsheet": {
+            "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+        }
+    }
+}
