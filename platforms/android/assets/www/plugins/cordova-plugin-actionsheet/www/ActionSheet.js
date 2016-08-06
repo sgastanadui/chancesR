@@ -1,5 +1,4 @@
-cordova.define("cordova-plugin-actionsheet.ActionSheet", function(require, exports, module) {
-function ActionSheet() {
+cordova.define("cordova-plugin-actionsheet.ActionSheet", function(require, exports, module) { function ActionSheet() {
 }
 
 ActionSheet.prototype.show = function (options, successCallback, errorCallback) {

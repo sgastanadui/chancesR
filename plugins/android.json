@@ -33,9 +33,6 @@
         },
         "org.frd49.cordova.exitapp": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
-        },
-        "uk.co.workingedge.phonegap.plugin.launchnavigator": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
     "dependent_plugins": {
