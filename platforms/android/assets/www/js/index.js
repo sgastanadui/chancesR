@@ -924,7 +924,7 @@ onResumen: function () {
                 localStorage.removeItem('Remember');
             }
 
-            wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
+            wcfServiceUrl = "http://23.253.204.98/wcfphonegap/AutenticationMobile.svc/";
             var urlk1 = wcfServiceUrl + "AutenticationUser?IdUsername=" + $("#txtUsername").val().trim() + "&Password=" + $("#txtPassword").val().trim() + "&IdAplication=9&Code=" + $("#txtCode").val().trim();
             alert(urlk1);
             $.ajax({
