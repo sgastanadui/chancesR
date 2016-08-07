@@ -21,7 +21,7 @@
     <preference name="android-installLocation" value="auto" />
     <preference name="deployment-target" value="23.0.1" />
     <preference name="splash-screen-duration" value="5000" />
-    <preference name="load-url-timeout" value=“70000" />
+    <preference name="load-url-timeout" value="20000" />
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
@@ -41,6 +41,8 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
     <gap:plugin name="com.phonegap.plugins.PushPlugin" />
+    <gap:plugin name="org.frd49.cordova.exitapp" />
+    <gap:plugin name="org.flybuy.cordova.background-location-services" />
     <clobbers target="window.BackgroundGeolocation" />
     <icon src="icon.png" />
     <gap:config-file platform="ios" parent="NSLocationAlwaysUsageDescription" overwrite="false">
@@ -95,6 +97,4 @@
     <access origin="https://*.google.com" />
     <access origin="https://*.gstatic.com" />
     <access origin="https://*.googleapis.com" />
-<access origin="https://*.chancesrmis.com" />
-<access origin="http://23.253.204.98" />
 </widget>
