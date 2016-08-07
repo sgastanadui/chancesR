@@ -945,11 +945,12 @@ onResumen: function () {
                     mensaje = mensaje + "status: " + xhr.status + "\n";
                     mensaje = mensaje + "text status: " + textStatus + "\n";
                     mensaje = mensaje + "error: " + err + "\n";
-                    navigator.notification.alert(mensaje, function () { }, "BCP Error");
+                    navigator.notification.alert(mensaje, function () { }, "BCP Error Login");
                     $('#results').html("");
                     $('#loader').hide();
                 },
                 success: function (obj) {
+                    alert('se realizo correctamente');
                     if (obj.AutenticationUserResult.error.Descripcion == '') {
                         window.localStorage["Username"] = obj.AutenticationUserResult.IdUsuario;
                         window.localStorage["IdCompany"] = obj.AutenticationUserResult.IdCompany;
