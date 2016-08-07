@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sites</title>
+    <!-- InsightBCPMobile references -->
+    <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/common.js"></script>
+    <script type="text/javascript">
+        //***************************************
+        $(window).on("orientationchange", function () {
+            $('textarea').keyup();
+        });
+        //***************************************
+        $(document).on("pageinit", "#responsabilitiesID", function (event) {
+            //***************************************
+            var IdCompany = getUrlVars()["IdCompany"];
+            var IdContact = getUrlVars()["IdContact"];
+            var IdSite = getUrlVars()["IdSite"];
+            var Site = getUrlVars()["Site"];
+            var Latitude = getUrlVars()["Latitude"];
+            var Longitude = getUrlVars()["Longitude"];
+            var KeyBCP = getUrlVars()["KeyBCP"];
+            var IdAlert = getUrlVars()["IdAlert"];
+            var IdHazard = getUrlVars()["IdHazard"];
+            var Hazard = getUrlVars()["Hazard"];
+            //***************************************
+            $("#hdnIdSite").val(IdSite);
+            $("#hdnSite").val(unescape(Site));
+            $("#hdnLatitude").val(Latitude);
+            $("#hdnLongitude").val(Longitude);
+            $("#hdnKeyword").val(KeyBCP);
+            $("#hdnIdAlert").val(IdAlert);
+            $("#hdnIdHazard").val(IdHazard);
+            $("#hdnHazard").val(unescape(Hazard));
+            //***************************************
+            var CompanyName = window.localStorage["CompanyName"];
+            var Code = window.localStorage["Code"];
+            $("#span1").html("" + CompanyName + " <br/>" + unescape(Site));
+            //***************************************
+            $("#btnHome").off("click");
+            $("#btnHome").click(function () {
+                //************************************************
+                var IdCompany = window.localStorage["IdCompany"];
+                var IdSite = $("#hdnIdSite").val();
+                var Latitude = $("#hdnLatitude").val();
+                var Longitude = $("#hdnLongitude").val();
+                var Site = $("#hdnSite").val();
+                var KeyBCP = $("#hdnKeyword").val();
+                var IdAlert = $("#hdnIdAlert").val();
+                var IdHazard = $("#hdnIdHazard").val();
+                var Hazard = $("#hdnHazard").val();
+                window.location.href = 'ertpanel.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&IdAlertsERT=' + IdAlert + '&IdHazard=' + IdHazard + '&LatitudeSite=' + Latitude + '&LongitudeSite=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP + '&Hazard=' + escape(Hazard);
+                //************************************************
+            });
+            //***************************************
+            var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
+            var urlk1 = wcfServiceUrl + "ObtenerResponsabilities?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&IdHazard=' + IdHazard + '&Code=' + Code;
+            //***************************************
+            $.ajax({
+                cache: true,
+                url: urlk1,
+                crossDomain: true,
+                data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdHazard: " + IdHazard + ", Code: " + Code + " }",
+                type: "GET",
+                jsonpCallback: "resp",
+                contentType: "application/json; charset=utf-8",
+                dataType: "jsonp",
+                beforeSend: function () {
+                    $('#loader').show();
+                },
+                error: function (xhr, textStatus, err) {
+                    var mensaje = "readyState: " + xhr.readyState + "\n";
+                    mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                    mensaje = mensaje + "status: " + xhr.status + "\n";
+                    mensaje = mensaje + "text status: " + textStatus + "\n";
+                    mensaje = mensaje + "error: " + err + "\n";
+                    alert(mensaje);
+                    //navigator.notification.alert(mensaje, function () { }, "BCP Error");
+                    $('#loader').hide();
+                },
+                success: function (obj) {
+                    //******************************
+                    $("#txtResponsabilities").val(obj.ObtenerResponsabilitiesResult);
+                    //******************************
+                    $('textarea').keyup();
+                    //******************************
+                },
+                complete: function () {
+                    $('#loader').hide();
+                }
+            });
+
+            //***************************************
+        });
+        //***************************************
+    </script>
+</head>
+<body>
+    <div data-role="page" id="responsabilitiesID">
+        <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;font-size:11px;font-weight:normal;">
+            <h1 id="span1"></h1>
+            <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3;position:-ms-page;top: 12px !important;" data-role="button" role="button"></a>
+        </div>
+        <div role="main" class="ui-content" id="map-canvas">
+            <table>
+                <tr>
+                    <td style="text-align:left;font-weight:bold;">
+                        Responsabilities:
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:100%;">
+                        <textarea id="txtResponsabilities" rows="8" class="define-textarea" readonly="readonly"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <div id="loader" style="display:none;">
+                <div id="center">
+                    <img src="images/ajax-loader.gif" />
+                </div>
+            </div>
+        </div>
+        <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
+            ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/PushNotification.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+        <input type="hidden" id="hdnIdSite" />
+        <input type="hidden" id="hdnSite" />
+        <input type="hidden" id="hdnLatitude" />
+        <input type="hidden" id="hdnLongitude" />
+        <input type="hidden" id="hdnKeyword" />
+        <input type="hidden" id="hdnIdAlert" />
+        <input type="hidden" id="hdnIdHazard" />
+        <input type="hidden" id="hdnHazard" />
+    </div>
+</body>
+</html>
