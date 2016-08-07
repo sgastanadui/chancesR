@@ -41,7 +41,6 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
     <gap:plugin name="com.phonegap.plugins.PushPlugin" />
-    <gap:plugin name="org.frd49.cordova.exitapp" />
     <gap:plugin name="org.flybuy.cordova.background-location-services" />
     <clobbers target="window.BackgroundGeolocation" />
     <icon src="icon.png" />
