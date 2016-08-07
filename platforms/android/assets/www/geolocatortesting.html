@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title></title>
+    <link type="text/css" href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link type="text/css" href="css/index.css" rel="stylesheet" />
+    <!--<script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/PushNotification.js"></script>-->
+    <script type="text/javascript" src="js/geolocator.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript">
+        // Success Callback
+        $(document).on("pageinit", "#map-page-geolocator", function () {
+            //*********************************
+            //var IdAlert = getUrlVars()["IdAlert"];
+            //var IdSite = getUrlVars()["IdSite"];
+            //var IdCompany = getUrlVars()["IdCompany"];
+            //var IdHazard = getUrlVars()["IdHazard"];
+            //var IdContact = getUrlVars()["IdContact"];
+            //////*********************************
+            //$("#hdnIdCompany").val(IdCompany);
+            //$("#hdnIdAlert").val(IdAlert);
+            //$("#hdnIdSite").val(IdSite);
+            //$("#hdnIdContact").val(IdContact);
+            //$("#hdnIdHazard").val(IdHazard);
+            //alert(IdAlert + ' ' + IdSite + ' ' + IdCompany + ' ' + IdHazard + ' ' + IdContact)
+            //*********************************
+
+            // Locate by IP on load
+            //geolocator.locateByIP(onGeoSuccess, onGeoError, 2, 'map-canvas');
+
+            var html5Options = { enableHighAccuracy: true, timeout: 6000, maximumAge: 0 }
+            //ipFallbackIndex = chkFallback.checked ? cmbSource.selectedIndex : -1;
+            geolocator.locate(onGeoSuccess, onGeoError, 1, html5Options, 'map-canvas');
+
+            setInterval(Geolocations, 10000);
+
+            // Configure controls
+            var cmbSource = document.getElementById('cmb-source'),
+                btnLocateByIP = document.getElementById('btn-locate-ip'),
+                btnLocateHTML5 = document.getElementById('btn-locate'),
+                chkFallback = document.getElementById('chk-fallback');
+            // Click Event Handlers
+            btnLocateByIP.onclick = function () {
+                geolocator.locateByIP(onGeoSuccess, onGeoError, cmbSource.selectedIndex, 'map-canvas');
+            }
+            btnLocateHTML5.onclick = function () {
+                var html5Options = { enableHighAccuracy: true, timeout: 6000, maximumAge: 0 },
+                    ipFallbackIndex = chkFallback.checked ? cmbSource.selectedIndex : -1;
+                geolocator.locate(onGeoSuccess, onGeoError, ipFallbackIndex, html5Options, 'map-canvas');
+                //console.log('IP Fallback is ' + (ipFallbackIndex === -1 ? 'disabled' : 'enabled'));
+            }
+        })
+
+		function onGeoSuccess(location) {
+		    //console.log(location);
+		    var strLocation = '<b>Latitude:</b> ' + location.coords.latitude + '<br />' +
+		                    '<b>Longitude:</b> ' + location.coords.longitude + '<br />' +
+		                    '<b>City:</b> ' + location.address.city + '<br />' +
+		                    '<b>Country:</b> ' + location.address.country + '<br />' +
+		                    '<b>Country Code:</b> ' + location.address.countryCode + '<br />' +
+		                    '<b>Region:</b> ' + location.address.region + ''
+		    //document.getElementById('geo-details').innerHTML = strLocation;
+		    //************************************************
+		    //var IdCompany = $("#hdnIdCompany").val();
+		    //var IdAlert = $("#hdnIdAlert").val();
+		    //var IdSite = $("#hdnIdSite").val();
+		    //var IdContact = $("#hdnIdContact").val();
+		    //var IdHazard = $("#hdnIdHazard").val();
+		    ////************************************************
+		    //var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+		    ////************************************************
+		    //var urlk1 = wcfServiceUrl + "SaveHistoryLocationUser?IdAlert=" + IdAlert + '&IdCompany=' + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdHazard=' + IdHazard + '&Latitude=' + location.coords.latitude + '&Longitude=' + location.coords.longitude;
+		    ////************************************************
+		    //$.ajax({
+		    //    //cache: true,
+		    //    async: true,
+		    //    url: urlk1,
+		    //    crossDomain: true,
+		    //    data: "{ IdAlert: " + IdAlert + ", IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation:" + IdSite + ", Latitude: '" + location.coords.latitude + "', Longitude: '" + location.coords.longitude + "' }",
+		    //    type: "GET",
+		    //    jsonpCallback: "HistoryUser",
+		    //    contentType: "application/json; charset=utf-8",
+		    //    dataType: "jsonp",
+		    //    beforeSend: function () {
+		    //        //$('#loader').show();
+		    //    },
+		    //    error: function (xhr, textStatus, err) {
+		    //        var mensaje = "readyState: " + xhr.readyState + "\n";
+		    //        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+		    //        mensaje = mensaje + "status: " + xhr.status + "\n";
+		    //        mensaje = mensaje + "text status: " + textStatus + "\n";
+		    //        mensaje = mensaje + "error: " + err + "\n";
+		    //        //navigator.notification.alert(mensaje, function () { }, "BCP Error");
+		    //        //$('#loader').hide();
+		    //    },
+		    //    success: function (objHistory) {
+		    //        //******************************
+		    //        if (objHistory.SaveHistoryLocationUserResult > 0) {
+		    //            //navigator.notification.alert('Sucessful saved.');
+		    //        }
+		    //        //******************************
+		    //    },
+		    //    complete: function () {
+		    //        //$('#loader').hide();
+		    //    }
+		    //});
+		    //***************************************
+		}
+        // Error Callback
+		function onGeoError(error) {
+		    //alert(error);
+		    navigator.notification.alert(geolocator.isPositionError(error), function () { }, "BCP Error");
+		    //console.log(error);
+            // To check if this is a HTML5 `PositionError`:
+            // console.log(geolocator.isPositionError(error));
+		}
+
+		function Geolocations() {
+		    var html5Options = { enableHighAccuracy: true, timeout: 6000, maximumAge: 0 }
+		    geolocator.locate(onGeoSuccess, onGeoError, 1, html5Options, 'map-canvas');
+		}
+
+        // Load Event Handler
+		window.onload = function () {
+
+		}
+    </script>
+</head>
+<body>
+    <div data-role="page" id="map-page-geolocator">
+        <div id="container" style="display:none;">
+            <div id="controls">
+                Geo IP Source: <select id="cmb-source">
+                    <option value="0">Free GeoIP</option>
+                    <option value="1">Geo Plugin</option>
+                    <option selected value="2">Wikimedia</option>
+                </select>&nbsp;
+                <button id="btn-locate-ip">Locate by IP</button> |
+                <button id="btn-locate">Locate (HTML5)</button>
+                <input id="chk-fallback" type="checkbox" checked /> Fallback to IP
+            </div>
+            <!--<div id="geo-details"></div>-->
+        </div>
+        <div role="main" class="ui-content" id="map-canvas">
+            <!-- map loads here... -->
+        </div>
+        <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
+            ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
+        </div>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+        <input type="hidden" id="hdnIdCompany" />
+        <input type="hidden" id="hdnIdAlert" />
+        <input type="hidden" id="hdnIdSite" />
+        <input type="hidden" id="hdnIdContact" />
+        <input type="hidden" id="hdnIdHazard" />
+    </div>
+</body>
+</html>
