@@ -1,23 +1,23 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sites</title>
-    <!-- InsightBCPMobile references -->
-    <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
-    <!--<link href="css/jquery.mobile-1.4.5.css" rel="stylesheet" />-->
-    <link href="css/index.css" rel="stylesheet" />
-    <script src="js/jquery-2.1.3.min.js"></script>
-    <script src="js/jquery.mobile-1.4.5.min.js"></script>
-    <!--<script src="js/jquery.mobile-1.4.5.js"></script>-->
-    <script src="js/common.js"></script>
-
-    <script type="text/javascript">
-        //***************************************
-        var html = '';
-        //***************************************
-        function SendMessageGCMMobile(IdCompany, IdSite, Message, xType, Code) {
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Sites</title>
+        <!-- InsightBCPMobile references -->
+        <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+        <!--<link href="css/jquery.mobile-1.4.5.css" rel="stylesheet" />-->
+        <link href="css/index.css" rel="stylesheet" />
+        <script src="js/jquery-2.1.3.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+        <!--<script src="js/jquery.mobile-1.4.5.js"></script>-->
+        <script src="js/common.js"></script>
+        
+        <script type="text/javascript">
+            //***************************************
+            var html = '';
+            //***************************************
+            function SendMessageGCMMobile(IdCompany, IdSite, Message, xType, Code) {
                 //***************************************
                 var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
                 //***************************************
@@ -115,7 +115,7 @@
             html = html.trim() + ' <a href="#"  onclick="window.location.href = ' + "'" + 'chat.html?IdAlert=' + IdAlertsERT + '&IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&IdAlerts=' + IdAlertsERT + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '&IdHazard=' + IdHazard + '&Hazard=' + escape(HazardName) + "'" + '"><img src="images/chatroom.png" alt="" /></a>';
             //html = html.trim() + ' <a href="chat.html" data-rel="dialog" data-transition="flow"><img src="images/chatroom.png" alt="" /></a>';
             //html = html.trim() + ' <a href="chat.html" data-transition="slidefade"><img src="images/chatroom.png" alt="" /></a>';
-
+            
             html = html.trim() + ' </td>';
             html = html.trim() + ' <td style="font-size:10px;font-weight:normal;border-bottom-width:thin;">';
             html = html.trim() + ' <a href="#"  onclick="window.location.href = ' + "'" + 'ertpanel.html?IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT + '&IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '&Hazard=' + escape(HazardName) + "'" + '">ERT</a>';
@@ -171,7 +171,7 @@
                 $("#hdnKeyword").val(KeyBCP);
                 //$("#span1").html("" + CompanyName + " <br/> " + unescape(Site) + "");
                 $("#span1").html("" + CompanyName + "<br/>" + unescape(Site) + " <br/> Emergency Response Plan");
-
+                
                 var IdCompany = window.localStorage["IdCompany"];
                 //***************************************
                 wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
@@ -259,9 +259,9 @@
                        $('#loader').hide();
                        }
                        });
-
-
-
+                       
+                       
+                       
                        $("#closeListview").click();
             } catch (ex) {
                 navigator.notification.alert(ex.message, function () { }, "BCP Error");
@@ -294,7 +294,7 @@
                        $("#hdnKeyword").val(KeyBCP);
                        }
                        if (Site == undefined) Site = '';
-
+                       
                        var IdCompany = window.localStorage["IdCompany"];
                        var CompanyName = window.localStorage["CompanyName"];
                        var Code = window.localStorage["Code"];
@@ -365,226 +365,248 @@
                               //******************************
                               },
                               complete: function () {
-                              $('#loader').hide();
+                                $('#loader').hide();
                               }
                               });
-
+                       
                        //***************************************
                        $("#btnShooterERT").off("click");
                        $("#btnShooterERT").click(function () {
-                                                 //************************************************
-                                                 var IdCompany = window.localStorage["IdCompany"];
-                                                 var IdSite = $("#hdnIdSite").val();
-                                                 var Latitude = $("#hdnLatitude").val();
-                                                 var Longitude = $("#hdnLongitude").val();
-                                                 var Site = $("#hdnSite").val();
-                                                 var KeyBCP = $("#hdnKeyword").val();
-                                                 //************************************************
-                                                 if (IdSite.trim() == '') {
-                                                 navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
-                                                 return false;
-                                                 }
-                                                 //************************************************
-                                                 if (Site.trim() == '') {
-                                                 navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
-                                                 return false;
-                                                 }
-                                                 //************************************************
-                                                 window.location.href = 'activateerp.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&IdEvent=TH-SHO&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
-                                                 //************************************************
-                                                 });
-        //***************************************
-        $("#btnKidnapERT").off("click");
-        $("#btnKidnapERT").click(function () {
-        //************************************************
-            var IdCompany = window.localStorage["IdCompany"];
-            var IdSite = $("#hdnIdSite").val();
-            var Latitude = $("#hdnLatitude").val();
-            var Longitude = $("#hdnLongitude").val();
-            var Site = $("#hdnSite").val();
-            var KeyBCP = $("#hdnKeyword").val();
-            var IdEvent = 'TH-KID';
-            var Code = window.localStorage["Code"];
-            var IdContact = window.localStorage["IdContact"];
-            //************************************************
-            if (IdSite.trim() == '') {
-                navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
-                return false;
-            }
-            //************************************************
-            if (Site.trim() == '') {
-                navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
-                return false;
-            }
-            //***************************************
-            var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
-            urlk1 = wcfServiceUrl + "ListHazard?IdCompany=" + IdCompany + '&IdSite=' + IdSite + '&IdEvent=' + IdEvent + '&Code=' + Code;
-            //***************************************
-            $.ajax({
-                   cache: true,
-                   url: urlk1,
-                   crossDomain: true,
-                   data: "{ IdCompany: " + IdCompany + ", IdSite: " + IdSite + ", IdEvent: '" + IdEvent + "', Code: '" + Code + "' }",
-                   type: "GET",
-                   jsonpCallback: "lsobjHazard",
-                   contentType: "application/json; charset=utf-8",
-                   dataType: "jsonp",
-                   beforeSend: function () {
-                       $('#loader').show();
-                   },
-                   error: function (xhr, textStatus, err) {
-                       var mensaje = "readyState: " + xhr.readyState + "\n";
-                       mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
-                       mensaje = mensaje + "status: " + xhr.status + "\n";
-                       mensaje = mensaje + "text status: " + textStatus + "\n";
-                       mensaje = mensaje + "error: " + err + "\n";
-                       navigator.notification.alert(mensaje, function () { }, "BCP Error");
-                       $('#loader').hide();
-                   },
-                   success: function (obj) {
-                       //******************************
-                       if (obj.ListHazardResult.length > 0) {
-                       //******************************
-                       var Latitude = '', Longitude = '';
-                       //******************************
-                       if (obj.ListHazardResult[0].RequiredKey == false)
-                       {
-                       ////************************************************
-                       var message = 'Warning! If you activate the ERP, our automated system will notify and send alert messages via email to each member of the Emergency Response Team (ERT). Are you sure you want to activate the ERP ?';
-                   if (obj.ListHazardResult[0].RequiredMessageConfirm == true)
-                   {
-                   navigator.notification.confirm(
-                          message,
-                          function (buttonIndex) {// callback a invocar cuando el botón es presionado
-                          if (buttonIndex == 2) {
-                          //************************************************
-                          var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
-                          urlk1 = wcfServiceUrl + "SaveActivateERT?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdHazard=' + obj.ListHazardResult[0].IdHazard + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&CommentsERP=Help!' + '&Code=' + Code;
-                          //************************************************
-                          $.ajax({
-                             cache: true,
-                             //async: true,
-                             url: urlk1,
-                             crossDomain: true,
-                             data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation: " + IdSite + ", IdHazard:" + obj.ListHazardResult[0].IdHazard + ", Latitude: '" + Latitude + "', Longitude: '" + Longitude + "', CommentsERP: 'Help!', Code: '"+ Code +"' }",
-                             type: "GET",
-                             jsonpCallback: "ActivateERP",
-                             contentType: "application/json; charset=utf-8",
-                             dataType: "jsonp",
-                             beforeSend: function () {
-                                 $('#loader').show();
-                             },
-                             error: function (xhr, textStatus, err) {
-                                 var mensaje = "readyState: " + xhr.readyState + "\n";
-                                 mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
-                                 mensaje = mensaje + "status: " + xhr.status + "\n";
-                                 mensaje = mensaje + "text status: " + textStatus + "\n";
-                                 mensaje = mensaje + "error: " + err + "\n";
-                                 navigator.notification.alert(mensaje, function () { }, "BCP Error");
-                                 $('#loader').hide();
-                             },
-                             success: function (objERT) {
-                                 //******************************
-                                 if (objERT.SaveActivateERTResult > 0) {
-                                 //*************************
-                                 var Message = window.localStorage["ContactName"] + ' has activated ERP for ' + obj.ListHazardResult[0].HazardName;
-                                 //*************************
-                                 SendMessageGCMMobile(window.localStorage["IdCompany"], $("#hdnIdSite").val(), Message, 'ERT', window.localStorage["Code"]);
-                                 //*************************
-                                 //navigator.notification.alert("ERP has been activated", function () { }, "BCP Alert");
-                                 //*************************
-                                 window.location.href = 'geotrack.html?IdAlert=' + objERT.SaveActivateERTResult + '&IdSite=' + IdSite + '&IdCompany=' + IdCompany + '&IdHazard=' + obj.ListHazardResult[0].IdHazard + '&IdContact=' + IdContact;
-                                 //*************************
-                             } else {
-                                 alert('fail')
+                             //************************************************
+                             var IdCompany = window.localStorage["IdCompany"];
+                             var IdSite = $("#hdnIdSite").val();
+                             var Latitude = $("#hdnLatitude").val();
+                             var Longitude = $("#hdnLongitude").val();
+                             var Site = $("#hdnSite").val();
+                             var KeyBCP = $("#hdnKeyword").val();
+                             //************************************************
+                             if (IdSite.trim() == '') {
+                                navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
+                                return false;
                              }
-                             //******************************
-                             },
-                             complete: function () {
-                                 $('#loader').hide();
+                             //************************************************
+                             if (Site.trim() == '') {
+                                navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
+                                return false;
                              }
-                          });
-                          //***************************************
-                          }
-                        },
-                          'Activation ERP', // titulo de la ventana
-                          'Cancel,Yes' // etiquetas de los botones
-                       );
-
-                        return false;
-
-                   }else{
-
-                   //************************************************
-                   var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
-                   urlk1 = wcfServiceUrl + "SaveActivateERT?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdHazard=' + obj.ListHazardResult[0].IdHazard + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&CommentsERP=Help!' + '&Code=' + Code;
-                   //************************************************
-                   $.ajax({
-                          cache: true,
-                          //async: true,
-                          url: urlk1,
-                          crossDomain: true,
-                          data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation: " + IdSite + ", IdHazard:" + obj.ListHazardResult[0].IdHazard + ", Latitude: '" + Latitude + "', Longitude: '" + Longitude + "', CommentsERP: 'Help!', Code: '"+ Code +"' }",
-                          type: "GET",
-                          jsonpCallback: "ActivateERP",
-                          contentType: "application/json; charset=utf-8",
-                          dataType: "jsonp",
-                          beforeSend: function () {
-                          $('#loader').show();
-                          },
-                          error: function (xhr, textStatus, err) {
-                          var mensaje = "readyState: " + xhr.readyState + "\n";
-                          mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
-                          mensaje = mensaje + "status: " + xhr.status + "\n";
-                          mensaje = mensaje + "text status: " + textStatus + "\n";
-                          mensaje = mensaje + "error: " + err + "\n";
-                          navigator.notification.alert(mensaje, function () { }, "BCP Error");
-                          $('#loader').hide();
-                          },
-                          success: function (objERT) {
-                          //******************************
-                          if (objERT.SaveActivateERTResult > 0) {
-                          //*************************
-                          var Message = window.localStorage["ContactName"] + ' has activated ERP for ' + obj.ListHazardResult[0].HazardName;
-                          //*************************
-                          SendMessageGCMMobile(window.localStorage["IdCompany"], $("#hdnIdSite").val(), Message, 'ERT', window.localStorage["Code"]);
-                          //*************************
-                          //navigator.notification.alert("ERP has been activated", function () { }, "BCP Alert");
-                          //*************************
-                          window.location.href = 'geotrack.html?IdAlert=' + objERT.SaveActivateERTResult + '&IdSite=' + IdSite + '&IdCompany=' + IdCompany + '&IdHazard=' + obj.ListHazardResult[0].IdHazard + '&IdContact=' + IdContact;
-                          //*************************
-                          } else {
-                          alert('fail')
-                          }
-                          //******************************
-                          },
-                          complete: function () {
-                          $('#loader').hide();
-                          }
-                          });
-                   //***************************************
-
-                   }
-
-                       //************************************************
-                       } else {
-                       //************************************************
-                       window.location.href = 'kipnapert.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&IdEvent=TH-KID&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
-                       //************************************************
-                       }
-                       //******************************
-                       } else {
-                       //************************************************
-                       window.location.href = 'kipnapert.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&IdEvent=TH-KID&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
-                       //************************************************
-                       }
-                   //******************************
-                   },
-                   complete: function () {
-                       $('#loader').hide();
-                   }
-                });
-            });
+                             //************************************************
+                             window.location.href = 'activateerp.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&IdEvent=TH-SHO&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                             //************************************************
+                        });
+                       //***************************************
+                       $("#btnKidnapERT").off("click");
+                       $("#btnKidnapERT").click(function () {
+                                                //************************************************
+                                                var IdCompany = window.localStorage["IdCompany"];
+                                                var IdSite = $("#hdnIdSite").val();
+                                                var Latitude = $("#hdnLatitude").val();
+                                                var Longitude = $("#hdnLongitude").val();
+                                                var Site = $("#hdnSite").val();
+                                                var KeyBCP = $("#hdnKeyword").val();
+                                                var IdEvent = 'TH-KID';
+                                                var Code = window.localStorage["Code"];
+                                                var IdContact = window.localStorage["IdContact"];
+                                                //************************************************
+                                                if (IdSite.trim() == '') {
+                                                navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
+                                                return false;
+                                                }
+                                                //************************************************
+                                                if (Site.trim() == '') {
+                                                navigator.notification.alert("Please select site.", function () { }, "BCP Alert");
+                                                return false;
+                                                }
+                                                //***************************************
+                                                var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+                                                urlk1 = wcfServiceUrl + "ListHazard?IdCompany=" + IdCompany + '&IdSite=' + IdSite + '&IdEvent=' + IdEvent + '&Code=' + Code;
+                                                //***************************************
+                                                $.ajax({
+                                                       cache: true,
+                                                       url: urlk1,
+                                                       crossDomain: true,
+                                                       data: "{ IdCompany: " + IdCompany + ", IdSite: " + IdSite + ", IdEvent: '" + IdEvent + "', Code: '" + Code + "' }",
+                                                       type: "GET",
+                                                       jsonpCallback: "lsobjHazard",
+                                                       contentType: "application/json; charset=utf-8",
+                                                       dataType: "jsonp",
+                                                       beforeSend: function () {
+                                                       $('#loader').show();
+                                                       },
+                                                       error: function (xhr, textStatus, err) {
+                                                       var mensaje = "readyState: " + xhr.readyState + "\n";
+                                                       mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                                                       mensaje = mensaje + "status: " + xhr.status + "\n";
+                                                       mensaje = mensaje + "text status: " + textStatus + "\n";
+                                                       mensaje = mensaje + "error: " + err + "\n";
+                                                       navigator.notification.alert(mensaje, function () { }, "BCP Error");
+                                                       $('#loader').hide();
+                                                       },
+                                                       success: function (obj) {
+                                                       //******************************
+                                                       if (obj.ListHazardResult.length > 0) {
+                                                       //******************************
+                                                       var Latitude = '', Longitude = '';
+                                                       //******************************
+                                                       if (obj.ListHazardResult[0].RequiredKey == false)
+                                                       {
+                                                       ////************************************************
+                                                       //if (navigator.geolocation) {
+                                                       //    function success(pos) {
+                                                       //        // Location found, show map with these coordinates
+                                                       //        //************************************************
+                                                       //        Latitude = pos.coords.latitude;
+                                                       //        Longitude = pos.coords.longitude;
+                                                       //        //************************************************
+                                                       //    }
+                                                       //    function fail(error) {
+                                                       //        switch (error.code) {
+                                                       //            case error.PERMISSION_DENIED:
+                                                       //                navigator.notification.alert("User denied the request for Geolocation.", function () { }, "BCP Error");
+                                                       //                break;
+                                                       //            case error.POSITION_UNAVAILABLE:
+                                                       //                navigator.notification.alert("Location information is unavailable.", function () { }, "BCP Error");
+                                                       //                break;
+                                                       //            case error.TIMEOUT:
+                                                       //                navigator.notification.alert("The request to get user location timed out.", function () { }, "BCP Error");
+                                                       //                break;
+                                                       //            case error.UNKNOWN_ERROR:
+                                                       //                navigator.notification.alert("An unknown error occurred.", function () { }, "BCP Error");
+                                                       //                break;
+                                                       //        }
+                                                       //        drawMap(defaultLatLng);  // Failed to find location, show default map
+                                                       //    }
+                                                       //    // Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
+                                                       //    navigator.geolocation.getCurrentPosition(success, fail, { maximumAge: 30000, enableHighAccuracy: true, timeout: 6000 });
+                                                       //}
+                                                       var message = 'Warning! If you activate the ERP, our automated system will notify and send alert messages via email to each member of the Emergency Response Team (ERT). Are you sure you want to activate the ERP ?';
+                                                       navigator.notification.confirm(
+                                                                                      message,
+                                                                                      function (buttonIndex) {// callback a invocar cuando el botón es presionado
+                                                                                      if (buttonIndex == 2) {
+                                                                                      //************************************************
+                                                                                      var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+                                                                                      urlk1 = wcfServiceUrl + "SaveActivateERT?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdHazard=' + obj.ListHazardResult[0].IdHazard + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&CommentsERP=Help!' + '&Code=' + Code;
+                                                                                      //************************************************
+                                                                                      $.ajax({
+                                                                                             cache: true,
+                                                                                             //async: true,
+                                                                                             url: urlk1,
+                                                                                             crossDomain: true,
+                                                                                             data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation: " + IdSite + ", IdHazard:" + obj.ListHazardResult[0].IdHazard + ", Latitude: '" + Latitude + "', Longitude: '" + Longitude + "', CommentsERP: 'Help!', Code: '"+ Code +"' }",
+                                                                                             type: "GET",
+                                                                                             jsonpCallback: "ActivateERP",
+                                                                                             contentType: "application/json; charset=utf-8",
+                                                                                             dataType: "jsonp",
+                                                                                             beforeSend: function () {
+                                                                                             $('#loader').show();
+                                                                                             },
+                                                                                             error: function (xhr, textStatus, err) {
+                                                                                             var mensaje = "readyState: " + xhr.readyState + "\n";
+                                                                                             mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                                                                                             mensaje = mensaje + "status: " + xhr.status + "\n";
+                                                                                             mensaje = mensaje + "text status: " + textStatus + "\n";
+                                                                                             mensaje = mensaje + "error: " + err + "\n";
+                                                                                             navigator.notification.alert(mensaje, function () { }, "BCP Error");
+                                                                                             $('#loader').hide();
+                                                                                             },
+                                                                                             success: function (objERT) {
+                                                                                             //******************************
+                                                                                             if (objERT.SaveActivateERTResult > 0) {
+                                                                                             //*************************
+                                                                                             var Message = window.localStorage["ContactName"] + ' has activated ERP for ' + obj.ListHazardResult[0].HazardName;
+                                                                                             //*************************
+                                                                                             SendMessageGCMMobile(window.localStorage["IdCompany"], $("#hdnIdSite").val(), Message, 'ERT', window.localStorage["Code"]);
+                                                                                             //*************************
+                                                                                             //navigator.notification.alert("ERP has been activated", function () { }, "BCP Alert");
+                                                                                             //*************************
+                                                                                             window.location.href = 'geotrack.html?IdAlert=' + objERT.SaveActivateERTResult + '&IdSite=' + IdSite + '&IdCompany=' + IdCompany + '&IdHazard=' + obj.ListHazardResult[0].IdHazard + '&IdContact=' + IdContact;
+                                                                                             //*************************
+                                                                                             } else {
+                                                                                             alert('fail')
+                                                                                             }
+                                                                                             //******************************
+                                                                                             },
+                                                                                             complete: function () {
+                                                                                             $('#loader').hide();
+                                                                                             }
+                                                                                             });
+                                                                                      //***************************************
+                                                                                      }
+                                                                                      },
+                                                                                      'Activation ERP', // titulo de la ventana
+                                                                                      'Cancel,Yes' // etiquetas de los botones
+                                                                                      );
+                                                       return false;
+                                                       //************************************************
+                                                       //if (confirm('Warning! If you activate the ERP, our automated system will notify and send alert messages via email to each member of the Emergency Response Team (ERT). Are you sure you want to activate the ERP ?')) {
+                                                       //    //************************************************
+                                                       //    var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+                                                       //    urlk1 = wcfServiceUrl + "SaveActivateERT?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdHazard=' + obj.ListHazardResult[0].IdHazard + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&CommentsERP=Help!';
+                                                       //    //************************************************
+                                                       //    $.ajax({
+                                                       //        cache: true,
+                                                       //        //async: true,
+                                                       //        url: urlk1,
+                                                       //        crossDomain: true,
+                                                       //        data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation: " + IdSite + ", IdHazard:" + obj.ListHazardResult[0].IdHazard + ", Latitude: '" + Latitude + "', Longitude: '" + Longitude + "', CommentsERP: 'Help!' }",
+                                                       //        type: "GET",
+                                                       //        jsonpCallback: "ActivateERP",
+                                                       //        contentType: "application/json; charset=utf-8",
+                                                       //        dataType: "jsonp",
+                                                       //        beforeSend: function () {
+                                                       //            $('#loader').show();
+                                                       //        },
+                                                       //        error: function (xhr, textStatus, err) {
+                                                       //            var mensaje = "readyState: " + xhr.readyState + "\n";
+                                                       //            mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                                                       //            mensaje = mensaje + "status: " + xhr.status + "\n";
+                                                       //            mensaje = mensaje + "text status: " + textStatus + "\n";
+                                                       //            mensaje = mensaje + "error: " + err + "\n";
+                                                       //            navigator.notification.alert(mensaje, function () { }, "BCP Error");
+                                                       //            $('#loader').hide();
+                                                       //        },
+                                                       //        success: function (objERT) {
+                                                       //            //******************************
+                                                       //            if (objERT.SaveActivateERTResult > 0) {
+                                                       //                //*************************
+                                                       //                var Message = window.localStorage["ContactName"] + ' has activated ERP for ' + obj.ListHazardResult[0].HazardName;
+                                                       //                //*************************
+                                                       //                SendMessageGCMMobile(window.localStorage["IdCompany"], $("#hdnIdSite").val(), Message, 'ERT');
+                                                       //                //*************************
+                                                       //                //navigator.notification.alert("ERP has been activated", function () { }, "BCP Alert");
+                                                       //                //*************************
+                                                       //                window.location.href = 'geolocator.html?IdAlert=' + objERT.SaveActivateERTResult + '&IdSite=' + IdSite + '&IdCompany=' + IdCompany + '&IdHazard=' + obj.ListHazardResult[0].IdHazard + '&IdContact=' + IdContact;
+                                                       //                //*************************
+                                                       //            } else {
+                                                       //                alert('fail')
+                                                       //            }
+                                                       //            //******************************
+                                                       //        },
+                                                       //        complete: function () {
+                                                       //            $('#loader').hide();
+                                                       //        }
+                                                       //    });
+                                                       //    //***************************************
+                                                       //}
+                                                       //************************************************
+                                                       } else {
+                                                       //************************************************
+                                                       window.location.href = 'kipnapert.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&IdEvent=TH-KID&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                                                       //************************************************
+                                                       }
+                                                       //******************************
+                                                       } else {
+                                                       //************************************************
+                                                       window.location.href = 'kipnapert.html?IdCompany=' + IdCompany + '&IdSite=' + IdSite + '&Latitude=' + Latitude + '&IdEvent=TH-KID&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                                                       //************************************************
+                                                       }
+                                                       //******************************
+                                                       },
+                                                       complete: function () {
+                                                       $('#loader').hide();
+                                                       }
+                                                       });
+                                                });
                        //***************************************
                        $("#btnFireERT").off("click");
                        $("#btnFireERT").click(function () {
@@ -779,124 +801,123 @@
                                                    });
                        //***************************************
                        });
-        //***************************************
-    </script>
-    <style>
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-            border: 1px solid #bbb;
-        }
-
+                       //***************************************
+            </script>
+        <style>
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+                border: 1px solid #bbb;
+            }
         .ui-content {
             margin: 0px 3px 0px 0px !important;
             padding: 0px 3px 0px 0px !important;
         }
-    </style>
-</head>
-<body>
-    <div data-role="page" id="panel-responsive-page1" class="jqm-demos ui-responsive-panel" data-title="Panel responsive page" data-url="panel-responsive-page1">
-        <!-- /header -->
-        <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;">
-            <!--<br />-->
-            <h1 id="span1"></h1>
-            <a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#0065B3;color:white;position:-ms-page;top: 12px !important;">Menu</a>
-        </div>
-        <!-- /content -->
-        <div role="main" class="ui-content" style="background-color:white;align-content:center;">
-            <div>
-                <table>
-                    <tr>
-                        <td>
-                            <input type="button" value="Shooter" id="btnShooterERT">
-                        </td>
-                        <td>
-                            <input type="button" value="Kidnap" id="btnKidnapERT">
-                        </td>
-                        <td>
-                            <input type="button" value="Fire" id="btnFireERT">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="button" value="Injury" id="btnInjuryERT">
-                        </td>
-                        <td>
-                            <input type="button" value="Chemical" id="btnChemicalERT">
-                        </td>
-                        <td>
-                            <input type="button" value="Tornado" id="btnTornadoERT">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="button" value="Marine" id="btnMarineERT">
-                        </td>
-                        <td>
-                            <input type="button" value="Recall" id="btnRecallERT">
-                        </td>
-                        <td>
-                            <input type="button" value="Other" id="btnOtherERT">
-                        </td>
-                    </tr>
-                </table>
+        </style>
+    </head>
+    <body>
+        <div data-role="page" id="panel-responsive-page1" class="jqm-demos ui-responsive-panel" data-title="Panel responsive page" data-url="panel-responsive-page1">
+            <!-- /header -->
+            <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;">
+                <!--<br />-->
+                <h1 id="span1"></h1>
+                <a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#0065B3;color:white;position:-ms-page;top: 12px !important;">Menu</a>
             </div>
-            <div>
-                <table>
-                    <tr>
-                        <td>
-                            <div id="resultERT"></div>
-                        </td>
-                    </tr>
-                </table>
+            <!-- /content -->
+            <div role="main" class="ui-content" style="background-color:white;align-content:center;">
+                <div>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="button" value="Shooter" id="btnShooterERT">
+                                    </td>
+                            <td>
+                                <input type="button" value="Kidnap" id="btnKidnapERT">
+                                    </td>
+                            <td>
+                                <input type="button" value="Fire" id="btnFireERT">
+                                    </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" value="Injury" id="btnInjuryERT">
+                                    </td>
+                            <td>
+                                <input type="button" value="Chemical" id="btnChemicalERT">
+                                    </td>
+                            <td>
+                                <input type="button" value="Tornado" id="btnTornadoERT">
+                                    </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" value="Marine" id="btnMarineERT">
+                                    </td>
+                            <td>
+                                <input type="button" value="Recall" id="btnRecallERT">
+                                    </td>
+                            <td>
+                                <input type="button" value="Other" id="btnOtherERT">
+                                    </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td>
+                                <div id="resultERT"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="button" value="Activate Recovery Plan" id="btnActivateCOOP">
+                                    </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td>
+                                <div id="resultCOOP"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-            <div>
-                <table>
-                    <tr>
-                        <td>
-                            <input type="button" value="Activate Recovery Plan" id="btnActivateCOOP">
-                        </td>
-                    </tr>
-                </table>
+            <!-- /panel -->
+            <div data-role="panel" data-display="push" data-theme="a" id="nav-panel" style="background-color:#0065B3;color:white;">
+                <input data-type="search" id="txtsearch" placeholder="Search location" /><br />
+                <ul data-role="listview" id="mylist" style="background-color:#0065B3;color:white;" data-filter="true" data-input="#txtsearch">
+                    <li data-icon="delete"><a href="#" data-rel="close" id="closeListview" style="background-color:#0065B3;color:white;font-size:12px;font-weight:normal;">Close menu</a></li>
+                </ul>
             </div>
-            <div>
-                <table>
-                    <tr>
-                        <td>
-                            <div id="resultCOOP"></div>
-                        </td>
-                    </tr>
-                </table>
+            <!-- /footer -->
+            <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
+                ©BCP Insight Risk Technologies, LLC <span class="jqm-version"></span>
             </div>
-        </div>
-        <!-- /panel -->
-        <div data-role="panel" data-display="push" data-theme="a" id="nav-panel" style="background-color:#0065B3;color:white;">
-            <input data-type="search" id="txtsearch" placeholder="Search location" /><br />
-            <ul data-role="listview" id="mylist" style="background-color:#0065B3;color:white;" data-filter="true" data-input="#txtsearch">
-                <li data-icon="delete"><a href="#" data-rel="close" id="closeListview" style="background-color:#0065B3;color:white;font-size:12px;font-weight:normal;">Close menu</a></li>
-            </ul>
-        </div>
-        <!-- /footer -->
-        <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
-            ©BCP Insight Risk Technologies, LLC <span class="jqm-version"></span>
-        </div>
-        <!-- Div Loading -->
-        <div id="loader" style="display:none;">
-            <div id="center">
-                <img src="images/ajax-loader.gif" />
+            <!-- Div Loading -->
+            <div id="loader" style="display:none;">
+                <div id="center">
+                    <img src="images/ajax-loader.gif" />
+                </div>
             </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/PushNotification.js"></script>
-        <script type="text/javascript">
+            <script type="text/javascript" src="cordova.js"></script>
+            <script type="text/javascript" src="js/index.js"></script>
+            <script type="text/javascript" src="js/PushNotification.js"></script>
+            <script type="text/javascript">
                 app.initialize();
-        </script>
-    </div>
-    <input type="hidden" id="hdnIdSite" />
-    <input type="hidden" id="hdnSite" />
-    <input type="hidden" id="hdnLatitude" />
-    <input type="hidden" id="hdnLongitude" />
-    <input type="hidden" id="hdnKeyword" />
-</body>
+                </script>
+        </div>
+        <input type="hidden" id="hdnIdSite" />
+        <input type="hidden" id="hdnSite" />
+        <input type="hidden" id="hdnLatitude" />
+        <input type="hidden" id="hdnLongitude" />
+        <input type="hidden" id="hdnKeyword" />
+    </body>
 </html>

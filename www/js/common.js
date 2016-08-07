@@ -20,7 +20,3 @@ function hideModal() {
     $.mobile.hidePageLoadingMsg();
 
 }
-
-function cleanDate(d) {
-    return new Date(+d.replace(/\/Date\((\d+)\)\//, '$1'));
-}

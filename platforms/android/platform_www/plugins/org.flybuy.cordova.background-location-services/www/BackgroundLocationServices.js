@@ -1,4 +1,5 @@
-cordova.define("org.flybuy.cordova.background-location-services.BackgroundLocationServices", function(require, exports, module) { var exec = require("cordova/exec");
+cordova.define("org.flybuy.cordova.background-location-services.BackgroundLocationServices", function(require, exports, module) {
+var exec = require("cordova/exec");
 module.exports = {
     pName : 'BackgroundLocationServices',
     config: {},

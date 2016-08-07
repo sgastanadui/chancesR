@@ -72,5 +72,22 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-actionsheet": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-actionsheet"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "org.frd49.cordova.exitapp": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/FRD49/iOS-ExitApp",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
