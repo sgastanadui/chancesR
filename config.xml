@@ -21,7 +21,7 @@
     <preference name="android-installLocation" value="auto" />
     <preference name="deployment-target" value="23.0.1" />
     <preference name="splash-screen-duration" value="5000" />
-    <preference name="load-url-timeout" value="20000" />
+    <preference name="load-url-timeout" value="70000" />
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
@@ -95,4 +95,6 @@
     <access origin="https://*.google.com" />
     <access origin="https://*.gstatic.com" />
     <access origin="https://*.googleapis.com" />
+    <access origin="https://*.chancesrmis.com" />
+    <access origin="http://23.253.204.98" />
 </widget>
