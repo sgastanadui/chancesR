@@ -106,12 +106,9 @@
                     //************************************************
                 });
                 //***************************************
-
-                var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
-                //var wcfServiceUrl = "http://localhost:10786/AutenticationMobile.svc/";
-
+                var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
                 var urlk1 = wcfServiceUrl + "ListMember?IdCompany=" + IdCompany + "&TypeMember=2&IdInsightBCP=-1";
-
+                //***************************************
                 $.ajax({
                     cache: true,
                     url: urlk1,
@@ -131,8 +128,8 @@
                         mensaje = mensaje + "status: " + xhr.status + "\n";
                         mensaje = mensaje + "text status: " + textStatus + "\n";
                         mensaje = mensaje + "error: " + err + "\n";
-                        //alert(mensaje);
-                        navigator.notification.alert(mensaje, function () { }, "BCP Error");
+                        alert(mensaje);
+                        //navigator.notification.alert(mensaje, function () { }, "BCP Error");
                         $('#results').html("");
                         $('#loader').hide();
                     },
@@ -165,8 +162,7 @@
                         $('#loader').hide();
                     }
                 });
-
-                
+                //***************************************
             });
 
         </script>

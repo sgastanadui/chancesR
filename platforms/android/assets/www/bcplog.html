@@ -118,9 +118,7 @@
             });
             //***************************************
 
-            var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
-            //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
-
+            var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
             var urlk1 = wcfServiceUrl + "ListAlerts?IdCompany=" + IdCompany;
 
             $.ajax({
@@ -142,8 +140,8 @@
                     mensaje = mensaje + "status: " + xhr.status + "\n";
                     mensaje = mensaje + "text status: " + textStatus + "\n";
                     mensaje = mensaje + "error: " + err + "\n";
-                    //alert(mensaje);
-                    navigator.notification.alert(mensaje, function () { }, "BCP Error");
+                    alert(mensaje);
+                    //navigator.notification.alert(mensaje, function () { }, "BCP Error");
                     $('#resultERT').html("");
                     $('#resultCOOP').html('');
                     $('#loader').hide();
@@ -203,6 +201,12 @@
     });
 
     </script>
+    <style>
+        .ui-content {
+            margin: 0px 5px 0px 0px !important;
+            padding: 0px 5px 0px 0px !important;
+        }
+    </style>
 
 </head>
 <body>
@@ -211,7 +215,7 @@
             <h1 id="span1"></h1>
             <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3;position:-ms-page;top: 12px !important;" data-role="button" role="button"></a>
         </div>
-        <div data-role="content" style="background-color:white;">
+        <div role="main" class="ui-content" style="background-color:white;">
             <div data-theme="a" data-form="ui-body-a" class="ui-body ui-body-a ui-corner-all">
                 <div id="resultERT"></div>
             </div>
