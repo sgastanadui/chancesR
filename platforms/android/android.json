@@ -9,6 +9,10 @@
                 "parents": {
                     "/*": [
                         {
+                            "xml": "<feature name=\"PushPlugin\"><param name=\"android-package\" value=\"com.plugin.gcm.PushPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"ActionSheet\"><param name=\"android-package\" value=\"nl.xservices.plugins.actionsheet.ActionSheet\" /></feature>",
                             "count": 1
                         },
@@ -39,10 +43,6 @@
                         {
                             "xml": "<feature name=\"LaunchNavigator\"><param name=\"android-package\" value=\"uk.co.workingedge.phonegap.plugin.LaunchNavigator\" /></feature>",
                             "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"PushPlugin\"><param name=\"android-package\" value=\"com.plugin.gcm.PushPlugin\" /></feature>",
-                            "count": 1
                         }
                     ]
                 }
@@ -55,8 +55,28 @@
                             "count": 2
                         },
                         {
+                            "xml": "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\" />",
+                            "count": 1
+                        },
+                        {
                             "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
                             "count": 2
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"com.google.android.c2dm.permission.RECEIVE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<permission android:name=\"com.chancesrmis.ertdashboard.permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"com.chancesrmis.ertdashboard.permission.C2D_MESSAGE\" />",
+                            "count": 1
                         },
                         {
                             "xml": "<uses-permission android:name=\"com.google.android.gms.permission.ACTIVITY_RECOGNITION\" />",
@@ -77,37 +97,9 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
                             "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"com.google.android.c2dm.permission.RECEIVE\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<permission android:name=\"com.chancesrmis.ertdashboard.permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"com.chancesrmis.ertdashboard.permission.C2D_MESSAGE\" />",
-                            "count": 1
                         }
                     ],
                     "/manifest/application": [
-                        {
-                            "xml": "<meta-data android:name=\"com.google.android.gms.version\" android:value=\"@integer/google_play_services_version\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<service android:enabled=\"true\" android:name=\"com.flybuy.cordova.location.BackgroundLocationUpdateService\" />",
-                            "count": 1
-                        },
                         {
                             "xml": "<activity android:exported=\"true\" android:name=\"com.plugin.gcm.PushHandlerActivity\" />",
                             "count": 1
@@ -118,6 +110,14 @@
                         },
                         {
                             "xml": "<service android:name=\"com.plugin.gcm.GCMIntentService\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<meta-data android:name=\"com.google.android.gms.version\" android:value=\"@integer/google_play_services_version\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<service android:enabled=\"true\" android:name=\"com.flybuy.cordova.location.BackgroundLocationUpdateService\" />",
                             "count": 1
                         }
                     ],
@@ -166,6 +166,9 @@
         }
     },
     "installed_plugins": {
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
         "cordova-plugin-actionsheet": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
@@ -198,13 +201,18 @@
         },
         "uk.co.workingedge.phonegap.plugin.launchnavigator": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
-        },
-        "com.phonegap.plugins.PushPlugin": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
     "dependent_plugins": {},
     "modules": [
+        {
+            "id": "com.phonegap.plugins.PushPlugin.PushNotification",
+            "file": "plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js",
+            "pluginId": "com.phonegap.plugins.PushPlugin",
+            "clobbers": [
+                "PushNotification"
+            ]
+        },
         {
             "id": "cordova-plugin-actionsheet.ActionSheet",
             "file": "plugins/cordova-plugin-actionsheet/www/ActionSheet.js",
@@ -468,17 +476,10 @@
             "merges": [
                 "launchnavigator"
             ]
-        },
-        {
-            "id": "com.phonegap.plugins.PushPlugin.PushNotification",
-            "file": "plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js",
-            "pluginId": "com.phonegap.plugins.PushPlugin",
-            "clobbers": [
-                "PushNotification"
-            ]
         }
     ],
     "plugin_metadata": {
+        "com.phonegap.plugins.PushPlugin": "2.5.0",
         "cordova-plugin-actionsheet": "2.2.2",
         "cordova-plugin-console": "1.0.2",
         "cordova-plugin-device": "1.1.0",
@@ -489,7 +490,6 @@
         "cordova-plugin-network-information": "1.1.0",
         "org.flybuy.cordova.background-location-services": "1.0.0",
         "org.frd49.cordova.exitapp": "1.0.0",
-        "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4",
-        "com.phonegap.plugins.PushPlugin": "2.5.0"
+        "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4"
     }
 }

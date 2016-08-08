@@ -7,6 +7,9 @@
         "files": {}
     },
     "installed_plugins": {
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
@@ -29,9 +32,6 @@
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "org.frd49.cordova.exitapp": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
-        },
-        "com.phonegap.plugins.PushPlugin": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
