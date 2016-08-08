@@ -1,9 +1,0 @@
-{
-    "AudioToolbox.framework": 2,
-    "SystemConfiguration.framework": 1,
-    "CoreLocation.framework": 2,
-    "AVFoundation.framework": 2,
-    "libsqlite3.dylib": 1,
-    "com.google.android.gms:play-services-location:+": 1,
-    "MapKit.framework": 1
-}

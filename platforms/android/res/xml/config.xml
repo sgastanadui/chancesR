@@ -3,9 +3,6 @@
     <feature name="PushPlugin">
         <param name="android-package" value="com.plugin.gcm.PushPlugin" />
     </feature>
-    <feature name="ActionSheet">
-        <param name="android-package" value="nl.xservices.plugins.actionsheet.ActionSheet" />
-    </feature>
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
@@ -24,9 +21,6 @@
     </feature>
     <feature name="BackgroundLocationServices">
         <param name="android-package" value="com.flybuy.cordova.location.BackgroundLocationServicesPlugin" />
-    </feature>
-    <feature name="LaunchNavigator">
-        <param name="android-package" value="uk.co.workingedge.phonegap.plugin.LaunchNavigator" />
     </feature>
     <name>Insight BCP Mobile</name>
     <description>Insight BCP Mobile</description>
