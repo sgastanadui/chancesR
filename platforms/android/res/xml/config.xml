@@ -1,16 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.chancesrmis.ertdashboard" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.chancesrmis.ertdashboard" version="1.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
     <feature name="PushPlugin">
         <param name="android-package" value="com.plugin.gcm.PushPlugin" />
-    </feature>
-    <feature name="ActionSheet">
-        <param name="android-package" value="nl.xservices.plugins.actionsheet.ActionSheet" />
-    </feature>
-    <feature name="Device">
-        <param name="android-package" value="org.apache.cordova.device.Device" />
-    </feature>
-    <feature name="Notification">
-        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
     <feature name="File">
         <param name="android-package" value="org.apache.cordova.file.FileUtils" />
@@ -19,16 +11,35 @@
     <feature name="Media">
         <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
     </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
-    </feature>
-    <feature name="BackgroundLocationServices">
-        <param name="android-package" value="com.flybuy.cordova.location.BackgroundLocationServicesPlugin" />
     </feature>
     <name>Insight BCP Mobile</name>
     <description>Insight BCP Mobile</description>
     <author email="santiagogerman@hotmail.com" href="http://chancesrmis.com">Ing. Santiago Gastañadui Lujan</author>
     <content src="index.html" />
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="default" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="deployment-target" value="6.1" />
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
@@ -48,13 +59,7 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
     <gap:plugin name="com.phonegap.plugins.PushPlugin" />
-    <clobbers target="window.BackgroundGeolocation" />
     <icon src="icon.png" />
-    <gap:config-file overwrite="false" parent="NSLocationAlwaysUsageDescription" platform="ios">
-        <array>
-            <string>NSLocationAlwaysUsageDescription</string>
-        </array>
-    </gap:config-file>
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
     <icon gap:platform="android" gap:qualifier="hdpi" src="www/res/icon/android/icon-72-hdpi.png" />
@@ -79,42 +84,10 @@
     <gap:splash gap:platform="ios" height="768" src="www/res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
-    <access origin="*.google.com" />
-    <access origin="*.gstatic.com" />
-    <access origin="*.googleapis.com" />
-    <access origin="*.googleusercontent.com" />
-    <access origin="google.com" subdomains="true" />
-    <access origin="gstatic.com" subdomains="true" />
-    <access origin="googleapis.com" subdomains="true" />
-    <access origin="googleusercontent.com" subdomains="true" />
-    <access origin="http://maps.google.com" />
-    <access origin="http://maps.gstatic.com" />
-    <access origin="http://maps.googleapis.com" />
-    <access origin="http://fonts.googleapis.com" />
-    <access origin="http://mt0.googleapis.com" />
-    <access origin="http://khm1.googleapis.com" />
-    <access origin="http://kmh0.googleapis.com" />
-    <access origin="https://*.google.com" />
-    <access origin="https://*.gstatic.com" />
-    <access origin="https://*.googleapis.com" />
-    <preference name="loglevel" value="DEBUG" />
-    <preference name="AndroidPersistentFileLocation" value="Internal" />
-    <preference name="permissions" value="none" />
-    <preference name="orientation" value="default" />
-    <preference name="target-device" value="universal" />
-    <preference name="fullscreen" value="true" />
-    <preference name="webviewbounce" value="true" />
-    <preference name="prerendered-icon" value="true" />
-    <preference name="stay-in-webview" value="false" />
-    <preference name="ios-statusbarstyle" value="black-opaque" />
-    <preference name="detect-data-types" value="true" />
-    <preference name="exit-on-suspend" value="false" />
-    <preference name="show-splash-screen-spinner" value="true" />
-    <preference name="auto-hide-splash-screen" value="true" />
-    <preference name="disable-cursor" value="false" />
-    <preference name="android-minSdkVersion" value="14" />
-    <preference name="android-installLocation" value="auto" />
-    <preference name="deployment-target" value="23.0.1" />
-    <preference name="splash-screen-duration" value="5000" />
-    <preference name="load-url-timeout" value="20000" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
 </widget>

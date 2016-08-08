@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sites</title>
+    <!-- InsightBCPMobile references -->
+    <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/common.js"></script>
+    <script type="text/javascript">
+        //***************************************
+        var html = '';
+        //***************************************
+        populateAlertsERT = function (data) {
+            //*****************************
+            var IdAlertsERT, IdCompany, IdContact, ContactName, IdLocation, LocationName, IdHazard, HazardName, Latitude, Longitude, DateRegister;
+            //*****************************
+            IdAlertsERT = this.IdAlertsERT;
+            IdCompany = this.IdCompany;
+            IdContact = this.IdContact;
+            ContactName = this.ContactName;
+            IdLocation = this.IdLocation;
+            LocationName = this.LocationName;
+            IdHazard = this.IdHazard;
+            HazardName = this.HazardName;
+            Latitude = this.Latitude;
+            Longitude = this.Longitude;
+            //*****************************
+            var LatitudeSite = $("#hdnLatitude").val();
+            var LongitudeSite = $("#hdnLongitude").val();
+            //*****************************
+            DateRegister = this.DateRegister;
+            var KeyBCP = $("#hdnKeyword").val();
+            //*****************************
+            html = html.trim() + '<tr>';
+            html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + DateRegister.trim() + '</td>';
+            html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
+            html = html.trim() + ' <a href="#" onclick="window.location.href = '+ "'" +'map.html?IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + ''+ "'" +'">' + LocationName.trim() + '</a>';
+            html = html.trim() + ' </td>';
+            html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + ContactName.trim() + '</td>';
+            html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
+            html = html.trim() + ' <a href="#" onclick="window.location.href = ' + "'" + 'hazard.html?IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT + '&IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">' + HazardName.trim() + '</a>';
+            html = html.trim() + ' </td>';
+            html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
+            html = html.trim() + ' <a href="#"  onclick="window.location.href = ' + "'" + 'ertpanel.html?IdHazard=' + IdHazard + '&IdAlertsERT=' + IdAlertsERT + '&IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">ERT</a>';
+            html = html.trim() + ' </td>';
+            html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
+            html = html.trim() + ' <a href="#"  onclick="window.location.href = ' + "'" + 'emergencycalllist.html?IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">ECL</a>';
+            html = html.trim() + ' </td>';
+            html = html.trim() + ' </tr>';
+            //*****************************
+        };
+        //***************************************
+        populateAlertsCOOP = function (data) {
+            //*****************************
+            var IdAlertsCOOP, IdCompany, IdContact, ContactName, IdLocation, LocationName, IdActivityLoss, ActivityLoss, Latitude, Longitude, DateRegister;
+            //*****************************
+            IdAlertsCOOP = this.IdAlertsCOOP;
+            IdCompany = this.IdCompany;
+            IdContact = this.IdContact;
+            ContactName = this.ContactName;
+            IdLocation = this.IdLocation;
+            LocationName = this.LocationName;
+            IdActivityLoss = this.IdActivityLoss;
+            ActivityLoss = this.ActivityLoss;
+            Latitude = this.Latitude;
+            Longitude = this.Longitude;
+            //*****************************
+            var LatitudeSite = $("#hdnLatitude").val();
+            var LongitudeSite = $("#hdnLongitude").val();
+            //*****************************
+            DateRegister = this.DateRegister;
+            var KeyBCP = $("#hdnKeyword").val();
+            //*****************************
+            html = html.trim() + '<tr>';
+            html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + DateRegister.trim() + '</td>';
+            html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
+            html = html.trim() + ' <a href="#" onclick="window.location.href = ' + "'" + 'map.html?IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">' + LocationName.trim() + '</a>';
+            html = html.trim() + ' </td>';
+            html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + ContactName.trim() + '</td>';
+            html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">';
+            html = html.trim() + ' <a href="#" onclick="window.location.href = ' + "'" + 'criticalfunction.html?IdActivityLoss=' + IdActivityLoss + '&IdAlertsCOOP=' + IdAlertsCOOP + '&IdCompany=' + IdCompany + '&IdSite=' + IdLocation + '&Latitude=' + Latitude + '&LatitudeSite=' + LatitudeSite + '&Longitude=' + Longitude + '&LongitudeSite=' + LongitudeSite + '&Site=' + LocationName + '&KeyBCP=' + KeyBCP + '' + "'" + '">' + ActivityLoss.trim() + '</a>';
+            html = html.trim() + ' </td>';
+            html = html.trim() + ' </tr>';
+            //*****************************
+        };
+        //***************************************
+        $(document).on("pageinit", "#pagebcplog", function (event) {
+            //***************************************
+            var IdCompany = getUrlVars()["IdCompany"];
+            var IdSite = getUrlVars()["IdSite"];
+            var Latitude = getUrlVars()["Latitude"];
+            var Longitude = getUrlVars()["Longitude"];
+            var Site = getUrlVars()["Site"];
+            var KeyBCP = getUrlVars()["KeyBCP"];
+            //***************************************
+            $("#hdnIdSite").val(IdSite);
+            $("#hdnSite").val(unescape(Site));
+            $("#hdnLatitude").val(Latitude);
+            $("#hdnLongitude").val(Longitude);
+            $("#hdnKeyword").val(KeyBCP);
+            var CompanyName = window.localStorage["CompanyName"];
+            $("#span1").html("" + CompanyName + " <br/>" + unescape(Site));
+            //***************************************
+            $("#btnHome").off("click");
+            $("#btnHome").click(function () {
+                //************************************************
+                var IdSite = $("#hdnIdSite").val();
+                var Latitude = $("#hdnLatitude").val();
+                var Longitude = $("#hdnLongitude").val();
+                var Site = $("#hdnSite").val();
+                var KeyBCP = $("#hdnKeyword").val();
+                window.location.href = 'home.html?IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                //************************************************
+            });
+            //***************************************
+
+            var wcfServiceUrl = "http://23.253.204.98/wcfphonegap/InsightBCPWDSL.svc/";
+            //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
+
+            var urlk1 = wcfServiceUrl + "ListAlerts?IdCompany=" + IdCompany;
+
+            $.ajax({
+                cache: true,
+                url: urlk1,
+                crossDomain: true,
+                data: "{ IdCompany: " + IdCompany + " }",
+                type: "GET",
+                jsonpCallback: "objAlerts",
+                contentType: "application/json; charset=utf-8",
+                dataType: "jsonp",
+                beforeSend: function () {
+                    $("#imgAjaxLoaderAlerts").show();
+                },
+                error: function (xhr, textStatus, err) {
+                    var mensaje = "readyState: " + xhr.readyState + "\n";
+                    mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                    mensaje = mensaje + "status: " + xhr.status + "\n";
+                    mensaje = mensaje + "text status: " + textStatus + "\n";
+                    mensaje = mensaje + "error: " + err + "\n";
+                    alert(mensaje);
+                    $('#resultERT').html("");
+                    $('#resultCOOP').html('');
+                },
+                success: function (obj) {
+                    //******************************
+                    $('#resultERT').html('');
+                    $('#resultCOOP').html('');
+                    //******************************
+                    html = '';
+                    html = html.trim() + '<table id="ERT-table" align="left" style="width:100%;">';
+                    html = html.trim() + '<thead>';
+                    html = html.trim() + '<tr>';
+                    html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Date/Time</th>';
+                    html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Location</th>';
+                    html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Activated By</th>';
+                    html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Hazard</th>';
+                    html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;"></th>';
+                    html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;"></th>';
+                    html = html.trim() + '</tr>';
+                    html = html.trim() + '</thead>';
+                    html = html.trim() + '<tbody>';
+                    //******************************
+                    $.each(obj.ListAlertsResult.AlertsERT, populateAlertsERT);
+                    //******************************
+                    html = html.trim() + '</tbody>';
+                    html = html.trim() + '</table>';
+                    //******************************
+                    $("#resultERT").append(html.trim());
+                    //******************************
+                    html = '';
+                    html = html.trim() + '<table id="COOP-table" align="left" style="width:100%;">';
+                    html = html.trim() + '<thead>';
+                    html = html.trim() + '<tr>';
+                    html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Date/Time</th>';
+                    html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Location</th>';
+                    html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Activated By</th>';
+                    html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Critical Function</th>';
+                    html = html.trim() + '</tr>';
+                    html = html.trim() + '</thead>';
+                    html = html.trim() + '<tbody>';
+                    //******************************
+                    $.each(obj.ListAlertsResult.AlertsCOOP, populateAlertsCOOP);
+                    //******************************
+                    html = html.trim() + '</tbody>';
+                    html = html.trim() + '</table>';
+                    //******************************
+                    $("#resultCOOP").append(html.trim());
+                    //******************************
+                },
+                complete: function () {
+                    $("#imgAjaxLoaderAlerts").hide();
+                }
+            });
+            //***************************************
+    });
+
+    </script>
+
+</head>
+<body>
+    <div data-role="page" id="pagebcplog">
+        <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;font-size:11px;font-weight:normal;">
+            <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3" data-role="button" role="button"></a>
+            <h1 id="span1"></h1>
+        </div>
+        <div data-role="content" style="background-color:white;">
+            <div data-theme="a" data-form="ui-body-a" class="ui-body ui-body-a ui-corner-all">
+                <div id="resultERT"></div>
+            </div>
+            <br />
+            <div data-theme="a" data-form="ui-body-a" class="ui-body ui-body-a ui-corner-all">
+                <div id="resultCOOP"></div>
+            </div>
+            <img id="imgAjaxLoaderAlerts" class="ajaxLoader" src="images/ajax-loader.gif" />
+            </div>
+        <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
+            ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
+        </div>
+    </div>
+    <input type="hidden" id="hdnIdSite" />
+    <input type="hidden" id="hdnSite" />
+    <input type="hidden" id="hdnLatitude" />
+    <input type="hidden" id="hdnLongitude" />
+    <input type="hidden" id="hdnKeyword" />
+</body>
+</html>

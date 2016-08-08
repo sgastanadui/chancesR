@@ -1,60 +1,4 @@
 {
-    "cordova-plugin-file": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-file"
-        },
-        "is_top_level": false,
-        "variables": {}
-    },
-    "cordova-plugin-console": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-console"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-device": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-device"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-dialogs": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-dialogs"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-media": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-media"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-network-information": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-network-information"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-geolocation": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-geolocation"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "com.phonegap.plugins.PushPlugin": {
         "source": {
             "type": "git",
@@ -64,28 +8,50 @@
         "is_top_level": true,
         "variables": {}
     },
-    "org.flybuy.cordova.background-location-services": {
+    "org.apache.cordova.media": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/pmwisdom/cordova-background-geolocation-services.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "org.apache.cordova.media"
         },
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-actionsheet": {
+    "org.apache.cordova.file": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-actionsheet"
+            "id": "org.apache.cordova.file"
         },
         "is_top_level": false,
         "variables": {}
     },
-    "org.frd49.cordova.exitapp": {
+    "org.apache.cordova.dialogs": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/FRD49/iOS-ExitApp",
-            "subdir": "."
+            "type": "registry",
+            "id": "org.apache.cordova.dialogs"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.console": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.console"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.device": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.device"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.network-information": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.network-information"
         },
         "is_top_level": true,
         "variables": {}

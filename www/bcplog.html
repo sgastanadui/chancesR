@@ -118,7 +118,9 @@
             });
             //***************************************
 
-            var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+            var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+            //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
+
             var urlk1 = wcfServiceUrl + "ListAlerts?IdCompany=" + IdCompany;
 
             $.ajax({
