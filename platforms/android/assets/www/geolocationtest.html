@@ -1,0 +1,85 @@
+﻿<html>
+    <head>
+        <title>Map Example Multiple Pages</title>
+        <title>jQuery mobile with Google maps</title>
+        <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>-->
+        <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/common.js"></script>
+        <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+        <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false&language=en"></script>-->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtTcw1C9SfDbgy2aKfOt_5N8m2Ltpqdu8"> </script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/PushNotification.js"></script>
+        <script>
+
+            $(document).on("pageinit", "#map-page", function() {
+                getcurrentlatlong();
+                setInterval(getcurrentlatlong, 10000);
+            });
+
+            function getcurrentlatlong() {
+                if (navigator.geolocation)
+                {
+                  navigator.geolocation.getCurrentPosition(onSuccess, onError, { enableHighAccuracy:true });
+                  //enableHighAccuracy:true means if network not enable then it ask for GPS
+                }
+                else{
+                    alert("navigator.geolocation not supported");
+                }
+            }
+
+            function onSuccess(position) {   // enable ur gps, it takes sometime to call till now wait
+                //alert("onSuccess called");
+                var lat=position.coords.latitude;
+                var longi=position.coords.longitude;
+                //alert("latitude is: "+ lat+ " longitude is: "+ longi);
+
+                 mapCenter = new google.maps.LatLng(lat, longi),
+                 myOptions = {
+                     zoom:10,
+                     mapTypeId: google.maps.MapTypeId.ROADMAP,
+                     center: mapCenter,
+                 },
+                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions),
+
+                 marker = new google.maps.Marker({
+                     position: new google.maps.LatLng(lat, longi),
+                     map: map,
+                     title:"Current Location!"
+                     })
+            }
+
+            function onError(error){
+                alert("Getting the error "+error.code + "\nerror mesg : " +error.message);
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <div data-role="page" id="map-page">
+        <!-- /header -->
+        <div data-role="header">
+            <h1> Maps</h1>
+        </div>
+
+    <!-- /content -->
+    <div data-role="content">
+
+    </div>
+    
+    <!-- /content -->
+    <div class="ui-bar-c ui-corner-all ui-shadow" data-role="content" style="padding: 1em;">
+        <div id="map_canvas" style="height: 400px;">
+        </div>
+    </div>
+            <script type="text/javascript">
+                app.initialize();
+            </script>
+    </div>
+    </body>
+</html>

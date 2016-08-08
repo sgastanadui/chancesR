@@ -8,8 +8,8 @@
         <link href="css/index.css" rel="stylesheet" />
         <!--<script type='text/javascript' src='http://code.jquery.com/jquery-2.0.2.js'></script>-->
         <!--<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">-->
-        <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.css">
-        <script type='text/javascript' src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://getbootstrap.com/dist/css/bootstrap.css">
+        <script type='text/javascript' src="https://getbootstrap.com/dist/js/bootstrap.js"></script>
         <style type='text/css'>
             .fa.form-control-feedback {
                 line-height: 34px;
@@ -31,6 +31,11 @@
             .form-horizontal .has-feedback-left .form-control-feedback {
                 left: 12px;
             }
+            input[type="checkbox"] {
+              margin: 0 0 0;
+              margin-top: 1px \9;
+              line-height: normal;
+            }
         </style>
     </head>
     <body>
@@ -42,6 +47,11 @@
 
             <div align="center">
                 <img src="images/insightbcp.png" />
+            </div>
+            <div class="form-group has-feedback has-feedback-left">
+                <label class="control-label sr-only">Code:</label>
+                <input type="number" maxlength="4" class="form-control" id="txtCode" placeholder="Code" />
+                <i class="form-control-feedback glyphicon glyphicon-qrcode"></i>
             </div>
             <!--<div data-role="fieldcontain" class="ui-hide-label">
                 <label for="username">Username:</label>
@@ -60,7 +70,15 @@
                 <label class="control-label sr-only">Password:</label>
                 <input type="password" class="form-control" id="txtPassword" name="txtPassword" placeholder="Password" />
                 <i class="form-control-feedback glyphicon glyphicon-lock"></i>
-            </div>   
+            </div>
+
+            <div class="form-group has-feedback has-feedback-left">
+                <!--<fieldset data-role="controlgroup">-->
+                <input id="remember" type="checkbox" checked />
+                <label for="remember">Remember me ?</label>
+                <!--</fieldset>-->
+            </div>
+
             <input type="button" value="Login" id="btnLogin">
 
             <div id="results"></div>
@@ -72,7 +90,7 @@
                 </div>
             </div>
             <br /><br />
-            <table style="width:100%;">
+            <table style="width:100%;display:normal;">
                 <tr>
                     <td style="text-align:center;">
                         <a href="tel:+1 863-225-0468"><img id="imgTelefono" src="images/telefono.jpg" /></a>
@@ -88,7 +106,7 @@
         </div>
 
         <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
-            ©ERT Insight Risk Technologies,LC <span class="jqm-version"></span>
+            ©ERT Insight Risk Technologies, LLC <span class="jqm-version"></span>
         </div>
         <!-- Cordova reference, this is added to your app when it's built. -->
         <script type="text/javascript" src="cordova.js"></script>

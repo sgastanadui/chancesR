@@ -11,7 +11,7 @@
     <script src="js/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/common.js"></script>
     <style>
-        table {
+        /*table {
             border-collapse: collapse;
             border-spacing: 0;
             border: 1px solid #bbb;
@@ -31,7 +31,7 @@
                 overflow-x: auto;
                 display: block;
             }
-        }
+        }*/
     </style>
 
     <script type="text/javascript">
@@ -51,7 +51,7 @@
             DateRegister = this.DateRegister;
             //*****************************
             html = html.trim() + '<tr>';
-            html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + Status + '</td>';
+            //html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + Status + '</td>';
             html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + Comments + '</td>';
             html = html.trim() + ' <td style="font-size:11px;font-weight:normal;">' + DateRegister + '</td>';
             html = html.trim() + ' </tr>';
@@ -82,6 +82,7 @@
             $("#hdnHazard").val(unescape(Hazard));
             //***************************************
             var CompanyName = window.localStorage["CompanyName"];
+            var Code = window.localStorage["Code"];
             $("#span1").html("" + CompanyName + " <br/>" + unescape(Site));
             //***************************************
             $("#btnHome").off("click");
@@ -100,28 +101,19 @@
                 //************************************************
             });
             //***************************************
-            var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
-            //var wcfServiceUrl = "http://localhost:10786/AutenticationMobile.svc/";
-            //var mess = "IdCompany: " + IdCompany + "\n";
-            //mess += "IdContact: " + IdContact + "\n";
-            //mess += "IdAlert: " + IdAlert + "\n";
-            //mess += "IdHazard: " + IdHazard + "\n";
-            //navigator.notification.alert(mess, function () { }, "BCP Error");
-
-            var urlk1 = wcfServiceUrl + "ListCommentsERT?IdCompany=" + IdCompany + "&IdContact=" + IdContact + "&IdAlert=" + IdAlert + "&IdHazard=" + IdHazard;
-            //alert(urlk1);
-
+            var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
+            var urlk1 = wcfServiceUrl + "ListCommentsERT?IdCompany=" + IdCompany + "&IdContact=" + IdContact + "&IdAlert=" + IdAlert + "&IdHazard=" + IdHazard + "&Code=" + Code;
+            //***************************************
             $.ajax({
                 //cache: true,
                 url: urlk1,
                 crossDomain: true,
-                data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdAlert: " + IdAlert + ", IdHazard:" + IdHazard + " }",
+                data: "{ IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdAlert: " + IdAlert + ", IdHazard:" + IdHazard + ", Code: "+ Code +" }",
                 type: "GET",
                 jsonpCallback: "lsobjComments",
                 contentType: "application/json; charset=utf-8",
                 dataType: "jsonp",
                 beforeSend: function () {
-                    //$("#imgAjaxLoaderComments").show();
                     $('#loader').show();
                 },
                 error: function (xhr, textStatus, err) {
@@ -130,8 +122,7 @@
                     mensaje = mensaje + "status: " + xhr.status + "\n";
                     mensaje = mensaje + "text status: " + textStatus + "\n";
                     mensaje = mensaje + "error: " + err + "\n";
-                    alert(mensaje);
-                    //navigator.notification.alert(mensaje, function () { }, "BCP Error");
+                    navigator.notification.alert(mensaje, function () { }, "BCP Error");
                     $('#resultsComments').html("");
                     $('#loader').hide();
                 },
@@ -142,7 +133,7 @@
                     html = html.trim() + '<table id="ERT-detailtable" style="width:100%;">';
                     html = html.trim() + '<thead>';
                     html = html.trim() + '<tr>';
-                    html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Status</th>';
+                    //html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Status</th>';
                     html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Comments</th>';
                     html = html.trim() + ' <th style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">Date/Time</th>';
                     html = html.trim() + '</tr>';
@@ -160,7 +151,6 @@
                     //******************************
                 },
                 complete: function () {
-                    //$("#imgAjaxLoaderComments").hide();
                     $('#loader').hide();
                 }
             });
