@@ -40,7 +40,7 @@
   <gap:plugin name="org.apache.cordova.network-information" />
   <gap:plugin name="org.apache.cordova.splashscreen" />
   <gap:plugin name="org.apache.cordova.vibration" />
-  <gap:plugin name="com.phonegap.plugins.PushPlugin@2.5.0" />
+  <gap:plugin name="com.phonegap.plugins.PushPlugin" version="2.5.0" />
   <clobbers target="window.BackgroundGeolocation" />
   <icon src="icon.png" />
   <gap:config-file platform="ios" parent="NSLocationAlwaysUsageDescription" overwrite="false">
