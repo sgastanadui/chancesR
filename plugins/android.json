@@ -7,34 +7,44 @@
         "files": {}
     },
     "installed_plugins": {
-        "com.phonegap.plugins.PushPlugin": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
-        },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+            "PACKAGE_NAME": "io.cordova.myapp629afa"
         },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+            "PACKAGE_NAME": "io.cordova.myapp629afa"
         },
         "cordova-plugin-dialogs": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+            "PACKAGE_NAME": "io.cordova.myapp629afa"
         },
         "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+            "PACKAGE_NAME": "io.cordova.myapp629afa"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "io.cordova.myapp629afa"
         },
         "cordova-plugin-media": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+            "PACKAGE_NAME": "io.cordova.myapp629afa"
         },
         "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+            "PACKAGE_NAME": "io.cordova.myapp629afa"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "io.cordova.myapp629afa"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "653317226796",
+            "PACKAGE_NAME": "io.cordova.myapp629afa"
         },
         "org.flybuy.cordova.background-location-services": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+            "PACKAGE_NAME": "io.cordova.myapp629afa"
         }
     },
     "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "io.cordova.myapp629afa"
+        },
         "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+            "PACKAGE_NAME": "io.cordova.myapp629afa"
         }
     }
 }

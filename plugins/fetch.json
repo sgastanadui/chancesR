@@ -1,12 +1,4 @@
 {
-    "cordova-plugin-file": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-file"
-        },
-        "is_top_level": false,
-        "variables": {}
-    },
     "cordova-plugin-console": {
         "source": {
             "type": "registry",
@@ -23,6 +15,22 @@
         "is_top_level": true,
         "variables": {}
     },
+    "cordova-plugin-geolocation": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-geolocation"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-inappbrowser": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-inappbrowser"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
     "cordova-plugin-dialogs": {
         "source": {
             "type": "registry",
@@ -31,10 +39,28 @@
         "is_top_level": true,
         "variables": {}
     },
+    "phonegap-plugin-push": {
+        "source": {
+            "type": "registry",
+            "id": "phonegap-plugin-push"
+        },
+        "is_top_level": true,
+        "variables": {
+            "SENDER_ID": "653317226796"
+        }
+    },
     "cordova-plugin-media": {
         "source": {
             "type": "registry",
             "id": "cordova-plugin-media"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-vibration": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-vibration"
         },
         "is_top_level": true,
         "variables": {}
@@ -47,27 +73,26 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-geolocation": {
+    "cordova-plugin-compat": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-geolocation"
+            "id": "cordova-plugin-compat"
         },
-        "is_top_level": true,
+        "is_top_level": false,
         "variables": {}
     },
-    "com.phonegap.plugins.PushPlugin": {
+    "cordova-plugin-file": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/phonegap-build/PushPlugin.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "cordova-plugin-file"
         },
-        "is_top_level": true,
+        "is_top_level": false,
         "variables": {}
     },
     "org.flybuy.cordova.background-location-services": {
         "source": {
             "type": "git",
-            "url": "https://github.com/pmwisdom/cordova-background-geolocation-services.git",
+            "url": "https://github.com/pmwisdom/cordova-background-geolocation-services",
             "subdir": "."
         },
         "is_top_level": true,
