@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+
 
 /*
        Licensed to the Apache Software Foundation (ASF) under one
@@ -37,5 +37,5 @@ function readAppInfoFromManifest() {
 }
 
 exports.getActivityName = function() {
-    return (cachedAppInfo = cachedAppInfo || readAppInfoFromManifest());
+    return cachedAppInfo = cachedAppInfo || readAppInfoFromManifest();
 };

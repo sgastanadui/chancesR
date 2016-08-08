@@ -34,7 +34,6 @@
             $("#hdnKeyword").val(KeyBCP);
             //***************************************
             var CompanyName = window.localStorage["CompanyName"];
-            var Code = window.localStorage["Code"];
             $("#span1").html("" + CompanyName + " <br/>" + unescape(Site));
             //***************************************
             $("#btnHome").off("click");
@@ -46,24 +45,26 @@
                 var Longitude = $("#hdnLongitude").val();
                 var Site = $("#hdnSite").val();
                 var KeyBCP = $("#hdnKeyword").val();
-                window.location.href = 'home.html?IdCompany='+ IdCompany +'&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                window.location.href = 'bcplog.html?IdCompany='+ IdCompany +'&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
                 //************************************************
             });
             //***************************************
-            var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
-            //***************************************
-            var urlk1 = wcfServiceUrl + "SearchCriticalFunction?IdCompany=" + IdCompany + '&IdActivityLoss=' + IdActivityLoss + '&IdAlertsCOOP=' + IdAlertsCOOP + '&Code=' + Code;
-            //***************************************
+            var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+            //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
+
+            var urlk1 = wcfServiceUrl + "SearchCriticalFunction?IdCompany=" + IdCompany + '&IdActivityLoss=' + IdActivityLoss + '&IdAlertsCOOP=' + IdAlertsCOOP;
+
             $.ajax({
                 cache: true,
                 url: urlk1,
                 crossDomain: true,
-                data: "{ IdCompany: " + IdCompany + ", IdActivityLoss: " + IdActivityLoss + ", IdAlertsCOOP: " + IdAlertsCOOP + ", Code: '"+ Code +"' }",
+                data: "{ IdCompany: " + IdCompany + ", IdActivityLoss: " + IdActivityLoss + ", IdAlertsCOOP: " + IdAlertsCOOP + " }",
                 type: "GET",
                 jsonpCallback: "objCriticalFunction",
                 contentType: "application/json; charset=utf-8",
                 dataType: "jsonp",
                 beforeSend: function () {
+                    //$("#imgAjaxLoaderAlerts").show();
                     $('#loader').show();
                 },
                 error: function (xhr, textStatus, err) {
@@ -72,6 +73,7 @@
                     mensaje = mensaje + "status: " + xhr.status + "\n";
                     mensaje = mensaje + "text status: " + textStatus + "\n";
                     mensaje = mensaje + "error: " + err + "\n";
+                    //alert(mensaje);
                     navigator.notification.alert(mensaje, function () { }, "BCP Error");
                     $('#loader').hide();
                 },
@@ -90,6 +92,7 @@
                     //******************************
                 },
                 complete: function () {
+                    //$("#imgAjaxLoaderAlerts").hide();
                     $('#loader').hide();
                 }
             });

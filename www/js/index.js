@@ -27,88 +27,8 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.addEventListener('pause', this.onPause, false);
-        document.addEventListener("resume", this.onResumen, false);
     },
 
-
-    onPause: function () {
-        //navigator.notification.alert("on pause", function () { }, "BCP pause");
-        if ($.mobile.activePage.attr("id") == "map-page-geolocator") {
-            //setInterval(Geolocations, 10000);
-            //alert($("#hdnIdCompany").val() + ' ' + $("#hdnIdAlert").val() + ' ' + $("#hdnIdSite").val() + ' ' + $("#hdnIdContact").val() + ' ' + $("#hdnIdHazard").val());
-            navigator.geolocation.watchPosition(
-                function (pos) {
-                    //App.latlngs.push(new L.LatLng(pos.coords.latitude, pos.coords.longitude));
-                    //alert(pos.coords.latitude + ' ' + pos.coords.longitude)
-                    //************************************************
-                    var IdCompany = $("#hdnIdCompany").val();
-                    var IdAlert = $("#hdnIdAlert").val();
-                    var IdSite = $("#hdnIdSite").val();
-                    var IdContact = $("#hdnIdContact").val();
-                    var IdHazard = $("#hdnIdHazard").val();
-                    //************************************************
-                    var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
-                    //************************************************
-                    var urlk1 = wcfServiceUrl + "SaveHistoryLocationUser?IdAlert=" + IdAlert + '&IdCompany=' + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdHazard=' + IdHazard + '&Latitude=' + pos.coords.latitude + '&Longitude=' + pos.coords.longitude;
-                    //************************************************
-                    $.ajax({
-                        //cache: true,
-                        async: true,
-                        url: urlk1,
-                        crossDomain: true,
-                        data: "{ IdAlert: " + IdAlert + ", IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation:" + IdSite + ", Latitude: '" + pos.coords.latitude + "', Longitude: '" + pos.coords.longitude + "' }",
-                        type: "GET",
-                        jsonpCallback: "HistoryUser",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "jsonp",
-                        beforeSend: function () {
-                            //$('#loader').show();
-                        },
-                        error: function (xhr, textStatus, err) {
-                            var mensaje = "readyState: " + xhr.readyState + "\n";
-                            mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
-                            mensaje = mensaje + "status: " + xhr.status + "\n";
-                            mensaje = mensaje + "text status: " + textStatus + "\n";
-                            mensaje = mensaje + "error: " + err + "\n";
-                            //navigator.notification.alert(mensaje, function () { }, "BCP Error");
-                            //$('#loader').hide();
-                        },
-                        success: function (objHistory) {
-                            //******************************
-                            if (objHistory.SaveHistoryLocationUserResult > 0) {
-                                //navigator.notification.alert('Sucessful saved.');
-                            }
-                            //******************************
-                        },
-                        complete: function () {
-                            //$('#loader').hide();
-                        }
-                    });
-                    //***************************************
-                },
-                function (err) {
-                    //alert('Error:' + err);
-                },
-                    {
-                        maximumAge: 500000,
-                        timeout: 100000,
-                        enableHighAccuracy:true
-                    }
-                );
-        }
-    },
-
-    onResumen: function () {
-        //*****************************************************
-        if (navigator.geolocation) {
-            // Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
-            navigator.geolocation.getCurrentPosition(app.success, app.fail, { maximumAge: 0, enableHighAccuracy: false, timeout: 0 });
-        } else {
-            navigator.notification.alert("not support browser", function () { }, "BCP Alert");
-        }
-        //*****************************************************
-    },
     // deviceready Event Handler
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
@@ -147,17 +67,20 @@ var app = {
             //alert($("#remember").prop("checked"));
 
             if ($("#txtCode").val().trim() == "") {
-                navigator.notification.alert("Enter code", function () { }, "BCP Alert");
+                navigator.notification.alert("Enter a Code", function () { }, "BCP Alert");
+                //alert("Enter a Code");
                 return false;
             }
 
             if ($("#txtUsername").val().trim() == "") {
-                navigator.notification.alert("Enter username", function () { },"BCP Alert");
+                navigator.notification.alert("Enter a Username", function () { },"BCP Alert");
+                //alert("Enter a Username");
                 return false;
             }
 
             if ($("#txtPassword").val().trim() == "") {
-                navigator.notification.alert("Enter password", function () { }, "BCP Alert");
+                navigator.notification.alert("Enter a Password", function () { }, "BCP Alert");
+                //alert("Enter a Password");
                 return false;
             }
             
@@ -175,8 +98,73 @@ var app = {
                 localStorage.removeItem('Remember');
             }
 
-            wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
+            //$.soap({
+            //    url: "http://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/",
+            //    method: "AutenticationUser",
+            //    appendMethodToURL: true,
+            //    SOAPAction: "https://www.chancesrmis.com/wcfphonegap/AutenticationMobile/IAutenticationMobile/AutenticationUser",
+            //    async: false,
+            //    data: { IdUsername: $("#txtUsername").val(), Password: $('#txtPassword').val(), IdAplication: 9 },
+            //    namespaceURL: "https://www.chancesrmis.com/wcfphonegap/AutenticationMobile",
+            //    enableLogging: false,
+            //    success: function (SOAPResponse) {
+            //        var resp = $.xml2json(SOAPResponse.toXML().firstChild);
+            //        alert(resp);
+            //        window.location = "home.html"
+            //    },
+            //    error: function (SOAPResponse) {
+            //        //alert("Error: " + SOAPResponse);
+
+            //    }
+            //}).fail(function (jqXHR, textStatus, errorThrown) {
+            //    // do stuff on error here...
+            //    alert(jqXHR);
+            //    alert(errorThrown);
+            //});
+
+            //wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
+            wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
+            //wcfServiceUrl = "https://services.chancesrmis.com/WcfMobileBCP/AutenticationMobile.svc/";
+            //wcfServiceUrl = "http://localhost:10786/AutenticationMobile.svc/";
+
             var urlk1 = wcfServiceUrl + "AutenticationUser?IdUsername=" + $("#txtUsername").val().trim() + "&Password=" + $("#txtPassword").val().trim() + "&IdAplication=9&Code=" + $("#txtCode").val().trim();
+
+            //var input =
+            // {
+            //     IdUsername: 'admincutrale',
+            //     Password: 'orm1978',
+            //     IdAplication: '9'
+            // };
+
+            //$.ajax({
+            //    cache: false,
+            //    type: "POST",
+            //    async: true,
+            //    url: "https://services.chancesrmis.com/WcfMobileBCP/AutenticationMobile.svc/AutenticationUser",
+            //    data: JSON.stringify(input),
+            //    contentType: "application/json",
+            //    dataType: "json",
+            //    beforeSend: function () {
+            //        $('#loader').show();
+            //    },
+            //    error: function (xhr, textStatus, err) {
+            //        var mensaje = "readyState: " + xhr.readyState + "\n";
+            //        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+            //        mensaje = mensaje + "status: " + xhr.status + "\n";
+            //        mensaje = mensaje + "text status: " + textStatus + "\n";
+            //        mensaje = mensaje + "error: " + err + "\n";
+            //        navigator.notification.alert(mensaje, function () { }, "BCP Error");
+            //        $('#loader').hide();
+            //    },
+            //    success: function (obj) {
+            //        if (obj.AutenticationUserResult.error.Descripcion == '') {
+            //            alert('true');
+            //        } else {
+            //            alert('false');
+            //        }
+            //    }
+            //});
+
 
             $.ajax({
                 cache: true,
@@ -188,6 +176,7 @@ var app = {
                 contentType: "application/json; charset=utf-8",
                 dataType: "jsonp",
                 beforeSend: function () {
+                    //$("#imgAjaxLoader").show();
                     $('#loader').show();
                 },
                 error: function (xhr, textStatus, err) {
@@ -196,6 +185,7 @@ var app = {
                     mensaje = mensaje + "status: " + xhr.status + "\n";
                     mensaje = mensaje + "text status: " + textStatus + "\n";
                     mensaje = mensaje + "error: " + err + "\n";
+                    //alert(mensaje);
                     navigator.notification.alert(mensaje, function () { }, "BCP Error");
                     $('#results').html("");
                     $('#loader').hide();
@@ -208,7 +198,6 @@ var app = {
                         window.localStorage["IdContact"] = obj.AutenticationUserResult.IdContact;
                         window.localStorage["ContactName"] = obj.AutenticationUserResult.ContactName;
                         window.localStorage["Email"] = obj.AutenticationUserResult.Email;
-                        window.localStorage["Code"] = $("#txtCode").val().trim();
                         $('#results').html("");
                         app.RegisterIdxContact(obj.AutenticationUserResult.IdCompany, obj.AutenticationUserResult.IdContact, window.localStorage["SystemOperation"],
                                                obj.AutenticationUserResult.IdUsuario, window.localStorage["etoken"])
@@ -216,24 +205,22 @@ var app = {
                     } else {
                         switch (obj.AutenticationUserResult.error.Descripcion) {
                             case '1':
-                                $('#results').html("<span>Company inactive. Please contact administrator</span>");
+                                $('#results').html("<span>Inactive Company. Please contact administrator.</span>");
                                 break;
                             case '2':
-                                $('#results').html("<span>Password incorrect</span>");
+                                $('#results').html("<span>Incorrect password.</span>");
                                 break;
                             case '3':
-                                $('#results').html("<span>User inactive. Please contact administrator</span>");
+                                $('#results').html("<span>Inactive User. Please contact administrator.</span>");
                                 break;
                             case '4':
-                                $('#results').html("<span>Username not found</span>");
-                                break;
-                            case '5':
-                                $('#results').html("<span>Wrong access code</span>");
+                                $('#results').html("<span>Username not found.</span>");
                                 break;
                         }
                     }
                 },
                 complete: function () {
+                    //$("#imgAjaxLoader").hide();
                     $('#loader').hide();
                 }
             });
@@ -243,18 +230,10 @@ var app = {
         });
 
         $("#imgUbicacion").click(function () {
-            //$.mobile.changePage('geolocation.html');
-            //window.location.href = 'geolocation.html';
-            //window.location.href = 'geolocator.html';
-            //window.location.href = 'geotesting.html';
-            window.location.href = 'track.html';
-            //window.location.href = 'geolocatortesting.html';
-            //window.location.href = 'testgeo.html';
+            $.mobile.changePage('geocalizacion.html');
         })
 
-        //*****************************************************
         app.receivedEvent('deviceready');
-        //*****************************************************
     },
 
     // handle APNS notifications for result iOS
@@ -271,7 +250,6 @@ var app = {
     successHandler: function (result) {
         //alert('device token = ' + result);
         //$("#app-status-ul").append('<li>Callback Success Android! Result: ' + result + '</li>');
-
     },
 
     // handle GCM notifications for result Android
@@ -395,8 +373,8 @@ var app = {
     },
 
     RegisterIdxContact: function (IdCompany, IdContact, SystemOperation, IdUser, eToken) {
-
-        var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+        
+        var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
         //var wcfServiceUrl = "http://localhost:10786/InsightBCPWDSL.svc/";
 
         var urlk1 = wcfServiceUrl + "RegisterIdxContact?IdCompany=" + IdCompany + '&IdContact=' + IdContact + '&SystemOperation=' + SystemOperation + '&IdUser=' + IdUser + '&etoken=' + eToken;
@@ -439,32 +417,6 @@ var app = {
             }
         });
 
-    },
-
-    success: function (pos) {
-        // Location found, show map with these coordinates
-        //************************************************
-        //Latitude = pos.coords.latitude;
-        //Longitude = pos.coords.longitude;
-        //************************************************
-        
-    },
-
-    fail: function (error) {
-        switch (error.code) {
-            case error.PERMISSION_DENIED:
-                navigator.notification.alert("User denied the request for Geolocation.", function () { }, "BCP Error");
-                break;
-            case error.POSITION_UNAVAILABLE:
-                navigator.notification.alert("Location information is unavailable.", function () { }, "BCP Error");
-                break;
-            case error.TIMEOUT:
-                navigator.notification.alert("The request to get user location timed out.", function () { }, "BCP Error");
-                break;
-            case error.UNKNOWN_ERROR:
-                navigator.notification.alert("An unknown error occurred.", function () { }, "BCP Error");
-                break;
-        }
     }
 
 };
