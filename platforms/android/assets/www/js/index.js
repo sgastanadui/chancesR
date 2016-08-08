@@ -926,7 +926,7 @@ onResumen: function () {
 
             wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
             var urlk1 = wcfServiceUrl + "AutenticationUser?IdUsername=" + $("#txtUsername").val().trim() + "&Password=" + $("#txtPassword").val().trim() + "&IdAplication=9&Code=" + $("#txtCode").val().trim();
-            //alert(urlk1);
+
             $.ajax({
                 cache: true,
                 url: urlk1,
@@ -945,12 +945,11 @@ onResumen: function () {
                     mensaje = mensaje + "status: " + xhr.status + "\n";
                     mensaje = mensaje + "text status: " + textStatus + "\n";
                     mensaje = mensaje + "error: " + err + "\n";
-                    navigator.notification.alert(mensaje, function () { }, "BCP Error Login");
+                    navigator.notification.alert(mensaje, function () { }, "BCP Error");
                     $('#results').html("");
                     $('#loader').hide();
                 },
                 success: function (obj) {
-                    alert('se realizo correctamente');
                     if (obj.AutenticationUserResult.error.Descripcion == '') {
                         window.localStorage["Username"] = obj.AutenticationUserResult.IdUsuario;
                         window.localStorage["IdCompany"] = obj.AutenticationUserResult.IdCompany;

@@ -25,14 +25,10 @@
     <feature name="BackgroundLocationServices">
         <param name="android-package" value="com.flybuy.cordova.location.BackgroundLocationServicesPlugin" />
     </feature>
-    <feature name="LaunchNavigator">
-        <param name="android-package" value="uk.co.workingedge.phonegap.plugin.LaunchNavigator" />
-    </feature>
     <name>Insight BCP Mobile</name>
     <description>Insight BCP Mobile</description>
     <author email="santiagogerman@hotmail.com" href="http://chancesrmis.com">Ing. Santiago Gastañadui Lujan</author>
     <content src="index.html" />
-    <preference name="deployment-target" value="" />
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
@@ -52,8 +48,6 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
     <gap:plugin name="com.phonegap.plugins.PushPlugin" />
-    <gap:plugin name="org.frd49.cordova.exitapp" />
-    <gap:plugin name="org.flybuy.cordova.background-location-services" />
     <clobbers target="window.BackgroundGeolocation" />
     <icon src="icon.png" />
     <gap:config-file overwrite="false" parent="NSLocationAlwaysUsageDescription" platform="ios">
@@ -103,8 +97,6 @@
     <access origin="https://*.google.com" />
     <access origin="https://*.gstatic.com" />
     <access origin="https://*.googleapis.com" />
-    <access origin="https://*.chancesrmis.com" />
-    <access origin="https://getbootstrap.com" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="AndroidPersistentFileLocation" value="Internal" />
     <preference name="permissions" value="none" />
@@ -122,6 +114,7 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-installLocation" value="auto" />
+    <preference name="deployment-target" value="23.0.1" />
     <preference name="splash-screen-duration" value="5000" />
     <preference name="load-url-timeout" value="20000" />
 </widget>

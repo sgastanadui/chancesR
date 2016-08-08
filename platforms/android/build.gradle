@@ -251,7 +251,6 @@ dependencies {
     releaseCompile project(path: "CordovaLib", configuration: "release")
     compile "com.android.support:support-v4:+"
     compile "com.google.android.gms:play-services-location:+"
-    compile "com.squareup.okhttp3:okhttp:3+"
     // SUB-PROJECT DEPENDENCIES END
 }
 
