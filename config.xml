@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <widget id="com.chancesrmis.ertdashboard" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
   <name>Insight BCP Mobile</name>
   <description>Insight BCP Mobile</description>
@@ -40,7 +40,7 @@
   <gap:plugin name="org.apache.cordova.network-information" />
   <gap:plugin name="org.apache.cordova.splashscreen" />
   <gap:plugin name="org.apache.cordova.vibration" />
-  <gap:plugin name="com.phonegap.plugins.PushPlugin" />
+  <gap:plugin name="com.phonegap.plugins.PushPlugin@2.5.0" />
   <clobbers target="window.BackgroundGeolocation" />
   <icon src="icon.png" />
   <gap:config-file platform="ios" parent="NSLocationAlwaysUsageDescription" overwrite="false">
