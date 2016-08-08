@@ -55,15 +55,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "com.phonegap.plugins.PushPlugin": {
-        "source": {
-            "type": "git",
-            "url": "https://github.com/phonegap-build/PushPlugin.git",
-            "subdir": "."
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "org.flybuy.cordova.background-location-services": {
         "source": {
             "type": "git",
@@ -85,6 +76,15 @@
         "source": {
             "type": "git",
             "url": "https://github.com/FRD49/iOS-ExitApp",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.phonegap.plugins.PushPlugin": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phonegap-build/PushPlugin",
             "subdir": "."
         },
         "is_top_level": true,

@@ -1,14 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "id": "com.phonegap.plugins.PushPlugin.PushNotification",
-        "file": "plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js",
-        "pluginId": "com.phonegap.plugins.PushPlugin",
-        "clobbers": [
-            "PushNotification"
-        ]
-    },
-    {
         "id": "cordova-plugin-actionsheet.ActionSheet",
         "file": "plugins/cordova-plugin-actionsheet/www/ActionSheet.js",
         "pluginId": "cordova-plugin-actionsheet",
@@ -271,12 +263,19 @@ module.exports = [
         "merges": [
             "launchnavigator"
         ]
+    },
+    {
+        "id": "com.phonegap.plugins.PushPlugin.PushNotification",
+        "file": "plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js",
+        "pluginId": "com.phonegap.plugins.PushPlugin",
+        "clobbers": [
+            "PushNotification"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "com.phonegap.plugins.PushPlugin": "2.5.0",
     "cordova-plugin-actionsheet": "2.2.2",
     "cordova-plugin-console": "1.0.2",
     "cordova-plugin-device": "1.1.0",
@@ -287,7 +286,8 @@ module.exports.metadata =
     "cordova-plugin-network-information": "1.1.0",
     "org.flybuy.cordova.background-location-services": "1.0.0",
     "org.frd49.cordova.exitapp": "1.0.0",
-    "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4"
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4",
+    "com.phonegap.plugins.PushPlugin": "2.5.0"
 };
 // BOTTOM OF METADATA
 });
