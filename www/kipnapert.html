@@ -378,6 +378,8 @@
                 return false;
             }
             //************************************************
+            //if ($("#hdn"))
+            //************************************************
             if (confirm('Warning! If you activate the ERP, our automated system will notify and send alert messages via email to each member of the Emergency Response Team (ERT). Are you sure you want to activate the ERP ?')) {
                 //************************************************
                 var wcfServiceUrl = "http://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
@@ -474,6 +476,7 @@
                 if (obj.ListHazardResult.length > 0) {
                     //******************************
                     $("#hdnRequiredKey").val(obj.ListHazardResult[0].RequiredKey);
+                    $("#hdnRequiredMessageConfirm").val(obj.ListHazardResult[0].RequiredMessageConfirm);
                     //******************************
                 } else {
                     //******************************
@@ -571,5 +574,6 @@
     <input type="hidden" id="hdnLongitudeERT" />
     <input type="hidden" id="hdnKeywordERT" />
     <input type="hidden" id="hdnRequiredKey" />
+    <input type="hidden" id="hdnRequiredMessageConfirm" />
 </body>
 </html>

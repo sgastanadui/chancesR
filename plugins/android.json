@@ -19,6 +19,9 @@
         "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
@@ -30,17 +33,7 @@
         },
         "org.flybuy.cordova.background-location-services": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
-        },
-        "org.frd49.cordova.exitapp": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
-    "dependent_plugins": {
-        "cordova-plugin-actionsheet": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
-        },
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
-        }
-    }
+    "dependent_plugins": {}
 }

@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget id="com.chancesrmis.ertdashboard" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+﻿<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.chancesrmis.ertdashboard" version="1.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Insight BCP Mobile</name>
     <description>Insight BCP Mobile</description>
     <author email="santiagogerman@hotmail.com" href="http://chancesrmis.com">Ing. Santiago Gastañadui Lujan</author>
@@ -17,9 +17,9 @@
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="disable-cursor" value="false" />
-    <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
-    <preference name="deployment-target" value="23.0.1" />
+    <preference name="deployment-target" value="7.1" />
     <preference name="splash-screen-duration" value="5000" />
     <preference name="load-url-timeout" value="20000" />
     <gap:plugin name="org.apache.cordova.battery-status" />
