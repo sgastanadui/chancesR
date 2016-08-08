@@ -180,11 +180,162 @@ var app = {
 
         }
 
-    },
+        if ($.mobile.activePage.attr("id") == "map-track") {
+            
+            var bgLocationServices = window.plugins.backgroundLocationServices;
+            
+            bgLocationServices.configure({
+                 distanceFilter: 10,
+                 desiredAccuracy: 20,
+                 interval: 60000,
+                 debug: false,
+                 aggressiveInterval: 9000
+            });
+            
+            //navigator.notification.alert('ingreso onPause map track', function () { }, "TRACK");
+            
+            bgLocationServices.registerForLocationUpdates(function (location) {
+              //************************************************
+              var IdRoute = $("#hdnIdRoute").val();
+              var IdUsername = $("#hdnUsername").val();
+              //************************************************
+              var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightTRACK.svc/";
+              //************************************************
+              var urlk1 = wcfServiceUrl + "SaveTracking?IdRoute=" + IdRoute + '&Username=' + IdUsername + '&Latitude=' + location.latitude + '&Longitude=' + location.longitude + '&Accuracy=' + location.accuracy + '&Timestamp=' + parseTimestamp(location.timestamp) + '&Speed=' + location.speed;
+              //************************************************
+                $.ajax({
+                     cache: true,
+                     async: true,
+                     url: urlk1,
+                     crossDomain: true,
+                     data: "{ IdRoute: " + IdRoute + ", Username:" + IdUsername + ", Latitude: '" + location.latitude + "', Longitude: '" + location.longitude + "' }",
+                     type: "GET",
+                     jsonpCallback: "HistoryUser",
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "jsonp",
+                     beforeSend: function () {
+                        //$('#loader').show();
+                     },
+                     error: function (xhr, textStatus, err) {
+                        var mensaje = "readyState: " + xhr.readyState + "\n";
+                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                        mensaje = mensaje + "status: " + xhr.status + "\n";
+                        mensaje = mensaje + "text status: " + textStatus + "\n";
+                        mensaje = mensaje + "error: " + err + "\n";
+                        //navigator.notification.alert(mensaje, function () { }, "TRACK Error");
+                        //$('#loader').hide();
+                     },
+                     success: function (objHistory) {
+                       //************************************************
+                       var R = 6371; // Radio del planeta tierra en km
+                       var phi1 = location.latitude * (Math.PI / 180);
+                       var phi2 = parseFloat($("#hdnLatDestination").val()) * (Math.PI / 180);
+                       var deltaphi = (parseFloat($("#hdnLatDestination").val())-location.latitude) * (Math.PI / 180);
+                       //var deltaphi = (location.latitude-parseFloat($("#hdnLatDestination").val())) * (Math.PI / 180);
+                       var deltalambda = (parseFloat($("#hdnLngDestination").val())-location.longitude) * (Math.PI / 180);
+                       //var deltalambda = (location.longitude-parseFloat($("#hdnLngDestination").val())) * (Math.PI / 180);
+                       
+                       var a = Math.sin(deltaphi/2) * Math.sin(deltaphi/2) +
+                       Math.cos(phi1) * Math.cos(phi2) *
+                       Math.sin(deltalambda/2) * Math.sin(deltalambda/2);
+                       
+                       var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-    onResumen: function () {
-        //*****************************************************
-        if ($.mobile.activePage.attr("id") == "map-page-geolocator") {
+                       var dist = R * c * 1000 //in meters
+                       //navigator.notification.alert(dist.toString(), function () { }, "TRACK Err");
+                       //*************************************
+                       if (dist <= 50){
+                            updateStatus('Arrived');
+                            navigator.app.exitApp();
+                       }
+                       //*************************************************
+                     },
+                     complete: function () {
+                        //$('#loader').hide();
+                        //navigator.geolocation.clearWatch(WachtId);
+                     }
+                });
+              //******************************
+              }, function (err) {
+              
+              });
+            
+            bgLocationServices.start();
+            
+        }
+        
+        
+    },
+    
+onResumen: function () {
+    
+//    if ($.mobile.activePage.attr("id") == "map-track") {
+//        
+//        var bgLocationServices = window.plugins.backgroundLocationServices;
+//        
+//        bgLocationServices.configure({
+//                                     distanceFilter: 10,
+//                                     desiredAccuracy: 20,
+//                                     interval: 60000,
+//                                     debug: false,
+//                                     aggressiveInterval: 9000
+//                                     });
+//        
+//        //navigator.notification.alert('ingreso onPause map track', function () { }, "TRACK");
+//        
+//        bgLocationServices.registerForLocationUpdates(function (location) {
+//              //************************************************
+//              var IdRoute = $("#hdnIdRoute").val();
+//              var IdUsername = $("#hdnUsername").val();
+//              //************************************************
+//              var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightTRACK.svc/";
+//              //************************************************
+//              var urlk1 = wcfServiceUrl + "SaveTracking?IdRoute=" + IdRoute + '&Username=' + IdUsername + '&Latitude=' + location.latitude + '&Longitude=' + location.longitude + '&Accuracy=' + location.accuracy + '&Timestamp=' + parseTimestamp(location.timestamp) + '&Speed=' + location.speed;
+//              //************************************************
+//              $.ajax({
+//                     cache: true,
+//                     async: true,
+//                     url: urlk1,
+//                     crossDomain: true,
+//                     data: "{ IdRoute: " + IdRoute + ", Username:" + IdUsername + ", Latitude: '" + location.latitude + "', Longitude: '" + location.longitude + "' }",
+//                     type: "GET",
+//                     jsonpCallback: "HistoryUser",
+//                     contentType: "application/json; charset=utf-8",
+//                     dataType: "jsonp",
+//                     beforeSend: function () {
+//                     //$('#loader').show();
+//                     },
+//                     error: function (xhr, textStatus, err) {
+//                     var mensaje = "readyState: " + xhr.readyState + "\n";
+//                     mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+//                     mensaje = mensaje + "status: " + xhr.status + "\n";
+//                     mensaje = mensaje + "text status: " + textStatus + "\n";
+//                     mensaje = mensaje + "error: " + err + "\n";
+//                     //navigator.notification.alert(mensaje, function () { }, "TRACK Error");
+//                     //$('#loader').hide();
+//                     },
+//                     success: function (objHistory) {
+//                     
+//                     },
+//                     complete: function () {
+//                     //$('#loader').hide();
+//                     //navigator.geolocation.clearWatch(WachtId);
+//                     }
+//                     });
+//              //******************************
+//              }, function (err) {
+//              
+//        });
+//        
+//        bgLocationServices.start();
+//        
+//    }
+   
+    
+    
+    
+    //*****************************************************
+    if ($.mobile.activePage.attr("id") == "map-page-geolocator") {
 
 //            var bgLocationServices = window.plugins.backgroundLocationServices;
 //
@@ -255,7 +406,180 @@ var app = {
     onDeviceReady: function () {
 
         //return navigator.geolocation.getCurrentPosition(app.initialize);
+        
+//        setTimeout(function(){
+//                   var page = $(':mobile-pagecontainer').pagecontainer('getActivePage')[0].id;
+//                   //alert('Actived page: ' + page);
+//                   },100);
 
+        if ($.mobile.activePage.attr("id") == "map-track") {
+            //navigator.splashscreen.hide();
+            //alert('primero onDeviceReady');
+            //***************************************
+//            var _IdRoute = '1';//getUrlVars()["id"];
+//            var _Username = 'RN-1214-A';//getUrlVars()["usr"];
+//            var _Password = '1526093542';//getUrlVars()["pwd"];
+//            ////*********************************
+//            $("#hdnIdRoute").val(_IdRoute);
+//            $("#hdnUsername").val(_Username);
+//            $("#hdnPassword").val(_Password);
+//            //************************************************
+//            var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightTRACK.svc/";
+//            var urlk1 = wcfServiceUrl + "SearchRoute?IdRoute=" + _IdRoute + '&Username=' + _Username + '&PasswordUser=' + _Password;
+//            //************************************************
+//            $.ajax({
+//                   cache: true,
+//                   url: urlk1,
+//                   crossDomain: true,
+//                   data: "{ IdRoute: " + _IdRoute + ", Username: '" + _Username + "', PasswordUser: '" + _Password + "' }",
+//                   type: "GET",
+//                   jsonpCallback: "SearchRoute",
+//                   contentType: "application/json; charset=utf-8",
+//                   dataType: "jsonp",
+//                   beforeSend: function () {
+//                        $('#loader').show();
+//                   },
+//                   error: function (xhr, textStatus, err) {
+//                   var mensaje = "readyState: " + xhr.readyState + "\n";
+//                   mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+//                   mensaje = mensaje + "status: " + xhr.status + "\n";
+//                   mensaje = mensaje + "text status: " + textStatus + "\n";
+//                   mensaje = mensaje + "error: " + err + "\n";
+//                   //navigator.notification.alert(mensaje, function () { }, "BCP Error");
+//                   //$('#loader').hide();
+//                   },
+//                   success: function (obj) {
+//                   //*********************************
+//                   var directionsService = new google.maps.DirectionsService;
+//                   var directionsDisplay = new google.maps.DirectionsRenderer;
+//                   
+//                   map = new google.maps.Map(document.getElementById('map-canvas'), {
+//                     zoom: 14,
+//                     center: { lat: 41.85, lng: -87.65 },
+//                     mapTypeId: google.maps.MapTypeId.ROADMAP,
+//                     backgroundColor: '#ffffff',
+//                     noClear: true,
+//                     disableDefaultUI: false,
+//                     keyboardShortcuts: true,
+//                     disableDoubleClickZoom: false,
+//                     draggable: true,
+//                     scrollwheel: true,
+//                     draggableCursor: 'pointer',
+//                     draggingCursor: 'crosshair',
+//                     mapTypeControl: true,
+//                     panControl: true,
+//                     panControlOptions: {
+//                     position: google.maps.ControlPosition.TOP_RIGHT
+//                     },
+//                     navigationControl: true,
+//                     streetViewControl: true,
+//                     streetViewControlOptions: {
+//                     position: google.maps.ControlPosition.RIGHT_TOP
+//                     },
+//                     navigationControlOptions: {
+//                     position: google.maps.ControlPosition.RIGHT_TOP,
+//                     style: google.maps.NavigationControlStyle.ANDROID
+//                     },
+//                     scaleControl: true,
+//                     scaleControlOptions: {
+//                     position: google.maps.ControlPosition.RIGHT_TOP,
+//                     style: google.maps.ScaleControlStyle.DEFAULT
+//                     },
+//                     zoomControl: true,
+//                     zoomControlOptions: {
+//                     //style: google.maps.ZoomControlStyle.LARGE,
+//                     position: google.maps.ControlPosition.RIGHT_TOP
+//                     }
+//                   });
+//                   //*********************************
+//                   directionsDisplay.setMap(map);
+//                   directionsDisplay.setPanel(document.getElementById('right-panel'));
+//                   //*********************************                  
+//                   calculateAndDisplayRoute(directionsService, directionsDisplay, obj.SearchRouteResult.PickupAddress, obj.SearchRouteResult.DeliveryAddress);
+//                   //*********************************
+//                   navigator.geolocation.getCurrentPosition(success, fail, { maximumAge: 5000, enableHighAccuracy: true, timeout: 2000 });
+//                   //*********************************
+//                   },
+//                   complete: function () {
+//                        $('#loader').hide();
+//                   }
+//            });
+            //***************************************
+            
+            //navigator.notification.alert('ingreso onDeviceReady map track', function () { }, "TRACK Error");
+            
+            var bgLocationServices = window.plugins.backgroundLocationServices;
+            
+            bgLocationServices.configure({
+                 distanceFilter: 10,
+                 desiredAccuracy: 20,
+                 interval: 60000,
+                 debug: false,
+                 aggressiveInterval: 9000
+            });
+            
+            //navigator.notification.alert('ingreso bgLocationService', function () { }, "TRACK Error");
+            
+            bgLocationServices.registerForLocationUpdates(function (location) {
+              //************************************************
+              var IdRoute = $("#hdnIdRoute").val();
+              var IdUsername = $("#hdnUsername").val();
+              //alert(IdRoute);
+              //navigator.notification.alert('register', function () { }, "TRACK Error");
+              //************************************************
+              var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightTRACK.svc/";
+              //************************************************
+              var urlk1 = wcfServiceUrl + "SaveTracking?IdRoute=" + IdRoute + '&Username=' + IdUsername + '&Latitude=' + location.latitude + '&Longitude=' + location.longitude + '&Accuracy=' + location.accuracy + '&Timestamp=' + parseTimestamp(location.timestamp) + '&Speed=' + location.speed;
+              //************************************************
+              $.ajax({
+                     cache: true,
+                     async: true,
+                     url: urlk1,
+                     crossDomain: true,
+                     data: "{ IdRoute: " + IdRoute + ", Username:" + IdUsername + ", Latitude: '" + location.latitude + "', Longitude: '" + location.longitude + "' }",
+                     type: "GET",
+                     jsonpCallback: "HistoryUser",
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "jsonp",
+                     beforeSend: function () {
+                        //$('#loader').show();
+                     },
+                     error: function (xhr, textStatus, err) {
+                        var mensaje = "readyState: " + xhr.readyState + "\n";
+                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                        mensaje = mensaje + "status: " + xhr.status + "\n";
+                        mensaje = mensaje + "text status: " + textStatus + "\n";
+                        mensaje = mensaje + "error: " + err + "\n";
+                        //navigator.notification.alert(mensaje, function () { }, "TRACK Error");
+                        //$('#loader').hide();
+                     },
+                     success: function (objHistory) {
+                        //************************************************
+                        //navigator.notification.alert('ingreso save tracking2', function () { }, "TRACK Error");
+                        //************************************************
+                         //var dist = calcularDistancia($("#hdnLatDestination").val(),location.latitude,$("#hdnLngDestination").val(),location.longitude)
+                         //if (dist <= 50){
+                            //updateStatus('Arrived');
+                            //alert('Tracking completed.');
+                            //navigator.app.exitApp();
+                         //}
+                         //*************************************************
+                     },
+                     complete: function () {
+                        //$('#loader').hide();
+                        //navigator.geolocation.clearWatch(WachtId);
+                     }
+               });
+              //******************************
+              }, function (err) {
+              
+              });
+            
+            bgLocationServices.start();
+            
+        }
+        
+        
         if ($.mobile.activePage.attr("id") == "map-page") {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (latlng) {
@@ -564,10 +888,10 @@ var app = {
             //alert(navigator.connection.type);
             //if (navigator.network.connection.type == Connection.NONE) {
             //    // No tenemos conexión
-            //    navigator.notification.alert("No tenemos conexión", function () { }, "BCP Alert");
+            //    navigator.notification.alert("No tenemos conexion", function () { }, "BCP Alert");
             //} else {
             //    // Si tenemos conexión
-            //    navigator.notification.alert("Si tenemos conexión", function () { }, "BCP Alert");
+            //    navigator.notification.alert("Si tenemos conexion", function () { }, "BCP Alert");
             //}
             //alert($("#remember").prop("checked"));
 
@@ -1150,6 +1474,18 @@ var app = {
 
     },
 
+    parseTimeSpam: function(timestamp){
+        var d = new Date(timestamp);
+        var day = d.getDate();
+        var month = d.getMonth() + 1;
+        var year = d.getFullYear();
+        var hour = d.getHours();
+        var mins = d.getMinutes();
+        var secs = d.getSeconds();
+        var msec = d.getMilliseconds();
+        return year + "-" + month + "-" + day + " " + hour + ":" + mins + ":" + secs + "." + msec;
+    },
+    
     success: function (pos) {
         // Location found, show map with these coordinates
         //************************************************
