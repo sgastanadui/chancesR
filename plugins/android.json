@@ -30,9 +30,6 @@
         }
     },
     "dependent_plugins": {
-        "com.phonegap.plugins.PushPlugin": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
-        },
         "cordova-plugin-actionsheet": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
