@@ -296,10 +296,10 @@ module.exports.metadata =
     "cordova-plugin-geolocation": "2.2.0",
     "cordova-plugin-media": "2.3.0",
     "cordova-plugin-network-information": "1.2.1",
+    "cordova-plugin-whitelist": "1.2.2",
     "org.flybuy.cordova.background-location-services": "1.0.0",
     "org.frd49.cordova.exitapp": "1.0.0",
-    "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4",
-    "cordova-plugin-whitelist": "1.2.2"
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4"
 };
 // BOTTOM OF METADATA
 });

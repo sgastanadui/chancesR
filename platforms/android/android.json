@@ -37,15 +37,15 @@
                             "count": 1
                         },
                         {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"BackgroundLocationServices\"><param name=\"android-package\" value=\"com.flybuy.cordova.location.BackgroundLocationServicesPlugin\" /></feature>",
                             "count": 1
                         },
                         {
                             "xml": "<feature name=\"LaunchNavigator\"><param name=\"android-package\" value=\"uk.co.workingedge.phonegap.plugin.LaunchNavigator\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -75,11 +75,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<permission android:name=\"io.cordova.hellocordova.permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />",
+                            "xml": "<permission android:name=\"com.chancesrmis.ertdashboard.permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />",
                             "count": 1
                         },
                         {
-                            "xml": "<uses-permission android:name=\"io.cordova.hellocordova.permission.C2D_MESSAGE\" />",
+                            "xml": "<uses-permission android:name=\"com.chancesrmis.ertdashboard.permission.C2D_MESSAGE\" />",
                             "count": 1
                         },
                         {
@@ -109,7 +109,7 @@
                             "count": 1
                         },
                         {
-                            "xml": "<receiver android:name=\"com.plugin.gcm.CordovaGCMBroadcastReceiver\" android:permission=\"com.google.android.c2dm.permission.SEND\"><intent-filter><action android:name=\"com.google.android.c2dm.intent.RECEIVE\" /><action android:name=\"com.google.android.c2dm.intent.REGISTRATION\" /><category android:name=\"io.cordova.hellocordova\" /></intent-filter></receiver>",
+                            "xml": "<receiver android:name=\"com.plugin.gcm.CordovaGCMBroadcastReceiver\" android:permission=\"com.google.android.c2dm.permission.SEND\"><intent-filter><action android:name=\"com.google.android.c2dm.intent.RECEIVE\" /><action android:name=\"com.google.android.c2dm.intent.REGISTRATION\" /><category android:name=\"com.chancesrmis.ertdashboard\" /></intent-filter></receiver>",
                             "count": 1
                         },
                         {
@@ -161,40 +161,40 @@
     },
     "installed_plugins": {
         "com.phonegap.plugins.PushPlugin": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-actionsheet": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-dialogs": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-file": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-media": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "org.flybuy.cordova.background-location-services": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "org.frd49.cordova.exitapp": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "uk.co.workingedge.phonegap.plugin.launchnavigator": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "org.flybuy.cordova.background-location-services": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "org.frd49.cordova.exitapp": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
     "dependent_plugins": {},
@@ -493,9 +493,9 @@
         "cordova-plugin-geolocation": "2.2.0",
         "cordova-plugin-media": "2.3.0",
         "cordova-plugin-network-information": "1.2.1",
+        "cordova-plugin-whitelist": "1.2.2",
         "org.flybuy.cordova.background-location-services": "1.0.0",
         "org.frd49.cordova.exitapp": "1.0.0",
-        "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4",
-        "cordova-plugin-whitelist": "1.2.2"
+        "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4"
     }
 }
