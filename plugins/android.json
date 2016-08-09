@@ -21,9 +21,6 @@
         },
         "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
     "dependent_plugins": {
