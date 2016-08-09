@@ -37,10 +37,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"BackgroundLocationServices\"><param name=\"android-package\" value=\"com.flybuy.cordova.location.BackgroundLocationServicesPlugin\" /></feature>",
                             "count": 1
                         },
@@ -185,9 +181,6 @@
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
         "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         },
         "org.flybuy.cordova.background-location-services": {
@@ -497,7 +490,6 @@
         "cordova-plugin-geolocation": "2.2.0",
         "cordova-plugin-media": "2.3.0",
         "cordova-plugin-network-information": "1.2.1",
-        "cordova-plugin-whitelist": "1.2.2",
         "org.flybuy.cordova.background-location-services": "1.0.0",
         "org.frd49.cordova.exitapp": "1.0.0",
         "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4"
