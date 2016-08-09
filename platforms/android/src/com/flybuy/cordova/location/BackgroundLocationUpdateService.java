@@ -4,6 +4,17 @@ import java.util.List;
 import java.util.Iterator;
 import java.util.Random;
 
+import javax.net.ssl.HttpsURLConnection;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.conn.ssl.X509HostnameVerifier;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.SingleClientConnManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,7 +58,6 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.android.gms.location.LocationAvailability;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -57,6 +67,16 @@ import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 
 import static java.lang.Math.*;
+
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.X509TrustManager;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -68,8 +88,6 @@ import com.google.android.gms.location.ActivityRecognition;
 import com.google.android.gms.location.DetectedActivity;
 import com.google.android.gms.location.ActivityRecognitionResult;
 import java.util.ArrayList;
-import java.util.Set;
-
 import com.google.android.gms.common.ConnectionResult;
 
 //Detected Activities imports
@@ -120,6 +138,10 @@ public class BackgroundLocationUpdateService
 
     private LocationRequest locationRequest;
 
+    // private JSONObject params;
+    // private String url = "localhost:3000/location";
+    // private JSONObject headers;
+
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -164,6 +186,16 @@ public class BackgroundLocationUpdateService
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(TAG, "Received start id " + startId + ": " + intent);
         if (intent != null) {
+
+            // try {
+            //     params = new JSONObject(intent.getStringExtra("params"));
+            //     headers = new JSONObject(intent.getStringExtra("headers"));
+            // } catch (JSONException e) {
+            //     e.printStackTrace();
+            // }
+
+            //Get our POST url and configure options from the intent
+            // url = intent.getStringExtra("url");
 
             distanceFilter = Integer.parseInt(intent.getStringExtra("distanceFilter"));
             desiredAccuracy = Integer.parseInt(intent.getStringExtra("desiredAccuracy"));
@@ -301,6 +333,7 @@ public class BackgroundLocationUpdateService
             if (location != null) {
 
                 if(isDebugging) {
+                    // Toast.makeText(context, "We recieveived a location update", Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "- locationUpdateReceiver" + location.toString());
                 }
 
@@ -312,24 +345,10 @@ public class BackgroundLocationUpdateService
                mIntent.putExtras(createLocationBundle(location));
                getApplicationContext().sendBroadcast(mIntent);
 
-            } else {
-                LocationAvailability la = LocationAvailability.extractLocationAvailability(intent);
-                Boolean isAvailable = la.isLocationAvailable();
-
-                if(isAvailable == false) {
-                    Intent mIntent = new Intent(Constants.CALLBACK_LOCATION_UPDATE);
-                    mIntent.putExtra("error", "Location Provider is not available. Maybe GPS is disabled or the provider was rejected?");
-                    getApplicationContext().sendBroadcast(mIntent);
-                }
+                // postLocation(location);
             }
         }
     };
-
-    private void showDebugToast(Context ctx, String msg) {
-        if(isDebugging) {
-            Toast.makeText(ctx, msg, Toast.LENGTH_SHORT).show();
-        }
-    }
 
     private BroadcastReceiver detectedActivitiesReceiver = new BroadcastReceiver() {
       @Override
@@ -348,11 +367,11 @@ public class BackgroundLocationUpdateService
         Log.w(TAG, "Activity is recording" + isRecording);
 
         if(lastActivity.getType() == DetectedActivity.STILL && isRecording) {
-            showDebugToast(context, "Detected Activity was STILL, Stop recording");
-            stopRecording();
+          Toast.makeText(context, "Detected Activity was STILL, Stop recording", Toast.LENGTH_SHORT).show();
+          stopRecording();
         } else if(lastActivity.getType() != DetectedActivity.STILL && !isRecording) {
-            showDebugToast(context, "Detected Activity was ACTIVE, Start Recording");
-            startRecording();
+          Toast.makeText(context, "Detected Activity was ACTIVE, Start Recording", Toast.LENGTH_SHORT).show();
+          startRecording();
         }
         //else do nothing
       }
@@ -491,8 +510,8 @@ public class BackgroundLocationUpdateService
            }
            @Override
            public void onConnectionSuspended(int i) {
-               Log.w(TAG, "Connection To Activity Suspended");
-               showDebugToast(getApplicationContext(), "Activity Client Suspended");
+              Log.w(TAG, "Connection To Activity Suspended");
+              Toast.makeText(getApplicationContext(), "Activity Client Suspended", Toast.LENGTH_SHORT).show();
            }
        };
 
@@ -628,7 +647,9 @@ public class BackgroundLocationUpdateService
         this.stopRecording();
         this.cleanUp();
 
-        showDebugToast(this, "Background location tracking stopped");
+        if (isDebugging) {
+            Toast.makeText(this, "Background location tracking stopped", Toast.LENGTH_SHORT).show();
+        }
         return super.stopService(intent);
     }
 
