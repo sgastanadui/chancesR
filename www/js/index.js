@@ -934,7 +934,7 @@ onResumen: function () {
                 data: "{ UserName: " + $("#txtUsername").val().trim() + ", Password: " + $("#txtPassword").val().trim() + ", IdAplication: 9, Code: " + $("#txtCode").val().trim() + " }",
                 type: "GET",
                 jsonpCallback: "UserApplication",
-                contentType: "application/json; charset=utf-8",
+                contentType: "application/json",
                 dataType: "jsonp",
                 beforeSend: function () {
                     $('#loader').show();
@@ -945,7 +945,7 @@ onResumen: function () {
                     mensaje = mensaje + "status: " + xhr.status + "\n";
                     mensaje = mensaje + "text status: " + textStatus + "\n";
                     mensaje = mensaje + "error: " + err + "\n";
-                    navigator.notification.alert(mensaje, function () { }, "BCP Error");
+                    navigator.notification.alert(mensaje, function () { }, "BCP Error Login");
                     $('#results').html("");
                     $('#loader').hide();
                 },
