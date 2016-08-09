@@ -291,7 +291,6 @@ module.exports.metadata =
     "com.phonegap.plugins.PushPlugin": "2.5.0",
     "cordova-plugin-actionsheet": "2.2.2",
     "cordova-plugin-compat": "1.0.0",
-    "cordova-plugin-console": "1.0.3",
     "cordova-plugin-dialogs": "1.2.1",
     "cordova-plugin-file": "4.2.0",
     "cordova-plugin-geolocation": "2.2.0",
@@ -299,7 +298,8 @@ module.exports.metadata =
     "cordova-plugin-network-information": "1.2.1",
     "org.flybuy.cordova.background-location-services": "1.0.0",
     "org.frd49.cordova.exitapp": "1.0.0",
-    "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4"
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4",
+    "cordova-plugin-whitelist": "1.2.2"
 };
 // BOTTOM OF METADATA
 });
