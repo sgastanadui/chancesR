@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="org.flybuy.cordova.background-location-services"
-    version="1.0.4">
+    version="1.0.0">
 
     <name>CDVBackgroundLocationServices</name>
     <description>Background Location Services For Cordova</description>
@@ -13,7 +13,9 @@
         <engine name="cordova" version=">=3.0.0"/>
     </engines>
 
-    <dependency id="cordova-plugin-geolocation"/>
+    <dependency id="org.apache.cordova.geolocation"/>
+    <dependency id="org.apache.cordova.dialogs"/>
+    <framework src="com.google.android.gms:play-services-location:+" />
 
     <js-module src="www/BackgroundLocationServices.js" name="BackgroundLocationServices">
         <clobbers target="plugins.backgroundLocationServices"/>
@@ -21,11 +23,8 @@
 
     <!-- android -->
     <platform name="android">
-        <framework src="com.google.android.gms:play-services-location:+" />
-
         <source-file src="src/android/BackgroundLocationServicesPlugin.java" target-dir="src/com/flybuy/cordova/location"/>
         <source-file src="src/android/BackgroundLocationUpdateService.java" target-dir="src/com/flybuy/cordova/location"/>
-        <source-file src="src/android/PermissionHelper.java" target-dir="src/com/flybuy/cordova/location"/>
         <source-file src="src/android/Constants.java" target-dir="src/com/flybuy/cordova/location"/>
 
         <source-file src="src/android/location_icon.png" target-dir="res/drawable"/>
