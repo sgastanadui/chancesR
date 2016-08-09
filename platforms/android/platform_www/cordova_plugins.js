@@ -300,7 +300,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.2",
     "org.flybuy.cordova.background-location-services": "1.0.0",
     "org.frd49.cordova.exitapp": "1.0.0",
-    "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4"
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4",
+    "cordova-plugin-android-support-v4": "21.0.1"
 };
 // BOTTOM OF METADATA
 });

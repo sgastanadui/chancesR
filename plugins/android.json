@@ -24,6 +24,9 @@
         },
         "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "cordova-plugin-android-support-v4": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
     "dependent_plugins": {

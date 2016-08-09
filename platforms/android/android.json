@@ -198,6 +198,9 @@
         },
         "uk.co.workingedge.phonegap.plugin.launchnavigator": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "cordova-plugin-android-support-v4": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
     "dependent_plugins": {},
@@ -500,6 +503,7 @@
         "cordova-plugin-whitelist": "1.2.2",
         "org.flybuy.cordova.background-location-services": "1.0.0",
         "org.frd49.cordova.exitapp": "1.0.0",
-        "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4"
+        "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4",
+        "cordova-plugin-android-support-v4": "21.0.1"
     }
 }
