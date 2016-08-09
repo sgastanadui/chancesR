@@ -24,6 +24,7 @@
         }
     },
     "dependent_plugins": {
+<<<<<<< HEAD
         "com.phonegap.plugins.PushPlugin": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
@@ -41,6 +42,10 @@
         },
         "uk.co.workingedge.phonegap.plugin.launchnavigator": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+=======
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+>>>>>>> parent of 1b99a16... update changes
         }
     }
 }
