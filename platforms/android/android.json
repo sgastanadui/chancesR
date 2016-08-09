@@ -25,10 +25,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.Geolocation\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Media\"><param name=\"android-package\" value=\"org.apache.cordova.media.AudioHandler\" /></feature>",
                             "count": 1
                         },
@@ -135,14 +131,6 @@
                             "count": 2
                         },
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
-                            "count": 1
-                        },
-                        {
                             "xml": "<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />",
                             "count": 1
                         },
@@ -156,6 +144,14 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
                             "count": 1
                         }
                     ]
@@ -182,9 +178,6 @@
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
-        },
         "cordova-plugin-media": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
@@ -207,6 +200,9 @@
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
@@ -418,20 +414,6 @@
             "runs": true
         },
         {
-            "id": "cordova-plugin-geolocation.geolocation",
-            "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
-            "pluginId": "cordova-plugin-geolocation",
-            "clobbers": [
-                "navigator.geolocation"
-            ]
-        },
-        {
-            "id": "cordova-plugin-geolocation.PositionError",
-            "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
-            "pluginId": "cordova-plugin-geolocation",
-            "runs": true
-        },
-        {
             "id": "cordova-plugin-media.MediaError",
             "file": "plugins/cordova-plugin-media/www/MediaError.js",
             "pluginId": "cordova-plugin-media",
@@ -512,7 +494,6 @@
         "cordova-plugin-console": "1.0.3",
         "cordova-plugin-dialogs": "1.2.1",
         "cordova-plugin-file": "4.2.0",
-        "cordova-plugin-geolocation": "2.2.0",
         "cordova-plugin-media": "2.3.0",
         "cordova-plugin-network-information": "1.2.1",
         "cordova-plugin-whitelist": "1.2.2",
@@ -520,6 +501,7 @@
         "org.frd49.cordova.exitapp": "1.0.0",
         "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4",
         "cordova-plugin-android-support-v4": "21.0.1",
-        "cordova-plugin-device": "1.1.2"
+        "cordova-plugin-device": "1.1.2",
+        "cordova-plugin-geolocation": "1.0.1"
     }
 }
