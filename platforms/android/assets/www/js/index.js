@@ -923,10 +923,12 @@ onResumen: function () {
                 localStorage.removeItem('Password');
                 localStorage.removeItem('Remember');
             }
-
+            $.support.cors=true;
             wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
             var urlk1 = wcfServiceUrl + "AutenticationUser?IdUsername=" + $("#txtUsername").val().trim() + "&Password=" + $("#txtPassword").val().trim() + "&IdAplication=9&Code=" + $("#txtCode").val().trim();
 
+            alert(urlk1);
+                             
             $.ajax({
                 cache: true,
                 url: urlk1,
