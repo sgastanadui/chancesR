@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sites</title>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtTcw1C9SfDbgy2aKfOt_5N8m2Ltpqdu8"> </script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/PushNotification.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+    <script type="text/javascript">
+        //***************************************
+        SendMessageGCMMobile = function (IdCompany, IdSite, Message, xType, Code) {
+            //*********************************
+            var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+            //*********************************
+            var urlk1 = wcfServiceUrl + "SendMsgGCM?IdCompany=" + IdCompany + '&IdSite=' + IdSite + '&Message=' + Message + '&xType=' + xType + '&Code=' + Code;
+            //*********************************
+            $.ajax({
+                cache: true,
+                async: true,
+                url: urlk1,
+                crossDomain: true,
+                data: "{ IdCompany: " + IdCompany + ", IdSite: " + IdSite + ", Message: " + Message + ", xType: " + xType + ", Code: '"+ Code +"' }",
+                type: "GET",
+                jsonpCallback: "SendGCM",
+                contentType: "application/json; charset=utf-8",
+                dataType: "jsonp",
+                beforeSend: function () {
+                    $('#loader').show();
+                },
+                error: function (xhr, textStatus, err) {
+                    var mensaje = "error send to alert. \n";
+                    mensaje = mensaje + "readyState: " + xhr.readyState + "\n";
+                    mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                    mensaje = mensaje + "status: " + xhr.status + "\n";
+                    mensaje = mensaje + "text status: " + textStatus + "\n";
+                    mensaje = mensaje + "error: " + err + "\n";
+                    //alert(mensaje + err.Message);
+                    //navigator.notification.alert(mensaje, function () { }, "BCP Error");
+                    $('#loader').hide();
+                },
+                success: function (obj) {
+                    if (obj.SendMsgGCMResult == true) {
+                        //*************************
+                        //alert('sucessfull update.');
+                        //*************************
+                    } else {
+                        alert('Fail');
+                    }
+                },
+                complete: function () {
+                    //$('#loader').hide();
+                }
+            });
+            //*********************************
+        }
+        //***************************************
+        $(document).on("pagecreate", "#map-page1", function () {
+            ////*********************************
+            //var IdAlertsERT = getUrlVars()["IdAlerts"];
+            //var longitude = getUrlVars()["Longitude"];
+            //var latitude = getUrlVars()["Latitude"];
+            //var Site = getUrlVars()["Site"];
+            //$("#hdnIdAlertsERT").val(IdAlertsERT);
+            ////*********************************
+            //var defaultLatLng = new google.maps.LatLng(latitude, longitude);  // Default to Hollywood, CA when no geolocation support
+            ////*********************************
+            //if (navigator.geolocation) {
+            //    function success(pos) {
+            //        // Location found, show map with these coordinates
+            //        drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+            //        //drawMap(new google.maps.LatLng(latitude, longitude));
+            //    }
+            //    function fail(error) {
+            //        switch (error.code) {
+            //            case error.PERMISSION_DENIED:
+            //                alert("User denied the request for Geolocation.");
+            //                //navigator.notification.alert("User denied the request for Geolocation.", function () { }, "BCP Error");
+            //                break;
+            //            case error.POSITION_UNAVAILABLE:
+            //                alert("Location information is unavailable.");
+            //                //navigator.notification.alert("Location information is unavailable.", function () { }, "BCP Error");
+            //                break;
+            //            case error.TIMEOUT:
+            //                alert("The request to get user location timed out.");
+            //                //navigator.notification.alert("The request to get user location timed out.", function () { }, "BCP Error");
+            //                break;
+            //            case error.UNKNOWN_ERROR:
+            //                alert("An unknown error occurred.");
+            //                //navigator.notification.alert("An unknown error occurred.", function () { }, "BCP Error");
+            //                break;
+            //        }
+            //        drawMap(defaultLatLng);  // Failed to find location, show default map
+            //    }
+            //    // Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
+            //    navigator.geolocation.getCurrentPosition(success, fail, { maximumAge: 500000, enableHighAccuracy: true, timeout: 6000 });
+            //} else {
+            //    drawMap(defaultLatLng);  // No geolocation support, show default map
+            //}
+            //function drawMap(latlng) {
+            //    var myOptions = {
+            //        zoom: 25,
+            //        center: latlng,
+            //        mapTypeId: google.maps.MapTypeId.SATELLITE,
+            //        backgroundColor: '#ffffff',
+            //        noClear: true,
+            //        disableDefaultUI: false,
+            //        keyboardShortcuts: true,
+            //        disableDoubleClickZoom: false,
+            //        draggable: true,
+            //        scrollwheel: true,
+            //        draggableCursor: 'pointer',
+            //        draggingCursor: 'crosshair',
+            //        mapTypeControl: true,
+            //        panControl: true,
+            //        panControlOptions: {
+            //            position: google.maps.ControlPosition.TOP_RIGHT
+            //        },
+            //        navigationControl: true,
+            //        streetViewControl: true,
+            //        streetViewControlOptions: {
+            //            position: google.maps.ControlPosition.RIGHT_TOP
+            //        },
+            //        navigationControlOptions: {
+            //            position: google.maps.ControlPosition.TOP_LEFT,
+            //            style: google.maps.NavigationControlStyle.ANDROID
+            //        },
+            //        scaleControl: true,
+            //        zoomControlOptions: {
+            //            //style: google.maps.ZoomControlStyle.LARGE,
+            //            position: google.maps.ControlPosition.RIGHT_TOP
+            //        }
+            //    };
+
+            //    var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+
+            //    // Create the DIV to hold the control and call the map
+            //    // passing in this DIV.
+            //    var myLocationControlDiv = document.createElement('DIV');
+            //    var controlUI = document.createElement('DIV');
+            //    controlUI.style.backgroundColor = 'White';
+            //    //controlUI.style.margin = '0% 0 0 1%';
+            //    controlUI.style.cursor = 'pointer';
+            //    controlUI.title = 'Click to update the map';
+            //    controlUI.innerHTML = '<img src="images/updateicon.jpg" />';
+            //    myLocationControlDiv.appendChild(controlUI);
+            //    controlUI.addEventListener('click', function () {
+            //        //***************************************
+            //        var Type = $("#hdnType").val();
+            //        var IdAlerts = $("#hdnIdAlertsERT").val();
+            //        var IdSite = $("#hdnIdSite").val();
+            //        var lat = $("#hdnLatitude").val();
+            //        var lng = $("#hdnLongitude").val();
+            //        var usrname = window.localStorage["Username"];
+            //        var HazardName = $("#hdnHazardName").val();
+            //        //***************************************
+            //        var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+            //        var urlk1 = wcfServiceUrl + "UpdateMapa?Type=" + Type + "&IdAlert=" + IdAlerts + "&IdLocation=" + IdSite + "&Latitude=" + lat + "&Longitude=" + lng + "&Username=" + usrname;
+            //        //***************************************
+            //        $.ajax({
+            //            //cache: true,
+            //            url: urlk1,
+            //            crossDomain: true,
+            //            data: "{ Type: " + Type + "; IdAlert: " + IdAlerts + " }",
+            //            type: "GET",
+            //            jsonpCallback: "UpdateMapa",
+            //            contentType: "application/json; charset=utf-8",
+            //            dataType: "jsonp",
+            //            beforeSend: function () {
+            //                $('#loader').show();
+            //            },
+            //            error: function (xhr, textStatus, err) {
+            //                var mensaje = "readyState: " + xhr.readyState + "\n";
+            //                mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+            //                mensaje = mensaje + "status: " + xhr.status + "\n";
+            //                mensaje = mensaje + "text status: " + textStatus + "\n";
+            //                mensaje = mensaje + "error: " + err + "\n";
+            //                alert(mensaje);
+            //                $('#loader').hide();
+            //            },
+            //            success: function (obj) {
+            //                //******************************
+            //                if (obj.UpdateMapaResult) {
+            //                    //*************************
+            //                    var Message = HazardName + ' location has been changed by ' + window.localStorage["ContactName"];
+            //                    //*************************
+            //                    SendMessageGCMMobile(window.localStorage["IdCompany"], $("#hdnIdSite").val(), Message, 'ERT', window.localStorage["Code"]);
+            //                    //*************************  
+            //                    //alert('successfully updated');
+            //                    navigator.notification.alert("Location changed", function () { }, "BCP Mobile");
+            //                    //*************************                                
+            //                } else {
+            //                    alert('');
+            //                }
+            //                //******************************
+            //            },
+            //            complete: function () {
+            //                $('#loader').hide();
+            //            }
+            //        });
+            //        //***************************************  
+            //    });
+            //    map.controls[google.maps.ControlPosition.RIGHT_TOP].push(controlUI);
+
+            //    // Add an overlay to the map of current lat/lng 
+            //    var marker = new google.maps.Marker({
+            //        position: latlng,
+            //        map: map,
+            //        animation: google.maps.Animation.DROP,
+            //        title: 'Current Location',
+            //        cursor: 'pointer',
+            //        draggable: false,
+            //        icon: 'images/bluecircle.png'
+            //    });
+
+            //    var latlngActual = new google.maps.LatLng(getUrlVars()["Latitude"], getUrlVars()["Longitude"]);
+            //    var marketActual = new google.maps.Marker({
+            //        position: latlngActual,
+            //        map: map,
+            //        animation: google.maps.Animation.DROP,
+            //        title: 'Insight Risk Technologies, LLC',
+            //        cursor: 'pointer',
+            //        draggable: true
+            //    })
+
+            //    var Site = getUrlVars()["Site"];
+            //    var contentString = '<div id="content">' + unescape(Site) + '</div>';
+            //    //var contentString = '<div id="content">' + unescape(Site) + '</div><input id="btnUpdateMapa" type="button" onclick="UpdateMapa();" value="Update" />';
+            //    var infowindow = new google.maps.InfoWindow({
+            //        content: contentString
+            //    });
+
+            //    infowindow.open(map, marketActual);
+            //    google.maps.event.addListener(marketActual, 'click', function () {
+            //        infowindow.open(map, marketActual);
+            //        var pos = marketActual.getPosition();
+            //        var lat = pos.lat();
+            //        var lng = pos.lng();
+            //        $("#hdnLatitude").val(lat);
+            //        $("#hdnLongitude").val(lng);
+            //    });
+
+            //    google.maps.event.addListener(marketActual, 'drag', function () {
+            //        marketActual.setTitle(unescape(Site));
+            //        var pos = marketActual.getPosition();
+            //        var lat = pos.lat();
+            //        var lng = pos.lng();
+            //        $("#hdnLatitude").val(lat);
+            //        $("#hdnLongitude").val(lng);
+            //    });
+            //}
+        });
+        //***************************************
+        $(document).on("pageinit", "#map-page1", function (event) {
+            //***************************************
+            var Type = getUrlVars()["Type"];
+            var HazardName = getUrlVars()["HazardName"];
+            var IdAlertsERT = getUrlVars()["IdAlerts"];
+            var IdCompany = getUrlVars()["IdCompany"];
+            var IdSite = getUrlVars()["IdSite"];
+            var Site = getUrlVars()["Site"];
+            var Latitude = getUrlVars()["LatitudeSite"];
+            var Longitude = getUrlVars()["LongitudeSite"];
+            var KeyBCP = getUrlVars()["KeyBCP"];
+            //***************************************
+            $("#hdnIdAlertsERT").val(IdAlertsERT);
+            $("#hdnType").val(Type);
+            $("#hdnIdSite").val(IdSite);
+            $("#hdnSite").val(unescape(Site));
+            $("#hdnLatitude").val(Latitude);
+            $("#hdnLongitude").val(Longitude);
+            $("#hdnKeyword").val(KeyBCP);
+            $("#hdnHazardName").val(HazardName);
+            //***************************************
+            var CompanyName = window.localStorage["CompanyName"];
+            $("#span1").html("" + CompanyName + " <br/>" + unescape(Site));
+            //***************************************
+            $("#btnHome").off("click");
+            $("#btnHome").click(function () {
+                //************************************************
+                var IdCompany = window.localStorage["IdCompany"];
+                var IdSite = $("#hdnIdSite").val();
+                var Latitude = $("#hdnLatitude").val();
+                var Longitude = $("#hdnLongitude").val();
+                var Site = $("#hdnSite").val();
+                var KeyBCP = $("#hdnKeyword").val();
+                window.location.href = 'home.html?IdCompany='+ IdCompany +'&IdSite=' + IdSite + '&Latitude=' + Latitude + '&Longitude=' + Longitude + '&Site=' + escape(Site) + '&KeyBCP=' + KeyBCP;
+                //************************************************
+            });
+            //***************************************
+        });
+        //***************************************
+    </script>
+</head>
+<body>
+    <div data-role="page" id="map-page1" data-url="map-page1">
+        <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;font-size:11px;font-weight:normal;">
+            <h1 id="span1"></h1>
+            <a href="#" id="btnHome" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-l ui-btn-icon-notext" style="background-color:#0065B3;position:-ms-page;top: 12px !important;" data-role="button" role="button"></a>
+        </div>
+        <div role="main" class="ui-content" id="map-canvas">
+            <!-- map loads here... -->
+        </div>
+        <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
+            ©BCP Insight Risk Technologies,LLC <span class="jqm-version"></span>
+        </div>
+        <!-- Div Loading -->
+        <div id="loader" style="display:none;">
+            <div id="center">
+                <img src="images/ajax-loader.gif" />
+            </div>
+        </div>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+        <input type="hidden" id="hdnType" />
+        <input type="hidden" id="hdnIdAlertsERT" />
+        <input type="hidden" id="hdnIdSite" />
+        <input type="hidden" id="hdnSite" />
+        <input type="hidden" id="hdnLatitude" />
+        <input type="hidden" id="hdnLongitude" />
+        <input type="hidden" id="hdnKeyword" />
+        <input type="hidden" id="hdnHazardName" />
+    </div>
+</body>
+</html>
