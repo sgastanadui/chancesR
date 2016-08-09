@@ -79,15 +79,6 @@
         "is_top_level": false,
         "variables": {}
     },
-    "org.flybuy.cordova.background-location-services": {
-        "source": {
-            "type": "git",
-            "url": "https://github.com/pmwisdom/cordova-background-geolocation-services",
-            "subdir": "."
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "phonegap-plugin-push": {
         "source": {
             "type": "registry",
@@ -97,5 +88,14 @@
         "variables": {
             "SENDER_ID": "653317226796"
         }
+    },
+    "org.flybuy.cordova.background-location-services": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pmwisdom/cordova-background-geolocation-services",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

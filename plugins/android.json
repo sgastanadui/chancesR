@@ -31,11 +31,11 @@
         "cordova-plugin-vibration": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
-        "org.flybuy.cordova.background-location-services": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
-        },
         "phonegap-plugin-push": {
             "SENDER_ID": "653317226796",
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "org.flybuy.cordova.background-location-services": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
