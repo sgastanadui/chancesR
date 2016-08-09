@@ -18,6 +18,8 @@
  *
 */
 
+/*global module, require*/
+
 var cordova = require('cordova'),
     proxy = require("cordova/exec/proxy"),
     Connection = require('./Connection');

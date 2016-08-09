@@ -24,7 +24,8 @@
   and http://w3c.github.io/netinfo/
 */
 
-var Connection = require('./Connection'),
+var cordova = require('cordova'),
+    Connection = require('./Connection'),
     modulemapper = require('cordova/modulemapper');
 
 var origConnection = modulemapper.getOriginalSymbol(window, 'navigator.connection');
@@ -46,7 +47,7 @@ module.exports = {
       metered = connection.metered,
       type = connection.type;
 
-    if (type !== undefined) {
+    if (type != undefined) {
       // For more information see:
       // https://developer.mozilla.org/en-US/docs/Web/API/Network_Information_API
 
@@ -64,7 +65,7 @@ module.exports = {
           connectionType = Connection.NONE;
           break;
       }
-    } else if (bandwidth !== undefined && metered !== undefined) {
+    } else if (bandwidth != undefined && metered != undefined) {
       /*
       bandwidth of type double, readonly
       The user agent must set the value of the bandwidth attribute to:

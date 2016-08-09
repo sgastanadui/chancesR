@@ -17,6 +17,14 @@ module.exports = [
         ]
     },
     {
+        "id": "cordova-plugin-device.device",
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "pluginId": "cordova-plugin-device",
+        "clobbers": [
+            "device"
+        ]
+    },
+    {
         "id": "cordova-plugin-dialogs.notification",
         "file": "plugins/cordova-plugin-dialogs/www/notification.js",
         "pluginId": "cordova-plugin-dialogs",
@@ -177,12 +185,6 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-file.isChrome",
-        "file": "plugins/cordova-plugin-file/www/browser/isChrome.js",
-        "pluginId": "cordova-plugin-file",
-        "runs": true
-    },
-    {
         "id": "cordova-plugin-file.androidFileSystem",
         "file": "plugins/cordova-plugin-file/www/android/FileSystem.js",
         "pluginId": "cordova-plugin-file",
@@ -203,20 +205,6 @@ module.exports = [
         "merges": [
             "cordova"
         ],
-        "runs": true
-    },
-    {
-        "id": "cordova-plugin-geolocation.geolocation",
-        "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
-        "pluginId": "cordova-plugin-geolocation",
-        "clobbers": [
-            "navigator.geolocation"
-        ]
-    },
-    {
-        "id": "cordova-plugin-geolocation.PositionError",
-        "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
-        "pluginId": "cordova-plugin-geolocation",
         "runs": true
     },
     {
@@ -290,14 +278,13 @@ module.exports.metadata =
 {
     "com.phonegap.plugins.PushPlugin": "2.5.0",
     "cordova-plugin-actionsheet": "2.2.2",
-    "cordova-plugin-compat": "1.0.0",
-    "cordova-plugin-console": "1.0.3",
-    "cordova-plugin-dialogs": "1.2.1",
-    "cordova-plugin-file": "4.2.0",
-    "cordova-plugin-geolocation": "2.2.0",
-    "cordova-plugin-media": "2.3.0",
-    "cordova-plugin-network-information": "1.2.1",
-    "cordova-plugin-whitelist": "1.2.2",
+    "cordova-plugin-console": "1.0.2",
+    "cordova-plugin-device": "1.1.0",
+    "cordova-plugin-dialogs": "1.2.0",
+    "cordova-plugin-file": "3.0.0",
+    "cordova-plugin-geolocation": "1.0.1",
+    "cordova-plugin-media": "1.0.1",
+    "cordova-plugin-network-information": "1.1.0",
     "org.flybuy.cordova.background-location-services": "1.0.0",
     "org.frd49.cordova.exitapp": "1.0.0",
     "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4"

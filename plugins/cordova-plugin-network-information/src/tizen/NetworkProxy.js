@@ -19,8 +19,7 @@
  *
 */
 
-/* global tizen */
-
+var cordova = require('cordova');
 var Connection = require('./Connection');
 
 module.exports = {
