@@ -32,12 +32,10 @@
     <feature name="LaunchNavigator">
         <param name="android-package" value="uk.co.workingedge.phonegap.plugin.LaunchNavigator" />
     </feature>
-    <name>HelloCordova</name>
-    <description>
-        A sample Apache Cordova application that responds to the deviceready event.
-    </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <name>Insight BCP Mobile</name>
+    <description>Insight BCP Mobile</description>
+    <author email="santiagogerman@hotmail.com" href="https://chancesrmis.com">
+        Ing. Santiago Gastanadui Lujan
     </author>
     <content src="index.html" />
     <access origin="*" />
