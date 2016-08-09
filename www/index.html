@@ -1,77 +1,49 @@
 <!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
 <html>
     <head>
-        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-src 'self' https://cordova.apache.org">-->
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet" />
-        <link href="css/index.css" rel="stylesheet" />
-        <title>InsightBCPMobile</title>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Hello World</title>
     </head>
     <body>
-        <div data-role="header" style="background-color:#0065B3">
-            <br /><br /><h1></h1>
-        </div>
-        <div data-role="content" style="background-color:white;">
-
-            <div align="center">
-                <img src="images/insightbcp.png" />
+        <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
             </div>
-            <div class="form-group has-feedback has-feedback-left">
-                <label class="control-label sr-only">Code:</label>
-                <input type="number" maxlength="4" class="form-control" id="txtCode" placeholder="Code" />
-                <i class="form-control-feedback glyphicon glyphicon-qrcode"></i>
-            </div>
-            <div class="form-group has-feedback has-feedback-left">
-                <label class="control-label sr-only">Username:</label>
-                <input type="text" class="form-control" id="txtUsername" placeholder="Username" />
-                <i class="form-control-feedback glyphicon glyphicon-user"></i>
-            </div>
-            <div class="form-group has-feedback has-feedback-left">
-                <label class="control-label sr-only">Password:</label>
-                <input type="password" class="form-control" id="txtPassword" name="txtPassword" placeholder="Password" />
-                <i class="form-control-feedback glyphicon glyphicon-lock"></i>
-            </div>
-
-            <div class="form-group has-feedback has-feedback-left">
-                <!--<fieldset data-role="controlgroup">-->
-                <input id="remember" type="checkbox" checked />
-                <label for="remember">Remember me ?</label>
-                <!--</fieldset>-->
-            </div>
-
-            <input type="button" value="Login" id="btnLogin">
-
-            <div id="results"></div>
-            <img id="imgAjaxLoader" style="display:none;" class="ajaxLoader" src="images/ajax-loader.gif" />
-            <div id="loader" style="display:none;">
-                <div id="center">
-                    <img src="images/ajax-loader.gif" />
-                </div>
-            </div>
-            <br /><br />
-            <table style="width:100%;display:none;">
-                <tr>
-                    <td style="text-align:center;">
-                        <a href="tel:+1 863-225-0468"><img id="imgTelefono" src="images/telefono.jpg" /></a>
-                    </td>
-                    <td style="text-align:center;">
-                        <img id="imgUbicacion" src="images/ubicacion.png" />
-                    </td>
-                </tr>
-            </table>
-            <div id="app-status-div">
-                <ul id="app-status-ul"></ul>
-            </div>
-        </div>
-        <div class="jqm-footer" data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#0065B3;color:white;text-align:center;font-size:11px;font-weight:normal;">
-            ©ERT Insight Risk Technologies, LLC <span class="jqm-version"></span>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-        <script type="text/javascript" src="scripts/index.js"></script>
-        <script type="text/javascript" src="scripts/jquery-2.1.3.min.js"></script>
-        <script type="text/javascript" src="scripts/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>
