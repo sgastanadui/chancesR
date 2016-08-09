@@ -30,7 +30,22 @@
         }
     },
     "dependent_plugins": {
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-plugin-actionsheet": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
         "cordova-plugin-compat": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "org.flybuy.cordova.background-location-services": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "org.frd49.cordova.exitapp": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "uk.co.workingedge.phonegap.plugin.launchnavigator": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     }
