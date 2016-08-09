@@ -269,14 +269,6 @@ module.exports = [
         "clobbers": [
             "plugins.backgroundLocationServices"
         ]
-    },
-    {
-        "id": "phonegap-plugin-push.PushNotification",
-        "file": "plugins/phonegap-plugin-push/www/push.js",
-        "pluginId": "phonegap-plugin-push",
-        "clobbers": [
-            "PushNotification"
-        ]
     }
 ];
 module.exports.metadata = 
@@ -292,8 +284,7 @@ module.exports.metadata =
     "cordova-plugin-media": "2.3.0",
     "cordova-plugin-network-information": "1.2.1",
     "cordova-plugin-vibration": "2.1.1",
-    "org.flybuy.cordova.background-location-services": "1.0.4",
-    "phonegap-plugin-push": "1.8.1"
+    "org.flybuy.cordova.background-location-services": "1.0.4"
 };
 // BOTTOM OF METADATA
 });
