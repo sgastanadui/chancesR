@@ -43,6 +43,10 @@
                         {
                             "xml": "<feature name=\"LaunchNavigator\"><param name=\"android-package\" value=\"uk.co.workingedge.phonegap.plugin.LaunchNavigator\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -200,6 +204,9 @@
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
@@ -490,6 +497,7 @@
         "cordova-plugin-network-information": "1.1.0",
         "org.flybuy.cordova.background-location-services": "1.0.0",
         "org.frd49.cordova.exitapp": "1.0.0",
-        "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4"
+        "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4",
+        "cordova-plugin-whitelist": "1.2.2"
     }
 }

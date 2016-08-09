@@ -120,4 +120,8 @@
     <preference name="deployment-target" value="7.1" />
     <preference name="splash-screen-duration" value="5000" />
     <preference name="load-url-timeout" value="20000" />
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
 </widget>

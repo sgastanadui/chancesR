@@ -36,6 +36,9 @@
         },
         "uk.co.workingedge.phonegap.plugin.launchnavigator": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
     "dependent_plugins": {
