@@ -21,11 +21,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.Geolocation\" /></feature>",
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.Geolocation\" /></feature>",
+                            "xml": "<feature name=\"File\"><param name=\"android-package\" value=\"org.apache.cordova.file.FileUtils\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
                         {
@@ -75,11 +75,11 @@
                             "count": 1
                         },
                         {
-                            "xml": "<permission android:name=\"io.cordova.hellocordova.permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />",
+                            "xml": "<permission android:name=\"com.chancesrmis.ertdashboard.permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />",
                             "count": 1
                         },
                         {
-                            "xml": "<uses-permission android:name=\"io.cordova.hellocordova.permission.C2D_MESSAGE\" />",
+                            "xml": "<uses-permission android:name=\"com.chancesrmis.ertdashboard.permission.C2D_MESSAGE\" />",
                             "count": 1
                         },
                         {
@@ -109,7 +109,7 @@
                             "count": 1
                         },
                         {
-                            "xml": "<receiver android:name=\"com.plugin.gcm.CordovaGCMBroadcastReceiver\" android:permission=\"com.google.android.c2dm.permission.SEND\"><intent-filter><action android:name=\"com.google.android.c2dm.intent.RECEIVE\" /><action android:name=\"com.google.android.c2dm.intent.REGISTRATION\" /><category android:name=\"io.cordova.hellocordova\" /></intent-filter></receiver>",
+                            "xml": "<receiver android:name=\"com.plugin.gcm.CordovaGCMBroadcastReceiver\" android:permission=\"com.google.android.c2dm.permission.SEND\"><intent-filter><action android:name=\"com.google.android.c2dm.intent.RECEIVE\" /><action android:name=\"com.google.android.c2dm.intent.REGISTRATION\" /><category android:name=\"com.chancesrmis.ertdashboard\" /></intent-filter></receiver>",
                             "count": 1
                         },
                         {
@@ -127,16 +127,16 @@
                     ],
                     "/*": [
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 2
-                        },
-                        {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
                             "count": 1
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />",
@@ -161,43 +161,43 @@
     },
     "installed_plugins": {
         "com.phonegap.plugins.PushPlugin": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-actionsheet": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
-        "cordova-plugin-compat": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-dialogs": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-media": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "org.flybuy.cordova.background-location-services": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "org.frd49.cordova.exitapp": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "uk.co.workingedge.phonegap.plugin.launchnavigator": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
     "dependent_plugins": {},
@@ -233,6 +233,20 @@
             "merges": [
                 "navigator.notification"
             ]
+        },
+        {
+            "id": "cordova-plugin-geolocation.geolocation",
+            "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+            "pluginId": "cordova-plugin-geolocation",
+            "clobbers": [
+                "navigator.geolocation"
+            ]
+        },
+        {
+            "id": "cordova-plugin-geolocation.PositionError",
+            "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+            "pluginId": "cordova-plugin-geolocation",
+            "runs": true
         },
         {
             "id": "cordova-plugin-file.DirectoryEntry",
@@ -408,20 +422,6 @@
             "runs": true
         },
         {
-            "id": "cordova-plugin-geolocation.geolocation",
-            "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
-            "pluginId": "cordova-plugin-geolocation",
-            "clobbers": [
-                "navigator.geolocation"
-            ]
-        },
-        {
-            "id": "cordova-plugin-geolocation.PositionError",
-            "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
-            "pluginId": "cordova-plugin-geolocation",
-            "runs": true
-        },
-        {
             "id": "cordova-plugin-media.MediaError",
             "file": "plugins/cordova-plugin-media/www/MediaError.js",
             "pluginId": "cordova-plugin-media",
@@ -490,11 +490,11 @@
     "plugin_metadata": {
         "com.phonegap.plugins.PushPlugin": "2.5.0",
         "cordova-plugin-actionsheet": "2.2.2",
-        "cordova-plugin-compat": "1.0.0",
         "cordova-plugin-console": "1.0.3",
         "cordova-plugin-dialogs": "1.2.1",
-        "cordova-plugin-file": "4.2.0",
+        "cordova-plugin-compat": "1.0.0",
         "cordova-plugin-geolocation": "2.2.0",
+        "cordova-plugin-file": "4.2.0",
         "cordova-plugin-media": "2.3.0",
         "cordova-plugin-network-information": "1.2.1",
         "cordova-plugin-whitelist": "1.2.2",
