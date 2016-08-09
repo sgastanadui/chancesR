@@ -35,14 +35,6 @@
       "version": ">=3.0.0"
     }
   ],
-  "cordovaPlugins": [
-    { "variables":
-            {
-                "SENDER_ID": "653317226796"
-            },
-      "locator": "phonegap-plugin-push"
-    }
-  ],
   "author": "Adobe PhoneGap Team",
   "license": "APL",
   "scripts": {
