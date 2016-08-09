@@ -19,7 +19,6 @@
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
   </platform>
-  <plugin name="com.phonegap.plugins.PushPlugin" version="2.5.0" />
   <plugin name="cordova-plugin-actionsheet" version="2.2.2" />
   <plugin name="cordova-plugin-compat" version="1.0.0" />
   <plugin name="cordova-plugin-console" version="1.0.3" />
