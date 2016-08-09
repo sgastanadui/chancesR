@@ -1,21 +1,20 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget android-versionCode="" defaultlocale="en-US" id="com.chancesrmis.ertdashboard" version="1.0.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
-    <preference name="loglevel" value="DEBUG" />
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
     <feature name="Geolocation">
         <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
     </feature>
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
-    </feature>
-    <feature name="File">
-        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
-        <param name="onload" value="true" />
     </feature>
     <feature name="Media">
         <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
@@ -26,12 +25,24 @@
     <feature name="Vibration">
         <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
     </feature>
-    <feature name="PushNotification">
-        <param name="android-package" value="com.adobe.phonegap.push.PushPlugin" />
-    </feature>
     <feature name="BackgroundLocationServices">
         <param name="android-package" value="com.flybuy.cordova.location.BackgroundLocationServicesPlugin" />
     </feature>
+    <feature name="PushNotification">
+        <param name="android-package" value="com.adobe.phonegap.push.PushPlugin" />
+    </feature>
+    <name>Insight BCP Mobile</name>
+    <description>Insight BCP Mobile</description>
+    <author email="santiagogerman@hotmail.com" href="https://chancesrmis.com">Ing. Santiago Gastanadui Lujan</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <vs:features />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
     <allow-intent href="market:*" />
     <icon density="ldpi" src="res/icons/android/icon-36-ldpi.png" />
     <icon density="mdpi" src="res/icons/android/icon-48-mdpi.png" />
@@ -45,20 +56,9 @@
     <splash density="port-ldpi" src="res/screens/android/screen-ldpi-portrait.png" />
     <splash density="port-mdpi" src="res/screens/android/screen-mdpi-portrait.png" />
     <splash density="port-xhdpi" src="res/screens/android/screen-xhdpi-portrait.png" />
-    <name>InsightBCPMobile</name>
-    <description>Application Business Plan</description>
-    <author email="santiagogerman@hotmail.com" href="https://chancesrmis.com">Ing. Santiago Gastanadui Lujan</author>
-    <content src="index.html" />
-    <access origin="*" />
-    <vs:features />
+    <preference name="loglevel" value="DEBUG" />
     <preference name="SplashScreen" value="screen" />
     <preference name="windows-target-version" value="8.1" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-maxSdkVersion" value="25" />
 </widget>
