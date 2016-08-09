@@ -47,6 +47,10 @@
                         {
                             "xml": "<feature name=\"LaunchNavigator\"><param name=\"android-package\" value=\"uk.co.workingedge.phonegap.plugin.LaunchNavigator\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -200,6 +204,9 @@
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
         "cordova-plugin-android-support-v4": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
@@ -488,6 +495,14 @@
             "merges": [
                 "launchnavigator"
             ]
+        },
+        {
+            "id": "cordova-plugin-device.device",
+            "file": "plugins/cordova-plugin-device/www/device.js",
+            "pluginId": "cordova-plugin-device",
+            "clobbers": [
+                "device"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -504,6 +519,7 @@
         "org.flybuy.cordova.background-location-services": "1.0.0",
         "org.frd49.cordova.exitapp": "1.0.0",
         "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4",
-        "cordova-plugin-android-support-v4": "21.0.1"
+        "cordova-plugin-android-support-v4": "21.0.1",
+        "cordova-plugin-device": "1.1.2"
     }
 }

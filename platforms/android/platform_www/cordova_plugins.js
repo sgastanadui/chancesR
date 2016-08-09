@@ -283,6 +283,14 @@ module.exports = [
         "merges": [
             "launchnavigator"
         ]
+    },
+    {
+        "id": "cordova-plugin-device.device",
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "pluginId": "cordova-plugin-device",
+        "clobbers": [
+            "device"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -301,7 +309,8 @@ module.exports.metadata =
     "org.flybuy.cordova.background-location-services": "1.0.0",
     "org.frd49.cordova.exitapp": "1.0.0",
     "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4",
-    "cordova-plugin-android-support-v4": "21.0.1"
+    "cordova-plugin-android-support-v4": "21.0.1",
+    "cordova-plugin-device": "1.1.2"
 };
 // BOTTOM OF METADATA
 });
