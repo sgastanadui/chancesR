@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.chancesrmis.ertdashboard" version="1.0.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
     <feature name="PushPlugin">
         <param name="android-package" value="com.plugin.gcm.PushPlugin" />
     </feature>
@@ -35,9 +36,7 @@
     <feature name="LaunchNavigator">
         <param name="android-package" value="uk.co.workingedge.phonegap.plugin.LaunchNavigator" />
     </feature>
-    <feature name="Geolocation">
-        <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker"/>
-    </feature>
+    <allow-intent href="market:*" />
     <name>Insight BCP Mobile</name>
     <description>Insight BCP Mobile</description>
     <author email="santiagogerman@hotmail.com" href="https://chancesrmis.com">
@@ -45,6 +44,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <icon src="icon.png" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -52,6 +52,4 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <allow-intent href="market:*" />
-    <preference name="loglevel" value="DEBUG" />
 </widget>
