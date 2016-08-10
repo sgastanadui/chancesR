@@ -6,7 +6,6 @@
         Ing. Santiago Gastanadui Lujan
     </author>
     <content src="index.html" />
-    <preference name="android-build-tool" value="ant" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" />
     <plugin name="cordova-plugin-actionsheet" version="2.2.2" />
