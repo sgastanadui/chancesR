@@ -68,15 +68,23 @@
     "cordova-plugin-device": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-device"
+            "id": "cordova-plugin-device@0.3.0"
         },
         "is_top_level": true,
         "variables": {}
     },
     "cordova-plugin-geolocation": {
         "source": {
+            "type": "registry",
+            "id": "cordova-plugin-geolocation@0.3.12"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+        "source": {
             "type": "git",
-            "url": "https://github.com/apache/cordova-plugin-geolocation.git",
+            "url": "https://github.com/dpa99c/phonegap-launch-navigator.git",
             "subdir": "."
         },
         "is_top_level": true,

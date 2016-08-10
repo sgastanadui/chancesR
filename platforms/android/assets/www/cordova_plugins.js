@@ -17,6 +17,14 @@ module.exports = [
         ]
     },
     {
+        "id": "cordova-plugin-device.device",
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "pluginId": "cordova-plugin-device",
+        "clobbers": [
+            "device"
+        ]
+    },
+    {
         "id": "cordova-plugin-dialogs.notification",
         "file": "plugins/cordova-plugin-dialogs/www/notification.js",
         "pluginId": "cordova-plugin-dialogs",
@@ -206,6 +214,20 @@ module.exports = [
         "runs": true
     },
     {
+        "id": "cordova-plugin-geolocation.geolocation",
+        "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+        "pluginId": "cordova-plugin-geolocation",
+        "clobbers": [
+            "navigator.geolocation"
+        ]
+    },
+    {
+        "id": "cordova-plugin-geolocation.PositionError",
+        "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+        "pluginId": "cordova-plugin-geolocation",
+        "runs": true
+    },
+    {
         "id": "cordova-plugin-media.MediaError",
         "file": "plugins/cordova-plugin-media/www/MediaError.js",
         "pluginId": "cordova-plugin-media",
@@ -269,28 +291,6 @@ module.exports = [
         "merges": [
             "launchnavigator"
         ]
-    },
-    {
-        "id": "cordova-plugin-device.device",
-        "file": "plugins/cordova-plugin-device/www/device.js",
-        "pluginId": "cordova-plugin-device",
-        "clobbers": [
-            "device"
-        ]
-    },
-    {
-        "id": "cordova-plugin-geolocation.geolocation",
-        "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
-        "pluginId": "cordova-plugin-geolocation",
-        "clobbers": [
-            "navigator.geolocation"
-        ]
-    },
-    {
-        "id": "cordova-plugin-geolocation.PositionError",
-        "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
-        "pluginId": "cordova-plugin-geolocation",
-        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -298,19 +298,19 @@ module.exports.metadata =
 {
     "com.phonegap.plugins.PushPlugin": "2.4.0",
     "cordova-plugin-actionsheet": "2.2.2",
+    "cordova-plugin-android-support-v4": "21.0.1",
     "cordova-plugin-compat": "1.0.0",
     "cordova-plugin-console": "1.0.3",
+    "cordova-plugin-device": "1.1.2",
     "cordova-plugin-dialogs": "1.2.1",
     "cordova-plugin-file": "4.2.0",
+    "cordova-plugin-geolocation": "2.2.1-dev",
     "cordova-plugin-media": "2.3.0",
     "cordova-plugin-network-information": "1.2.1",
     "cordova-plugin-whitelist": "1.2.2",
     "org.flybuy.cordova.background-location-services": "1.0.0",
     "org.frd49.cordova.exitapp": "1.0.0",
-    "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.0.4",
-    "cordova-plugin-android-support-v4": "21.0.1",
-    "cordova-plugin-device": "1.1.2",
-    "cordova-plugin-geolocation": "2.2.1-dev"
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.1.1"
 };
 // BOTTOM OF METADATA
 });

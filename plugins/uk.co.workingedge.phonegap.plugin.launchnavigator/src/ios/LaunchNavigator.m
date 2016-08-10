@@ -30,9 +30,8 @@
 
 NSString*const LOG_TAG = @"LaunchNavigator[native]";
 
-BOOL debugEnabled = FALSE;
-
 @implementation LaunchNavigator
+@synthesize debugEnabled;
 @synthesize cordova_command;
 @synthesize start_mapItem;
 @synthesize dest_mapItem;
@@ -49,6 +48,7 @@ NSString* startType;
 NSString* startName;
 NSString* appName;
 NSString* transportMode;
+NSString* sExtras;
 BOOL enableDebug;
 
 /**************
@@ -63,21 +63,25 @@ BOOL enableDebug;
     @try {
         // Get JS arguments
         destination = [command.arguments objectAtIndex:0];
-        destType = [self.cordova_command.arguments objectAtIndex:1];
-        destName = [self.cordova_command.arguments objectAtIndex:2];
-        start = [self.cordova_command.arguments objectAtIndex:3];
-        startType = [self.cordova_command.arguments objectAtIndex:4];
-        startName = [self.cordova_command.arguments objectAtIndex:5];
-        appName = [self.cordova_command.arguments objectAtIndex:6];
-        transportMode = [self.cordova_command.arguments objectAtIndex:7];
+        destType = [command.arguments objectAtIndex:1];
+        destName = [command.arguments objectAtIndex:2];
+        start = [command.arguments objectAtIndex:3];
+        startType = [command.arguments objectAtIndex:4];
+        startName = [command.arguments objectAtIndex:5];
+        appName = [command.arguments objectAtIndex:6];
+        transportMode = [command.arguments objectAtIndex:7];
         enableDebug = [[command argumentAtIndex:8] boolValue];
+        sExtras = [command.arguments objectAtIndex:9];
 
-
+        
         if(enableDebug == TRUE){
-            debugEnabled = enableDebug;
+            self.debugEnabled = enableDebug;
+            [CMMapLauncher enableDebugLogging];
+        }else{
+            self.debugEnabled = FALSE;
         }
         
-        [self logDebug:[NSString stringWithFormat:@"Called navigate() with args: destination=%@; destType=%@; destName=%@; start=%@; startType=%@; startName=%@; appName=%@; transportMode=%@", destination, destType, destName, start, startType, startName, appName, transportMode]];
+        [self logDebug:[NSString stringWithFormat:@"Called navigate() with args: destination=%@; destType=%@; destName=%@; start=%@; startType=%@; startName=%@; appName=%@; transportMode=%@; extras=%@", destination, destType, destName, start, startType, startName, appName, transportMode, sExtras]];
         
         CMMapApp app = [self mapAppName_lnToCmm:appName];
         BOOL isAvailable = [CMMapLauncher isMapAppInstalled:app];
@@ -120,7 +124,7 @@ BOOL enableDebug;
 }
 
 - (void) availableApps:(CDVInvokedUrlCommand*)command;{
-    NSArray* supportedApps = @[@"apple_maps", @"citymapper", @"google_maps", @"navigon", @"transit_app", @"tomtom", @"uber", @"waze", @"yandex"];
+    NSArray* supportedApps = @[@"apple_maps", @"citymapper", @"google_maps", @"navigon", @"transit_app", @"tomtom", @"uber", @"waze", @"yandex", @"sygic", @"here_maps", @"moovit"];
     NSMutableDictionary* results = [NSMutableDictionary new];
     @try {
         for(id object in supportedApps){
@@ -143,12 +147,6 @@ BOOL enableDebug;
 - (void) launchApp{
     CMMapApp app = [self mapAppName_lnToCmm:appName];
     
-    NSString* directionsMode = MKLaunchOptionsDirectionsModeDriving;
-    if([transportMode isEqual: @"walking"]){
-        directionsMode = MKLaunchOptionsDirectionsModeWalking;
-    }else if([transportMode isEqual: @"transit"]){
-        directionsMode = MKLaunchOptionsDirectionsModeTransit;
-    }
     
     NSString* logMsg = [NSString stringWithFormat:@"Using %@ to navigate to %@ [%@]", appName, [self getAddressFromPlacemark:dest_placemark], [self coordsToString:dest_placemark.coordinate]];
     if(![self isNull:destName]){
@@ -178,9 +176,21 @@ BOOL enableDebug;
                              address:[self getAddressFromPlacemark:dest_placemark]
                              coordinate:dest_placemark.coordinate];
 
+    NSDictionary* dExtras = nil;
+    if(![self isNull:sExtras]){
+        NSError* error;
+        dExtras = [NSJSONSerialization JSONObjectWithData:[sExtras dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (error != nil){
+            [self logError:@"Failed to parse extras parameter as valid JSON"];
+            dExtras = nil;
+        }else{
+            logMsg = [NSString stringWithFormat:@"%@ - extras=%@", logMsg, sExtras];
+        }
+    }
+
     [self logDebug:logMsg];
     
-    [CMMapLauncher launchMapApp:app forDirectionsFrom:start_cmm to:dest_cmm directionsMode:directionsMode];
+    [CMMapLauncher launchMapApp:app forDirectionsFrom:start_cmm to:dest_cmm directionsMode:transportMode extras:dExtras];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:self.cordova_command.callbackId];
 }
@@ -288,6 +298,15 @@ BOOL enableDebug;
         case CMMapAppYandex:
             lnName = @"yandex";
             break;
+        case CMMapAppSygic:
+            lnName = @"sygic";
+            break;
+        case CMMapAppHereMaps:
+            lnName = @"here_maps";
+            break;
+        case CMMapAppMoovit:
+            lnName = @"moovit";
+            break;
         default:
             [NSException raise:NSGenericException format:@"Unexpected CMMapApp name"];
         
@@ -316,6 +335,12 @@ BOOL enableDebug;
         cmmName = CMMapAppWaze;
     }else if([lnName isEqual: @"yandex"]){
         cmmName = CMMapAppYandex;
+    }else if([lnName isEqual: @"sygic"]){
+        cmmName = CMMapAppSygic;
+    }else if([lnName isEqual: @"here_maps"]){
+        cmmName = CMMapAppHereMaps;
+    }else if([lnName isEqual: @"moovit"]){
+        cmmName = CMMapAppMoovit;
     }else{
         [NSException raise:NSGenericException format:@"Unexpected app name: %@", lnName];
     }
@@ -434,7 +459,7 @@ BOOL enableDebug;
 
 - (void)logDebug: (NSString*)msg
 {
-    if(debugEnabled){
+    if(self.debugEnabled){
         NSLog(@"%@: %@", LOG_TAG, msg);
         NSString* jsString = [NSString stringWithFormat:@"console.log(\"%@: %@\")", LOG_TAG, [self escapeDoubleQuotes:msg]];
         [self executeGlobalJavascript:jsString];
@@ -444,7 +469,7 @@ BOOL enableDebug;
 - (void)logError: (NSString*)msg
 {
     NSLog(@"%@ ERROR: %@", LOG_TAG, msg);
-    if(debugEnabled){
+    if(self.debugEnabled){
         NSString* jsString = [NSString stringWithFormat:@"console.error(\"%@: %@\")", LOG_TAG, [self escapeDoubleQuotes:msg]];
         [self executeGlobalJavascript:jsString];
     }

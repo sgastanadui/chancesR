@@ -58,7 +58,10 @@ ln.APP = {
     YANDEX: "yandex",
     UBER: "uber",
     TOMTOM: "tomtom",
-    BING_MAPS: "bing_maps"
+    BING_MAPS: "bing_maps",
+    SYGIC: "sygic",
+    HERE_MAPS: "here_maps",
+    MOOVIT: "moovit"
 };
 
 /**
@@ -72,7 +75,10 @@ ln.APPS_BY_PLATFORM[ln.PLATFORM.ANDROID] = [
     ln.APP.CITYMAPPER,
     ln.APP.UBER,
     ln.APP.WAZE,
-    ln.APP.YANDEX
+    ln.APP.YANDEX,
+    ln.APP.SYGIC,
+    ln.APP.HERE_MAPS,
+    ln.APP.MOOVIT
 ];
 ln.APPS_BY_PLATFORM[ln.PLATFORM.IOS] = [
     ln.APP.USER_SELECT,
@@ -84,7 +90,10 @@ ln.APPS_BY_PLATFORM[ln.PLATFORM.IOS] = [
     ln.APP.TRANSIT_APP,
     ln.APP.YANDEX,
     ln.APP.UBER,
-    ln.APP.TOMTOM
+    ln.APP.TOMTOM,
+    ln.APP.SYGIC,
+    ln.APP.HERE_MAPS,
+    ln.APP.MOOVIT
 ];
 ln.APPS_BY_PLATFORM[ln.PLATFORM.WINDOWS] = [
     ln.APP.BING_MAPS
@@ -107,6 +116,9 @@ ln.APP_NAMES[ln.APP.YANDEX] = "Yandex Navigator";
 ln.APP_NAMES[ln.APP.UBER] = "Uber";
 ln.APP_NAMES[ln.APP.TOMTOM] = "Tomtom";
 ln.APP_NAMES[ln.APP.BING_MAPS] = "Bing Maps";
+ln.APP_NAMES[ln.APP.SYGIC] = "Sygic";
+ln.APP_NAMES[ln.APP.HERE_MAPS] = "HERE Maps";
+ln.APP_NAMES[ln.APP.MOOVIT] = "Moovit";
 
 /**
  * All possible transport modes
@@ -138,6 +150,10 @@ ln.TRANSPORT_MODES[ln.PLATFORM.ANDROID][ln.APP.GOOGLE_MAPS] = [ // Only launchMo
     ln.TRANSPORT_MODE.BICYCLING,
     ln.TRANSPORT_MODE.TRANSIT
 ];
+ln.TRANSPORT_MODES[ln.PLATFORM.ANDROID][ln.APP.SYGIC] = [
+    ln.TRANSPORT_MODE.DRIVING,
+    ln.TRANSPORT_MODE.WALKING
+];
 // Windows
 ln.TRANSPORT_MODES[ln.PLATFORM.WINDOWS] = {};
 ln.TRANSPORT_MODES[ln.PLATFORM.WINDOWS][ln.APP.BING_MAPS] = [
@@ -164,6 +180,10 @@ ln.TRANSPORT_MODES[ln.PLATFORM.IOS][ln.APP.APPLE_MAPS] = [
     ln.TRANSPORT_MODE.DRIVING,
     ln.TRANSPORT_MODE.WALKING
 ];
+ln.TRANSPORT_MODES[ln.PLATFORM.IOS][ln.APP.SYGIC] = [
+    ln.TRANSPORT_MODE.DRIVING,
+    ln.TRANSPORT_MODE.WALKING
+];
 
 /**
  * Apps by platform that support specifying a start location
@@ -175,7 +195,9 @@ ln.SUPPORTS_START[ln.PLATFORM.ANDROID] = [
     ln.APP.GOOGLE_MAPS, // Only launchMode=maps
     ln.APP.CITYMAPPER,
     ln.APP.UBER,
-    ln.APP.YANDEX
+    ln.APP.YANDEX,
+    ln.APP.HERE_MAPS,
+    ln.APP.MOOVIT
 ];
 ln.SUPPORTS_START[ln.PLATFORM.IOS] = [
     ln.APP.USER_SELECT,
@@ -184,7 +206,9 @@ ln.SUPPORTS_START[ln.PLATFORM.IOS] = [
     ln.APP.CITYMAPPER,
     ln.APP.TRANSIT_APP,
     ln.APP.YANDEX,
-    ln.APP.UBER
+    ln.APP.UBER,
+    ln.APP.HERE_MAPS,
+    ln.APP.MOOVIT
 ];
 ln.SUPPORTS_START[ln.PLATFORM.WINDOWS] = [
     ln.APP.BING_MAPS
@@ -198,13 +222,17 @@ ln.SUPPORTS_START_NAME = {};
 ln.SUPPORTS_START_NAME[ln.PLATFORM.ANDROID] = [
     ln.APP.USER_SELECT,
     ln.APP.CITYMAPPER,
-    ln.APP.UBER
+    ln.APP.UBER,
+    ln.APP.HERE_MAPS,
+    ln.APP.MOOVIT
 ];
 ln.SUPPORTS_START_NAME[ln.PLATFORM.IOS] = [
     ln.APP.USER_SELECT,
     ln.APP.APPLE_MAPS,
     ln.APP.CITYMAPPER,
-    ln.APP.UBER
+    ln.APP.UBER,
+    ln.APP.HERE_MAPS,
+    ln.APP.MOOVIT
 ];
 
 /**
@@ -216,7 +244,9 @@ ln.SUPPORTS_DEST_NAME[ln.PLATFORM.ANDROID] = [
     ln.APP.USER_SELECT,
     ln.APP.GOOGLE_MAPS, // only launchMode=geo
     ln.APP.CITYMAPPER,
-    ln.APP.UBER
+    ln.APP.UBER,
+    ln.APP.HERE_MAPS,
+    ln.APP.MOOVIT
 ];
 ln.SUPPORTS_DEST_NAME[ln.PLATFORM.IOS] = [
     ln.APP.USER_SELECT,
@@ -224,7 +254,9 @@ ln.SUPPORTS_DEST_NAME[ln.PLATFORM.IOS] = [
     ln.APP.CITYMAPPER,
     ln.APP.NAVIGON,
     ln.APP.UBER,
-    ln.APP.TOMTOM
+    ln.APP.TOMTOM,
+    ln.APP.HERE_MAPS,
+    ln.APP.MOOVIT
 ];
 
 /**
@@ -239,9 +271,6 @@ ln.SUPPORTS_LAUNCH_MODE[ln.PLATFORM.ANDROID] = [
 
 ln.COORDS_REGEX = /^[-\d.]+,[\s]*[-\d.]+$/;
 
-/******************
- * Internal functions
- ******************/
 
 
 /******************
@@ -384,21 +413,22 @@ ln.userSelect = function(destination, options){
             app = buttonMap[idx];
         if(app != "cancel"){
             launchApp(app);
+        } else {
+            options.errorCallback('cancelled');
         }
     }
 
     function displayChooser(){
-        var options = {
+        launchnavigator.userSelectDisplayed = true;
+        window.plugins.actionsheet.show({
             'androidTheme': window.plugins.actionsheet.ANDROID_THEMES.THEME_HOLO_LIGHT,
-            'title': 'Select app for navigation',
+            'title': options.appSelectionDialogHeader || DEFAULT_appSelectionDialogHeader,
             'buttonLabels': buttonList,
             'androidEnableCancelButton' : true, // default false
             //'winphoneEnableCancelButton' : true, // default false
-            'addCancelButtonWithLabel': 'Cancel',
+            'addCancelButtonWithLabel': options.appSelectionCancelButton || DEFAULT_appSelectionCancelButton,
             'position': [550, 500] // for iPad pass in the [x, y] position of the popover
-        };
-        launchnavigator.userSelectDisplayed = true;
-        window.plugins.actionsheet.show(options, onChooseApp);
+        }, onChooseApp);
     }
 
     // Get list of available apps
@@ -500,6 +530,17 @@ ln.util.extractCoordsFromLocationString = function(location){
     }
     return location;
 };
+
+/*********************
+ * Internal properties
+ *********************/
+
+var DEFAULT_appSelectionDialogHeader = "Select app for navigation",
+    DEFAULT_appSelectionCancelButton = "Cancel";
+
+/********************
+ * Internal functions
+ ********************/
 
 module.exports = ln;
 

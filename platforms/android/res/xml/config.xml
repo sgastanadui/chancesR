@@ -6,12 +6,18 @@
     <feature name="ActionSheet">
         <param name="android-package" value="nl.xservices.plugins.actionsheet.ActionSheet" />
     </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
     <feature name="File">
         <param name="android-package" value="org.apache.cordova.file.FileUtils" />
         <param name="onload" value="true" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
     </feature>
     <feature name="Media">
         <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
@@ -36,6 +42,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <icon src="icon.png" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -45,10 +52,4 @@
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="android-build-tool" value="ant" />
-    <feature name="Device">
-        <param name="android-package" value="org.apache.cordova.device.Device" />
-    </feature>
-    <feature name="Geolocation">
-        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
-    </feature>
 </widget>
