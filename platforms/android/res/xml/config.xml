@@ -35,6 +35,9 @@
     <feature name="LaunchNavigator">
         <param name="android-package" value="uk.co.workingedge.phonegap.plugin.LaunchNavigator" />
     </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker"/>
+    </feature>
     <name>Insight BCP Mobile</name>
     <description>Insight BCP Mobile</description>
     <author email="santiagogerman@hotmail.com" href="https://chancesrmis.com">
