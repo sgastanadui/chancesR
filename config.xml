@@ -20,6 +20,9 @@
     <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />
     <access origin="*" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.GeoBroker" />
+    </feature>
     <icon src="icon.png" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
