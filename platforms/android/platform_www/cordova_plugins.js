@@ -194,7 +194,7 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+        "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
         "id": "cordova-plugin-geolocation.geolocation",
         "clobbers": [
             "navigator.geolocation"
