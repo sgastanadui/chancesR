@@ -18,6 +18,7 @@
   <plugin name="org.apache.cordova.device" spec="0.3.0" source="pgb" />
   <plugin name="cordova-plugin-network-information" version="1.2.1" />
   <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />
+  <plugin name="org.flybuy.cordova.background-location-services" version="1.0.4" />
   <access origin="*" />
   <preference name="AndroidPersistentFileLocation" value="Compatibility" />
   <feature name="Geolocation">
