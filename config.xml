@@ -13,7 +13,6 @@
     <plugin name="cordova-plugin-compat" version="1.0.0" />
     <plugin name="cordova-plugin-console" version="1.0.3" />
     <plugin name="cordova-plugin-dialogs" version="1.2.1" />
-    <plugin name="cordova-plugin-file" version="4.2.0" />
     <plugin name="cordova-plugin-geolocation" />
     <plugin name="cordova-plugin-media" version="2.3.0" />
     <access origin="*" />
