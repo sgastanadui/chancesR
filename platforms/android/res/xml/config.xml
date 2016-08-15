@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.chancesrmis.ertdashboard" version="1.0.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="PushPlugin">
+        <param name="android-package" value="com.plugin.gcm.PushPlugin" />
+    </feature>
+    <feature name="ActionSheet">
+        <param name="android-package" value="nl.xservices.plugins.actionsheet.ActionSheet" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
+    </feature>
+    <feature name="Media">
+        <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="BackgroundLocationServices">
+        <param name="android-package" value="com.flybuy.cordova.location.BackgroundLocationServicesPlugin" />
+    </feature>
+    <feature name="LaunchNavigator">
+        <param name="android-package" value="uk.co.workingedge.phonegap.plugin.LaunchNavigator" />
+    </feature>
+    <allow-intent href="market:*" />
+    <name>Insight BCP Mobile</name>
+    <description>Insight BCP Mobile</description>
+    <author email="santiagogerman@hotmail.com" href="https://chancesrmis.com">
+        Ing. Santiago Gastanadui Lujan
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <icon src="icon.png" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <access origin="*.google.com" />
+    <access origin="*.gstatic.com" />
+    <access origin="*.googleapis.com" />
+    <access origin="*.googleusercontent.com" />
+    <access origin="google.com" subdomains="true" />
+    <access origin="gstatic.com" subdomains="true" />
+    <access origin="googleapis.com" subdomains="true" />
+    <access origin="googleusercontent.com" subdomains="true" />
+    <access origin="http://maps.google.com" />
+    <access origin="http://maps.gstatic.com" />
+    <access origin="http://maps.googleapis.com" />
+    <access origin="http://fonts.googleapis.com" />
+    <access origin="http://mt0.googleapis.com" />
+    <access origin="http://khm1.googleapis.com" />
+    <access origin="http://kmh0.googleapis.com" />
+    <access origin="https://*.google.com" />
+    <access origin="https://*.gstatic.com" />
+    <access origin="https://*.googleapis.com" />
+</widget>
