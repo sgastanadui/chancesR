@@ -18,7 +18,8 @@
   <plugin name="cordova-plugin-device" version="1.0.1" />
   <plugin name="cordova-plugin-network-information" version="1.2.1" />
   <plugin name="cordova-background-location-services" />
-  <plugin name="org.flybuy.cordova.background-location-services" spec="https://github.com/pmwisdom/cordova-background-geolocation-services.git" />
+  <preference name="deployment-target" value="7.0" />
+  <plugin name="cordova-background-location-services" spec="~1.0.0" />
   <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />
   <access origin="*" />
   <feature name="Geolocation">
