@@ -214,6 +214,20 @@ module.exports = [
         "runs": true
     },
     {
+        "id": "cordova-plugin-geolocation.geolocation",
+        "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+        "pluginId": "cordova-plugin-geolocation",
+        "clobbers": [
+            "navigator.geolocation"
+        ]
+    },
+    {
+        "id": "cordova-plugin-geolocation.PositionError",
+        "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+        "pluginId": "cordova-plugin-geolocation",
+        "runs": true
+    },
+    {
         "id": "cordova-plugin-media.MediaError",
         "file": "plugins/cordova-plugin-media/www/MediaError.js",
         "pluginId": "cordova-plugin-media",
@@ -287,10 +301,10 @@ module.exports.metadata =
     "cordova-plugin-android-support-v4": "21.0.1",
     "cordova-plugin-compat": "1.0.0",
     "cordova-plugin-console": "1.0.3",
-    "cordova-plugin-device": "1.1.2",
+    "cordova-plugin-device": "1.0.1",
     "cordova-plugin-dialogs": "1.2.1",
     "cordova-plugin-file": "4.2.0",
-    "cordova-plugin-geolocation": "1.0.1",
+    "cordova-plugin-geolocation": "2.2.0",
     "cordova-plugin-media": "2.3.0",
     "cordova-plugin-network-information": "1.2.1",
     "cordova-plugin-whitelist": "1.2.2",

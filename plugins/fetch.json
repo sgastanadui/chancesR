@@ -65,14 +65,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-device": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-device@0.3.0"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "uk.co.workingedge.phonegap.plugin.launchnavigator": {
         "source": {
             "type": "git",
@@ -86,6 +78,23 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-geolocation"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.flybuy.cordova.background-location-services": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pmwisdom/cordova-background-geolocation-services",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-device": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-device@1.0.1"
         },
         "is_top_level": true,
         "variables": {}
