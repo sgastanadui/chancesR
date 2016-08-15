@@ -5,16 +5,16 @@ module.exports = {
     configure: function(config) {
         this.config = config;
         var distanceFilter      = (config.distanceFilter   >= 0) ? config.distanceFilter   : 500, // meters
-          desiredAccuracy     = (config.desiredAccuracy  >= 0) ? config.desiredAccuracy  : 100, // meters
-          interval            = (config.interval         >= 0) ? config.interval        : 900000, // milliseconds
-          fastestInterval     = (config.fastestInterval  >= 0) ? config.fastestInterval : 120000, // milliseconds
-          aggressiveInterval  = (config.aggressiveInterval > 0) ? config.aggressiveInterval : 4000, //mulliseconds
-          debug               = config.debug || false,
-          notificationTitle   = config.notificationTitle || "Background tracking",
-          notificationText    = config.notificationText  || "ENABLED",
-          activityType        = config.activityType || "AutomotiveNavigation",
-          useActivityDetection = config.useActivityDetection || "false",
-          activitiesInterval =  config.activitiesInterval || 1000;
+            desiredAccuracy     = (config.desiredAccuracy  >= 0) ? config.desiredAccuracy  : 100, // meters
+            interval            = (config.interval         >= 0) ? config.interval        : 900000, // milliseconds
+            fastestInterval     = (config.fastestInterval  >= 0) ? config.fastestInterval : 120000, // milliseconds
+            aggressiveInterval  = (config.aggressiveInterval > 0) ? config.aggressiveInterval : 4000, //mulliseconds
+            debug               = config.debug || false,
+            notificationTitle   = config.notificationTitle || "Background tracking",
+            notificationText    = config.notificationText  || "ENABLED",
+            activityType        = config.activityType || "AutomotiveNavigation",
+            useActivityDetection = config.useActivityDetection || false,
+            activitiesInterval =  config.activitiesInterval || 1000;
 
         exec(function() {},
           function() {},
