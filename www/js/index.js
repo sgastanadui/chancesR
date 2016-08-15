@@ -192,7 +192,7 @@ var app = {
                  aggressiveInterval: 9000
             });
             
-            //navigator.notification.alert('ingreso onPause map track', function () { }, "TRACK");
+            navigator.notification.alert('ingreso onPause map track', function () { }, "TRACK");
             
             bgLocationServices.registerForLocationUpdates(function (location) {
               //************************************************
@@ -525,7 +525,7 @@ onResumen: function () {
               var IdRoute = $("#hdnIdRoute").val();
               var IdUsername = $("#hdnUsername").val();
               //alert(IdRoute);
-              //navigator.notification.alert('register', function () { }, "TRACK Error");
+              navigator.notification.alert('register', function () { }, "TRACK Error");
               //************************************************
               var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightTRACK.svc/";
               //************************************************
