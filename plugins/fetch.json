@@ -60,7 +60,7 @@
     "cordova-plugin-android-support-v4": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-android-support-v4"
+            "id": "cordova-plugin-android-support-v4@21.0.1"
         },
         "is_top_level": true,
         "variables": {}
@@ -84,9 +84,8 @@
     },
     "org.flybuy.cordova.background-location-services": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/pmwisdom/cordova-background-geolocation-services",
-            "subdir": "."
+            "type": "registry",
+            "id": "cordova-background-location-services"
         },
         "is_top_level": true,
         "variables": {}
