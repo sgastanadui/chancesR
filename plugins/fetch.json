@@ -57,14 +57,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-android-support-v4": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-android-support-v4@21.0.1"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "uk.co.workingedge.phonegap.plugin.launchnavigator": {
         "source": {
             "type": "git",
