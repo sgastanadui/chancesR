@@ -1127,7 +1127,7 @@ onResumen: function () {
                     //*********************************
                     //**************************************************
 
-                }, app.fail, { maximumAge: 3000, enableHighAccuracy: true, timeout: 1000 });
+                }, app.fail, { maximumAge: 3000, enableHighAccuracy: true, timeout: 5000 });
             }
             //**************************************************
             var bgLocationServices = window.plugins.backgroundLocationServices;
