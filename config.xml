@@ -27,7 +27,7 @@
    <plugin name="org.frd49.cordova.exitapp" src="https://github.com/pmwisdom/cordova-background-geolocation-services.git" />
  -->
   <plugin name="cordova-plugin-inappbrowser" spec="https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git"/>
-  <plugin name="org.flybuy.cordova.background-location-services" spec="0.3.5" source="pgb" />
+  <plugin name="org.flybuy.cordova.background-location-services" spec="https://github.com/pmwisdom/cordova-background-geolocation-services.git" source="pgb" />
   <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />
   <access origin="*" />
   <feature name="Geolocation">
