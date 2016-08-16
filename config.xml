@@ -19,10 +19,8 @@
   <plugin name="cordova-plugin-network-information" version="1.2.1" />
   <plugin name="cordova-background-location-services" />
   <preference name="deployment-target" value="7.0" />
-  <plugin name="cordova-background-location-services" spec="~1.0.0" />
   <plugin name="org.flybuy.cordova.background-location-services" version="1.0.4" src="https://github.com/pmwisdom/cordova-background-geolocation-services.git" />
   <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />
-  <plugin name="org.frd49.cordova.exitapp" spec="~1.0.0" />
   <access origin="*" />
   <feature name="Geolocation">
     <param name="android-package" value="org.apache.cordova.GeoBroker" />
