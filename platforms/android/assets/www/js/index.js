@@ -696,7 +696,7 @@ onResumen: function () {
                         $("#hdnLongitudeCOOP").val(lng);
                     });
 
-                }, app.fail, { maximumAge: 3000, enableHighAccuracy: true, timeout: 1000 });
+                }, app.fail, { maximumAge: 3000, enableHighAccuracy: true, timeout: 5000 });
             }
         }
 
@@ -859,7 +859,7 @@ onResumen: function () {
                     //**************************************************
                 }, 
                 app.fail,
-                { maximumAge: 3000, enableHighAccuracy: true, timeout: 1000 });
+                { maximumAge: 3000, enableHighAccuracy: true, timeout: 5000 });
             }
         }
 
@@ -887,10 +887,10 @@ onResumen: function () {
         $("#btnLogin").click(function () {
             //alert(navigator.connection.type);
             //if (navigator.network.connection.type == Connection.NONE) {
-            //    // No tenemos conexión
+            //    // No tenemos conexiï¿½n
             //    navigator.notification.alert("No tenemos conexion", function () { }, "BCP Alert");
             //} else {
-            //    // Si tenemos conexión
+            //    // Si tenemos conexiï¿½n
             //    navigator.notification.alert("Si tenemos conexion", function () { }, "BCP Alert");
             //}
             //alert($("#remember").prop("checked"));
