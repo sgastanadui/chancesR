@@ -24,14 +24,18 @@
 <!--  
    <plugin name="org.flybuy.cordova.background-location-services" src="https://github.com/pmwisdom/cordova-background-geolocation-services.git" />
    <plugin name="org.frd49.cordova.exitapp" version="1.0.0" />
+   <plugin name="org.frd49.cordova.exitapp" src="https://github.com/pmwisdom/cordova-background-geolocation-services.git" />
  -->
-  <plugin name="org.frd49.cordova.exitapp" spec="1" />
+  <plugin name="cordova-plugin-inappbrowser" spec="https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git"/>
+  <plugin name="org.flybuy.cordova.background-location-services" spec="https://github.com/pmwisdom/cordova-background-geolocation-services.git"/>
   <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />
   <access origin="*" />
   <feature name="Geolocation">
     <param name="android-package" value="org.apache.cordova.GeoBroker" />
   </feature>
   <icon src="icon.png" />
+  <allow-navigation href="*" />
+  <allow-intent href="*" />
   <allow-intent href="http://*/*" />
   <allow-intent href="https://*/*" />
   <allow-intent href="tel:*" />
