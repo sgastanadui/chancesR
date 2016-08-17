@@ -30,7 +30,7 @@
  -->
   <plugin name="cordova-plugin-inappbrowser" spec="https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git"/>
   <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />
-  <plugin name="cordova-plugin-mauron85-background-geolocation" source="npm" />
+  <plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.2.0"/>
   <access origin="*" />
   <feature name="Geolocation">
     <param name="android-package" value="org.apache.cordova.GeoBroker" />
