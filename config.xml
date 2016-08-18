@@ -20,7 +20,7 @@
   <preference name="AndroidPersistentFileLocation" value="Compatibility" />
   <preference name="android-minSdkVersion" value="14" />
   <preference name="android-maxSdkVersion" value="25" />
-  <preference name="android-targetSdkVersion" value="19" />
+  <preference name="android-targetSdkVersion" value="14" />
   <preference name="phonegap-version" value="cli-6.3.0" />
 <!--  
    <plugin name="org.flybuy.cordova.background-location-services" src="https://github.com/pmwisdom/cordova-background-geolocation-services.git" />
@@ -28,9 +28,8 @@
    <plugin name="org.frd49.cordova.exitapp" src="https://github.com/pmwisdom/cordova-background-geolocation-services.git" />
    <plugin name="cordova-plugin-mauron85-background-geolocation" source="npm" />
  -->
-  <plugin name="cordova-plugin-inappbrowser" spec="https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git"/>
   <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />
-  <plugin name="cordova-plugin-mauron85-background-geolocation" spec="^2.2.0"/>
+  <plugin name="org.flybuy.cordova.background-location-services" src="https://github.com/pmwisdom/cordova-background-geolocation-services.git" />
   <access origin="*" />
   <feature name="Geolocation">
     <param name="android-package" value="org.apache.cordova.GeoBroker" />
