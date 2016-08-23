@@ -1068,7 +1068,7 @@ onResumen: function () {
                     });
 
                     //alert(latlng.timestamp);
-                    var contentString = "<b>Timestamp:</b> " + parseTimestamp(latlng.timestamp) + "<br/><b>User location:</b> lat " + latlng.coords.latitude + ", long " + latlng.coords.longitude + ", accuracy " + latlng.coords.accuracy;
+                    //var contentString = "<b>Timestamp:</b> " + parseTimestamp(latlng.timestamp) + "<br/><b>User location:</b> lat " + latlng.coords.latitude + ", long " + latlng.coords.longitude + ", accuracy " + latlng.coords.accuracy;
 
                     // Remove the current infoWindow, if there is one
                     //if (typeof (infoWindow) != "undefined") infoWindow.setMap(null);
@@ -1079,9 +1079,9 @@ onResumen: function () {
 
                     map.setCenter(pos);
                     marker.setPosition(pos);
-                    circle.setCenter(pos);
-                    circle.setRadius(latlng.coords.accuracy);
-                    map.fitBounds(circle.getBounds());
+                    //circle.setCenter(pos);
+                    //circle.setRadius(latlng.coords.accuracy);
+                    //map.fitBounds(circle.getBounds());
                     //*********************************
                     //Grabar
                     //*********************************
@@ -1114,13 +1114,13 @@ onResumen: function () {
                             mensaje = mensaje + "status: " + xhr.status + "\n";
                             mensaje = mensaje + "text status: " + textStatus + "\n";
                             mensaje = mensaje + "error: " + err + "\n";
-                            //navigator.notification.alert(mensaje, function () { }, "BCP Error");
+                            navigator.notification.alert(mensaje, function () { }, "BCP Error");
                             //$('#loader').hide();
                         },
                         success: function (objHistory) {
                             //******************************
                             if (objHistory.SaveHistoryLocationUserResult > 0) {
-                                //navigator.notification.alert('Sucessful saved.');
+                                navigator.notification.alert('Sucessful saved.');
                             }
                             //******************************
                         },
