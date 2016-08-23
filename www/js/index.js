@@ -1085,49 +1085,49 @@ onResumen: function () {
                     //*********************************
                     //Grabar
                     //*********************************
-                    var IdCompany = $("#hdnIdCompany").val();
-                    var IdAlert = $("#hdnIdAlert").val();
-                    var IdSite = $("#hdnIdSite").val();
-                    var IdContact = $("#hdnIdContact").val();
-                    var IdHazard = $("#hdnIdHazard").val();
-                    //************************************************
-                    var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
-                    //************************************************
-                    var urlk1 = wcfServiceUrl + "SaveHistoryLocationUser?IdAlert=" + IdAlert + '&IdCompany=' + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdHazard=' + IdHazard + '&Latitude=' + latlng.coords.latitude + '&Longitude=' + latlng.coords.longitude + '&Accuracy=' + latlng.coords.accuracy + '&Timestamp=' + parseTimestamp(latlng.timestamp) + '&Speed=' + latlng.coords.speed;
-                    //************************************************
-                    $.ajax({
-                        cache: true,
-                        async: true,
-                        url: urlk1,
-                        crossDomain: true,
-                        data: "{ IdAlert: " + IdAlert + ", IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation:" + IdSite + ", Latitude: '" + latlng.coords.latitude + "', Longitude: '" + latlng.coords.longitude + "' }",
-                        type: "GET",
-                        jsonpCallback: "HistoryUser",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "jsonp",
-                        beforeSend: function () {
-                            //$('#loader').show();
-                        },
-                        error: function (xhr, textStatus, err) {
-                            var mensaje = "readyState: " + xhr.readyState + "\n";
-                            mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
-                            mensaje = mensaje + "status: " + xhr.status + "\n";
-                            mensaje = mensaje + "text status: " + textStatus + "\n";
-                            mensaje = mensaje + "error: " + err + "\n";
-                            navigator.notification.alert(mensaje, function () { }, "BCP Error");
-                            //$('#loader').hide();
-                        },
-                        success: function (objHistory) {
-                            //******************************
-                            if (objHistory.SaveHistoryLocationUserResult > 0) {
-                                navigator.notification.alert('Sucessful saved.');
-                            }
-                            //******************************
-                        },
-                        complete: function () {
-                            //$('#loader').hide();
-                        }
-                    });
+//                    var IdCompany = $("#hdnIdCompany").val();
+//                    var IdAlert = $("#hdnIdAlert").val();
+//                    var IdSite = $("#hdnIdSite").val();
+//                    var IdContact = $("#hdnIdContact").val();
+//                    var IdHazard = $("#hdnIdHazard").val();
+//                    //************************************************
+//                    var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+//                    //************************************************
+//                    var urlk1 = wcfServiceUrl + "SaveHistoryLocationUser?IdAlert=" + IdAlert + '&IdCompany=' + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdHazard=' + IdHazard + '&Latitude=' + latlng.coords.latitude + '&Longitude=' + latlng.coords.longitude + '&Accuracy=' + latlng.coords.accuracy + '&Timestamp=' + parseTimestamp(latlng.timestamp) + '&Speed=' + latlng.coords.speed;
+//                    //************************************************
+//                    $.ajax({
+//                        cache: true,
+//                        async: true,
+//                        url: urlk1,
+//                        crossDomain: true,
+//                        data: "{ IdAlert: " + IdAlert + ", IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation:" + IdSite + ", Latitude: '" + latlng.coords.latitude + "', Longitude: '" + latlng.coords.longitude + "' }",
+//                        type: "GET",
+//                        jsonpCallback: "HistoryUser",
+//                        contentType: "application/json; charset=utf-8",
+//                        dataType: "jsonp",
+//                        beforeSend: function () {
+//                            //$('#loader').show();
+//                        },
+//                        error: function (xhr, textStatus, err) {
+//                            var mensaje = "readyState: " + xhr.readyState + "\n";
+//                            mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+//                            mensaje = mensaje + "status: " + xhr.status + "\n";
+//                            mensaje = mensaje + "text status: " + textStatus + "\n";
+//                            mensaje = mensaje + "error: " + err + "\n";
+//                            navigator.notification.alert(mensaje, function () { }, "BCP Error");
+//                            //$('#loader').hide();
+//                        },
+//                        success: function (objHistory) {
+//                            //******************************
+//                            if (objHistory.SaveHistoryLocationUserResult > 0) {
+//                                navigator.notification.alert('Sucessful saved.');
+//                            }
+//                            //******************************
+//                        },
+//                        complete: function () {
+//                            //$('#loader').hide();
+//                        }
+//                    });
                     //*********************************
                     //**************************************************
 
