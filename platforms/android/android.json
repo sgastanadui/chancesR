@@ -13,6 +13,10 @@
                             "count": 1
                         },
                         {
+                            "xml": "<feature name=\"ActionSheet\"><param name=\"android-package\" value=\"nl.xservices.plugins.actionsheet.ActionSheet\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
                         },
@@ -46,6 +50,10 @@
                         },
                         {
                             "xml": "<feature name=\"BackgroundLocationServices\"><param name=\"android-package\" value=\"com.flybuy.cordova.location.BackgroundLocationServicesPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"LaunchNavigator\"><param name=\"android-package\" value=\"uk.co.workingedge.phonegap.plugin.LaunchNavigator\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -163,6 +171,9 @@
         "com.phonegap.plugins.PushPlugin": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
+        "cordova-plugin-actionsheet": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
         "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
@@ -195,6 +206,12 @@
         },
         "org.flybuy.cordova.background-location-services": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "org.frd49.cordova.exitapp": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
+        "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
     "dependent_plugins": {},
@@ -205,6 +222,14 @@
             "pluginId": "com.phonegap.plugins.PushPlugin",
             "clobbers": [
                 "PushNotification"
+            ]
+        },
+        {
+            "id": "cordova-plugin-actionsheet.ActionSheet",
+            "file": "plugins/cordova-plugin-actionsheet/www/ActionSheet.js",
+            "pluginId": "cordova-plugin-actionsheet",
+            "clobbers": [
+                "window.plugins.actionsheet"
             ]
         },
         {
@@ -467,10 +492,35 @@
             "clobbers": [
                 "plugins.backgroundLocationServices"
             ]
+        },
+        {
+            "id": "org.frd49.cordova.exitapp.CDVExitApp",
+            "file": "plugins/org.frd49.cordova.exitapp/www/exitApp.js",
+            "pluginId": "org.frd49.cordova.exitapp",
+            "clobbers": [
+                "navigator.app"
+            ]
+        },
+        {
+            "id": "uk.co.workingedge.phonegap.plugin.launchnavigator.Common",
+            "file": "plugins/uk.co.workingedge.phonegap.plugin.launchnavigator/www/common.js",
+            "pluginId": "uk.co.workingedge.phonegap.plugin.launchnavigator",
+            "clobbers": [
+                "launchnavigator"
+            ]
+        },
+        {
+            "id": "uk.co.workingedge.phonegap.plugin.launchnavigator.LaunchNavigator",
+            "file": "plugins/uk.co.workingedge.phonegap.plugin.launchnavigator/www/android/launchnavigator.js",
+            "pluginId": "uk.co.workingedge.phonegap.plugin.launchnavigator",
+            "merges": [
+                "launchnavigator"
+            ]
         }
     ],
     "plugin_metadata": {
         "com.phonegap.plugins.PushPlugin": "2.4.0",
+        "cordova-plugin-actionsheet": "2.2.2",
         "cordova-plugin-compat": "1.0.0",
         "cordova-plugin-console": "1.0.3",
         "cordova-plugin-device": "1.0.1",
@@ -481,6 +531,8 @@
         "cordova-plugin-media": "2.3.0",
         "cordova-plugin-network-information": "1.2.1",
         "cordova-plugin-whitelist": "1.2.2",
-        "org.flybuy.cordova.background-location-services": "1.0.4"
+        "org.flybuy.cordova.background-location-services": "1.0.4",
+        "org.frd49.cordova.exitapp": "1.0.0",
+        "uk.co.workingedge.phonegap.plugin.launchnavigator": "3.1.1"
     }
 }
