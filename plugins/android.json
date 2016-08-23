@@ -33,15 +33,9 @@
         },
         "org.flybuy.cordova.background-location-services": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
-        },
-        "uk.co.workingedge.phonegap.plugin.launchnavigator": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         }
     },
     "dependent_plugins": {
-        "cordova-plugin-actionsheet": {
-            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
-        },
         "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
