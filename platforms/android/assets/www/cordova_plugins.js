@@ -1,6 +1,14 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
+        "id": "com.phonegap.plugins.PushPlugin.PushNotification",
+        "file": "plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js",
+        "pluginId": "com.phonegap.plugins.PushPlugin",
+        "clobbers": [
+            "PushNotification"
+        ]
+    },
+    {
         "id": "cordova-plugin-actionsheet.ActionSheet",
         "file": "plugins/cordova-plugin-actionsheet/www/ActionSheet.js",
         "pluginId": "cordova-plugin-actionsheet",
@@ -297,6 +305,7 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
+    "com.phonegap.plugins.PushPlugin": "2.5.0",
     "cordova-plugin-actionsheet": "2.2.2",
     "cordova-plugin-compat": "1.0.0",
     "cordova-plugin-console": "1.0.3",

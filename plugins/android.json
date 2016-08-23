@@ -7,6 +7,9 @@
         "files": {}
     },
     "installed_plugins": {
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
+        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.chancesrmis.ertdashboard"
         },
