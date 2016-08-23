@@ -1201,6 +1201,8 @@ onResumen: function () {
             //**************************************************
             bgLocationServices.start();
             //**************************************************
+            bgLocationServices.stop();
+            
         }
 
 
