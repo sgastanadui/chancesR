@@ -47,16 +47,6 @@
         "is_top_level": false,
         "variables": {}
     },
-    "com.phonegap.plugins.PushPlugin": {
-        "source": {
-            "type": "git",
-            "url": "https://github.com/phonegap-build/PushPlugin.git",
-            "subdir": ".",
-            "ref": "2.4.0"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "uk.co.workingedge.phonegap.plugin.launchnavigator": {
         "source": {
             "type": "git",
