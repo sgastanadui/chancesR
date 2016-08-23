@@ -497,7 +497,7 @@ onResumen: function () {
 //                   //*********************************                  
 //                   calculateAndDisplayRoute(directionsService, directionsDisplay, obj.SearchRouteResult.PickupAddress, obj.SearchRouteResult.DeliveryAddress);
 //                   //*********************************
-//                   navigator.geolocation.getCurrentPosition(success, fail, { maximumAge: 5000, enableHighAccuracy: true, timeout: 2000 });
+//                   navigator.geolocation.getCurrentPosition(success, fail, { maximumAge: 10000, enableHighAccuracy: true, timeout: 2000 });
 //                   //*********************************
 //                   },
 //                   complete: function () {
@@ -696,7 +696,7 @@ onResumen: function () {
                         $("#hdnLongitudeCOOP").val(lng);
                     });
 
-                }, app.fail, { maximumAge: 3000, enableHighAccuracy: true, timeout: 5000 });
+                }, app.fail, { maximumAge: 3000, enableHighAccuracy: true, timeout: 10000 });
             }
         }
 
@@ -859,7 +859,7 @@ onResumen: function () {
                     //**************************************************
                 }, 
                 app.fail,
-                { maximumAge: 3000, enableHighAccuracy: true, timeout: 5000 });
+                { maximumAge: 3000, enableHighAccuracy: true, timeout: 10000 });
             }
         }
 
@@ -1127,7 +1127,7 @@ onResumen: function () {
                     //*********************************
                     //**************************************************
 
-                }, app.fail, { maximumAge: 3000, enableHighAccuracy: true, timeout: 5000 });
+                }, app.fail, { maximumAge: 3000, enableHighAccuracy: true, timeout: 10000 });
             }
             //**************************************************
             var bgLocationServices = window.plugins.backgroundLocationServices;
