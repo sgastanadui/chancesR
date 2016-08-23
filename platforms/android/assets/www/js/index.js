@@ -1134,72 +1134,72 @@ onResumen: function () {
                 }, app.fail, { maximumAge: 3000, enableHighAccuracy: true, timeout: 10000 });
             }
 
-            //**************************************************
-            var bgLocationServices = window.plugins.backgroundLocationServices;
-            //**************************************************
-            bgLocationServices.configure({
-                 distanceFilter: 5,
-                 desiredAccuracy: 20,
-                 debug: false,
-                 interval: 40000,
-                 useActivityDetection: true,
-                 notificationTitle: 'Insight BCP Mobile',
-                 notificationText: 'Background',
-                 fastestInterval: 40000
-             });
-            //**************************************************
-            bgLocationServices.registerForLocationUpdates(function (location) {
-                //************************************************
-//                var IdCompany = $("#hdnIdCompany").val();
-//                var IdAlert = $("#hdnIdAlert").val();
-//                var IdSite = $("#hdnIdSite").val();
-//                var IdContact = $("#hdnIdContact").val();
-//                var IdHazard = $("#hdnIdHazard").val();
+//            //**************************************************
+//            var bgLocationServices = window.plugins.backgroundLocationServices;
+//            //**************************************************
+//            bgLocationServices.configure({
+//                 distanceFilter: 5,
+//                 desiredAccuracy: 20,
+//                 debug: false,
+//                 interval: 40000,
+//                 useActivityDetection: true,
+//                 notificationTitle: 'Insight BCP Mobile',
+//                 notificationText: 'Background',
+//                 fastestInterval: 40000
+//             });
+//            //**************************************************
+//            bgLocationServices.registerForLocationUpdates(function (location) {
 //                //************************************************
-//                var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
-//                //************************************************
-//                var urlk1 = wcfServiceUrl + "SaveHistoryLocationUser?IdAlert=" + IdAlert + '&IdCompany=' + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdHazard=' + IdHazard + '&Latitude=' + location.latitude + '&Longitude=' + location.longitude + '&Accuracy=' + location.accuracy + '&Timestamp=' + parseTimestamp(location.timestamp) + '&Speed=' + location.speed;
-//                //************************************************
-//                $.ajax({
-//                    cache: true,
-//                    async: true,
-//                    url: urlk1,
-//                    crossDomain: true,
-//                    data: "{ IdAlert: " + IdAlert + ", IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation:" + IdSite + ", Latitude: '" + location.latitude + "', Longitude: '" + location.longitude + ", Accuracy: '" + location.accuracy + "' }",
-//                    type: "GET",
-//                    jsonpCallback: "HistoryUser",
-//                    contentType: "application/json; charset=utf-8",
-//                    dataType: "jsonp",
-//                    beforeSend: function () {
-//                        //$('#loader').show();
-//                    },
-//                    error: function (xhr, textStatus, err) {
-//                        var mensaje = "readyState: " + xhr.readyState + "\n";
-//                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
-//                        mensaje = mensaje + "status: " + xhr.status + "\n";
-//                        mensaje = mensaje + "text status: " + textStatus + "\n";
-//                        mensaje = mensaje + "error: " + err + "\n";
-//                        //navigator.notification.alert(mensaje, function () { }, "BCP Error");
-//                        //$('#loader').hide();
-//                    },
-//                    success: function (objHistory) {
-//                        //bgLocationServices.stop();
-//
-//
-//                    },
-//                    complete: function () {
-//                        //$('#loader').hide();
-//                        //navigator.geolocation.clearWatch(WachtId);
-//                    }
-//                });
-//                //******************************
-           }, function (err) {
-                    alert(err);
-            });
+////                var IdCompany = $("#hdnIdCompany").val();
+////                var IdAlert = $("#hdnIdAlert").val();
+////                var IdSite = $("#hdnIdSite").val();
+////                var IdContact = $("#hdnIdContact").val();
+////                var IdHazard = $("#hdnIdHazard").val();
+////                //************************************************
+////                var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+////                //************************************************
+////                var urlk1 = wcfServiceUrl + "SaveHistoryLocationUser?IdAlert=" + IdAlert + '&IdCompany=' + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdHazard=' + IdHazard + '&Latitude=' + location.latitude + '&Longitude=' + location.longitude + '&Accuracy=' + location.accuracy + '&Timestamp=' + parseTimestamp(location.timestamp) + '&Speed=' + location.speed;
+////                //************************************************
+////                $.ajax({
+////                    cache: true,
+////                    async: true,
+////                    url: urlk1,
+////                    crossDomain: true,
+////                    data: "{ IdAlert: " + IdAlert + ", IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation:" + IdSite + ", Latitude: '" + location.latitude + "', Longitude: '" + location.longitude + ", Accuracy: '" + location.accuracy + "' }",
+////                    type: "GET",
+////                    jsonpCallback: "HistoryUser",
+////                    contentType: "application/json; charset=utf-8",
+////                    dataType: "jsonp",
+////                    beforeSend: function () {
+////                        //$('#loader').show();
+////                    },
+////                    error: function (xhr, textStatus, err) {
+////                        var mensaje = "readyState: " + xhr.readyState + "\n";
+////                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+////                        mensaje = mensaje + "status: " + xhr.status + "\n";
+////                        mensaje = mensaje + "text status: " + textStatus + "\n";
+////                        mensaje = mensaje + "error: " + err + "\n";
+////                        //navigator.notification.alert(mensaje, function () { }, "BCP Error");
+////                        //$('#loader').hide();
+////                    },
+////                    success: function (objHistory) {
+////                        //bgLocationServices.stop();
+////
+////
+////                    },
+////                    complete: function () {
+////                        //$('#loader').hide();
+////                        //navigator.geolocation.clearWatch(WachtId);
+////                    }
+////                });
+////                //******************************
+//           }, function (err) {
+//                    alert(err);
+//            });
             //**************************************************
-            bgLocationServices.start();
+            //bgLocationServices.start();
             //**************************************************
-            bgLocationServices.stop();
+            //bgLocationServices.stop();
             
         }
 
