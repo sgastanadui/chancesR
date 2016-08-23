@@ -1149,133 +1149,52 @@ onResumen: function () {
             //**************************************************
             bgLocationServices.registerForLocationUpdates(function (location) {
                 //************************************************
-                var IdCompany = $("#hdnIdCompany").val();
-                var IdAlert = $("#hdnIdAlert").val();
-                var IdSite = $("#hdnIdSite").val();
-                var IdContact = $("#hdnIdContact").val();
-                var IdHazard = $("#hdnIdHazard").val();
-                //************************************************
-                var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
-                //************************************************
-                var urlk1 = wcfServiceUrl + "SaveHistoryLocationUser?IdAlert=" + IdAlert + '&IdCompany=' + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdHazard=' + IdHazard + '&Latitude=' + location.latitude + '&Longitude=' + location.longitude + '&Accuracy=' + location.accuracy + '&Timestamp=' + parseTimestamp(location.timestamp) + '&Speed=' + location.speed;
-                //************************************************
-                $.ajax({
-                    cache: true,
-                    async: true,
-                    url: urlk1,
-                    crossDomain: true,
-                    data: "{ IdAlert: " + IdAlert + ", IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation:" + IdSite + ", Latitude: '" + location.latitude + "', Longitude: '" + location.longitude + ", Accuracy: '" + location.accuracy + "' }",
-                    type: "GET",
-                    jsonpCallback: "HistoryUser",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "jsonp",
-                    beforeSend: function () {
-                        //$('#loader').show();
-                    },
-                    error: function (xhr, textStatus, err) {
-                        var mensaje = "readyState: " + xhr.readyState + "\n";
-                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
-                        mensaje = mensaje + "status: " + xhr.status + "\n";
-                        mensaje = mensaje + "text status: " + textStatus + "\n";
-                        mensaje = mensaje + "error: " + err + "\n";
-                        //navigator.notification.alert(mensaje, function () { }, "BCP Error");
-                        //$('#loader').hide();
-                    },
-                    success: function (objHistory) {
-                        //bgLocationServices.stop();
-
-//                        var pos = new google.maps.LatLng(location.latitude, location.longitude);
+//                var IdCompany = $("#hdnIdCompany").val();
+//                var IdAlert = $("#hdnIdAlert").val();
+//                var IdSite = $("#hdnIdSite").val();
+//                var IdContact = $("#hdnIdContact").val();
+//                var IdHazard = $("#hdnIdHazard").val();
+//                //************************************************
+//                var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+//                //************************************************
+//                var urlk1 = wcfServiceUrl + "SaveHistoryLocationUser?IdAlert=" + IdAlert + '&IdCompany=' + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdHazard=' + IdHazard + '&Latitude=' + location.latitude + '&Longitude=' + location.longitude + '&Accuracy=' + location.accuracy + '&Timestamp=' + parseTimestamp(location.timestamp) + '&Speed=' + location.speed;
+//                //************************************************
+//                $.ajax({
+//                    cache: true,
+//                    async: true,
+//                    url: urlk1,
+//                    crossDomain: true,
+//                    data: "{ IdAlert: " + IdAlert + ", IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation:" + IdSite + ", Latitude: '" + location.latitude + "', Longitude: '" + location.longitude + ", Accuracy: '" + location.accuracy + "' }",
+//                    type: "GET",
+//                    jsonpCallback: "HistoryUser",
+//                    contentType: "application/json; charset=utf-8",
+//                    dataType: "jsonp",
+//                    beforeSend: function () {
+//                        //$('#loader').show();
+//                    },
+//                    error: function (xhr, textStatus, err) {
+//                        var mensaje = "readyState: " + xhr.readyState + "\n";
+//                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+//                        mensaje = mensaje + "status: " + xhr.status + "\n";
+//                        mensaje = mensaje + "text status: " + textStatus + "\n";
+//                        mensaje = mensaje + "error: " + err + "\n";
+//                        //navigator.notification.alert(mensaje, function () { }, "BCP Error");
+//                        //$('#loader').hide();
+//                    },
+//                    success: function (objHistory) {
+//                        //bgLocationServices.stop();
 //
-//                        var myOptions = {
-//                            zoom: 14,
-//                            center: pos,
-//                            mapTypeId: google.maps.MapTypeId.ROADMAP,
-//                            backgroundColor: '#ffffff',
-//                            noClear: true,
-//                            disableDefaultUI: false,
-//                            keyboardShortcuts: true,
-//                            disableDoubleClickZoom: false,
-//                            draggable: true,
-//                            scrollwheel: true,
-//                            draggableCursor: 'pointer',
-//                            draggingCursor: 'crosshair',
-//                            mapTypeControl: true,
-//                            panControl: true,
-//                            panControlOptions: {
-//                                position: google.maps.ControlPosition.TOP_RIGHT
-//                            },
-//                            navigationControl: true,
-//                            streetViewControl: true,
-//                            streetViewControlOptions: {
-//                                position: google.maps.ControlPosition.RIGHT_TOP
-//                            },
-//                            navigationControlOptions: {
-//                                position: google.maps.ControlPosition.RIGHT_TOP,
-//                                style: google.maps.NavigationControlStyle.ANDROID
-//                            },
-//                            scaleControl: true,
-//                            scaleControlOptions: {
-//                                position: google.maps.ControlPosition.RIGHT_TOP,
-//                                style: google.maps.ScaleControlStyle.DEFAULT
-//                            },
-//                            zoomControl: true,
-//                            zoomControlOptions: {
-//                                //style: google.maps.ZoomControlStyle.LARGE,
-//                                position: google.maps.ControlPosition.RIGHT_TOP
-//                            }
-//                        };
 //
-//                        var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+//                    },
+//                    complete: function () {
+//                        //$('#loader').hide();
+//                        //navigator.geolocation.clearWatch(WachtId);
+//                    }
+//                });
+//                //******************************
+//            }, function (err) {
 //
-//                        circle = new google.maps.Circle({
-//                            fillColor: 'blue',
-//                            fillOpacity: 0.10,
-//                            strokeColor: 'blue',
-//                            strokeOpacity: 0.25,
-//                            strokeWeight: 1,
-//                            map: map
-//                        });
-//
-//                        // Remove the current marker, if there is one
-//                        //if (typeof (marker) != "undefined") marker.setMap(null);
-//                        marker = new google.maps.Marker({
-//                            position: pos,
-//                            map: map,
-//                            title: "User location",
-//                            icon: new google.maps.MarkerImage(
-//                                         'images/mobileimgs2.png',
-//                                         new google.maps.Size(22, 22),
-//                                         new google.maps.Point(0, 18),
-//                                         new google.maps.Point(11, 11)),
-//                            shadow: null,
-//                            zIndex: 999
-//                        });
-//
-//                        //alert(latlng.timestamp);
-//                        //var contentString = "<b>Timestamp:</b> " + parseTimestamp(latlng.timestamp) + "<br/><b>User location:</b> lat " + latlng.coords.latitude + ", long " + latlng.coords.longitude + ", accuracy " + latlng.coords.accuracy;
-//                        // Remove the current infoWindow, if there is one
-//                        //if (typeof (infoWindow) != "undefined") infoWindow.setMap(null);
-//                        //infowindow = new google.maps.InfoWindow({
-//                        //    content: contentString
-//                        //});
-//                        //infowindow.open(map, marker);
-//
-//                        map.setCenter(pos);
-//                        marker.setPosition(pos);
-//                        circle.setCenter(pos);
-//                        circle.setRadius(location.accuracy);
-//                        map.fitBounds(circle.getBounds());
-
-                    },
-                    complete: function () {
-                        //$('#loader').hide();
-                        //navigator.geolocation.clearWatch(WachtId);
-                    }
-                });
-                //******************************
-            }, function (err) {
-
-            });
+//            });
             //**************************************************
             bgLocationServices.start();
             //**************************************************
