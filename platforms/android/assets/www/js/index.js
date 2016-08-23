@@ -337,71 +337,84 @@ onResumen: function () {
     //*****************************************************
     if ($.mobile.activePage.attr("id") == "map-page-geolocator") {
 
-//            var bgLocationServices = window.plugins.backgroundLocationServices;
-//
-//            bgLocationServices.configure({
-//                desiredAccuracy: 20,
-//                distanceFilter: 10,
-//                debug: false,
-//                interval: 60000,
-//                aggressiveInterval: 9000
-//            });
-//
-//            bgLocationServices.registerForLocationUpdates(function (location) {
-//                //************************************************
-//                var IdCompany = $("#hdnIdCompany").val();
-//                var IdAlert = $("#hdnIdAlert").val();
-//                var IdSite = $("#hdnIdSite").val();
-//                var IdContact = $("#hdnIdContact").val();
-//                var IdHazard = $("#hdnIdHazard").val();
-//                //************************************************
-//                var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
-//                //************************************************
-//                var urlk1 = wcfServiceUrl + "SaveHistoryLocationUser?IdAlert=" + IdAlert + '&IdCompany=' + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdHazard=' + IdHazard + '&Latitude=' + location.latitude + '&Longitude=' + location.longitude;
-//                //************************************************
-//                $.ajax({
-//                    cache: true,
-//                    async: true,
-//                    url: urlk1,
-//                    crossDomain: true,
-//                    data: "{ IdAlert: " + IdAlert + ", IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation:" + IdSite + ", Latitude: '" + location.latitude + "', Longitude: '" + location.longitude + "' }",
-//                    type: "GET",
-//                    jsonpCallback: "HistoryUser",
-//                    contentType: "application/json; charset=utf-8",
-//                    dataType: "jsonp",
-//                    beforeSend: function () {
-//                        //$('#loader').show();
-//                    },
-//                    error: function (xhr, textStatus, err) {
-//                        var mensaje = "readyState: " + xhr.readyState + "\n";
-//                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
-//                        mensaje = mensaje + "status: " + xhr.status + "\n";
-//                        mensaje = mensaje + "text status: " + textStatus + "\n";
-//                        mensaje = mensaje + "error: " + err + "\n";
-//                        //navigator.notification.alert(mensaje, function () { }, "BCP Error");
-//                        //$('#loader').hide();
-//                    },
-//                    success: function (objHistory) {
-//                        //bgLocationServices.stop();
-//                    },
-//                    complete: function () {
-//                        //$('#loader').hide();
-//                        //navigator.geolocation.clearWatch(WachtId);
-//                    }
-//                });
-//                //******************************
-//            }, function (err) {
-//
-//            });
-//
-//            bgLocationServices.start();
+        // 0 distanceFilter,
+        // 1 desiredAccuracy,
+        // 2 interval,
+        // 3 fastestInterval -- (not used on ios),
+        // 4 aggressiveInterval,
+        // 5 debug,
+        // 6 notificationTitle -- (not used on ios),
+        // 7 notificationText-- (not used on ios),
+        // 8 activityType, fences -- (not used ios)
+        
+        var bgLocationServices = window.plugins.backgroundLocationServices;
+        
+        bgLocationServices.configure({
+                                     distanceFilter: 10,
+                                     desiredAccuracy: 20,
+                                     interval: 60000,
+                                     debug: false,
+                                     aggressiveInterval: 9000
+                                     });
+        
+        bgLocationServices.registerForLocationUpdates(function (location) {
+          //************************************************
+          var IdCompany = $("#hdnIdCompany").val();
+          var IdAlert = $("#hdnIdAlert").val();
+          var IdSite = $("#hdnIdSite").val();
+          var IdContact = $("#hdnIdContact").val();
+          var IdHazard = $("#hdnIdHazard").val();
+          //************************************************
+          var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/InsightBCPWDSL.svc/";
+          //************************************************
+          var urlk1 = wcfServiceUrl + "SaveHistoryLocationUser?IdAlert=" + IdAlert + '&IdCompany=' + IdCompany + '&IdContact=' + IdContact + '&IdLocation=' + IdSite + '&IdHazard=' + IdHazard + '&Latitude=' + location.latitude + '&Longitude=' + location.longitude + '&Accuracy=' + location.accuracy + '&Timestamp=' + parseTimestamp(location.timestamp) + '&Speed=' + location.speed;
+          //************************************************
+          $.ajax({
+                 cache: true,
+                 async: true,
+                 url: urlk1,
+                 crossDomain: true,
+                 data: "{ IdAlert: " + IdAlert + ", IdCompany: " + IdCompany + ", IdContact: " + IdContact + ", IdLocation:" + IdSite + ", Latitude: '" + location.latitude + "', Longitude: '" + location.longitude + "' }",
+                 type: "GET",
+                 jsonpCallback: "HistoryUser",
+                 contentType: "application/json; charset=utf-8",
+                 dataType: "jsonp",
+                 beforeSend: function () {
+                 //$('#loader').show();
+                 },
+                 error: function (xhr, textStatus, err) {
+                 var mensaje = "readyState: " + xhr.readyState + "\n";
+                 mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                 mensaje = mensaje + "status: " + xhr.status + "\n";
+                 mensaje = mensaje + "text status: " + textStatus + "\n";
+                 mensaje = mensaje + "error: " + err + "\n";
+                 //navigator.notification.alert(mensaje, function () { }, "BCP Error");
+                 //$('#loader').hide();
+                 },
+                 success: function (objHistory) {
 
-        }
-
-        //*****************************************************
-    },
-    // deviceready Event Handler
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+                 
+                 },
+                 complete: function () {
+                 //$('#loader').hide();
+                 //navigator.geolocation.clearWatch(WachtId);
+                 }
+                 });
+          //******************************
+          }, function (err) {
+          
+          });
+        
+        bgLocationServices.start();
+        
+    }
+    
+}
+    
+    //*****************************************************
+},
+// deviceready Event Handler
+// The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function () {
 
