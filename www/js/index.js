@@ -1133,11 +1133,10 @@ onResumen: function () {
 
                 }, app.fail, { maximumAge: 3000, enableHighAccuracy: true, timeout: 10000 });
             }
-            alert('comienza background');
+
             //**************************************************
             var bgLocationServices = window.plugins.backgroundLocationServices;
             //**************************************************
-            alert('comienza background bgLocationServices activated');
             bgLocationServices.configure({
                  distanceFilter: 5,
                  desiredAccuracy: 20,
@@ -1145,10 +1144,9 @@ onResumen: function () {
                  interval: 40000,
                  useActivityDetection: true,
                  notificationTitle: 'Insight BCP Mobile',
-                 notificationText: 'Tracking',
+                 notificationText: 'Background',
                  fastestInterval: 40000
              });
-            alert('comienza background config activated');
             //**************************************************
             bgLocationServices.registerForLocationUpdates(function (location) {
                 //************************************************
