@@ -1141,11 +1141,11 @@ onResumen: function () {
                  desiredAccuracy: 20,
                  distanceFilter: 5,
                  debug: true,
-                 interval: 9000,
+                 interval: 20000,
                  useActivityDetection: false,
                  notificationTitle: 'Insight BCP Mobile',
                  notificationText: 'Background',
-                 fastestInterval: 40000
+                 fastestInterval: 25000
              });
             //**************************************************
             bgLocationServices.registerForLocationUpdates(function (location) {
