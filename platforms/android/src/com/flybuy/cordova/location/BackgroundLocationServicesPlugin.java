@@ -421,6 +421,7 @@ public class BackgroundLocationServicesPlugin extends CordovaPlugin {
 
         if(isEnabled && stopOnTerminate.equalsIgnoreCase("true")) {
             activity.stopService(updateServiceIntent);
+            unbindServiceFromWebview(activity, updateServiceIntent);
         }
     }
 }
