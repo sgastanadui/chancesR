@@ -1138,10 +1138,10 @@ onResumen: function () {
             var bgLocationServices = window.plugins.backgroundLocationServices;
             //**************************************************
             bgLocationServices.configure({
-                 distanceFilter: 5,
                  desiredAccuracy: 20,
-                 debug: false,
-                 interval: 40000,
+                 distanceFilter: 5,
+                 debug: true,
+                 interval: 9000,
                  useActivityDetection: true,
                  notificationTitle: 'Insight BCP Mobile',
                  notificationText: 'Background',
