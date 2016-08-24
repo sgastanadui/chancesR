@@ -1142,7 +1142,7 @@ onResumen: function () {
                  distanceFilter: 5,
                  debug: true,
                  interval: 9000,
-                 useActivityDetection: true,
+                 useActivityDetection: false,
                  notificationTitle: 'Insight BCP Mobile',
                  notificationText: 'Background',
                  fastestInterval: 40000
