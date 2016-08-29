@@ -48,8 +48,8 @@ var app = {
             var bgLocationServices = window.plugins.backgroundLocationServices;
 
             bgLocationServices.configure({
-                 desiredAccuracy: 25,
-                 distanceFilter: 15,
+                 desiredAccuracy: 20,
+                 distanceFilter: 10,
                  debug: false,
                  interval: 60000,
                  useActivityDetection: false,
@@ -1137,8 +1137,8 @@ onResumen: function () {
             var bgLocationServices = window.plugins.backgroundLocationServices;
             //**************************************************
             bgLocationServices.configure({
-                 desiredAccuracy: 25,
-                 distanceFilter: 15,
+                 desiredAccuracy: 20,
+                 distanceFilter: 10,
                  debug: false,
                  interval: 60000,
                  useActivityDetection: false,
