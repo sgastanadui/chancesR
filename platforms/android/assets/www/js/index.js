@@ -48,14 +48,14 @@ var app = {
             var bgLocationServices = window.plugins.backgroundLocationServices;
 
             bgLocationServices.configure({
-                 desiredAccuracy: 20,
-                 distanceFilter: 5,
-                 debug: true,
-                 interval: 20000,
+                 desiredAccuracy: 25,
+                 distanceFilter: 15,
+                 debug: false,
+                 interval: 60000,
                  useActivityDetection: false,
                  notificationTitle: 'Insight BCP Mobile',
                  notificationText: 'Background',
-                 fastestInterval: 25000
+                 fastestInterval: 60000
              });
 
             bgLocationServices.registerForLocationUpdates(function (location) {
