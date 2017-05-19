@@ -444,7 +444,7 @@
             //    Connection: "close"
             //}
             options.headers = { 'Accept': 'application/json' };
-            options.httpMethod: 'POST';
+            options.httpMethod = 'POST';
 
             //navigator.notification.alert("option", function () { }, "ClaimsRe");
 
