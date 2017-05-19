@@ -153,7 +153,7 @@
                 navigator.camera.getPicture(function (imageData) {
                     var elem = document.createElement("img");
                     //elem.setAttribute("src", "data:image/jpeg;base64," + imageData);
-                    navigator.notification.alert(imageData, function () { }, "ClaimsRe Image");
+                    //navigator.notification.alert(imageData, function () { }, "ClaimsRe Image");
                     elem.setAttribute("src", imageData);
                     images.push(imageData);
                     //elem.setAttribute("height", "76px");
@@ -413,7 +413,7 @@
                 if($.trim(r.response) === "0") {
                     //console.log("this one failed");
                     //alert("this one failed");
-                    navigator.notification.alert("this one failed", function () { }, "ClaimsRe Error");
+                    //navigator.notification.alert("this one failed", function () { }, "ClaimsRe Error");
                     def.resolve(0);
                 } else {
                     //console.log("this one passed");
