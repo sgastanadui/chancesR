@@ -4,11 +4,11 @@
   <description>ClaimsRe</description>
   <author href="http://cordova.io" email="dev@cordova.apache.org">Santiago Gastanadui Lujan</author>
   <content src="index.html" />
-  <icon src="icon.png" />
   <access origin="*" />
   <vs:features />
   <preference name="SplashScreen" value="screen" />
   <preference name="windows-target-version" value="8.1" />
+  <icon src="icon.png" />
   <!-- Support for Cordova 5.0.0 plugin system -->
   <plugin name="cordova-plugin-whitelist" version="1" />
   <allow-intent href="http://*/*" />
