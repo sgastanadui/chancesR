@@ -153,7 +153,7 @@
                 navigator.camera.getPicture(function (imageData) {
                     var elem = document.createElement("img");
                     //elem.setAttribute("src", "data:image/jpeg;base64," + imageData);
-                    //navigator.notification.alert(imageData, function () { }, "ClaimsRe Image");
+                    navigator.notification.alert(imageData, function () { }, "ClaimsRe Image");
                     elem.setAttribute("src", imageData);
                     images.push(imageData);
                     //elem.setAttribute("height", "76px");
