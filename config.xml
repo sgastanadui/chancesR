@@ -4,6 +4,7 @@
   <description>ClaimsRe</description>
   <author href="http://cordova.io" email="dev@cordova.apache.org">Santiago Gastanadui Lujan</author>
   <content src="index.html" />
+  <icon src="icon.png" />
   <access origin="*" />
   <vs:features />
   <preference name="SplashScreen" value="screen" />
