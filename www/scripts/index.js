@@ -440,9 +440,11 @@
             options.fileName=i.substr(i.lastIndexOf('/')+1);
             options.mimeType="image/jpeg";
             options.chunkedMode=false;
-            options.headers = {
-                Connection: "close"
-            }
+            //options.headers = {
+            //    Connection: "close"
+            //}
+            options.headers = { 'Accept': 'application/json' };
+            options.httpMethod: 'POST';
 
             //navigator.notification.alert("option", function () { }, "ClaimsRe");
 
