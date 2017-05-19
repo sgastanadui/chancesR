@@ -440,6 +440,9 @@
             options.fileName=i.substr(i.lastIndexOf('/')+1);
             options.mimeType="image/jpeg";
             options.chunkedMode=false;
+            options.headers = {
+                Connection: "close"
+            }
 
             navigator.notification.alert("option", function () { }, "ClaimsRe");
 
