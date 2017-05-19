@@ -1,41 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" id="chancesrmis.com.claimre" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" defaultlocale="en-US">
+<widget id="com.chancesrmis.ertdashboard" version="1.0.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>ClaimsRe</name>
   <description>ClaimsRe</description>
-  <author href="http://cordova.io" email="dev@cordova.apache.org">Santiago Gastanadui Lujan</author>
+  <author email="santiagogerman@hotmail.com" href="https://chancesrmis.com">
+        Ing. Santiago Gastanadui Lujan
+    </author>
   <content src="index.html" />
-  <access origin="*" />
-  <vs:features />
-  <preference name="SplashScreen" value="screen" />
-  <preference name="windows-target-version" value="8.1" />
-  <icon src="icon.png" />
-  <!-- Support for Cordova 5.0.0 plugin system -->
-  <plugin name="cordova-plugin-whitelist" version="1" />
-  <allow-intent href="http://*/*" />
-  <allow-intent href="https://*/*" />
-  <allow-intent href="tel:*" />
-  <allow-intent href="sms:*" />
-  <allow-intent href="mailto:*" />
-  <allow-intent href="geo:*" />
-  <platform name="android">
-    <allow-intent href="market:*" />
-  </platform>
-  <platform name="android">
-    <icon src=“/res/icons/android/icon-36-ldpi.png" density="ldpi" />
-    <icon src=“/res/icons/android/icon-48-mdpi.png" density="mdpi" />
-    <icon src=“/res/icons/android/icon-72-hdpi.png" density="hdpi" />
-    <icon src=“/res/icons/android/icon-96-xhdpi.png" density="xhdpi" />
-  </platform>
-  <platform name="android">
-    <splash src="res/screens/android/screen-hdpi-landscape.png" density="land-hdpi" />
-    <splash src="res/screens/android/screen-ldpi-landscape.png" density="land-ldpi" />
-    <splash src="res/screens/android/screen-mdpi-landscape.png" density="land-mdpi" />
-    <splash src="res/screens/android/screen-xhdpi-landscape.png" density="land-xhdpi" />
-    <splash src="res/screens/android/screen-hdpi-portrait.png" density="port-hdpi" />
-    <splash src="res/screens/android/screen-ldpi-portrait.png" density="port-ldpi" />
-    <splash src="res/screens/android/screen-mdpi-portrait.png" density="port-mdpi" />
-    <splash src="res/screens/android/screen-xhdpi-portrait.png" density="port-xhdpi" />
-  </platform>
   <plugin name="cordova-plugin-camera" version="2.3.1" />
   <plugin name="cordova-plugin-device" version="1.1.4" />
   <plugin name="cordova-plugin-geolocation" version="2.4.1" />
@@ -47,4 +17,55 @@
   <plugin name="phonegap-plugin-push" version="1.9.2">
     <variable name="SENDER_ID" value="653317226796" />
   </plugin>
+  <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+  <preference name="android-minSdkVersion" value="14" />
+  <preference name="android-maxSdkVersion" value="25" />
+  <preference name="android-targetSdkVersion" value="14" />
+  <preference name="phonegap-version" value="cli-6.3.0" />
+<!--  
+   <plugin name="org.flybuy.cordova.background-location-services" src="https://github.com/pmwisdom/cordova-background-geolocation-services.git" />
+   <plugin name="org.frd49.cordova.exitapp" version="1.0.0" />
+   <plugin name="org.frd49.cordova.exitapp" src="https://github.com/pmwisdom/cordova-background-geolocation-services.git" />
+   <plugin name="cordova-plugin-mauron85-background-geolocation" source="npm" />
+ -->
+  <plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" spec="3" />
+  <plugin name="org.flybuy.cordova.background-location-services" src="https://github.com/pmwisdom/cordova-background-geolocation-services.git" />
+  <access origin="*" />
+  <feature name="Geolocation">
+    <param name="android-package" value="org.apache.cordova.GeoBroker" />
+  </feature>
+  <icon src="icon.png" />
+  <allow-navigation href="*" />
+  <allow-intent href="*" />
+  <allow-intent href="http://*/*" />
+  <allow-intent href="https://*/*" />
+  <allow-intent href="tel:*" />
+  <allow-intent href="sms:*" />
+  <allow-intent href="mailto:*" />
+  <allow-intent href="geo:*" />
+  <platform name="android">
+    <allow-intent href="market:*" />
+  </platform>
+  <platform name="ios">
+    <allow-intent href="itms:*" />
+    <allow-intent href="itms-apps:*" />
+  </platform>
+  <access origin="*.google.com" />
+  <access origin="*.gstatic.com" />
+  <access origin="*.googleapis.com" />
+  <access origin="*.googleusercontent.com" />
+  <access origin="google.com" subdomains="true"/>
+  <access origin="gstatic.com" subdomains="true"/>
+  <access origin="googleapis.com" subdomains="true"/>
+  <access origin="googleusercontent.com" subdomains="true"/>
+  <access origin="http://maps.google.com" />
+  <access origin="http://maps.gstatic.com" />
+  <access origin="http://maps.googleapis.com" />
+  <access origin="http://fonts.googleapis.com" />
+  <access origin="http://mt0.googleapis.com" />
+  <access origin="http://khm1.googleapis.com" />
+  <access origin="http://kmh0.googleapis.com" />
+  <access origin="https://*.google.com" />
+  <access origin="https://*.gstatic.com" />
+  <access origin="https://*.googleapis.com" />
 </widget>
