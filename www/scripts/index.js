@@ -153,7 +153,7 @@
                 navigator.camera.getPicture(function (imageData) {
                     var elem = document.createElement("img");
                     //elem.setAttribute("src", "data:image/jpeg;base64," + imageData);
-                    navigator.notification.alert(imageData, function () { }, "ClaimsRe Image");
+                    //navigator.notification.alert(imageData, function () { }, "ClaimsRe Image");
                     elem.setAttribute("src", imageData);
                     images.push(imageData);
                     //elem.setAttribute("height", "76px");
@@ -444,15 +444,15 @@
                 Connection: "close"
             }
 
-            navigator.notification.alert("option", function () { }, "ClaimsRe");
+            //navigator.notification.alert("option", function () { }, "ClaimsRe");
 
             var ft = new FileTransfer();
 
-            navigator.notification.alert("new FileTransfer", function () { }, "ClaimsRe");
+            //navigator.notification.alert("new FileTransfer", function () { }, "ClaimsRe");
 
             ft.upload(i, uri, win, fail, options);
 
-            navigator.notification.alert("upload FileTransfer", function () { }, "ClaimsRe");
+            //navigator.notification.alert("upload FileTransfer", function () { }, "ClaimsRe");
 
             defs.push(def.promise());
 
