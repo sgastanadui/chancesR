@@ -19,10 +19,10 @@
     <variable name="SENDER_ID" value="653317226796" />
   </plugin>
   <preference name="AndroidPersistentFileLocation" value="Compatibility" />
-  <preference name="android-minSdkVersion" value="14" />
+  <preference name="android-minSdkVersion" value="10” />
   <preference name="android-maxSdkVersion" value="25" />
-  <preference name="android-targetSdkVersion" value="14" />
-  <preference name="phonegap-version" value="cli-6.3.0" />
+  <preference name="android-targetSdkVersion" value="10” />
+  <preference name="phonegap-version" value="cli-6.5.0” />
   <access origin="*" />
   <feature name="Geolocation">
     <param name="android-package" value="org.apache.cordova.GeoBroker" />
@@ -38,10 +38,6 @@
   <allow-intent href="geo:*" />
   <platform name="android">
     <allow-intent href="market:*" />
-  </platform>
-  <platform name="ios">
-    <allow-intent href="itms:*" />
-    <allow-intent href="itms-apps:*" />
   </platform>
   <access origin="*.google.com" />
   <access origin="*.gstatic.com" />
