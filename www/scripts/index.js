@@ -410,7 +410,7 @@
                 //alert("thing done");
                 if($.trim(r.response) === "0") {
                     console.log("this one failed");
-                    //alert("this one failed");
+                    alert("this one failed");
                     def.resolve(0);
                 } else {
                     console.log("this one passed");
@@ -422,8 +422,8 @@
             function fail(error) {
                 console.log("upload error source " + error.source);
                 console.log("upload error target " + error.target);
-                //alert("upload error source " + error.source);
-                //alert("upload error target " + error.target);
+                alert("upload error source " + error.source);
+                alert("upload error target " + error.target);
                 def.resolve(0);
             }
 
