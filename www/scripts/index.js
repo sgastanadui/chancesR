@@ -432,8 +432,6 @@
                 def.resolve(0);
             }
 
-            navigator.notification.alert("https://www.chancesrmis.com/" + window.localStorage["ClaimReUrl"] + "/UploadFiles/UploadFileMobile.aspx", function () { }, "ClaimsRe URL");
-
             var uri = encodeURI("https://www.chancesrmis.com/"+ window.localStorage["ClaimReUrl"] +"/UploadFiles/UploadFileMobile.aspx");
 
             var options = new FileUploadOptions();
@@ -441,6 +439,7 @@
             //options.fileName=i.substr(i.lastIndexOf('/')+1) + "@" + window.localStorage["IdCompany"];
             options.fileName=i.substr(i.lastIndexOf('/')+1);
             options.mimeType="image/jpeg";
+            options.chunkedMode=false;
 
             navigator.notification.alert("option", function () { }, "ClaimsRe");
 
