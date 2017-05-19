@@ -431,7 +431,9 @@
                 navigator.notification.alert("upload error target " + error.target, function () { }, "ClaimsRe Error");
                 def.resolve(0);
             }
-navigator.notification.alert("https://www.chancesrmis.com/"+ window.localStorage["ClaimReUrl"] +"/UploadFiles/UploadFileMobile.aspx", function () { }, "ClaimsRe URL");
+
+            navigator.notification.alert("https://www.chancesrmis.com/" + window.localStorage["ClaimReUrl"] + "/UploadFiles/UploadFileMobile.aspx", function () { }, "ClaimsRe URL");
+
             var uri = encodeURI("https://www.chancesrmis.com/"+ window.localStorage["ClaimReUrl"] +"/UploadFiles/UploadFileMobile.aspx");
 
             var options = new FileUploadOptions();
@@ -440,8 +442,16 @@ navigator.notification.alert("https://www.chancesrmis.com/"+ window.localStorage
             options.fileName=i.substr(i.lastIndexOf('/')+1);
             options.mimeType="image/jpeg";
 
+            navigator.notification.alert("option", function () { }, "ClaimsRe");
+
             var ft = new FileTransfer();
+
+            navigator.notification.alert("new FileTransfer", function () { }, "ClaimsRe");
+
             ft.upload(i, uri, win, fail, options);
+
+            navigator.notification.alert("upload FileTransfer", function () { }, "ClaimsRe");
+
             defs.push(def.promise());
 
         });
