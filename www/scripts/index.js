@@ -153,6 +153,7 @@
                 navigator.camera.getPicture(function (imageData) {
                     var elem = document.createElement("img");
                     //elem.setAttribute("src", "data:image/jpeg;base64," + imageData);
+                    navigator.notification.alert(imageData, function () { }, "ClaimsRe Image");
                     elem.setAttribute("src", imageData);
                     images.push(imageData);
                     //elem.setAttribute("height", "76px");
@@ -401,32 +402,36 @@
         var defs = [];
 
         images.forEach(function(i) {
-            console.log('processing '+i);
+            //console.log('processing '+i);
             //alert('processing '+i);
             var def = $.Deferred();
 
             function win(r) {
-                console.log("thing done");
+                //console.log("thing done");
                 //alert("thing done");
+                navigator.notification.alert("thing done", function () { }, "ClaimsRe Error");
                 if($.trim(r.response) === "0") {
-                    console.log("this one failed");
-                    alert("this one failed");
+                    //console.log("this one failed");
+                    //alert("this one failed");
+                    navigator.notification.alert("this one failed", function () { }, "ClaimsRe Error");
                     def.resolve(0);
                 } else {
-                    console.log("this one passed");
+                    //console.log("this one passed");
                     //alert("this one passed");
                     def.resolve(1);
                 }
             }
 
             function fail(error) {
-                console.log("upload error source " + error.source);
-                console.log("upload error target " + error.target);
-                alert("upload error source " + error.source);
-                alert("upload error target " + error.target);
+                //console.log("upload error source " + error.source);
+                //console.log("upload error target " + error.target);
+                //alert("upload error source " + error.source);
+                //alert("upload error target " + error.target);
+                navigator.notification.alert("upload error source " + error.source, function () { }, "ClaimsRe Error");
+                navigator.notification.alert("upload error target " + error.target, function () { }, "ClaimsRe Error");
                 def.resolve(0);
             }
-
+navigator.notification.alert("https://www.chancesrmis.com/"+ window.localStorage["ClaimReUrl"] +"/UploadFiles/UploadFileMobile.aspx", function () { }, "ClaimsRe URL");
             var uri = encodeURI("https://www.chancesrmis.com/"+ window.localStorage["ClaimReUrl"] +"/UploadFiles/UploadFileMobile.aspx");
 
             var options = new FileUploadOptions();
@@ -442,9 +447,9 @@
         });
 
         $.when.apply($, defs).then(function() {
-            console.log("all things done");
+            //console.log("all things done");
             //alert("all things done");
-            console.dir(arguments);
+            //console.dir(arguments);
             $('#loader').hide();
             window.location.href = "auto.html";
         });
