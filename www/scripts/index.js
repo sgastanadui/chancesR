@@ -409,7 +409,7 @@
             function win(r) {
                 //console.log("thing done");
                 //alert("thing done");
-                navigator.notification.alert("thing done", function () { }, "ClaimsRe Error");
+                //navigator.notification.alert("thing done", function () { }, "ClaimsRe Error");
                 if($.trim(r.response) === "0") {
                     //console.log("this one failed");
                     //alert("this one failed");
