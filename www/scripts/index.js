@@ -73,10 +73,7 @@
                 //    ref.executeScript({file: "http://www.insightrisktech.com/"});
                 //});
 
-                var ref = window.open( 'http://apache.org', "_blank", "location=yes" );
-                ref.addEventListener( 'loadstop', function () {
-                    ref.close();
-                })
+                navigator.app.loadUrl("http://google.com", {openExternal : false});
 
 
             });
