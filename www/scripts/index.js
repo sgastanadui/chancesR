@@ -68,10 +68,17 @@
                 //alert('tlocation');
                 //window.open("https://www.google.com.pe/maps/place/5129+S+Lakeland+Dr,+Lakeland,+FL+33813,+USA/@27.9722071,-81.9665119,17z/data=!3m1!4b1!4m5!3m4!1s0x88dd3957f5ebb3cf:0xe8b051209cdd76ff!8m2!3d27.9722071!4d-81.9643179",'_blank');
 
-                var ref = cordova.InAppBrowser.open('https://www.google.com.pe/maps/place/5129+S+Lakeland+Dr,+Lakeland,+FL+33813,+USA/@27.9722071,-81.9665119,17z/data=!3m1!4b1!4m5!3m4!1s0x88dd3957f5ebb3cf:0xe8b051209cdd76ff!8m2!3d27.9722071!4d-81.9643179', '_blank');
-                ref.addEventListener('loadstop', function() {
-                    ref.executeScript({file: "http://www.insightrisktech.com/"});
-                });
+                //var ref = cordova.InAppBrowser.open('https://www.google.com.pe/maps/place/5129+S+Lakeland+Dr,+Lakeland,+FL+33813,+USA/@27.9722071,-81.9665119,17z/data=!3m1!4b1!4m5!3m4!1s0x88dd3957f5ebb3cf:0xe8b051209cdd76ff!8m2!3d27.9722071!4d-81.9643179', '_blank');
+                //ref.addEventListener('loadstop', function() {
+                //    ref.executeScript({file: "http://www.insightrisktech.com/"});
+                //});
+
+                var ref = window.open( 'http://apache.org', "_blank", "location=yes" );
+                ref.addEventListener( 'loadstop', function () {
+                    ref.close();
+                })
+
+
             });
 
             if (window.localStorage["Remember"]) {
