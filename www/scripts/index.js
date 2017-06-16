@@ -5,14 +5,13 @@
 (function () {
     "use strict";
 
-    document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
+    document.addEventListener('deviceready', onDeviceReady.bind(this), false);
 
     function onDeviceReady() {
 
         // Handle the Cordova pause and resume events
-        document.addEventListener( 'pause', onPause.bind( this ), false );
-        document.addEventListener( 'resume', onResume.bind( this ), false );
-
+        document.addEventListener('pause', onPause.bind(this), false);
+        document.addEventListener('resume', onResume.bind(this), false);
         //**********************************************
         //*************** UBICACION ********************
         //**********************************************
@@ -20,7 +19,6 @@
             navigator.geolocation.getCurrentPosition(function (loc) {
                 var latlng = new google.maps.LatLng(loc.coords.latitude, loc.coords.longitude);
             }, function (error) {
-                //alert(err.message);
                 switch (error.code) {
                     case error.PERMISSION_DENIED:
                         navigator.notification.alert("user did not share geolocation data", function () { }, "ClaimsRe Error");
@@ -35,7 +33,6 @@
                         navigator.notification.alert("unknown error", function () { }, "ClaimsRe Error");
                     break;
                 }
-
             },{ maximumAge: 5000,
                 enableHighAccuracy: true,
                 timeout: 15000 });
@@ -48,34 +45,13 @@
         if ($.mobile.activePage.attr("id") == "index") {
 
             $("#thome").on("click", function () {
-                //navigator.app.loadUrl('http://google.com/', { openExternal:true });
-                window.open("http://www.insightrisktech.com", '_system');
-                //var options = {
-                //    location: 'yes',
-                //    clearcache: 'yes',
-                //    toolbar: 'no'
-                //};
-                //var ref = cordova.InAppBrowser.open('http://www.insightrisktech.com/', '_blank', options);
-                //ref.addEventListener('loadstop', function() {
-                //    ref.executeScript({file: "http://www.insightrisktech.com/"});
-                //});
+                window.open("http://www.insightrisktech.com", '_blank','location=no,EnableViewPortScale=yes');
             });
             $("#tphone").on("click", function () {
-                //alert('tphone +1 863-816-5389');
                 window.location.href = 'tel:+1(863)816-5389';
             });
             $("#tlocation").on("click", function () {
-                //alert('tlocation');
-                //window.open("https://www.google.com.pe/maps/place/5129+S+Lakeland+Dr,+Lakeland,+FL+33813,+USA/@27.9722071,-81.9665119,17z/data=!3m1!4b1!4m5!3m4!1s0x88dd3957f5ebb3cf:0xe8b051209cdd76ff!8m2!3d27.9722071!4d-81.9643179",'_blank');
-
-                //var ref = cordova.InAppBrowser.open('https://www.google.com.pe/maps/place/5129+S+Lakeland+Dr,+Lakeland,+FL+33813,+USA/@27.9722071,-81.9665119,17z/data=!3m1!4b1!4m5!3m4!1s0x88dd3957f5ebb3cf:0xe8b051209cdd76ff!8m2!3d27.9722071!4d-81.9643179', '_blank');
-                //ref.addEventListener('loadstop', function() {
-                //    ref.executeScript({file: "http://www.insightrisktech.com/"});
-                //});
-
-                navigator.app.loadUrl("http://google.com", {openExternal : false});
-
-
+                window.open("https://www.google.com.pe/maps/place/5129+S+Lakeland+Dr,+Lakeland,+FL+33813,+USA/@27.9722071,-81.9665119,17z/data=!3m1!4b1!4m5!3m4!1s0x88dd3957f5ebb3cf:0xe8b051209cdd76ff!8m2!3d27.9722071!4d-81.9643179",'_blank');
             });
 
             if (window.localStorage["Remember"]) {
@@ -83,7 +59,6 @@
                 $("#txtUsername").val(window.localStorage["Username"]);
                 $("#txtPassword").val(window.localStorage["Password"]);
                 $("#remember").click();
-                //$('#remember').prop("checked", true);
             }
 
         }
@@ -157,7 +132,6 @@
                 navigator.camera.getPicture(function (imageData) {
                     var elem = document.createElement("img");
                     //elem.setAttribute("src", "data:image/jpeg;base64," + imageData);
-                    //navigator.notification.alert(imageData, function () { }, "ClaimsRe Image");
                     elem.setAttribute("src", imageData);
                     images.push(imageData);
                     //elem.setAttribute("height", "76px");
@@ -192,14 +166,6 @@
                 if ($("#AtFault").is(':checked')){
                     $("#AtFault").prop('checked', false).checkboxradio('refresh');
                 }
-//                if (this.checked){
-//                    //alert(this.checked);
-//                    //$("#AtFault").prop('checked', false).checkboxradio('refresh');
-//                    //$("#AtFault").removeAttr('checked');
-//                    $("#AtFault").attr('checked',false);
-//                    //$('#AtFault').prop('checked', false);
-//                    //$('#AtFault').off("click");
-//                }
             });
             //******************************
             $("#AtFault").off("click");
@@ -207,26 +173,54 @@
                 if ($("#AtFaultOther").is(':checked')){
                     $("#AtFaultOther").prop('checked', false).checkboxradio('refresh');
                 }
-//                if (this.checked){
-//                    //alert(event);
-//                    //$("#AtFaultOther").prop('checked', false).checkboxradio('refresh');
-//                    //$("#AtFaultOther").removeAttr('checked');
-//                    $("#chkOther").attr('checked',false);
-//                    //$('#AtFaultOther').prop('checked', false);
-//                    //$('#AtFaultOther').off("click");
-//                }
+            });
+            //******************************
+            $("#Injured").off("click");
+            $("#Injured").on("click", function (event) {
+                if ($("#Injured").is(':checked')){
+                    $("#txtAnyoneInjured").css('display','');
+                }else{
+                    $("#txtAnyoneInjured").css('display','none');
+                }
             });
             //******************************
             //$("#AtFault").prop('checked', false).checkboxradio('refresh');
             //******************************
             $("#tDL").on("click", function () {
-                window.open(window.localStorage["DLVehicle"], '_blank','location=no,EnableViewPortScale=yes');
+                //window.open(window.localStorage["DLVehicle"], '_blank','location=no,EnableViewPortScale=yes,scalesPageToFit=yes');
+                //$("#imgAuto").attr("src",window.localStorage["DLVehicle"]);
+                window.location.href = '#imagenauto';
             });
             $("#tRegistration").on("click", function () {
-              window.open(window.localStorage["RegistrationVehicle"], '_blank','location=no,EnableViewPortScale=yes');
+              //window.open(window.localStorage["RegistrationVehicle"], '_blank','location=no,EnableViewPortScale=yes,scalesPageToFit=yes');
+               //$("#imgAuto").attr("src",window.localStorage["RegistrationVehicle"]);
+                $("#content2").load(window.localStorage["RegistrationVehicle"]);
+               window.location.href = '#imagenauto';
             });
             $("#tIDCard").on("click", function () {
-                window.open(window.localStorage["IDCardVehicle"], '_blank','location=no,EnableViewPortScale=yes');
+               $("#imgAuto").attr("src",window.localStorage["IDCardVehicle"]);
+               window.location.href = '#imagenauto';
+//                var iabRef = window.open(window.localStorage["IDCardVehicle"], '_blank','location=no,EnableViewPortScale=yes,presentationstyle=formsheet,transitionstyle=fliphorizontal,suppressesIncrementalRendering=yes,scalesPageToFit=yes');
+//                iabRef.addEventListener('loadstop', function(){
+//                    //var script = "var meta = document.createElement('meta');"+
+//                    //"meta.name = 'viewport';"+
+//                    //"meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no';"+
+//                    //"document.getElementsByTagName('head')[0].appendChild(meta);";
+//                    //var script = "var imageResize = document.querySelectorAll('img'); var screenWidth = window.innerWidth; for (var i = 0; i < imageResize.length; i++) {imageResize[i].style.width = screenWidth + 'px';}";
+//                    //var script = "var itm = document.querySelector('#Main div'); itm.setAttribute('style','width:100%');";
+////                    var script = "var imageResize = document.querySelectorAll('#Main div'); var screenWidth = window.innerWidth; for (var i = 0; i < imageResize.length; i++) {imageResize[i].style.width = screenWidth + 'px';}";
+////                    iabRef.executeScript({
+////                        //code: script
+////                    }, function() {
+////                        alert("Element Successfully Hijacked");
+////                    })
+////                    iabRef.insertCSS({
+////                        code: "body { background: #ffff00; width:100%; height:100%; }"
+////                    }, function() {
+////                        alert("Styles Altered");
+////                    })
+//                });
+
             });
             //******************************
             $("#btnSubmit").on("click", function () {
@@ -361,8 +355,7 @@
                                     success: function (userViewModel) {
                                        if (userViewModel.SubmitClaimREResult){
                                            navigator.notification.alert('Information was successfully submitted.', function () {
-                                                              //window.location.href = "auto.html";
-                                                                uploadPics(images);
+                                                                uploadPics(images,"auto.html");
                                                            }, "ClaimsRe");
                                        }else{
                                            navigator.notification.alert('There was an error during the save. Please contact your network administrator.', function () {}, "ClaimsRe");
@@ -383,11 +376,740 @@
             //******************************
         }
 
-        //******************************************************
-        //******************* COMPANY INFO *********************
-        //******************************************************
-        if ($.mobile.activePage.attr("id") == "companyinfo"){
+        //*********************************************
+        //*************** PRODUCT *********************
+        //*********************************************
+        if ($.mobile.activePage.attr("id") == "product") {
+            //******************************
+            var images = [];
+            GetAddressToCoordenadas();
+            //******************************
+            $("#txtReportedBy").val(window.localStorage["ContactName"]);
+            $("#txtPhoneReportedBy").val(window.localStorage["CellPhone"]);
+            $("#txtEmailReportedBy").val(window.localStorage["Email"]);
+            //******************************
+            $("#other").click(function () {
+                if (this.checked){
+                    $("#txtWhere").val('');
+                    $("#txtWhere").focus();
+                }else{
+                    GetAddressToCoordenadas();
+                }
+            });
+            //******************************
+            $("#btnFoto").on("click", function () {
+                navigator.camera.getPicture(function (imageData) {
+                    var elem = document.createElement("img");
+                    elem.setAttribute("src", imageData);
+                    images.push(imageData);
+                    elem.setAttribute("width", "33%");
+                    elem.setAttribute("alt", "Flower");
+                    document.getElementById("placehere").appendChild(elem);
+                    }, function (message) {
+                        alert('Failed because: ' + message);
+                    }, {
+                    quality: 50,
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    mediaType: Camera.MediaType.PICTURE
+                });
+            });
+            //******************************
+            $("#Injured").off("click");
+            $("#Injured").on("click", function (event) {
+                if ($("#Injured").is(':checked')){
+                    $("#txtAnyoneInjured").css('display','');
+                }else{
+                    $("#txtAnyoneInjured").css('display','none');
+                }
+            });
+            //******************************
+            $("#btnCancel").on("click", function () {
+                window.location.href = 'product.html';
+            });
+            //******************************
+            // Boton Submit Product
+            //******************************
+            $("#btnSubmit").on("click", function () {
+            navigator.notification.confirm('Do you want to submit this incident report?',
+                function(buttonIndex){
+                    if (buttonIndex === 1){
+                        //$('#loader').show();
+                        //******************************************************
+                        //**************** Datos del Usuario *******************
+                        //******************************************************
+                        var idcontact = window.localStorage["IdContact"];
+                        var idcompany = window.localStorage["IdCompany"];
+                        var iduser = window.localStorage["Username"];
+                        //******************************************************
+                        var date = $("#txtDate").val();
+                        var time = $("#txtTime").val();
+                        var other = $('#other').is(':checked');
+                        var where = $("#txtWhere").val();
+                        var latitude = $("#txtLatitude").val();
+                        var longitude = $("#txtLongitude").val();
+                        var description = $("#txtDescription").val();
+                        var injured = $('#Injured').is(':checked');
+                        var anyoneinjured = $("#txtAnyoneInjured").val();
+                        var EstDemandUS = $("#txtEstDemandUS").val();
+                        var imgs = document.getElementById('placehere').getElementsByTagName("img");
+                        if (EstDemandUS.length <= 0) EstDemandUS = 0;
+                        //******************************************************
+                        var countrows = images.length;
+                        var lstimg = new Array(countrows)
+                        var j = 0;
+                        images.forEach(function(i) {
+                              lstimg[j] = i.substr(i.lastIndexOf('/')+1);
+                              j++;
+                        })
+                        //***************************************
+                        var input =
+                        {
+                            pCode: window.localStorage["Code"],
+                            pIdCompany: window.localStorage["IdCompany"],
+                            pIdContact: window.localStorage["IdContact"],
+                            pIdUser: window.localStorage["Username"],
+                            pDateClaim: date,
+                            pTimeClaim: time,
+                            pCurrentLocation: other,
+                            pWhereClaim: where,
+                            pLatitude: latitude,
+                            pLongitude: longitude,
+                            pDescriptionClaim: description,
+                            pInjured: injured,
+                            pAnyOneInjured: anyoneinjured,
+                            pEstDemandUS: EstDemandUS,
+                            pListImages: lstimg
+                        }
+                        //***************************************
+                        $.ajax({
+                            cache: true,
+                            url: "https://services.chancesrmis.com/wcfphonegap/InsightClaimRE.svc/SubmitClaimREProduct",
+                            async: false,
+                            crossDomain: true,
+                            type: "POST",
+                            data: JSON.stringify(input),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            beforeSend: function () {
+                                $('#loader').show();
+                            },
+                            error: function (xhr, textStatus, err) {
+                                var mensaje = "readyState: " + xhr.readyState + "\n";
+                                mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                                mensaje = mensaje + "status: " + xhr.status + "\n";
+                                mensaje = mensaje + "text status: " + textStatus + "\n";
+                                mensaje = mensaje + "error: " + err + "\n";
+                                $('#loader').hide();
+                                navigator.notification.alert(mensaje, function () { }, "ClaimsRe Error");
+                            },
+                            success: function (userViewModel) {
+                                if (userViewModel.SubmitClaimREProductResult){
+                                    navigator.notification.alert('Information was successfully submitted.', function () {
+                                                           uploadPics(images,"product.html");
+                                                           }, "ClaimsRe");
+                                }else{
+                                    navigator.notification.alert('There was an error during the save. Please contact your network administrator.', function () {}, "ClaimsRe");
+                                }
+                            },
+                            complete: function () {
+                                //$('#loader').hide();
+                            }
+                        });
+                        //***************************************
+                    }
+                },
+                'Confirm',
+                'Submit, Cancel'
+                );
+            });
+            //******************************
 
+        }
+
+        //**********************************************
+        //*************** PROPERTY *********************
+        //**********************************************
+        if ($.mobile.activePage.attr("id") == "property") {
+            //******************************
+            var images = [];
+            GetAddressToCoordenadas();
+            //******************************
+            $("#txtReportedBy").val(window.localStorage["ContactName"]);
+            $("#txtPhoneReportedBy").val(window.localStorage["CellPhone"]);
+            $("#txtEmailReportedBy").val(window.localStorage["Email"]);
+            //******************************
+            $("#other").click(function () {
+                if (this.checked){
+                    $("#txtWhere").val('');
+                    $("#txtWhere").focus();
+                }else{
+                    GetAddressToCoordenadas();
+                }
+            });
+            //******************************
+            $("#btnFoto").on("click", function () {
+                navigator.camera.getPicture(function (imageData) {
+                    var elem = document.createElement("img");
+                    elem.setAttribute("src", imageData);
+                    images.push(imageData);
+                    elem.setAttribute("width", "33%");
+                    elem.setAttribute("alt", "Flower");
+                    document.getElementById("placehere").appendChild(elem);
+                    }, function (message) {
+                        alert('Failed because: ' + message);
+                    }, {
+                        quality: 50,
+                        destinationType: Camera.DestinationType.FILE_URI,
+                        mediaType: Camera.MediaType.PICTURE
+                });
+            });
+            //******************************
+            $("#Injured").off("click");
+            $("#Injured").on("click", function (event) {
+                if ($("#Injured").is(':checked')){
+                    $("#txtAnyoneInjured").css('display','');
+                }else{
+                    $("#txtAnyoneInjured").css('display','none');
+                }
+            });
+            //******************************
+            $("#btnCancel").on("click", function () {
+                window.location.href = 'property.html';
+            });
+            //******************************
+            // Boton Submit Property
+            //******************************
+            $("#btnSubmit").on("click", function () {
+                navigator.notification.confirm('Do you want to submit this incident report?',
+                function(buttonIndex){
+                    if (buttonIndex === 1){
+                        //$('#loader').show();
+                        //******************************************************
+                        //**************** Datos del Usuario *******************
+                        //******************************************************
+                        var idcontact = window.localStorage["IdContact"];
+                        var idcompany = window.localStorage["IdCompany"];
+                        var iduser = window.localStorage["Username"];
+                        //******************************************************
+                        var date = $("#txtDate").val();
+                        var time = $("#txtTime").val();
+                        var other = $('#other').is(':checked');
+                        var where = $("#txtWhere").val();
+                        var latitude = $("#txtLatitude").val();
+                        var longitude = $("#txtLongitude").val();
+                        var description = $("#txtDescription").val();
+                        var injured = $('#Injured').is(':checked');
+                        var anyoneinjured = $("#txtAnyoneInjured").val();
+                        var EstLossUS = $("#txtEstLossUS").val();
+                        var imgs = document.getElementById('placehere').getElementsByTagName("img");
+                        if (EstLossUS.length <= 0) EstLossUS = 0;
+                        //******************************************************
+                        var countrows = images.length;
+                        var lstimg = new Array(countrows)
+                        var j = 0;
+                        images.forEach(function(i) {
+                            lstimg[j] = i.substr(i.lastIndexOf('/')+1);
+                            j++;
+                        })
+                        //***************************************
+                        var input =
+                        {
+                            pCode: window.localStorage["Code"],
+                            pIdCompany: window.localStorage["IdCompany"],
+                            pIdContact: window.localStorage["IdContact"],
+                            pIdUser: window.localStorage["Username"],
+                            pDateClaim: date,
+                            pTimeClaim: time,
+                            pCurrentLocation: other,
+                            pWhereClaim: where,
+                            pLatitude: latitude,
+                            pLongitude: longitude,
+                            pDescriptionClaim: description,
+                            pInjured: injured,
+                            pAnyOneInjured: anyoneinjured,
+                            pEstLossUS: EstLossUS,
+                            pListImages: lstimg
+                        }
+                        //***************************************
+                        $.ajax({
+                            cache: true,
+                            url: "https://services.chancesrmis.com/wcfphonegap/InsightClaimRE.svc/SubmitClaimREProperty",
+                            async: false,
+                            crossDomain: true,
+                            type: "POST",
+                            data: JSON.stringify(input),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            beforeSend: function () {
+                                $('#loader').show();
+                            },
+                            error: function (xhr, textStatus, err) {
+                                var mensaje = "readyState: " + xhr.readyState + "\n";
+                                mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                                mensaje = mensaje + "status: " + xhr.status + "\n";
+                                mensaje = mensaje + "text status: " + textStatus + "\n";
+                                mensaje = mensaje + "error: " + err + "\n";
+                                $('#loader').hide();
+                                navigator.notification.alert(mensaje, function () { }, "ClaimsRe Error");
+                            },
+                            success: function (userViewModel) {
+                                if (userViewModel.SubmitClaimREPropertyResult){
+                                    navigator.notification.alert('Information was successfully submitted.', function () {
+                                    uploadPics(images,"property.html");
+                                }, "ClaimsRe");
+                                }else{
+                                    navigator.notification.alert('There was an error during the save. Please contact your network administrator.', function () {}, "ClaimsRe");
+                                }
+                            },
+                            complete: function () {
+                                //$('#loader').hide();
+                            }
+                        });
+                    //***************************************
+                    }
+                },
+                'Confirm',
+                'Submit, Cancel'
+                );
+            });
+            //******************************
+        }
+
+        //****************************************
+        //*************** WC *********************
+        //****************************************
+        if ($.mobile.activePage.attr("id") == "wc") {
+            //******************************
+            var images = [];
+            GetAddressToCoordenadas();
+            //******************************
+            $("#txtReportedBy").val(window.localStorage["ContactName"]);
+            $("#txtPhoneReportedBy").val(window.localStorage["CellPhone"]);
+            $("#txtEmailReportedBy").val(window.localStorage["Email"]);
+            //******************************
+            $("#other").click(function () {
+                if (this.checked){
+                    $("#txtWhere").val('');
+                    $("#txtWhere").focus();
+                }else{
+                    GetAddressToCoordenadas();
+                }
+            });
+            //******************************
+            $("#btnFoto").on("click", function () {
+                navigator.camera.getPicture(function (imageData) {
+                    var elem = document.createElement("img");
+                    elem.setAttribute("src", imageData);
+                    images.push(imageData);
+                    elem.setAttribute("width", "33%");
+                    elem.setAttribute("alt", "Flower");
+                    document.getElementById("placehere").appendChild(elem);
+                    }, function (message) {
+                    alert('Failed because: ' + message);
+                    }, {
+                    quality: 50,
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    mediaType: Camera.MediaType.PICTURE
+                });
+            });
+            //******************************
+            $("#btnCancel").on("click", function () {
+                window.location.href = 'wc.html';
+            });
+            //******************************
+            // Boton Submit WC
+            //******************************
+            $("#btnSubmit").on("click", function () {
+                navigator.notification.confirm('Do you want to submit this incident report?',
+                    function(buttonIndex){
+                        if (buttonIndex === 1){
+                        //$('#loader').show();
+                        //******************************************************
+                        //**************** Datos del Usuario *******************
+                        //******************************************************
+                        var idcontact = window.localStorage["IdContact"];
+                        var idcompany = window.localStorage["IdCompany"];
+                        var iduser = window.localStorage["Username"];
+                        //******************************************************
+                        var date = $("#txtDate").val();
+                        var time = $("#txtTime").val();
+                        var other = $('#other').is(':checked');
+                        var where = $("#txtWhere").val();
+                        var latitude = $("#txtLatitude").val();
+                        var longitude = $("#txtLongitude").val();
+                        var description = $("#txtDescription").val();
+                        var InjuredName = $("#txtInjuredName").val();
+                        var Last4DigitSSNumber = $("#txtLast4DigitSSNumber").val();
+                        var imgs = document.getElementById('placehere').getElementsByTagName("img");
+                        //******************************************************
+                        var countrows = images.length;
+                        var lstimg = new Array(countrows)
+                        var j = 0;
+                        images.forEach(function(i) {
+                            lstimg[j] = i.substr(i.lastIndexOf('/')+1);
+                            j++;
+                        })
+                        //***************************************
+                        var input =
+                        {
+                            pCode: window.localStorage["Code"],
+                            pIdCompany: window.localStorage["IdCompany"],
+                            pIdContact: window.localStorage["IdContact"],
+                            pIdUser: window.localStorage["Username"],
+                            pDateClaim: date,
+                            pTimeClaim: time,
+                            pCurrentLocation: other,
+                            pWhereClaim: where,
+                            pLatitude: latitude,
+                            pLongitude: longitude,
+                            pDescriptionClaim: description,
+                            pInjuredName: InjuredName,
+                            pLast4DigitSSNumber: Last4DigitSSNumber,
+                            pListImages: lstimg
+                        }
+                        //***************************************
+                        $.ajax({
+                            cache: true,
+                            url: "https://services.chancesrmis.com/wcfphonegap/InsightClaimRE.svc/SubmitClaimREWC",
+                            async: false,
+                            crossDomain: true,
+                            type: "POST",
+                            data: JSON.stringify(input),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            beforeSend: function () {
+                                $('#loader').show();
+                            },
+                            error: function (xhr, textStatus, err) {
+                                var mensaje = "readyState: " + xhr.readyState + "\n";
+                                mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                                mensaje = mensaje + "status: " + xhr.status + "\n";
+                                mensaje = mensaje + "text status: " + textStatus + "\n";
+                                mensaje = mensaje + "error: " + err + "\n";
+                                $('#loader').hide();
+                                navigator.notification.alert(mensaje, function () { }, "ClaimsRe Error");
+                            },
+                            success: function (userViewModel) {
+                                if (userViewModel.SubmitClaimREWCResult){
+                                    navigator.notification.alert('Information was successfully submitted.', function () {
+                                    uploadPics(images,"wc.html");
+                                }, "ClaimsRe");
+                                }else{
+                                    navigator.notification.alert('There was an error during the save. Please contact your network administrator.', function () {}, "ClaimsRe");
+                                }
+                            },
+                            complete: function () {
+                            //$('#loader').hide();
+                            }
+                        });
+                    //***************************************
+                    }
+                },
+                'Confirm',
+                'Submit, Cancel'
+                );
+            });
+            //******************************
+
+        }
+
+        //********************************************
+        //*************** MARINE *********************
+        //********************************************
+        if ($.mobile.activePage.attr("id") == "marine") {
+            //******************************
+            var images = [];
+            GetAddressToCoordenadas();
+            //******************************
+            $("#txtReportedBy").val(window.localStorage["ContactName"]);
+            $("#txtPhoneReportedBy").val(window.localStorage["CellPhone"]);
+            $("#txtEmailReportedBy").val(window.localStorage["Email"]);
+            //******************************
+            $("#other").click(function () {
+                if (this.checked){
+                    $("#txtWhere").val('');
+                    $("#txtWhere").focus();
+                }else{
+                    GetAddressToCoordenadas();
+                }
+            });
+            //******************************
+            $("#btnFoto").on("click", function () {
+                navigator.camera.getPicture(function (imageData) {
+                    var elem = document.createElement("img");
+                    elem.setAttribute("src", imageData);
+                    images.push(imageData);
+                    elem.setAttribute("width", "33%");
+                    elem.setAttribute("alt", "Flower");
+                    document.getElementById("placehere").appendChild(elem);
+                    }, function (message) {
+                        alert('Failed because: ' + message);
+                    }, {
+                    quality: 50,
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    mediaType: Camera.MediaType.PICTURE
+                });
+            });
+            //******************************
+            $("#Injured").off("click");
+            $("#Injured").on("click", function (event) {
+                if ($("#Injured").is(':checked')){
+                    $("#txtAnyoneInjured").css('display','');
+                }else{
+                    $("#txtAnyoneInjured").css('display','none');
+                }
+            });
+            //******************************
+            $("#btnCancel").on("click", function () {
+                window.location.href = 'marine.html';
+            });
+            //******************************
+            // Boton Submit Marine
+            //******************************
+            $("#btnSubmit").on("click", function () {
+                navigator.notification.confirm('Do you want to submit this incident report?',
+                function(buttonIndex){
+                    if (buttonIndex === 1){
+                        //$('#loader').show();
+                        //******************************************************
+                        //**************** Datos del Usuario *******************
+                        //******************************************************
+                        var idcontact = window.localStorage["IdContact"];
+                        var idcompany = window.localStorage["IdCompany"];
+                        var iduser = window.localStorage["Username"];
+                        //******************************************************
+                        var date = $("#txtDate").val();
+                        var time = $("#txtTime").val();
+                        var other = $('#other').is(':checked');
+                        var where = $("#txtWhere").val();
+                        var latitude = $("#txtLatitude").val();
+                        var longitude = $("#txtLongitude").val();
+                        var description = $("#txtDescription").val();
+                        var injured = $('#Injured').is(':checked');
+                        var anyoneinjured = $("#txtAnyoneInjured").val();
+                        var EstLossUS = $("#txtEstLossUS").val();
+                        var imgs = document.getElementById('placehere').getElementsByTagName("img");
+                        if (EstLossUS.length <= 0) EstLossUS = 0;
+                        //******************************************************
+                        var countrows = images.length;
+                        var lstimg = new Array(countrows)
+                        var j = 0;
+                        images.forEach(function(i) {
+                            lstimg[j] = i.substr(i.lastIndexOf('/')+1);
+                            j++;
+                        })
+                        //***************************************
+                        var input =
+                        {
+                            pCode: window.localStorage["Code"],
+                            pIdCompany: window.localStorage["IdCompany"],
+                            pIdContact: window.localStorage["IdContact"],
+                            pIdUser: window.localStorage["Username"],
+                            pDateClaim: date,
+                            pTimeClaim: time,
+                            pCurrentLocation: other,
+                            pWhereClaim: where,
+                            pLatitude: latitude,
+                            pLongitude: longitude,
+                            pDescriptionClaim: description,
+                            pInjured: injured,
+                            pAnyOneInjured: anyoneinjured,
+                            pEstLossUS: EstLossUS,
+                            pListImages: lstimg
+                        }
+                        //***************************************
+                        $.ajax({
+                            cache: true,
+                            url: "https://services.chancesrmis.com/wcfphonegap/InsightClaimRE.svc/SubmitClaimREMarine",
+                            async: false,
+                            crossDomain: true,
+                            type: "POST",
+                            data: JSON.stringify(input),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            beforeSend: function () {
+                                $('#loader').show();
+                            },
+                            error: function (xhr, textStatus, err) {
+                                var mensaje = "readyState: " + xhr.readyState + "\n";
+                                mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                                mensaje = mensaje + "status: " + xhr.status + "\n";
+                                mensaje = mensaje + "text status: " + textStatus + "\n";
+                                mensaje = mensaje + "error: " + err + "\n";
+                                $('#loader').hide();
+                                navigator.notification.alert(mensaje, function () { }, "ClaimsRe Error");
+                            },
+                            success: function (userViewModel) {
+                                if (userViewModel.SubmitClaimREMarineResult){
+                                    navigator.notification.alert('Information was successfully submitted.', function () {
+                                    uploadPics(images,"marine.html");
+                                }, "ClaimsRe");
+                                }else{
+                                    navigator.notification.alert('There was an error during the save. Please contact your network administrator.', function () {}, "ClaimsRe");
+                                }
+                            },
+                            complete: function () {
+                            //$('#loader').hide();
+                            }
+                        });
+                    //***************************************
+                    }
+                },
+                'Confirm',
+                'Submit, Cancel'
+                );
+            });
+            //******************************
+        }
+
+        //********************************************
+        //*************** OTHERS *********************
+        //********************************************
+        if ($.mobile.activePage.attr("id") == "others") {
+            //******************************
+            var images = [];
+            GetAddressToCoordenadas();
+            //******************************
+            $("#txtReportedBy").val(window.localStorage["ContactName"]);
+            $("#txtPhoneReportedBy").val(window.localStorage["CellPhone"]);
+            $("#txtEmailReportedBy").val(window.localStorage["Email"]);
+            //******************************
+            $("#other").click(function () {
+                if (this.checked){
+                    $("#txtWhere").val('');
+                    $("#txtWhere").focus();
+                }else{
+                    GetAddressToCoordenadas();
+                }
+            });
+            //******************************
+            $("#btnFoto").on("click", function () {
+                navigator.camera.getPicture(function (imageData) {
+                    var elem = document.createElement("img");
+                    elem.setAttribute("src", imageData);
+                    images.push(imageData);
+                    elem.setAttribute("width", "33%");
+                    elem.setAttribute("alt", "Flower");
+                    document.getElementById("placehere").appendChild(elem);
+                    }, function (message) {
+                        alert('Failed because: ' + message);
+                    }, {
+                    quality: 50,
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    mediaType: Camera.MediaType.PICTURE
+                });
+            });
+            //******************************
+            $("#Injured").off("click");
+            $("#Injured").on("click", function (event) {
+                if ($("#Injured").is(':checked')){
+                    $("#txtAnyoneInjured").css('display','');
+                }else{
+                    $("#txtAnyoneInjured").css('display','none');
+                }
+            });
+            //******************************
+            $("#btnCancel").on("click", function () {
+                window.location.href = 'others.html';
+            });
+            //******************************
+            // Boton Submit Others
+            //******************************
+            $("#btnSubmit").on("click", function () {
+                navigator.notification.confirm('Do you want to submit this incident report?',
+                function(buttonIndex){
+                    if (buttonIndex === 1){
+                        //$('#loader').show();
+                        //******************************************************
+                        //**************** Datos del Usuario *******************
+                        //******************************************************
+                        var idcontact = window.localStorage["IdContact"];
+                        var idcompany = window.localStorage["IdCompany"];
+                        var iduser = window.localStorage["Username"];
+                        //******************************************************
+                        var date = $("#txtDate").val();
+                        var time = $("#txtTime").val();
+                        var other = $('#other').is(':checked');
+                        var where = $("#txtWhere").val();
+                        var latitude = $("#txtLatitude").val();
+                        var longitude = $("#txtLongitude").val();
+                        var description = $("#txtDescription").val();
+                        var injured = $('#Injured').is(':checked');
+                        var anyoneinjured = $("#txtAnyoneInjured").val();
+                        var EstLossUS = $("#txtEstLossUS").val();
+                        var imgs = document.getElementById('placehere').getElementsByTagName("img");
+                        if (EstLossUS.length <= 0) EstLossUS = 0;
+                        //******************************************************
+                        var countrows = images.length;
+                        var lstimg = new Array(countrows)
+                        var j = 0;
+                        images.forEach(function(i) {
+                            lstimg[j] = i.substr(i.lastIndexOf('/')+1);
+                            j++;
+                        })
+                        //***************************************
+                        var input =
+                        {
+                            pCode: window.localStorage["Code"],
+                            pIdCompany: window.localStorage["IdCompany"],
+                            pIdContact: window.localStorage["IdContact"],
+                            pIdUser: window.localStorage["Username"],
+                            pDateClaim: date,
+                            pTimeClaim: time,
+                            pCurrentLocation: other,
+                            pWhereClaim: where,
+                            pLatitude: latitude,
+                            pLongitude: longitude,
+                            pDescriptionClaim: description,
+                            pInjured: injured,
+                            pAnyOneInjured: anyoneinjured,
+                            pEstLossUS: EstLossUS,
+                            pListImages: lstimg
+                        }
+                        //alert(JSON.stringify(input));
+                        //***************************************
+                        $.ajax({
+                            cache: true,
+                            url: "https://services.chancesrmis.com/wcfphonegap/InsightClaimRE.svc/SubmitClaimREOthers",
+                            async: false,
+                            crossDomain: true,
+                            type: "POST",
+                            data: JSON.stringify(input),
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            beforeSend: function () {
+                                $('#loader').show();
+                            },
+                            error: function (xhr, textStatus, err) {
+                                var mensaje = "readyState: " + xhr.readyState + "\n";
+                                mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                                mensaje = mensaje + "status: " + xhr.status + "\n";
+                                mensaje = mensaje + "text status: " + textStatus + "\n";
+                                mensaje = mensaje + "error: " + err + "\n";
+                                $('#loader').hide();
+                                navigator.notification.alert(mensaje, function () { }, "ClaimsRe Error");
+                            },
+                            success: function (userViewModel) {
+                                if (userViewModel.SubmitClaimREOthersResult){
+                                    navigator.notification.alert('Information was successfully submitted.', function () {
+                                    uploadPics(images,"others.html");
+                                }, "ClaimsRe");
+                                }else{
+                                    navigator.notification.alert('There was an error during the save. Please contact your network administrator.', function () {}, "ClaimsRe");
+                                }
+                            },
+                            complete: function () {
+                            //$('#loader').hide();
+                            }
+                        });
+                    //***************************************
+                    }
+                },
+                'Confirm',
+                'Submit, Cancel'
+                );
+            });
+            //******************************
         }
 
 
@@ -401,38 +1123,34 @@
         // TODO: This application has been reactivated. Restore application state here.
     };
 
-    function uploadPics(images) {
+    function uploadPics(images, url) {
         //console.log("Ok, going to upload "+images.length+" images.");
         var defs = [];
 
         images.forEach(function(i) {
-            //console.log('processing '+i);
+            console.log('processing '+i);
             //alert('processing '+i);
             var def = $.Deferred();
 
             function win(r) {
-                //console.log("thing done");
+                console.log("thing done");
                 //alert("thing done");
-                //navigator.notification.alert("thing done", function () { }, "ClaimsRe Error");
                 if($.trim(r.response) === "0") {
-                    //console.log("this one failed");
+                    console.log("this one failed");
                     //alert("this one failed");
-                    //navigator.notification.alert("this one failed", function () { }, "ClaimsRe Error");
                     def.resolve(0);
                 } else {
-                    //console.log("this one passed");
+                    console.log("this one passed");
                     //alert("this one passed");
                     def.resolve(1);
                 }
             }
 
             function fail(error) {
-                //console.log("upload error source " + error.source);
-                //console.log("upload error target " + error.target);
+                console.log("upload error source " + error.source);
+                console.log("upload error target " + error.target);
                 //alert("upload error source " + error.source);
                 //alert("upload error target " + error.target);
-                navigator.notification.alert("upload error source " + error.source, function () { }, "ClaimsRe Error");
-                navigator.notification.alert("upload error target " + error.target, function () { }, "ClaimsRe Error");
                 def.resolve(0);
             }
 
@@ -443,33 +1161,19 @@
             //options.fileName=i.substr(i.lastIndexOf('/')+1) + "@" + window.localStorage["IdCompany"];
             options.fileName=i.substr(i.lastIndexOf('/')+1);
             options.mimeType="image/jpeg";
-            options.chunkedMode=false;
-            //options.headers = {
-            //    Connection: "close"
-            //}
-            options.headers = { 'Accept': 'application/json' };
-            options.httpMethod = 'POST';
-
-            //navigator.notification.alert("option", function () { }, "ClaimsRe");
 
             var ft = new FileTransfer();
-
-            //navigator.notification.alert("new FileTransfer", function () { }, "ClaimsRe");
-
             ft.upload(i, uri, win, fail, options);
-
-            //navigator.notification.alert("upload FileTransfer", function () { }, "ClaimsRe");
-
             defs.push(def.promise());
 
         });
 
         $.when.apply($, defs).then(function() {
-            //console.log("all things done");
+            console.log("all things done");
             //alert("all things done");
-            //console.dir(arguments);
+            console.dir(arguments);
             $('#loader').hide();
-            window.location.href = "auto.html";
+            window.location.href = url;
         });
 
     };
@@ -587,11 +1291,11 @@
                 };
             });
         }, function (err) {
-            alert(err);
+            //alert(err);
             $('#loader').hide();
         },{ maximumAge: 5000,
             enableHighAccuracy: true,
-            timeout: 6000 });
+            timeout: 15000 });
         }
     };
 
