@@ -21,9 +21,9 @@ description: Record and play audio on the device.
 #         under the License.
 -->
 
-|Android|iOS| Windows 8.1 Store | Windows 8.1 Phone | Windows 10 Store | Travis CI |
-|:-:|:-:|:-:|:-:|:-:|:-:|
-|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=android,PLUGIN=cordova-plugin-media)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=android,PLUGIN=cordova-plugin-media/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=ios,PLUGIN=cordova-plugin-media)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=ios,PLUGIN=cordova-plugin-media/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=windows-8.1-store,PLUGIN=cordova-plugin-media)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=windows-8.1-store,PLUGIN=cordova-plugin-media/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=windows-8.1-phone,PLUGIN=cordova-plugin-media)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=windows-8.1-phone,PLUGIN=cordova-plugin-media/)|[![Build Status](http://cordova-ci.cloudapp.net:8080/buildStatus/icon?job=cordova-periodic-build/PLATFORM=windows-10-store,PLUGIN=cordova-plugin-media)](http://cordova-ci.cloudapp.net:8080/job/cordova-periodic-build/PLATFORM=windows-10-store,PLUGIN=cordova-plugin-media/)|[![Build Status](https://travis-ci.org/apache/cordova-plugin-media.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-media)|
+|AppVeyor|Travis CI|
+|:-:|:-:|
+|[![Build status](https://ci.appveyor.com/api/projects/status/github/apache/cordova-plugin-media?branch=master)](https://ci.appveyor.com/project/ApacheSoftwareFoundation/cordova-plugin-media)|[![Build Status](https://travis-ci.org/apache/cordova-plugin-media.svg?branch=master)](https://travis-ci.org/apache/cordova-plugin-media)|
 
 # cordova-plugin-media
 
@@ -46,7 +46,7 @@ function onDeviceReady() {
 }
 ```
 
-Report issues with this plugin on the [Apache Cordova issue tracker](https://issues.apache.org/jira/issues/?jql=project%20%3D%20CB%20AND%20status%20in%20%28Open%2C%20%22In%20Progress%22%2C%20Reopened%29%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20%3D%20%22Plugin%20Media%22%20ORDER%20BY%20priority%20DESC%2C%20summary%20ASC%2C%20updatedDate%20DESC)
+Report issues with this plugin on the [Apache Cordova issue tracker](https://issues.apache.org/jira/issues/?jql=project%20%3D%20CB%20AND%20status%20in%20(Open%2C%20%22In%20Progress%22%2C%20Reopened)%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20%3D%20%22cordova-plugin-media%22%20ORDER%20BY%20priority%20DESC%2C%20summary%20ASC%2C%20updatedDate%20DESC)
 
 
 ## Installation
@@ -58,17 +58,9 @@ cordova plugin add cordova-plugin-media
 ## Supported Platforms
 
 - Android
-- BlackBerry 10
 - iOS
-- Windows Phone 7 and 8
-- Tizen
-- Windows 8
 - Windows
 - Browser
-
-## Windows Phone Quirks
-
-- Only one media file can be played back at a time.
 
 ## Media
 
@@ -104,7 +96,7 @@ The following constants are reported as the only parameter to the
 
 ### Methods
 
-- `media.getCurrentAmplitude`: Returns the current position within an audio file.
+- `media.getCurrentAmplitude`: Returns the current amplitude within an audio file.
 
 - `media.getCurrentPosition`: Returns the current position within an audio file.
 
@@ -140,7 +132,7 @@ The following constants are reported as the only parameter to the
 
 ## media.getCurrentAmplitude
 
-Returns the current amplitude of the current recording.
+Returns the current amplitude within an audio file.
 
     media.getCurrentAmplitude(mediaSuccess, [mediaError]);
 
@@ -360,8 +352,11 @@ function playAudio(url) {
   is locked.  If set to `true` (the default value), the state of the
   hardware mute button is ignored, e.g.:
 
-        var myMedia = new Media("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3")
-        myMedia.play({ playAudioWhenScreenIsLocked : false })
+        var myMedia = new Media("http://audio.ibeat.org/content/p1rj1s/p1rj1s_-_rockGuitar.mp3");
+        myMedia.play({ playAudioWhenScreenIsLocked : true });
+        myMedia.setVolume('1.0');
+
+> Note: To allow playback with the screen locked or background audio you have to add `audio` to `UIBackgroundModes` in the `info.plist` file. See [Apple documentation](https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html#//apple_ref/doc/uid/TP40007072-CH4-SW23). Also note that the audio has to be started before going to background.
 
 - __order of file search__: When only a file name or simple path is
   provided, iOS searches in the `www` directory for the file, then in
@@ -461,10 +456,6 @@ setTimeout(function() {
 }, 5000);
 ```
 
-### BlackBerry 10 Quirks
-
-- Not supported on BlackBerry OS 5 devices.
-
 ## media.setVolume
 
 Set the volume for an audio file.
@@ -522,7 +513,6 @@ Starts recording an audio file.
 
 - Android
 - iOS
-- Windows Phone 7 and 8
 - Windows
 
 ### Quick Example
@@ -550,12 +540,12 @@ function recordAudio() {
 
 ### Android Quirks
 
-- Android devices record audio in Adaptive Multi-Rate format. The specified file should end with a _.amr_ extension.
+- Android devices record audio in AAC ADTS file format. The specified file should end with a _.aac_ extension.
 - The hardware volume controls are wired up to the media volume while any Media objects are alive. Once the last created Media object has `release()` called on it, the volume controls revert to their default behaviour. The controls are also reset on page navigation, as this releases all Media objects.
 
 ### iOS Quirks
 
-- iOS only records to files of type _.wav_ and returns an error if the file name extension is not correct.
+- iOS only records to files of type _.wav_ and _.m4a_ and returns an error if the file name extension is not correct.
 
 - If a full path is not provided, the recording is placed in the application's `documents/tmp` directory. This can be accessed via the `File` API using `LocalFileSystem.TEMPORARY`. Any subdirectory specified at record time must already exist.
 
@@ -563,13 +553,19 @@ function recordAudio() {
 
         var myMedia = new Media("documents://beer.mp3")
 
-- Since iOS 10 it's mandatory to add a `NSMicrophoneUsageDescription` entry in the info.plist.
+- Since iOS 10 it's mandatory to provide an usage description in the `info.plist` if trying to access privacy-sensitive data. When the system prompts the user to allow access, this usage description string will displayed as part of the permission dialog box, but if you didn't provide the usage description, the app will crash before showing the dialog. Also, Apple will reject apps that access private data but don't provide an usage description.
 
-`NSMicrophoneUsageDescription` describes the reason that the app accesses the user’s microphone. When the system prompts the user to allow access, this string is displayed as part of the dialog box. To add this entry you can pass the variable `MICROPHONE_USAGE_DESCRIPTION` on plugin install.
+This plugins requires the following usage description:
 
-Example: `cordova plugin add cordova-plugin-media --variable MICROPHONE_USAGE_DESCRIPTION="your usage message"`
+* `NSMicrophoneUsageDescription` describes the reason that the app accesses the user's microphone. 
 
-If you don't pass the variable, the plugin will add an empty string as value.
+To add this entry into the `info.plist`, you can use the `edit-config` tag in the `config.xml` like this:
+
+```
+<edit-config target="NSMicrophoneUsageDescription" file="*-Info.plist" mode="merge">
+    <string>need microphone access to record sounds</string>
+</edit-config>
+```
 
 ### Windows Quirks
 
@@ -578,10 +574,6 @@ If you don't pass the variable, the plugin will add an empty string as value.
 - If a full path is not provided, the recording is placed in the `AppData/temp` directory. This can be accessed via the `File` API using `LocalFileSystem.TEMPORARY` or `ms-appdata:///temp/<filename>` URI.
 
 - Any subdirectory specified at record time must already exist.
-
-### Tizen Quirks
-
-- Not supported on Tizen devices.
 
 ## media.stop
 
@@ -627,7 +619,6 @@ Stops recording an audio file.
 
 - Android
 - iOS
-- Windows Phone 7 and 8
 - Windows
 
 ### Quick Example
@@ -658,10 +649,6 @@ function recordAudio() {
     }, 10000);
 }
 ```
-
-### Tizen Quirks
-
-- Not supported on Tizen devices.
 
 ## MediaError
 

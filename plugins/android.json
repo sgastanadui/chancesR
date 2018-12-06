@@ -1,0 +1,46 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        }
+    }
+}

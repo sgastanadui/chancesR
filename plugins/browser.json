@@ -1,0 +1,25 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.chancesR.mobile"
+        }
+    }
+}

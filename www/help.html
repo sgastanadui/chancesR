@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" type="text/css" href="css/set1.css" />
+    <title>Help</title>
+    <style type="text/css">
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+            .active, .accordion:hover {
+                background-color: #ccc;
+            }
+
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        a:link{
+            text-decoration:none;
+        }
+        td tr{
+            border:none;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            color: #ff0000;
+        }
+
+        .ui-page {
+            background: white;
+            
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-size: 100% 100%;
+        }
+
+        .panel-body {
+            position: absolute;
+            background: #F7F7F7;
+            opacity: 0.8;
+            z-index: 1;
+            top: 60%;
+            left: 10%;
+            right: 10%
+        }
+
+        .panel-body {
+            padding: 10px
+        }
+
+        .ui-content {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+            color: #ff0000;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: normal;
+            text-align: center;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            padding: 6px 16px;
+            font-size: 13px;
+            line-height: 1.846;
+            border-radius: 3px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        .app_button, button {
+            -webkit-border-radius: 20px;
+            border-radius: 20px;
+            display: inline-block;
+            padding: 0 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            width: 200px;
+            background: #0065B3;
+            background: -webkit-gradient(linear, 0 0, 0 70%, from(#0065B3), to(#0065B3));
+            background: linear-gradient(#0065B3, #0065B3 70%);
+            border: 1px solid #C97917;
+            font-size: 18px;
+            font-weight: 200;
+            text-shadow: 0 -1px 0 #0065B3;
+            height: 40px;
+            line-height: 40px;
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div data-role="page" id="help" data-title="Help" data-url="help">
+        <!-- /header-->
+        <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;">
+            <h1 id="span1">Help</h1>
+        </div>
+
+        <!-- /body-->
+        <div data-role="content" style="background-color:white; align-content:center;">
+            <table style="border:1px solid black;" width="100%">
+                <tr>
+                    <td colspan="2">
+                        <h2 id="span1" style="color:#0065B3;font-weight:bold;">Contact US</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding-left:10px">
+                        <a href="#">Phone</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding-left:10px">
+                        <a href="#">Email</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding-left:10px">
+                        <a href="#">Message</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <br />
+                    </td>
+                </tr>
+            </table>
+            <table style="border: 1px solid black; padding-top:5px" width="100%">
+                <tr>
+                    <td colspan="2">
+                        <h3 id="span1" style="color:#0065B3;font-weight:bold;"><a href="#">Report an Incident</a></h3>
+                    </td>
+                </tr>
+            </table>
+            <table style="border: 1px solid black; padding-top:5px" width="100%">
+                <tr>
+                    <td colspan="2">
+                        <h3 id="span1" style="color:#0065B3;font-weight:bold;"><a href="#">More Coverage</a></h3>
+                    </td>
+                </tr>
+            </table>
+            <table style="border:1px solid black; padding-top:5px" width="100%">
+                <tr>
+                    <td>
+                        <h3 id="span1" style="color:#0065B3;font-weight:bold;">FAQs</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding-top:1px">
+                        <button class="accordion" style="color:white">1. How to get more insurance?</button>
+                        <div class="panel">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+
+                        <button class="accordion" style="color:white">2. How to get more insurance?</button>
+                        <div class="panel">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+
+                        <button class="accordion" style="color:white">3. How to get more insurance?</button>
+                        <div class="panel">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                    </td>
+                    <script>
+                        var acc = document.getElementsByClassName("accordion");
+                        var i;
+
+                        for (i = 0; i < acc.length; i++) {
+                            acc[i].addEventListener("click", function () {
+                                this.classList.toggle("active");
+                                var panel = this.nextElementSibling;
+                                if (panel.style.display === "block") {
+                                    panel.style.display = "none";
+                                } else {
+                                    panel.style.display = "block";
+                                }
+                            });
+                        }
+                    </script>
+                </tr>
+            </table>
+        </div>
+
+        <!-- /footer-->
+        <div data-role="footer" data-position="fixed" style="background-color:white;">
+            <table cellpadding=0 cellspacing=0 style="border: 1px solid gray" width="100%">
+                <tr>
+                    <td style="border: none; padding-top:5px">
+                        <center>
+                            <a href="/www/home.html"><img src="images/home1.png" /></a>
+                        </center>
+                    </td>
+                    <td style="border: none; padding-top:5px">
+                        <center>
+                            <img src="images/Jobs1.png" />
+                        </center>
+                    </td>
+                    <td style="border: none; padding-top:5px">
+                        <center>
+                            <img src="images/trip1.png" /><br>
+                        </center>
+                    </td>
+                    <td style="border: none; padding-top:5px">
+                        <center>
+                            <img src="images/profile1.png" />
+                        </center>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <script type="text/javascript" src="scripts/PushNotification.js"></script>
+    <script type="text/javascript" src="jquery/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="scripts/encodedecode.js"></script>
+</body>
+</html>

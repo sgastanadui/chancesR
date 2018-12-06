@@ -1,156 +1,1133 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.css"/>
-    <title>:: Home ::</title>
-    <style>
-        body{
-            width:100%;
-            height:100%;
+    <!--<meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://services.chancesrmis.com/wcfchancesR/CertificateOfInsurance.svc/GetInformation 'unsafe-eval' 'unsafe-inline'; default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
 
-        }
-        .ui-page
-        {
-            background: #FFFFFF;
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.css" />
+    <!--<link rel="stylesheet" type="text/css" href="css/set1.css" />-->
+    <title></title>
+    <style type="text/css">
+
+        .ui-page {
+            background: #ffffff;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
-            background-size:100% 100%;
+            background-size: 100% 100%;
         }
 
-        .ui-content{
+        .ui-content {
             height: 100%;
             width: 100%;
             margin: 0px;
             padding: 0px;
-        }
-        .btn{
-            display:inline-block;
-            margin-bottom:0;
-            font-weight:normal;
-            text-align:center;
-            vertical-align:middle;
-            -ms-touch-action:manipulation;
-            touch-action:manipulation;
-            cursor:pointer;
-            background-image:none;
-            border:1px solid transparent;
-            white-space:nowrap;
-            padding:6px 16px;
-            font-size:13px;
-            line-height:1.846;
-            border-radius:3px;
-            -webkit-user-select:none;
-            -moz-user-select:none;
-            -ms-user-select:none;
-            user-select:none
+            background-size: 100% 100%;
+            min-height: 100%;
+            color: #ff0000;
+            background-color: white;
         }
 
-        .app_button, button {
-            -webkit-border-radius: 20px;
-            border-radius: 20px;
+        .button {
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
             display: inline-block;
-            padding: 0 20px;
+            padding: 0 20px 0 20px;
             margin-bottom: 20px;
             cursor: pointer;
-            width: 200px;
-            background:#0065B3;
+            width: 90%;
+            background: #0065B3;
             background: -webkit-gradient(linear, 0 0, 0 70%, from(#0065B3), to(#0065B3));
             background: linear-gradient(#0065B3, #0065B3 70%);
             border: 1px solid #C97917;
-            font-size: 18px;
+            font-size: 0.8em;
             font-weight: 200;
+            font-family: Tahoma, Arial, Helvetica;
+            font-weight: bold;
+            color: #FFFFFF;
             text-shadow: 0 -1px 0 #0065B3;
             height: 40px;
             line-height: 40px;
-            color:#fff;
             text-align: center;
         }
 
-        /* These overrides to the JQuery Mobile css file are used to
-         * allow a more reasonable styling on small screen devices.
-         */
+            .button span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
 
-        .ui-header .ui-title {
-            margin-right:25px;
-            margin-left:65px;
-            white-space:normal;
-        }
+                .button span:after {
+                    content: '\00bb';
+                    position: absolute;
+                    opacity: 0;
+                    top: 0;
+                    right: -20px;
+                    transition: 0.5s;
+                }
 
-        .ui-footer .ui-title {
-            margin-right:30px;
-            margin-left:30px;
-            white-space:normal;
+            .button:hover span {
+                padding-right: 25px;
+            }
+
+                .button:hover span:after {
+                    opacity: 1;
+                    right: 0;
+                }
+
+        .cl {
+            width: 93% !important;
         }
     </style>
 </head>
 <body>
-    <div data-role="page" id="home" data-title="Home" data-url="home">
+    <div data-role="page" id="home" data-title="home">
         <!-- /header -->
-        <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;">
-            <h1 id="span1">ClaimsRe - Home</h1>
-            <a href="#nav-panel" data-icon="bars" data-iconpos="notext" style="background-color:#0065B3;color:white;position:-ms-page;top: 12px !important;">Menu</a>
+        <div data-role="header" data-position="fixed">
+
         </div>
-        <!-- /content -->
+
+        <!-- /body -->
         <div data-role="content">
-            <table width="100%">
-                <tr>
-                    <td colspan="2" align="center">
-                        <h1 id="span1" style="color:#0065B3;font-weight:bold;font-size: 1.8em;">Select Type of Incident</h1>
+            <table width="93%">
+                <tr style="width:93%">
+                    <td colspan="2" align="right">
+                        <button class="button" type="button" style="width:30%" id="btnHelp">
+                            <span>Help</span>
+                        </button>
                     </td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td>
-                        <br />
+                    <td width="50%" style="padding-left:20px;">
+                        <label style="color:black"><b>CRM Compliance:</b></label>
                     </td>
-                    <td></td>
-                </tr>
-                <tr align="center">
-                    <td>
-                        <button type="button" id="btnAutoIncident" style="width:70%;font-family: Tahoma, Arial, Helvetica;font-weight: bold;color: #FFFFFF;background-color: #0065B3;padding: 6px 6px;font-size: 1em;" id="btnLogin">Auto</button>
+                    <td width="50%">
+                        <div id="CRMYes" hidden="hidden">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type="text" id="txtYES" readonly value="Yes" style="color:limegreen;text-align:center;font-weight:bold;" />
+                                    </td>
+                                    <td>
+                                        <img src="images/check.png" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="CRMNo" hidden="hidden">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label style="color:red;text-align:center;font-weight:bold;">No</label>
+                                    </td>
+                                    <td>
+                                        <img src="images/X.png" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </td>
                 </tr>
-                <tr align="center">
-                    <td>
-                        <button type="button" id="btnProductIncident" style="width:70%;font-family: Tahoma, Arial, Helvetica;font-weight: bold;color: #FFFFFF;background-color: #0065B3;padding: 6px 6px;font-size: 1em;" id="btnLogin">Product</button>
+                <tr>
+                    <td align="left" colspan="2">
+                        <div>
+                            <table width="93%" style="padding-left:20px;">
+                                <tr>
+                                    <td>
+                                        <label style="color:royalblue;font-weight:bold">JOB:</label>
+                                    </td>
+                                    <td>
+                                        <label id="lblJob" style="color:black;font-weight:bold"></label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </td>
                 </tr>
-                <tr align="center">
-                    <td>
-                        <button type="button" id="btnPropertyIncident" style="width:70%;font-family: Tahoma, Arial, Helvetica;font-weight: bold;color: #FFFFFF;background-color: #0065B3;padding: 6px 6px;font-size: 1em;" id="btnLogin">Property</button>
+                <tr>
+                    <td colspan="2">
+                        <div id="divContract">
+                            <table style="width:93%">
+                                <tr>
+                                    <td style="width:70%;padding-left:20px;">
+                                        <label style="color:red;font-weight:bold;font-size:large">Contract Deficiences</label>
+                                    </td>
+                                    <td style="width:30%">
+                                        <button class="button" type="button" onclick="OpenArchiveContract();" id="btnContract">
+                                            <span>Contract</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <select id="ddlContract" class="cl" style="color:black;"></select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div>
+                                            <table width="93%" id="DeficiencesContract"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divInsurance">
+                            <table style="width:93%">
+                                <tr>
+                                    <td style="width:8¡70%;padding-left:20px;padding-top:3%;">
+                                        <label style="color:red;font-weight:bold;font-size:large">Insurance Deficiences</label>
+                                    </td>
+                                    <td style="width:30%;content-align:left;">
+                                        <button class="button" type="button" onclick="OpenArchiveCOI();" id="btnCOI">
+                                            <span>COI</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <select id="ddlCertificates" class="cl" style="color:black;"></select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divGeneral" hidden="hidden">
+                            <table width="93%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:royalblue;font-weight:bold;font-size:medium">General Certificate</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table id="General"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divProducer" hidden="hidden">
+                            <table width="93%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:royalblue;font-weight:bold;font-size:medium">Producer</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table id="Producer"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divInsuredName" hidden="hidden">
+                            <table width="93%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:royalblue;font-weight:bold;font-size:medium">Insured Name</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table id="InsuredName"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divInsuredRatings" hidden="hidden">
+                            <table width="93%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:royalblue;font-weight:bold;font-size:medium">Insurer's rating</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table id="InsuredRatings"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divGeneralLiability" hidden="hidden">
+                            <table width="93%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:royalblue;font-weight:bold;font-size:medium">Comercial General Liability</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table id="GeneralLiability"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divAutoLiability" hidden="hidden">
+                            <table width="93%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:royalblue;font-weight:bold;font-size:medium">Auto Liability</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table id="AutoLiability"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divUmbrellaLiability" hidden="hidden">
+                            <table width="93%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:royalblue;font-weight:bold;font-size:medium">Umbrella Liability</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table id="UmbrellaLiability"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divWorkersCompensation" hidden="hidden">
+                            <table width="93%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:royalblue;font-weight:bold;font-size:medium">Worker's Compensation</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table id="WorkersCompensation"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divGarageKeepers" hidden="hidden">
+                            <table width="93%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:royalblue;font-weight:bold;font-size:medium">Garagekeepers Liability</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table id="GarageKeepers"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divTrailerInterchange" hidden="hidden">
+                            <table width="93%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:royalblue;font-weight:bold;font-size:medium">Trailer Interchange</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table id="TrailerInterchange"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divCargoLiability" hidden="hidden">
+                            <table width="93%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:royalblue;font-weight:bold;font-size:medium">Cargo Liability</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table id="CargoLiability"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divPollutionLiability" hidden="hidden">
+                            <table width="93%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:royalblue;font-weight:bold;font-size:medium">Pollution Liability</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table id="PollutionLiability"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divAircraftLiability" hidden="hidden">
+                            <table width="93%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:royalblue;font-weight:bold;font-size:medium">Aircraft Liability</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table id="AircraftLiability"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="divEndorsements" hidden="hidden">
+                            <table width="93%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:royalblue;font-weight:bold;font-size:medium">Endorsements</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table id="Endorsements"></table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div>
+                            <table width="100%">
+                                <tr>
+                                    <td style="width:20px"></td>
+                                    <td style="padding-top:3%">
+                                        <label style="color:red;font-weight:bold;font-size:large">Last Trip Report</label>
+                                    </td>
+                                </tr>
+                                <tr style="padding-top:0%">
+                                    <td></td>
+                                    <td>
+                                        <label style="color:black">No trips recorded</label>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div>
+                                            <table width="100%">
+                                                <tr>
+                                                    <td style="padding-left:20px">
+                                                        <div id="map" style="width:350px;height:300px">
+                                                            <script>
+                                                                function myMap() {
+                                                                    var mapOptions = {
+                                                                        center: new google.maps.LatLng(51.5, -0.12),
+                                                                        zoom: 10,
+                                                                        mapTypeId: google.maps.MapTypeId.HYBRID
+                                                                    }
+                                                                    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                                                                }
+                                                            </script>
+
+                                                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtTcw1C9SfDbgy2aKfOt_5N8m2Ltpqdu8&callback=myMap"></script>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </td>
                 </tr>
-                <tr align="center">
-                    <td>
-                        <button type="button" id="btnWCIncident" style="width:70%;font-family: Tahoma, Arial, Helvetica;font-weight: bold;color: #FFFFFF;background-color: #0065B3;padding: 6px 6px;font-size: 1em;" id="btnLogin">WC</button>
+                <tr>
+                    <td colspan="2">
+                        <div>
+                            <table width="100%">
+                                <tr>
+                                    <td align="right" style="width:50%">
+                                        <label style="font-size:x-large;color:black;"><b>Succesful trip:</b></label>
+                                    </td>
+                                    <td style="width:50%">
+                                        <div id="TripYes" hidden="hidden">
+                                            <input type="text" id="txtYES" readonly value="Yes" style="color:limegreen;text-align:center;width:60px;font-weight:bold;font-size:x-large" />
+                                            <img src="images/check.png" />
+                                        </div>
+                                        <div id="TripNo">
+                                            <label style="color:red;text-align:center;width:60px;font-weight:bold;font-size:x-large">No</label>
+                                            <img src="images/X.png" />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </td>
                 </tr>
-                <tr align="center">
-                    <td>
-                        <button type="button" id="btnMarineIncident" style="width:70%;font-family: Tahoma, Arial, Helvetica;font-weight: bold;color: #FFFFFF;background-color: #0065B3;padding: 6px 6px;font-size: 1em;" id="btnLogin">Marine</button>
+                <tr>
+                    <td colspan="2">
+                        <div>
+                            <table width="100%">
+                                <tr>
+                                    <td width="50%" style="padding-left:20px">
+                                        <label style="color:red;font-weight:bold;font-size:large">Problems</label>
+                                    </td>
+                                    <td width="50%"></td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" style="padding-left:20px">
+                                        <label style="font-size:large;color:black;"><b>* Delayed</b></label>
+                                    </td>
+                                    <td width="50%" align="left">
+                                        <label style="color:black">"X" hrs</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" style="padding-left:20px">
+                                        <label style="font-size:large;color:black;"><b>* Speeding</b></label>
+                                    </td>
+                                    <td width="50%" align="left">
+                                        <label style="color:black">Over "X" mph</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" style="padding-left:20px">
+                                        <label style="font-size:large;color:black;"><b>* Texting</b></label>
+                                    </td>
+                                    <td width="50%" align="left">
+                                        <label style="color:black">"X" times</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="20%" style="padding-left:20px">
+                                        <label style="font-size:large;color:black;"><b>* Phone Talking</b></label>
+                                    </td>
+                                    <td width="50%" align="left">
+                                        <label style="color:black">"X" minutes</label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </td>
                 </tr>
-                <tr align="center">
-                    <td>
-                        <button type="button" id="btnOthersIncident" style="width:70%;font-family: Tahoma, Arial, Helvetica;font-weight: bold;color: #FFFFFF;background-color: #0065B3;padding: 6px 6px;font-size: 1em;" id="btnLogin">Others</button>
+                <tr>
+                    <td colspan="2">
+                        <div>
+                            <table width="100%">
+                                <tr>
+                                    <td style="padding-left:20px">
+                                        <label style="color:red;font-weight:bold;font-size:large">Comments</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left:20px">
+                                        <input type="text" style="width:330px;height:130px" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                     </td>
                 </tr>
             </table>
         </div>
+
         <!-- /footer -->
-        <div data-role="footer" data-position="fixed" style="background-color:#0065B3;color:white;vertical-align:middle;height:4%;text-align:center;font-size:12px;font-weight:normal;">
-            ©ClaimsRe - Insight Risk Technologies, LLC <span class="jqm-version"></span>
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#FFFFFF;color:#a1a1a9;vertical-align:middle;">
+            <table cellpadding=0 cellspacing=0 style="border: 1px solid #F2F2F2;width:100%;">
+                <tr>
+                    <td class="ihome" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/home1.png" /><br>
+                            <label style="color:grey">Home</label>
+                        </center>
+                    </td>
+                    <td class="ijobs" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/jobs1.png" /><br>
+                            <label style="color:grey">Jobs</label>
+                        </center>
+                    </td>
+                    <td class="itrip" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/trip1.png" /><br>
+                            <label style="color:grey">Trips</label>
+                        </center>
+                    </td>
+                    <td class="iprofile" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/profile1.png" /><br>
+                            <label style="color:grey">Profile</label>
+                        </center>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
+    <div id="loader" style="display:none;">
+        <div id="center">
+            <img src="images/ajax-loader.gif" />
+        </div>
+    </div>
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-    <script type="text/javascript" src="scripts/index.js"></script>
+    <script type="text/javascript" src="scripts/PushNotification.js"></script>
     <script type="text/javascript" src="jquery/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="jquery/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="scripts/encodedecode.js"></script>
+    <script type="text/javascript" src="scripts/common.js"></script>
+    <script type="text/javascript">
+
+        populateDropdownCertificates = function (data) {
+            var IdCertificate, DocumentName;
+            IdCertificate = this.IdCertificate;
+            DocumentName = this.DocumentName;
+            $("#ddlCertificates")
+                .append($("<option></option>")
+                    .val(IdCertificate)
+                    .text(DocumentName));
+        };
+
+        populateDropDownContracts = function (data) {
+            //alert('entre');
+            var IdContract, DocumentName;
+            IdContract = this.IdContract;
+            DocumentName = this.DocumentName;
+            $("#ddlContract")
+                .append($("<option></option>")
+                    .val(IdContract)
+                    .text(DocumentName));
+        };
+
+        $(document).ready(function () {
+            //****************************************
+            var CodeCompany = "3456";//window.localStorage["CodeCompany"];
+            var IdVendor = 1250;
+            var IdJob = -1;
+            var IdCertificate = -1;//getUrlVars()["idcertificate"];
+            var IdContract = -1;//getUrlVars()["idcertificate"];
+            //****************************************
+            $(".ihome").click(function () {
+                window.location.href = 'home.html?idjob=' + IdJob;
+            });
+            $(".ijobs").click(function () {
+                window.location.href = 'jobs.html?';
+            });
+            $(".itrip").click(function () {
+                window.location.href = 'trip.html';
+            });
+            $(".iprofile").click(function () {
+                window.location.href = 'profile.html';
+            });
+            //****************************************
+            GetCertificateOfInsurance(CodeCompany, IdVendor, IdJob, IdCertificate, IdContract);
+            //****************************************
+        });
+
+        function GetCertificateOfInsurance(Code, IdVendor, IdJob, IdCertificate, IdContract) {
+            try {
+                var input =
+                    {
+                        Code: Code,
+                        IdVendor: IdVendor,
+                        IdJob: IdJob,
+                        IdCertificate: IdCertificate,
+                        IdContract: IdContract
+                    };
+
+                //alert(JSON.stringify(input));
+                //$.support.cors = true;
+                $.ajax({
+                    cache: true,
+                    type: "POST",
+                    url: "https://services.chancesrmis.com/ServicesMobile/wcfchancesR/CertificateOfInsurance.svc/GetInformation",
+                    async: true,
+                    crossDomain: true,
+                    data: JSON.stringify(input),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "Basic " + Base64.encode("jcJizIJh4EH/e4CBrJFW+A==" + ":" + "d6jlUv9AGSgd219JJvPShA=="));
+                        xhr.setRequestHeader("X-Mobile", "false");
+                        //$('#loader').show();
+                    },
+                    error: function (xhr, textStatus, err) {
+                        var mensaje = "readyState: " + xhr.readyState + "\n";
+                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                        mensaje = mensaje + "status: " + xhr.status + "\n";
+                        mensaje = mensaje + "text status: " + textStatus + "\n";
+                        mensaje = mensaje + "error: " + err + "\n";
+                        alert(mensaje);
+                        //$('#loader').hide();
+                        //navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
+                    },
+                    success: function (lista) {
+                        //******************************
+                        //alert('entro');
+                        //navigator.notification.alert(lista.GetInformationResult.Header.JobName, function () { }, "ChancesR");
+                        if (lista.GetInformationResult.Header != null) {
+                            if (lista.GetInformationResult.Header.IdVendor > 0) {
+                                //******************************
+                                //alert('e');
+                                $("#lblJob").text(lista.GetInformationResult.Header.JobName);
+                                window.localStorage["IdContractType"] = lista.GetInformationResult.Header.IdContractType;
+                                window.localStorage["IdJob"] = lista.GetInformationResult.Header.IdJob;
+                                //alert(lista.GetInformationResult.Header.IdJob);
+                                if (lista.GetInformationResult.Header.Compliance == "Ok") {
+                                    $("#CRMYes").show();
+                                }
+                                else {
+                                    $("#CRMNo").show();
+                                }
+                                //******************************
+                            }
+                        }
+                        if (lista.GetInformationResult.listaCertificados != null) {
+                            if (lista.GetInformationResult.listaCertificados.length > 0) {
+                                $.each(lista.GetInformationResult.listaCertificados, populateDropdownCertificates);
+                                //$.each(lista.GetInformationResult.listaCertificados, function(data){alert(this.DocumentName)});
+                                //******************************
+                                $("#ddlCertificates option:eq(0)").attr("selected", "selected");
+                                //******************************
+                                $("#ddlCertificates").trigger("change");
+                                //******************************
+                                $("#ddlCertificates").parent().show();
+                                //******************************
+                                $("#btnCOI").attr("disabled", false);
+                            }
+                            else {
+                                $("#ddlCertificates").parent().hide();
+                                //******************************
+                                $("#btnCOI").attr("disabled", true);
+                            }
+                        }
+                        else {
+                            $("#ddlCertificates").parent().hide();
+                            //******************************
+                            $("#btnCOI").attr("disabled", true);
+                        }
+                        //******************************
+                        //alert(lista.GetInformationResult.listaContracts[0].DocumentName);
+                        if (lista.GetInformationResult.listaContracts != null) {
+                            //alert('hay?');
+                            if (lista.GetInformationResult.listaContracts.length > 0) {
+                                $.each(lista.GetInformationResult.listaContracts, populateDropDownContracts);
+                                //$.each(lista.GetInformationResult.listaContracts, function(data){alert(this.DocumentName)});
+                                //******************************
+                                //alert('entre2');
+                                $("#ddlContract option:eq(0)").attr("selected", "selected");
+                                //******************************
+                                $("#ddlContract").trigger("change");
+                                //******************************
+                                $("#ddlContract").parent().show();
+                                //******************************
+                                $("#btnContract").attr("disabled", false);
+                            }
+                            else {
+                                $("#ddlContract").parent().hide();
+                                //******************************
+                                $("#btnContract").attr("disabled", true);
+                            }
+                        }
+                        else {
+                            $("#ddlContract").parent().hide();
+                            //******************************
+                            $("#btnContract").attr("disabled", true);
+                        }
+                        //alert("hi");
+                        //******************************
+                        window.localStorage["Code"] = "3456";
+                        window.localStorage["IdCompany"] = 91;
+                        window.localStorage["IdVendor"] = 1250;
+
+                        window.localStorage["IdCertificate"] = parseInt($("#ddlCertificates").val());
+                        window.localStorage["IdContract"] = parseInt($("#ddlContract").val());
+                        window.localStorage["DocumentName"] = $("#ddlContract option:selected").text();
+                        //alert(window.localStorage["DocumentName"]);
+                        //******************************
+                        $("#ddlCertificates").change(function () {
+                            var IdVendor = 1250;//window.localStorage["IdVendor"];
+                            var IdJob = -1;//getUrlVars()["idjob"];
+                            var IdCertificate = parseInt($("#ddlCertificates").val());
+                            var IdContract = parseInt($("#ddlContract").val());
+                            IdContract = (IdContract.value == null ? -1 : IdContract);
+                            $("#DeficiencesContract").html('');
+                            //$("#divContract").hide();
+                            //$("#divInsurance").html('');
+                            //$("#divInsurance").hide();
+                            $("#General").html('');
+                            $("#divGeneral").hide();
+                            $("#Producer").html('');
+                            $("#divProducer").hide();
+                            $("#InsuredName").html('');
+                            $("#divInsuredName").hide();
+                            $("#InsuredRatings").html('');
+                            $("#divInsuredRatings").hide();
+                            $("#GeneralLiability").html('');
+                            $("#divGeneralLiability").hide();
+                            $("#AutoLiability").html('');
+                            $("#divAutoLiability").hide();
+                            $("#UmbrellaLiability").html('');
+                            $("#divUmbrellaLiability").hide();
+                            $("#WorkersCompensation").html('');
+                            $("#divWorkersCompensation").hide();
+                            $("#GarageKeepers").html('');
+                            $("#divGarageKeepers").hide();
+                            $("#TrailerInterchange").html('');
+                            $("#divTrailerInterchange").hide();
+                            $("#CargoLiability").html('');
+                            $("#divCargoLiability").hide();
+                            $("#PollutionLiability").html('');
+                            $("#divPollutionLiability").hide();
+                            $("#AircraftLiability").html('');
+                            $("#divAircraftLiability").hide();
+                            $("#Endorsements").html('');
+                            $("#divEndorsements").hide();
+                            GetDeficiences(IdVendor, IdJob, IdCertificate, IdContract);
+                        });
+                        //******************************
+                        $("#ddlContract").change(function () {
+                            var IdVendor = 1250;//window.localStorage["IdVendor"];
+                            var IdJob = -1;//getUrlVars()["idjob"];
+                            var IdCertificate = parseInt($("#ddlCertificates").val());
+                            var IdContract = parseInt($("#ddlContract").val());
+                            IdCertificate = (IdCertificate.value == null ? -1 : IdCertificate);
+                            $("#DeficiencesContract").html('');
+                            //alert(IdCertificate);
+                            //$("#divContract").hide();
+                            //$("#divInsurance").html('');
+                            //$("#divInsurance").hide();
+                            $("#General").html('');
+                            $("#divGeneral").hide();
+                            $("#Producer").html('');
+                            $("#divProducer").hide();
+                            $("#InsuredName").html('');
+                            $("#divInsuredName").hide();
+                            $("#InsuredRatings").html('');
+                            $("#divInsuredRatings").hide();
+                            $("#GeneralLiability").html('');
+                            $("#divGeneralLiability").hide();
+                            $("#AutoLiability").html('');
+                            $("#divAutoLiability").hide();
+                            $("#UmbrellaLiability").html('');
+                            $("#divUmbrellaLiability").hide();
+                            $("#WorkersCompensation").html('');
+                            $("#divWorkersCompensation").hide();
+                            $("#GarageKeepers").html('');
+                            $("#divGarageKeepers").hide();
+                            $("#TrailerInterchange").html('');
+                            $("#divTrailerInterchange").hide();
+                            $("#CargoLiability").html('');
+                            $("#divCargoLiability").hide();
+                            $("#PollutionLiability").html('');
+                            $("#divPollutionLiability").hide();
+                            $("#AircraftLiability").html('');
+                            $("#divAircraftLiability").hide();
+                            $("#Endorsements").html('');
+                            $("#divEndorsements").hide();
+                            GetDeficiences(IdVendor, IdJob, IdCertificate, IdContract);
+                        });
+                        //******************************
+                        if (lista.GetInformationResult.Deficiencias != null) {
+                            if (lista.GetInformationResult.Deficiencias.length > 0) {
+                                //alert("holi");
+                                $.each(lista.GetInformationResult.Deficiencias, function (data) {
+                                    if (this.IdCodigo == 1) {
+                                        $("#divContract").show();
+                                        var contract = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#DeficiencesContract").append(contract);
+                                    }
+                                    if (this.IdCodigo > 1 && this.IdCodigo < 16) {
+                                        $("#divInsurance").show();
+                                    }
+                                    if (this.IdCodigo == 2) {
+                                        $("#divGeneral").show();
+                                        var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#General").append(text);
+                                    }
+                                    if (this.IdCodigo == 3) {
+                                        $("#divProducer").show();
+                                        var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#Producer").append(text);
+                                    }
+                                    if (this.IdCodigo == 4) {
+                                        $("#divInsuredName").show();
+                                        var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#InsuredName").append(text);
+                                    }
+                                    if (this.IdCodigo == 5) {
+                                        $("#divInsuredRatings").show();
+                                        var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#InsuredRatings").append(text);
+                                    }
+                                    if (this.IdCodigo == 6) {
+                                        $("#divGeneralLiability").show();
+                                        var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#GeneralLiability").append(text);
+                                    }
+                                    if (this.IdCodigo == 7) {
+                                        $("#divAutoLiability").show();
+                                        var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#AutoLiability").append(text);
+                                    }
+                                    if (this.IdCodigo == 8) {
+                                        $("#divUmbrellaLiability").show();
+                                        var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#UmbrellaLiability").append(text);
+                                    }
+                                    if (this.IdCodigo == 9) {
+                                        $("#divWorkersCompensation").show();
+                                        var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#WorkersCompensation").append(text);
+                                    }
+                                    if (this.IdCodigo == 10) {
+                                        $("#divGarageKeepers").show();
+                                        var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#GarageKeepers").append(text);
+                                    }
+                                    if (this.IdCodigo == 11) {
+                                        $("#divTrailerInterchange").show();
+                                        var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#TrailerInterchange").append(text);
+                                    }
+                                    if (this.IdCodigo == 12) {
+                                        $("#divCargoLiability").show();
+                                        var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#CargoLiability").append(text);
+                                    }
+                                    if (this.IdCodigo == 13) {
+                                        $("#divPollutionLiability").show();
+                                        var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#PollutionLiability").append(text);
+                                    }
+                                    if (this.IdCodigo == 14) {
+                                        $("#divAircraftLiability").show();
+                                        var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#AircraftLiability").append(text);
+                                    }
+                                    if (this.IdCodigo == 15) {
+                                        $("#divEndorsements").show();
+                                        var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                        $("#Endorsements").append(text);
+                                    }
+                                    //navigator.notification.alert(this.titulo, function () { }, "ChancesR");
+                                });
+                            }
+                        }
+                        //******************************
+                    },
+                    complete: function () {
+                    }
+                });
+            } catch (ex) {
+                navigator.notification.alert(ex.message, function () { }, "ChancesR Error");
+            }
+        }
+
+        function GetDeficiences(IdVendor, IdJob, IdCertificate, IdContract) {
+            try {
+                var input =
+                    {
+                        Code: "3456",//window.localStorage["CodeCompany"],
+                        IdVendor: IdVendor,
+                        IdJob: IdJob,
+                        IdCertificate: IdCertificate,
+                        IdContract: IdContract
+                    };
+                window.localStorage["Code"] = "3456";
+                window.localStorage["IdCompany"] = 91;
+                window.localStorage["IdVendor"] = IdVendor;
+                window.localStorage["IdJob"] = IdJob;
+                window.localStorage["IdCertificate"] = IdCertificate;
+                window.localStorage["IdContract"] = IdContract;
+                window.localStorage["DocumentName"] = $("#ddlContract option:selected").text();;
+                //alert(JSON.stringify(input));
+                $.ajax({
+                    cache: true,
+                    type: "POST",
+                    url: "https://services.chancesrmis.com/ServicesMobile/wcfchancesR/CertificateOfInsurance.svc/Deficiences",
+                    async: true,
+                    crossDomain: true,
+                    data: JSON.stringify(input),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "Basic " + Base64.encode("jcJizIJh4EH/e4CBrJFW+A==" + ":" + "d6jlUv9AGSgd219JJvPShA=="));
+                        xhr.setRequestHeader("X-Mobile", "false");
+                        //$('#loader').show();
+                    },
+                    error: function (xhr, textStatus, err) {
+                        var mensaje = "readyState: " + xhr.readyState + "\n";
+                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                        mensaje = mensaje + "status: " + xhr.status + "\n";
+                        mensaje = mensaje + "text status: " + textStatus + "\n";
+                        mensaje = mensaje + "error: " + err + "\n";
+                        alert(mensaje);
+                        //$('#loader').hide();
+                        //navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
+                    },
+                    success: function (lstObj) {
+                        //******************************
+                        if (lstObj.DeficiencesResult.length > 0) {
+                            $.each(lstObj.DeficiencesResult, function (data) {
+                                if (this.IdCodigo == 1) {
+                                    $("#divContract").show();
+                                    var contract = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#DeficiencesContract").append(contract);
+                                }
+                                if (1 < this.IdCodigo < 16) {
+                                    $("#divInsurance").show();
+                                }
+                                if (this.IdCodigo == 2) {
+                                    $("#divGeneral").show();
+                                    var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#General").append(text);
+                                }
+                                if (this.IdCodigo == 3) {
+                                    $("#divProducer").show();
+                                    var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#Producer").append(text);
+                                }
+                                if (this.IdCodigo == 4) {
+                                    $("#divInsuredName").show();
+                                    var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#InsuredName").append(text);
+                                }
+                                if (this.IdCodigo == 5) {
+                                    $("#divInsuredRatings").show();
+                                    var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#InsuredRatings").append(text);
+                                }
+                                if (this.IdCodigo == 6) {
+                                    $("#divGeneralLiability").show();
+                                    var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#GeneralLiability").append(text);
+                                }
+                                if (this.IdCodigo == 7) {
+                                    $("#divAutoLiability").show();
+                                    var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#AutoLiability").append(text);
+                                }
+                                if (this.IdCodigo == 8) {
+                                    $("#divUmbrellaLiability").show();
+                                    var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#UmbrellaLiability").append(text);
+                                }
+                                if (this.IdCodigo == 9) {
+                                    $("#divWorkersCompensation").show();
+                                    var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#WorkersCompensation").append(text);
+                                }
+                                if (this.IdCodigo == 10) {
+                                    $("#divGarageKeepers").show();
+                                    var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#GarageKeepers").append(text);
+                                }
+                                if (this.IdCodigo == 11) {
+                                    $("#divTrailerInterchange").show();
+                                    var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#TrailerInterchange").append(text);
+                                }
+                                if (this.IdCodigo == 12) {
+                                    $("#divCargoLiability").show();
+                                    var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#CargoLiability").append(text);
+                                }
+                                if (this.IdCodigo == 13) {
+                                    $("#divPollutionLiability").show();
+                                    var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#PollutionLiability").append(text);
+                                }
+                                if (this.IdCodigo == 14) {
+                                    $("#divAircraftLiability").show();
+                                    var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#AircraftLiability").append(text);
+                                }
+                                if (this.IdCodigo == 15) {
+                                    $("#divEndorsements").show();
+                                    var text = "<tr><td style='width:20px'></td><td><label style='color:black'>" + this.Description + "</td><td align='right'></td></tr>"
+                                    $("#Endorsements").append(text);
+                                }
+                                //navigator.notification.alert(this.titulo, function () { }, "ChancesR");
+                            });
+                        }
+                        //******************************
+                    },
+                    complete: function () {
+                    }
+                });
+            }
+            catch (ex) {
+                navigator.notification.alert(ex.message, function () { }, "ChancesR Error");
+            }
+        }
+
+        function OpenArchiveContract() {
+            try {
+                window.location.href = 'signedcontract.html?idcon=3797&idven=' + window.localStorage["IdVendor"] + '&idcom=' + window.localStorage["IdCompany"] + '';
+            } catch (ex) {
+                alert(ex.message);
+            }
+        }
+
+        function OpenArchiveCOI() {
+            try {
+                window.location.href = 'coi.html?idcom=' + window.localStorage["IdCompany"] + '&idven=' + window.localStorage["IdVendor"] + '&idcer=' + $("#ddlCertificates").val() + '&idjob=' + window.localStorage["IdJob"] + '';
+            } catch (ex) {
+                alert(ex.message);
+            }
+        }
+
+        function reload() {
+            try {
+                var idContract = parseInt(document.getElementById("ddlContract").value);
+                var idCertificate = parseInt(document.getElementById("ddlCertificates").value);
+                GetCertificateOfInsurance(idjob, idContract, idCertificate);
+            } catch (ex) {
+                alert(ex.message);
+            }
+        }
+
+    </script>
 </body>
 </html>
+

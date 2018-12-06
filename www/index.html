@@ -1,182 +1,107 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.css"/>
+    <link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.css" />
     <link rel="stylesheet" type="text/css" href="css/set1.css" />
+    <link rel="apple-touch-icon" href="icon.png">
     <title>Login</title>
-    <style>
+    <style type="text/css">
 
-    body{
-        /*
-        background-image:url(images/fondo2.jpg) !important;
-        background-repeat:no-repeat;
-         */
-        width:100%;
-        height:100%;
-        color:#a1a1a9;
-    }
-    .ui-page
-    {
-        background: #000;
-        background-image:url(images/fondoclaimre1.png) !important;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        background-size:100% 100%;
-    }
-    .panel-body{
-        position: absolute;
-        background: #ffffff;
-        opacity: 0.8;
-        z-index: 1;
-        top:20%;
-        left:10%;
-        right:10%
-    }
-    .panel-body{
-        padding:10px
-    }
+        .ui-page {
+            background: #ffffff;
+            background-image: url(images/fondoclaimre1.png) !important;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
 
-    .ui-content{
-        height: 100%;
-        width: 100%;
-        margin: 0px;
-        padding: 0px;
-        color:#a1a1a9;
-    }
-    .btn{
-        display:inline-block;
-        margin-bottom:0;
-        font-weight:normal;
-        text-align:center;
-        vertical-align:middle;
-        -ms-touch-action:manipulation;
-        touch-action:manipulation;
-        cursor:pointer;
-        background-image:none;
-        border:1px solid transparent;
-        white-space:nowrap;
-        padding:6px 16px;
-        font-size:13px;
-        line-height:1.846;
-        border-radius:3px;
-        -webkit-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select:none;
-        user-select:none
-    }
+        .panel-body {
+            position: absolute;
+            background: #F7F7F7;
+            opacity: 0.8;
+            z-index: 1;
+            top: 60%;
+            left: 10%;
+            right: 10%
+        }
 
-    .app_button, button {
-        -webkit-border-radius: 20px;
-        border-radius: 20px;
-        display: inline-block;
-        padding: 0 20px;
-        margin-bottom: 20px;
-        cursor: pointer;
-        width: 200px;
-        background:#0065B3;
-        background: -webkit-gradient(linear, 0 0, 0 70%, from(#0065B3), to(#0065B3));
-        background: linear-gradient(#0065B3, #0065B3 70%);
-        border: 1px solid #C97917;
-        font-size: 18px;
-        font-weight: 200;
-        text-shadow: 0 -1px 0 #0065B3;
-        height: 40px;
-        line-height: 40px;
-        color:#fff;
-        text-align: center;
-    }
+        .panel-body {
+            padding: 10px
+        }
 
-    /* These overrides to the JQuery Mobile css file are used to
-     * allow a more reasonable styling on small screen devices.
-     */
-/*
-    .ui-header .ui-title {
-        margin-right:25px;
-        margin-left:65px;
-        white-space:normal;
-    }
+        .ui-content {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+            background-size: 100% 100%;
+            min-height: 100%;
+            color: #ffffff;
+        }
 
-    .ui-footer .ui-title {
-        margin-right:30px;
-        margin-left:30px;
-        white-space:normal;
-    }
-*/
-    input[type=checkbox] {
-        outline: none;
-        width: 24px;
-        height: 23px;
-        font-size: 0.8em;
-        line-height: 2;
-        display: block;
-        font-weight: normal;
-        border-radius: 3px;
-        border: 1px solid #FFFFFF;
-        -webkit-appearance: none;
+        .button {
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            display: inline-block;
+            padding: 0 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            width: 90%;
+            background: #0065B3;
+            background: -webkit-gradient(linear, 0 0, 0 70%, from(#0065B3), to(#0065B3));
+            background: linear-gradient(#0065B3, #0065B3 70%);
+            border: 1px solid #C97917;
+            font-size: 0.8em;
+            font-weight: 200;
+            font-family: Tahoma, Arial, Helvetica;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-shadow: 0 -1px 0 #0065B3;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
 
-        background-image: -webkit-gradient(
-            linear, left top, left bottom,
-            color-stop(0, #FFFFFF),
-            color-stop(0.5, #FFFFFF),
-            color-stop(0.5, #FFFFFF),
-            color-stop(1, #FDFDFD)
-        );
-        box-shadow: 0px 1px 2px #AFAFAF inset;
-        color: #7F7F7F;
-    }
+            .button span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
 
-    input[type=checkbox]:checked {
-        background-image: -webkit-gradient(
-        linear, left top, left bottom,
-        color-stop(0, #367EF8),
-        color-stop(0.5, #367EF8),
-        color-stop(0.5, #66A3F8),
-        color-stop(1, #66A3F8)
-        );
-        box-shadow: 0px 1px 2px #FFFFFF inset;
-        color: #fff;
-        text-shadow: 0px -1px 1px #000;
-        border: 1px solid #FFFFFF;
-    }
+                .button span:after {
+                    content: '\00bb';
+                    position: absolute;
+                    opacity: 0;
+                    top: 0;
+                    right: -20px;
+                    transition: 0.5s;
+                }
 
-    input[type=checkbox]:before {
-        border-radius: 3px;
-        border-top: 1px solid #F7F7F7;
-        border-right: 1px solid #FFFFFF;
-        border-bottom: 1px solid: #FFFFFF;
-        border-left: 1px solid #FFFFFF;
-        background-image: -webkit-gradient( 
-        linear, left top, left bottom,
-        color-stop(0, #FFFFFF),
-        color-stop(1, #FBFBFB)
-        );
-        height: 18px;
-        width: 20px;
-        display: inline-block;
-        text-indent: 27px;
-    }
-    
-    input[type=checkbox]:checked:before {
-        text-indent: -25px;
-        margin-left: 33px;
-    }
+            .button:hover span {
+                padding-right: 25px;
+            }
 
+                .button:hover span:after {
+                    opacity: 1;
+                    right: 0;
+                }
     </style>
 </head>
 <body>
-    <div data-role="page" id="index" data-title="Page First">
+    <div data-role="page" id="index" data-title="Login">
         <!-- /header -->
         <div data-role="header">
 
 
         </div>
-        <!-- /Content -->
-        <!--        <div class="page-content" style="height:600px">-->
+
+        <!-- /body -->
         <div data-role="content">
             <div class="bs-top">
                 <div data-pageid="1" data-container="page" class="container">
@@ -184,45 +109,31 @@
                         <div data-pageid="1" data-container="panel" class="bs-pagepanel panel panel-primary">
                             <div data-pageid="1" data-container="body" class="panel-body">
                                 <div data-pageid="1" data-container="fields" class="col-md-12">
-                                    <img src="images/claimre.png" style="width:60%;height:50%;"/>
                                     <div data-pageid="1" data-brick="loginfields" class="form-horizontal" role="form">
                                         <div class="form-group">
                                             <div class="col-md-6">
-                                                <span class="input input--hoshi">
-                                                    <input class="input__field input__field--hoshi" type="number" id="txtCode" placeholder="Code" pattern="[0-9]*" inputmode="numeric" />
-                                                    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
-                                                    </label>
-                                                </span>
+                                                <!--<span class="input input--hoshi">
+                                                 <select id="ddlCompanys" class="input__field input__field--hoshi" placeholder="Select Company"></select>
+                                                 <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+                                                 </label>
+                                                 </span>-->
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-6">
                                                 <span class="input input--hoshi">
-                                                    <input class="input__field input__field--hoshi" type="text" id="txtUsername" placeholder="Username" autocorrect="off" autocapitalize="off"/>
+                                                    <input class="input__field input__field--hoshi" type="number" id="txtCode" placeholder="Last 4 digits of Federal ID" maxlength="4" pattern="[0-9]*" inputmode="numeric" />
                                                     <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="input-6">
                                                     </label>
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="col-md-6">
-                                                <span class="input input--hoshi">
-                                                    <input class="input__field input__field--hoshi" type="password" id="txtPassword" placeholder="Password" />
-                                                    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
-                                                    </label>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group" style="width:90%;">
-                                            <input type="checkbox" name="remember" id="remember"/>
-                                            <label for="remember" style="font-size: 0.8em;">Remember</label>
-<!--                                                <span style="font-size:0.8em;">Remember</span>-->
-                                        </div>
                                     </div>
                                 </div>
-                                <div data-pageid="1" data-container="header_2" class="col-md-8 col-md-offset-4">
-                                    <button type="button" onclick="OnLogin();" style="width:100%;font-family: Tahoma, Arial, Helvetica;font-weight: bold;color: #FFFFFF;padding: 6px 6px;font-size: 0.8em;" id="btnLogin">
-                                        <img src="images/lock.png" width="14" height="14" /> Login</button>
+                                <div data-pageid="1" data-container="header_2">
+                                    <button class="button" type="button" onclick="OnNextOne();" id="btnRegistration">
+                                        <span>Registration</span>
+                                    </button>
                                     <div id="results"></div>
                                 </div>
                             </div>
@@ -231,211 +142,739 @@
                 </div>
             </div>
         </div>
-        <!--        </div>-->
-        <!-- /footer -->
 
-        <div data-role="footer" data-position="fixed" style="background-color:#FFFFFF;color:#a1a1a9;vertical-align:middle;height:6%;text-align:center;font-size:0.9em;font-weight:normal;">
-            <table width="100%">
+        <!-- /footer -->
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#FFFFFF;color:#a1a1a9;vertical-align:middle;">
+            <table cellpadding=0 cellspacing=0 style="border: 1px solid #F2F2F2;background-color:#ffffff;width:100%;">
                 <tr>
-                    <td style="width:33%;vertical-align:middle;">
-                        <table id="thome">
-                            <tr>
-                                <td align="center">
-                                    <img src="images/home.png" />
-                                </td>
-                                <td align="center">
-                                    Home
-                                </td>
-                            </tr>
-                        </table>
+                    <td class="thome" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/home1.png" /><br>
+                            <label style="color:grey">Home</label>
+                        </center>
                     </td>
-                    <td>
-                        <img src="images/line.png" />
+                    <td class="tphone" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/phone1.png" /><br>
+                            <label style="color:grey">Call</label>
+                        </center>
                     </td>
-                    <td style="width:33%;vertical-align:middle;">
-                        <table id="tphone">
-                            <tr>
-                                <td>
-                                    <img src="images/phone.png" />
-                                </td>
-                                <td>
-                                    Call
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <img src="images/line.png" />
-                    </td>
-                    <td style="width:33%;vertical-align:middle;">
-                        <table id="tlocation">
-                            <tr>
-                                <td>
-                                    <img src="images/location.png" />
-                                </td>
-                                <td>
-                                    Location
-                                </td>
-                            </tr>
-                        </table>
+                    <td class="tlocation" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/location1.png" /><br>
+                            <label style="color:grey">Location</label>
+                        </center>
                     </td>
                 </tr>
             </table>
         </div>
     </div>
+
+    <div data-role="page" id="verification" data-title="Company">
+        <!-- /header -->
+        <div data-role="header">
+
+
+        </div>
+
+        <!-- /body -->
+        <div data-role="content">
+            <div class="bs-top">
+                <div data-pageid="1" data-container="page" class="container">
+                    <div data-pageid="1" data-container="page_1" class="bs-standalone-page col-md-6 col-md-offset-3">
+                        <div data-pageid="1" data-container="panel" class="bs-pagepanel panel panel-primary">
+                            <div data-pageid="1" data-container="body" class="panel-body">
+                                <div data-pageid="1" data-container="fields" class="col-md-12">
+                                    <div data-pageid="1" data-brick="loginfields" class="form-horizontal" role="form">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <span class="input input--hoshi" style="width:100%">
+                                                    <select id="ddlCompanys" class="input__field input__field--hoshi" placeholder="Select Company"></select>
+                                                    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+                                                    </label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <!--<span class="input input--hoshi">
+                                                 <input class="input__field input__field--hoshi" type="number" id="txtCode" placeholder="Federal ID" maxlength="4" pattern="[0-9]*" inputmode="numeric" />
+                                                 <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="input-6">
+                                                 </label>
+                                                 </span>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-pageid="1" data-container="header_2" class="col-md-8 col-md-offset-4">
+                                    <button class="button" type="button" onclick="OnNextTwo();" id="btnNextTwo">
+                                        <span>Continue</span>
+                                    </button>
+                                    <div id="results"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /footer -->
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#FFFFFF;color:#a1a1a9;vertical-align:middle;">
+            <table cellpadding=0 cellspacing=0 style="border: 1px solid #F2F2F2;background-color:#ffffff;width:100%;">
+                <tr>
+                    <td class="thome" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/home1.png" /><br>
+                            <label style="color:grey">Home</label>
+                        </center>
+                    </td>
+                    <td class="tphone" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/phone1.png" /><br>
+                            <label style="color:grey">Call</label>
+                        </center>
+                    </td>
+                    <td class="tlocation" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/location1.png" /><br>
+                            <label style="color:grey">Location</label>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div data-role="page" id="contact" data-title="Contact">
+        <!-- /header -->
+        <div data-role="header">
+
+
+        </div>
+
+        <!-- /body -->
+        <div data-role="content">
+            <div class="bs-top">
+                <div data-pageid="1" data-container="page" class="container">
+                    <div data-pageid="1" data-container="page_1" class="bs-standalone-page col-md-6 col-md-offset-3">
+                        <div data-pageid="1" data-container="panel" class="bs-pagepanel panel panel-primary">
+                            <div data-pageid="1" data-container="body" class="panel-body" style="top:35%;">
+                                <div data-pageid="1" data-container="fields" class="col-md-12">
+                                    <div data-pageid="1" data-brick="loginfields" class="form-horizontal" role="form">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <span class="input input--hoshi" style="width:100%">
+                                                    <select id="ddlContacts" class="input__field input__field--hoshi" placeholder="Select Contact"></select>
+                                                    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="ddlContacts">
+                                                    </label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <span style="color:black;font-size:0.75em;">
+                                                    <table width="100%">
+                                                        <tr>
+                                                            <td style="width:10%;">
+                                                                <input id="radValidationEmail" checked="checked" value="Email" type="radio" />
+                                                            </td>
+                                                            <td style="width:90%;font-weight:bold;">
+                                                                Email
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <span>Receive the security code in an email and enter it on the screen.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <span style="color:black;font-size:0.75em;">
+                                                    <table width="100%">
+                                                        <tr>
+                                                            <td style="width:10%;">
+                                                                <input id="radValidationPhone" value="Phone" type="radio" />
+                                                            </td>
+                                                            <td style="width:90%;font-weight:bold;">
+                                                                Phone
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <span>Receive the security code on the screen and enter it into the phone when we call you.</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div id="divEmail" class="form-group">
+                                            <div class="col-md-6">
+                                                <span class="input input--hoshi">
+                                                    <input class="input__field input__field--hoshi" type="email" id="txtEmail" placeholder="Email Contact" readonly="readonly" />
+                                                    <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="txtEmail">
+                                                    </label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div id="divCellphone" class="form-group">
+                                            <div class="col-md-6">
+                                                <span class="input input--hoshi">
+                                                    <input class="input__field input__field--hoshi" type="tel" id="txtCellPhone" placeholder="Phone Contact" readonly="readonly" />
+                                                    <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="txtCellPhone">
+                                                    </label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-pageid="1" data-container="header_2" class="col-md-8 col-md-offset-4">
+                                    <button class="button" type="button" onclick="SendCodeConfirmation();" id="btnNextThree">
+                                        <span>Continue</span>
+                                    </button>
+                                    <div id="results"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /footer -->
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#FFFFFF;color:#a1a1a9;vertical-align:middle;">
+            <table cellpadding=0 cellspacing=0 style="border: 1px solid #F2F2F2;background-color:#ffffff;width:100%;">
+                <tr>
+                    <td class="thome" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/home1.png" /><br>
+                            <label style="color:grey">Home</label>
+                        </center>
+                    </td>
+                    <td class="tphone" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/phone1.png" /><br>
+                            <label style="color:grey">Call</label>
+                        </center>
+                    </td>
+                    <td class="tlocation" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/location1.png" /><br>
+                            <label style="color:grey">Location</label>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div data-role="page" id="confirmationcode" data-title="Confirmation">
+        <!-- /header -->
+        <div data-role="header">
+
+
+        </div>
+
+        <!-- /body -->
+        <div data-role="content">
+            <div class="bs-top">
+                <div data-pageid="1" data-container="page" class="container">
+                    <div data-pageid="1" data-container="page_1" class="bs-standalone-page col-md-6 col-md-offset-3">
+                        <div data-pageid="1" data-container="panel" class="bs-pagepanel panel panel-primary">
+                            <div data-pageid="1" data-container="body" class="panel-body" style="top:35%;">
+                                <div data-pageid="1" data-container="fields" class="col-md-12">
+                                    <div data-pageid="1" data-brick="loginfields" class="form-horizontal" role="form">
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <span style="color:black;font-size:0.75em;">
+                                                    <table width="100%">
+                                                        <tr>
+                                                            <td>
+                                                                <span>Please enter the security code we sent to:</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div id="DivEmailConfirmation" style="font-size:1.7em;font-weight:bold;">
+                                                                    <label id="lblEmailConfirmation"></label>
+                                                                </div>
+                                                                <div id="DivCellPhoneConfirmation" style="font-size:1.7em;font-weight:bold;">
+                                                                    <label id="lblCellPhoneConfirmation"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div id="divConfirmationCode" class="form-group">
+                                            <div class="col-md-6">
+                                                <span class="input input--hoshi">
+                                                    <input class="input__field input__field--hoshi" type="tel" id="txtConfirmationCode" style="text-align:center;font-size:1.7em;" maxlength="5" placeholder="Security Code" />
+                                                    <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="txtConfirmationCode">
+                                                    </label>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div class="form-group">
+                                            <div class="col-md-6">
+                                                <span style="color:black;font-size:0.75em;">
+                                                    <table width="100%">
+                                                        <tr>
+                                                            <td colspan="2" style="font-weight:bold;">
+                                                                Would you like us to remember this device?
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2" ><br />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width:10%">
+                                                                <input id="radYes" name="remember" checked="checked" type="radio" />
+                                                            </td>
+                                                            <td style="width:90%">
+                                                                <span style="font-weight:bold;">Yes.</span><span> If you plan to use this device again</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="width:10%">
+                                                                <input id="radNo" name="remember" type="radio" />
+                                                            </td>
+                                                            <td style="width:90%">
+                                                                <span style="font-weight:bold;">No.</span><span> If you plan to use this device again</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <br />
+                                    </div>
+                                </div>
+                                <div data-pageid="1" data-container="header_2" class="col-md-8 col-md-offset-4">
+                                    <button class="button" type="button" onclick="ConfirmationCode();" id="btnConfirmationCode">
+                                        <span>Confirmation Code</span>
+                                    </button>
+                                    <div id="results"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /footer -->
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#FFFFFF;color:#a1a1a9;vertical-align:middle;">
+            <table cellpadding=0 cellspacing=0 style="border: 1px solid #F2F2F2;background-color:#ffffff;width:100%;">
+                <tr>
+                    <td class="thome" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/home1.png" /><br>
+                            <label style="color:grey">Home</label>
+                        </center>
+                    </td>
+                    <td class="tphone" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/phone1.png" /><br>
+                            <label style="color:grey">Call</label>
+                        </center>
+                    </td>
+                    <td class="tlocation" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/location1.png" /><br>
+                            <label style="color:grey">Location</label>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
     <div id="loader" style="display:none;">
         <div id="center">
             <img src="images/ajax-loader.gif" />
         </div>
     </div>
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="scripts/platformOverrides.js"></script>
     <script type="text/javascript" src="scripts/index.js"></script>
+    <script type="text/javascript" src="scripts/encodedecode.js"></script>
     <script type="text/javascript" src="jquery/jquery-2.1.3.min.js"></script>
-    <script type="text/javascript" src="jquery/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="jquery/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="scripts/PushNotification.js"></script>
 
     <script type="text/javascript">
-
-
-    $(document).bind("mobileinit", function(){
-        $.mobile.orientationChangeEnabled = false;
-    });
-
-    $(document).on("pageinit","#index", function (event) {
-        $('*').not('#index').bind('touchmove', false);
-        //var screen = $.mobile.getScreenHeight();
-        //var header = $(".ui-header").hasClass("ui-header-fixed") ? $(".ui-header").outerHeight() - 1 : $(".ui-header").outerHeight();
-        //var footer = $(".ui-footer").hasClass("ui-footer-fixed") ? $(".ui-footer").outerHeight() - 1 : $(".ui-footer").outerHeight();
-        //var contentCurrent = $(".ui-content").outerHeight() - $(".ui-content").height();
-        //var content = screen - header - footer - contentCurrent;
-        //$(".ui-content").height(content);
-
-    });
-
-    function  OnLogin(){
-            //alert(navigator.connection.type);
-            if (navigator.network.connection.type == Connection.NONE) {
-                // No tenemos conexión
-                navigator.notification.alert("Internet connection is not available", function () { }, "ClaimsRe Alert");
-                return false;
-            } else {
-                // Si tenemos conexión
-                //navigator.notification.alert("Si tenemos conexion", function () { }, "BCP Alert");
-                //return true;
+        //***************************************
+        populateDropdownCompanys = function (data) {
+            var IdCompany, IdVendor, CompanyName, Code;
+            IdCompany = this.IdCompany;
+            IdVendor = this.IdVendor;
+            CompanyName = this.CompanyName;
+            Code = this.Code;
+            $("#ddlCompanys")
+                .append($("<option></option>")
+                    .val(IdCompany)
+                    .html(Code)
+                    .text(CompanyName)
+                    .attr("title", CompanyName)
+                    .attr("CodeCompany", Code)
+                    .attr("IdVendor", IdVendor));
+        };
+        //***************************************
+        populateDropdownContacts = function (data) {
+            var IdContact, ContactName, Email, CellPhone;
+            IdContact = this.IdContact;
+            ContactName = this.ContactName;
+            Email = this.Email;
+            $("#ddlContacts")
+                .append($("<option></option>")
+                    .val(IdContact)
+                    .html(Email)
+                    .text(ContactName)
+                    .attr("title", ContactName)
+                    .attr("Email", Email)
+                    .attr("CellPhone", CellPhone));
+        };
+        //***************************************
+        $(document).ready(function () {
+            //$('#index').on('pageinit', function () {
+            //$(document).on("pageinit", "#index", function (event) {
+            //$(document).on("pageshow", "#index", function (event) {
+            //alert(typeof(window.localStorage["CodeCompany1"]));
+            if (typeof (window.localStorage["Remember"]) != undefined) {
+                if (JSON.parse(window.localStorage["Remember"]) == true) {
+                    if (typeof (window.localStorage["CodeCompany"]) != undefined &&
+                        typeof (window.localStorage["IdCompany"]) != undefined &&
+                        typeof (window.localStorage["IdVendor"]) != undefined &&
+                        typeof (window.localStorage["IdContact"]) != undefined &&
+                        typeof (window.localStorage["ContactName"]) != undefined) {
+                        window.location.href = 'home.html?idjob=-1';
+                        return false;
+                    }
+                }
             }
-            //alert($("#remember").prop("checked"));
-
-            if ($("#txtCode").val().trim() == "") {
-                navigator.notification.alert("Enter code", function () { }, "ClaimsRe Alert");
-                return false;
-            }
-
-            if ($("#txtUsername").val().trim() == "") {
-                navigator.notification.alert("Enter username", function () { }, "ClaimsRe Alert");
-                return false;
-            }
-
-            if ($("#txtPassword").val().trim() == "") {
-                navigator.notification.alert("Enter password", function () { }, "ClaimsRe Alert");
-                return false;
-            }
-
-            if ($('#remember').is(':checked')) {
-                window.localStorage["Code"] = $("#txtCode").val().trim();
-                window.localStorage["Username"] = $("#txtUsername").val().trim();
-                window.localStorage["Password"] = $("#txtPassword").val().trim();
-                window.localStorage["Remember"] = $('#remember').is(':checked');
-            }
-            else {
-                // reset localStorage
-                localStorage.removeItem('Code');
-                localStorage.removeItem('Username');
-                localStorage.removeItem('Password');
-                localStorage.removeItem('Remember');
-            }
-
-            var wcfServiceUrl = "https://services.chancesrmis.com/wcfphonegap/AutenticationMobile.svc/";
-            var urlk1 = wcfServiceUrl + "AutenticationUser?IdUsername=" + $("#txtUsername").val().trim() + "&Password=" + $("#txtPassword").val().trim() + "&IdAplication=9&Code=" + $("#txtCode").val().trim();
-
-            $.ajax({
-               cache: true,
-               url: urlk1,
-               crossDomain: true,
-               data: "{ UserName: " + $("#txtUsername").val().trim() + ", Password: " + $("#txtPassword").val().trim() + ", IdAplication: 9, Code: " + $("#txtCode").val().trim() + " }",
-               type: "GET",
-               jsonpCallback: "UserApplication",
-               contentType: "application/json; charset=utf-8",
-               dataType: "jsonp",
-               beforeSend: function () {
-                   $('#loader').show();
-               },
-               error: function (xhr, textStatus, err) {
-                   var mensaje = "readyState: " + xhr.readyState + "\n";
-                   mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
-                   mensaje = mensaje + "status: " + xhr.status + "\n";
-                   mensaje = mensaje + "text status: " + textStatus + "\n";
-                   mensaje = mensaje + "error: " + err + "\n";
-                   navigator.notification.alert(mensaje, function () { }, "ClaimsRe Error");
-                   //$('#results').html("");
-                   $('#loader').hide();
-               },
-               success: function (obj) {
-                   if (obj.AutenticationUserResult.error == null){
-                       $('#results').html("<span>Wrong access code</span>");
-                       $('#loader').hide();
-                   }
-                   if (obj.AutenticationUserResult.error.Descripcion == '') {
-                       window.localStorage["Username"] = obj.AutenticationUserResult.IdUsuario;
-                       window.localStorage["IdCompany"] = obj.AutenticationUserResult.IdCompany;
-                       window.localStorage["CompanyName"] = obj.AutenticationUserResult.CompanyName;
-                       window.localStorage["IdContact"] = obj.AutenticationUserResult.IdContact;
-                       window.localStorage["ContactName"] = obj.AutenticationUserResult.ContactName;
-                       window.localStorage["Email"] = obj.AutenticationUserResult.Email;
-                       window.localStorage["CellPhone"] = obj.AutenticationUserResult.CellPhone;
-                       window.localStorage["ClaimReUrl"] = obj.AutenticationUserResult.ClaimReUrl;
-                      //Datos Vehicle
-                       window.localStorage["License"] = obj.AutenticationUserResult.License;
-                       window.localStorage["VinVehicle"] = obj.AutenticationUserResult.VinVehicle;
-                       window.localStorage["OwnedVehicle"] = obj.AutenticationUserResult.OwnedVehicle;
-                       window.localStorage["MakeVehicle"] = obj.AutenticationUserResult.MakeVehicle;
-                       window.localStorage["ModelVehicle"] = obj.AutenticationUserResult.ModelVehicle;
-                       window.localStorage["YearVehicle"] = obj.AutenticationUserResult.YearVehicle;
-                       window.localStorage["Code"] = $("#txtCode").val().trim();
-                       //Arvhives Vehicle
-                       window.localStorage["DLVehicle"] = obj.AutenticationUserResult.ArchiveDL;
-                       window.localStorage["RegistrationVehicle"] = obj.AutenticationUserResult.ArchiveR;
-                       window.localStorage["IDCardVehicle"] = obj.AutenticationUserResult.ArchiveIIC;
-                       $('#results').html("");
-                       //app.RegisterIdxContact(obj.AutenticationUserResult.IdCompany, obj.AutenticationUserResult.IdContact, window.localStorage["SystemOperation"],
-                       //                       obj.AutenticationUserResult.IdUsuario, window.localStorage["etoken"])
-                       window.location.href = 'home.html';
-                   } else {
-                       switch (obj.AutenticationUserResult.error.Descripcion)
-                        {
-                           case '1':
-                             $('#results').html("<span>Company inactive. Please contact administrator</span>");
-                           break;
-                           case '2':
-                             $('#results').html("<span>Password incorrect</span>");
-                           break;
-                           case '3':
-                             $('#results').html("<span>User inactive. Please contact administrator</span>");
-                           break;
-                           case '4':
-                             $('#results').html("<span>Username not found</span>");
-                           break;
-                           case '5':
-                             $('#results').html("<span>Wrong access code</span>");
-                           break;
-                        }
-                   }
-               },
-               complete: function () {
-                   $('#loader').hide();
-               }
+            //window.localStorage["IdCompany"] = $('#ddlCompanys').val();
+            //window.localStorage["IdVendor"] = $('#ddlCompanys option:selected').attr('IdVendor');
+            //window.localStorage["IdContact"] = $('#ddlContacts').val();
+            //***************************************
+            $("#divCellphone").hide();
+            //$("#divCellphoneConfirmation").hide();
+            //***************************************
+            $("#ddlContacts").on("change", function () {
+                $("#txtEmail").val($('#ddlContacts option:selected').attr('Email'));
+                $("#lblEmailConfirmation").text($('#ddlContacts option:selected').attr('Email'));
+                $("#txtCellPhone").val($('#ddlContacts option:selected').attr('CellPhone'));
+                $("#lblCellPhoneConfirmation").text($('#ddlContacts option:selected').attr('CellPhone'));
             });
-                   
+            //***************************************
+            $("#radValidationEmail").on("click", function () {
+                if ($('#radValidationEmail').prop('checked') == true) {
+                    $('#radValidationPhone').prop('checked', false);
+                    $("#divEmail").show();
+                    $("#DivEmailConfirmation").show();
+                    $("#divCellphone").hide();
+                    $("#DivCellphoneConfirmation").hide();
+                } 
+            });
+            $("#radValidationPhone").on("click", function () {
+                if ($('#radValidationPhone').prop('checked') == true) {
+                    $('#radValidationEmail').prop('checked', false);
+                    $("#divEmail").hide();
+                    $("#DivEmailConfirmation").hide();
+                    $("#divCellphone").show();
+                    $("#DivCellphoneConfirmation").show();
+                } 
+            });
+            //***************************************
+        });
+        //***************************************
+        function OnNextOne() {
+            try {
+                if ($("#txtCode").val().length == 0) {
+                    navigator.notification.alert('Enter Last 4 digits of Federal ID', function () { }, "ChancesR");
+                    return false;
+                }
+                //***************************************
+                var input =
+                    {
+                        //FederalID: '6731'
+                        FederalID: $("#txtCode").val()
+                    };
+                //***************************************
+                $.ajax({
+                    cache: true,
+                    url: "https://services.chancesrmis.com/ServicesMobile/wcfchancesR/Company.svc/GetCompany",
+                    async: true,
+                    crossDomain: true,
+                    type: "POST",
+                    data: JSON.stringify(input),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "Basic " + Base64.encode("jcJizIJh4EH/e4CBrJFW+A==" + ":" + "d6jlUv9AGSgd219JJvPShA=="));
+                        xhr.setRequestHeader("X-Mobile", "false");
+                        $('#loader').show();
+                    },
+                    error: function (xhr, textStatus, err) {
+                        var mensaje = "readyState: " + xhr.readyState + "\n";
+                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                        mensaje = mensaje + "status: " + xhr.status + "\n";
+                        mensaje = mensaje + "text status: " + textStatus + "\n";
+                        mensaje = mensaje + "error: " + err + "\n";
+                        $('#loader').hide();
+                        navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
+                    },
+                    success: function (lstObj) {
+                        //******************************
+                        if (lstObj.GetCompanyResult.length > 0) {
+                            //******************************
+                            $.each(lstObj.GetCompanyResult, populateDropdownCompanys);
+                            //******************************
+                            //$("#ddlCompanys").selectmenu('refresh', true);
+                            //******************************
+                            $("#ddlCompanys option:eq(0)").attr("selected", "selected");
+                            //******************************
+                            $("#ddlCompanys").trigger("change");
+                            //******************************
+                            window.location.href = '#verification';
+                            //******************************
+                        } else {
+                            //******************************
+                            navigator.notification.alert('Last 4 digits of Federal ID not found.', function () { }, "ChancesR Validation");
+                            //******************************
+                        }
+                    },
+                    complete: function () {
+                        $('#loader').hide();
+                    }
+                });
+                //***************************************
+            } catch (ex) {
+                alert(ex.message);
+            }
         }
+        //***************************************
+        function OnNextTwo() {
+            try {
+                if ($('#ddlCompanys').val() == -1) {
+                    navigator.notification.alert('Select a Company', function () { }, "ChancesR");
+                    return false;
+                }
+                //***************************************
+                var input =
+                    {
+                        Code: $('#ddlCompanys option:selected').attr('CodeCompany'),
+                        IdCompany: $('#ddlCompanys option:selected').attr('IdVendor')
+                    };
+                //***************************************
+                $.ajax({
+                    cache: true,
+                    url: "https://services.chancesrmis.com/ServicesMobile/wcfchancesR/Contact.svc/GetContact",
+                    async: true,
+                    crossDomain: true,
+                    type: "POST",
+                    data: JSON.stringify(input),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "Basic " + Base64.encode("jcJizIJh4EH/e4CBrJFW+A==" + ":" + "d6jlUv9AGSgd219JJvPShA=="));
+                        xhr.setRequestHeader("X-Mobile", "false");
+                        $('#loader').show();
+                    },
+                    error: function (xhr, textStatus, err) {
+                        var mensaje = "readyState: " + xhr.readyState + "\n";
+                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                        mensaje = mensaje + "status: " + xhr.status + "\n";
+                        mensaje = mensaje + "text status: " + textStatus + "\n";
+                        mensaje = mensaje + "error: " + err + "\n";
+                        $('#loader').hide();
+                        navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
+                    },
+                    success: function (lstObj) {
+                        //******************************
+                        if (lstObj.GetContactResult.length > 0) {
+                            //******************************
+                            window.localStorage["IdCompany"] = $('#ddlCompanys').val();
+                            window.localStorage["Code"] = $('#ddlCompanys option:selected').attr('CodeCompany');
+                            window.localStorage["IdVendor"] = $('#ddlCompanys option:selected').attr('IdVendor');
+                            //******************************
+                            $.each(lstObj.GetContactResult, populateDropdownContacts);
+                            //******************************
+                            //$("#ddlContacts").selectmenu('refresh', true);
+                            //******************************
+                            $("#ddlContacts option:eq(0)").attr("selected", "selected");
+                            //******************************
+                            $("#ddlContacts").trigger("change");
+                            //******************************
+                            window.location.href = '#contact';
+                            //******************************
+                        } else {
+                            //******************************
+                            //navigator.notification.alert('Federal ID no found', function () { }, "ChancesR Validation");
+                            //******************************
+                        }
+                    },
+                    complete: function () {
+                        $('#loader').hide();
+                    }
+                });
+                //***************************************
+            } catch (ex) {
+                alert(ex.message);
+            }
+        }
+        //***************************************
+        function SendCodeConfirmation() {
+            try {
+                //***************************************
+                if ($('#ddlContacts').val() == -1) {
+                    navigator.notification.alert('Select a Contact', function () { }, "ChancesR Validation");
+                    return false;
+                }
+                //***************************************
+                if ($('#radValidationEmail').prop('checked') == true) {
+                    $("#DivEmailConfirmation").show();
+                    $("#DivCellphoneConfirmation").hide();
+                    if ($('#txtEmail').val().trim() == "") {
+                        navigator.notification.alert('Enter a Email', function () { }, "ChancesR Validation");
+                        return false;
+                    }
+                } else {
+                    $("#DivEmailConfirmation").hide();
+                    $("#DivCellphoneConfirmation").show();
+                    if ($('#txtCellPhone').val().trim() == "") {
+                        navigator.notification.alert('Enter a CellPhone', function () { }, "ChancesR Validation");
+                        return false;
+                    }
+                }
+                //***************************************
+                var EContact = {
+                    CodeCompany: $('#ddlCompanys option:selected').attr('CodeCompany'),
+                    IdCompany: $('#ddlCompanys').val(),
+                    IdVendor: $('#ddlCompanys option:selected').attr('IdVendor'),
+                    IdContact: $('#ddlContacts').val(),
+                    //ContactName: "Santiago Gastanadui",
+                    Email: $('#ddlContacts option:selected').attr('Email')
+                    //Cell: "991332210",
+                    //CodeConfirmation: "223"
+                };
+                //***************************************
+                $.ajax({
+                    cache: true,
+                    url: "https://services.chancesrmis.com/ServicesMobile/wcfchancesR/Contact.svc/SendEmailConfirmationCode",
+                    async: true,
+                    crossDomain: true,
+                    type: "POST",
+                    data: JSON.stringify({ Entity: EContact }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "Basic " + Base64.encode("jcJizIJh4EH/e4CBrJFW+A==" + ":" + "d6jlUv9AGSgd219JJvPShA=="));
+                        xhr.setRequestHeader("X-Mobile", "false");
+                        $('#loader').show();
+                    },
+                    error: function (xhr, textStatus, err) {
+                        var mensaje = "readyState: " + xhr.readyState + "\n";
+                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                        mensaje = mensaje + "status: " + xhr.status + "\n";
+                        mensaje = mensaje + "text status: " + textStatus + "\n";
+                        mensaje = mensaje + "error: " + err + "\n";
+                        $('#loader').hide();
+                        navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
+                    },
+                    success: function (Obj) {
+                        //******************************
+                        if (Obj.SendEmailConfirmationCodeResult == true)
+                            window.location.href = '#confirmationcode';
+                        else
+                            navigator.notification.alert('send email error', function () { }, "ChancesR Validation");
+                        //******************************
+                    },
+                    complete: function () {
+                        $('#loader').hide();
+                    }
+                });
+                //***************************************
+            } catch (ex) {
+                alert(ex.message);
+            }
+        }
+        //***************************************
+        function ConfirmationCode() {
+            try {
+                //***************************************
+                if ($('#txtConfirmationCode').val().length == 0) {
+                    navigator.notification.alert('Enter code confirmation', function () { }, "ChancesR");
+                    return false;
+                }
+                if ($('#txtConfirmationCode').val().length < 5 && $('#txtConfirmationCode').val().length > 0) {
+                    navigator.notification.alert('Enter 5 digits', function () { }, "ChancesR");
+                    return false;
+                }
+                //***************************************
+                var EContact = {
+                    CodeCompany: $('#ddlCompanys option:selected').attr('CodeCompany'),
+                    IdCompany: $('#ddlCompanys').val(),
+                    IdVendor: $('#ddlCompanys option:selected').attr('IdVendor'),
+                    IdContact: $('#ddlContacts').val(),
+                    CodeConfirmation: $('#txtConfirmationCode').val(),
+                    eToken: (window.localStorage["etoken"] == undefined ? '' : window.localStorage["etoken"]),
+                    SystemOperation: window.localStorage["SystemOperation"]
+                };
+                //***************************************
+                $.ajax({
+                    cache: true,
+                    url: "https://services.chancesrmis.com/ServicesMobile/wcfchancesR/Contact.svc/ConfirmationCode",
+                    async: true,
+                    crossDomain: true,
+                    type: "POST",
+                    data: JSON.stringify({ Entity: EContact }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "Basic " + Base64.encode("jcJizIJh4EH/e4CBrJFW+A==" + ":" + "d6jlUv9AGSgd219JJvPShA=="));
+                        xhr.setRequestHeader("X-Mobile", "false");
+                        $('#loader').show();
+                    },
+                    error: function (xhr, textStatus, err) {
+                        var mensaje = "readyState: " + xhr.readyState + "\n";
+                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                        mensaje = mensaje + "status: " + xhr.status + "\n";
+                        mensaje = mensaje + "text status: " + textStatus + "\n";
+                        mensaje = mensaje + "error: " + err + "\n";
+                        $('#loader').hide();
+                        navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
+                    },
+                    success: function (Obj) {
+                        //******************************
+                        if (Obj.ConfirmationCodeResult == true) {
+                            window.localStorage["CodeCompany"] = $('#ddlCompanys option:selected').attr('CodeCompany');
+                            window.localStorage["IdCompany"] = $('#ddlCompanys').val();
+                            window.localStorage["IdVendor"] = $('#ddlCompanys option:selected').attr('IdVendor');
+                            window.localStorage["IdContact"] = $('#ddlContacts').val();
+                            window.localStorage["ContactName"] = $('#ddlContacts option:selected').attr('title');
+                            window.localStorage["Remember"] = $("#radYes").prop("checked");
+                            window.location.href = 'home.html?idjob=-1';
+                        }
+                        else
+                            navigator.notification.alert('code confirmation incorrect!', function () { }, "ChancesR Validation");
+                        //******************************
+                    },
+                    complete: function () {
+                        $('#loader').hide();
+                    }
+                });
+                //***************************************
+            } catch (ex) {
+                alert(ex.message);
+            }
+        }
+        //***************************************
     </script>
 </body>
 </html>
