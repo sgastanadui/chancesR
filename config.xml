@@ -108,6 +108,5 @@
   <engine name="android" spec="5.2.1" />
   <engine name="ios" spec="4.2.0" />
   <engine name="windows" spec="4.4.2" />
-  <plugin name="cordova-plugin-file" spec="5.0.0" />
   <plugin name="cordova-plugin-file-transfer" spec="~1.7.1" />
 </widget>
