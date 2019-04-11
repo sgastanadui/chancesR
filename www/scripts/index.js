@@ -83,6 +83,7 @@ var app = {
 
     // handle GCM notifications for result Android
     successHandler: function (result) {
+        window.localStorage["etoken"] = result;
         //$("#app-status-ul").append('<li>Callback Success Android! Result: ' + result + '</li>');
     },
 
