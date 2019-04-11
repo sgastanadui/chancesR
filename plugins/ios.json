@@ -7,9 +7,6 @@
         "files": {}
     },
     "installed_plugins": {
-        "com.phonegap.plugins.PushPlugin": {
-            "PACKAGE_NAME": "com.chancesr.app"
-        },
         "cordova-plugin-battery-status": {
             "PACKAGE_NAME": "com.chancesr.app"
         },
