@@ -126,13 +126,14 @@ var app = {
     onNotification: function (e) {
 
         //$("#app-status-ul").append('<li>onNotification -> event:' + e.event + "</li>");
-
+        alert(e.event);
         switch (e.event) {
             case 'registered':
                 if (e.regid.length > 0) {
                     //$("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
                     // Your GCM push server needs to know the regID before it can push to this device
                     // here is where you might want to send it the regID for later use.
+                    alert(e.regid);
                     window.localStorage["etoken"] = e.regid;
                 }
                 break;
