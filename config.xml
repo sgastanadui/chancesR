@@ -107,6 +107,7 @@
   <engine name="browser" spec="^5.0.4" />
   <preference name="SuppressesIncrementalRendering" value="False" />
   <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
+  <plugin name="cordova-support-google-services" spec="~1.1.0" />
   <plugin name="phonegap-plugin-multidex" spec="~1.0.0" />
   <plugin name="phonegap-plugin-push" spec="~2.2.3" />
   <preference name="android-maxSdkVersion" value="28" />
