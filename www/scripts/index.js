@@ -127,6 +127,7 @@ var app = {
     onNotification: function (e) {
 
         //$("#app-status-ul").append('<li>onNotification -> event:' + e.event + "</li>");
+        alert(e);
         alert(e.event);
         //navigator.notification.alert(e.event, function () { }, "BCP Error");
         switch (e.event) {
