@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1052124741578",
+    "firebase_url": "https://smiling-box-93721.firebaseio.com",
+    "project_id": "smiling-box-93721",
+    "storage_bucket": "smiling-box-93721.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052124741578:android:39085914d30e0721",
+        "android_client_info": {
+          "package_name": "com.chancesr.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052124741578-ggt5f3gjb7jgvst3fc528ttur2nmq5kt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chancesr.app",
+            "certificate_hash": "4b85085ef43acb07778c574b3a6fe847e8ed90b6"
+          }
+        },
+        {
+          "client_id": "1052124741578-4clgop3l7cuue5rb44fa5o7l2eaud8mt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuFWBBQ0ZoYUilT-8CR_xeyspTm9cFDGQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1052124741578-4clgop3l7cuue5rb44fa5o7l2eaud8mt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
