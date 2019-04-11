@@ -127,7 +127,7 @@ var app = {
     onNotification: function (e) {
 
         //$("#app-status-ul").append('<li>onNotification -> event:' + e.event + "</li>");
-        alert(e.event);
+        navigator.notification.alert(e.event, function () { }, "BCP Error");
         switch (e.event) {
             case 'registered':
                 if (e.regid.length > 0) {
@@ -204,7 +204,7 @@ var app = {
                 //$("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
                 window.localStorage["SystemOperation"] = device.platform.toUpperCase();
                 if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos') {
-                    xxxxx
+                    
                     pushNotification.register(this.successHandler, this.errorHandler, {
                         //"senderID": "1052124741578",
                         "senderID": "653317226796",
