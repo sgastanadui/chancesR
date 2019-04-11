@@ -32,11 +32,12 @@
             overflow: hidden;
         }
 
-        a:link{
-            text-decoration:none;
+        a:link {
+            text-decoration: none;
         }
-        td tr{
-            border:none;
+
+        td tr {
+            border: none;
         }
 
         body {
@@ -47,7 +48,6 @@
 
         .ui-page {
             background: white;
-            
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -126,59 +126,29 @@
         <!-- /header-->
         <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;">
             <h1 id="span1">Help</h1>
+            <a href="javascript:BackButton();" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-theme="b" data-iconshadow="false" data-inline="true"></a>
         </div>
 
         <!-- /body-->
         <div data-role="content" style="background-color:white; align-content:center;">
-            <table style="border:1px solid black;" width="100%">
-                <tr>
-                    <td colspan="2">
-                        <h2 id="span1" style="color:#0065B3;font-weight:bold;">Contact US</h2>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="padding-left:10px">
-                        <a href="#">Phone</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="padding-left:10px">
-                        <a href="#">Email</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="padding-left:10px">
-                        <a href="#">Message</a>
-                    </td>
-                </tr>
+
+            <table style="width:100%;">
                 <tr>
                     <td>
-                        <br />
+                        <button class="button" type="button" id="btnMoreCoverage">
+                            <span>More Coverage</span>
+                        </button>
                     </td>
                 </tr>
             </table>
-            <table style="border: 1px solid black; padding-top:5px" width="100%">
-                <tr>
-                    <td colspan="2">
-                        <h3 id="span1" style="color:#0065B3;font-weight:bold;"><a href="#">Report an Incident</a></h3>
-                    </td>
-                </tr>
-            </table>
-            <table style="border: 1px solid black; padding-top:5px" width="100%">
-                <tr>
-                    <td colspan="2">
-                        <h3 id="span1" style="color:#0065B3;font-weight:bold;"><a href="#">More Coverage</a></h3>
-                    </td>
-                </tr>
-            </table>
-            <table style="border:1px solid black; padding-top:5px" width="100%">
+            <table style="width:100%">
                 <tr>
                     <td>
-                        <h3 id="span1" style="color:#0065B3;font-weight:bold;">FAQs</h3>
+                        <label style="color:#0065B3;font-weight:bold;"><b>FAQs</b></label>
                     </td>
                 </tr>
                 <tr>
-                    <td style="padding-top:1px">
+                    <td style="padding-top:1px;font-size:12px;">
                         <button class="accordion" style="color:white">1. How to get more insurance?</button>
                         <div class="panel">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -194,7 +164,7 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         </div>
                     </td>
-                    <script>
+                    <script type="text/javascript">
                         var acc = document.getElementsByClassName("accordion");
                         var i;
 
@@ -212,30 +182,87 @@
                     </script>
                 </tr>
             </table>
+            <div style="position:relative;width:100%;">
+                <table>
+                    <tr>
+                        <td>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
         <!-- /footer-->
-        <div data-role="footer" data-position="fixed" style="background-color:white;">
-            <table cellpadding=0 cellspacing=0 style="border: 1px solid gray" width="100%">
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#FFFFFF;color:#a1a1a9;vertical-align:middle;">
+            <table cellpadding=0 cellspacing=0 style="border: 1px solid #F2F2F2;width:100%;">
                 <tr>
-                    <td style="border: none; padding-top:5px">
+                    <td colspan="5">
+                        <table style="width:100%;">
+                            <tr>
+                                <td style="background-color:#0065B3;color:white;" align="left">
+                                    Contact Us
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width:100%;padding-botton:10px;">
+                            <tr>
+                                <td width="20%" style="font-size:10px; text-align:right">
+                                    <b>Phone:</b>
+                                </td>
+                                <td style="font-size:10px;">
+                                    863-804-6038
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width:100%;padding-right:10px;">
+                            <tr>
+                                <td width="20%" style="font-size:10px; text-align:right">
+                                    <b>Email:</b>
+                                </td>
+                                <td style="font-size:10px;">
+                                    <a>info@chancesRMIS.com</a>
+                                </td>
+                                <td width="30%"></td>
+                            </tr>
+                            <tr>
+                                <td><br /></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ihome" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
                         <center>
-                            <a href="/www/home.html"><img src="images/home1.png" /></a>
+                            <img src="images/home1.png" /><br>
+                            <label style="color:grey">Home</label>
                         </center>
                     </td>
-                    <td style="border: none; padding-top:5px">
+                    <td class="ijob" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
                         <center>
-                            <img src="images/Jobs1.png" />
+                            <img src="images/jobs1.png" /><br>
+                            <label style="color:grey">Jobs</label>
                         </center>
                     </td>
-                    <td style="border: none; padding-top:5px">
+                    <td class="itrip" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
                         <center>
                             <img src="images/trip1.png" /><br>
+                            <label style="color:grey">Trips</label>
                         </center>
                     </td>
-                    <td style="border: none; padding-top:5px">
+                    <td class="iclaim" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
                         <center>
-                            <img src="images/profile1.png" />
+                            <img src="images/box.png" /><br>
+                            <label style="color:grey">Claim</label>
+                        </center>
+                    </td>
+                    <td class="iadmin" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img src="images/admin.png" /><br>
+                            <label style="color:grey">Admin</label>
                         </center>
                     </td>
                 </tr>
@@ -249,5 +276,31 @@
     <script type="text/javascript" src="jquery/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="jquery/jquery.mobile-1.4.5.js"></script>
     <script type="text/javascript" src="scripts/encodedecode.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //***************************************
+            $(".ihome").click(function () {
+                window.location.href = 'home.html?idjob=-1&idcertificate=-1&idcontract=-1';
+            });
+            $(".ijob").click(function () {
+                window.location.href = 'job.html';
+            });
+            $(".itrip").click(function () {
+                window.location.href = 'driver-trips.html';
+            });
+            $(".iclaim").click(function () {
+                window.location.href = 'claim.html';
+            });
+            $(".iadmin").click(function () {
+                window.location.href = 'admin.html';
+            });
+            //****************************************
+        });
+    </script>
+    <script type="text/javascript">
+        function BackButton() {
+            window.location.href = 'home.html';
+        }
+    </script>
 </body>
 </html>

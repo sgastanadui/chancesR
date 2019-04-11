@@ -152,7 +152,7 @@
             var Code = window.localStorage["Code"];
             var IdCompany = window.localStorage["IdCompany"];
             var IdVendor = window.localStorage["IdVendor"];
-            var IdCertificate = window.localStorage["IdCertificate"];
+            var IdCertificate = getUrlVars()["idcer"];
             OpenFileCOI(Code, IdCertificate, IdCompany, IdVendor);
             $('#FramePDFCOI').height(getRealContentHeight() - 40);
             $("#btnGuardar").attr("disabled", "disabled");

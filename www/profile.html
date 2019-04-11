@@ -87,6 +87,57 @@
             color: #fff;
             text-align: center;
         }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        #tblContacts {
+            border-collapse: collapse;
+            table-layout: fixed;
+            width: 100%;
+        }
+
+            #tblContacts td {
+                border: solid 1px black;
+                width: 100%;
+                word-wrap: break-word;
+            }
     </style>
 </head>
 <body>
@@ -113,6 +164,7 @@
                 <tr>
                     <td width="100%">
                         <label style="font-size:20px; color:gray">Vendor's Personal Information</label>
+                        <button id="btnAddContactModal">Add Contact</button>
                     </td>
                 </tr>
             </table>
@@ -203,6 +255,56 @@
             </table>
         </div>
 
+        <div id="modalAdd" class="modal">
+            <div class="modal-content">
+                <table width="100%">
+                    <tr>
+                        <td><span class="close">&times;</span></td>
+                    </tr>
+                    <tr>
+                        <td>First Name</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="txtFirstNameContact" style="border-radius:4px;width:100%;border: 1px solid #ccc;" /></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="txtLastNameContact" style="border-radius:4px;width:100%;border: 1px solid #ccc;" /></td>
+                    </tr>
+                    <tr>
+                        <td>Cellphone Number</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="txtCellphoneContact" onkeypress="return isNumber(event)" style="border-radius:4px;width:100%;border: 1px solid #ccc;" placeholder="+(1) 000-000-000" maxlength="19" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="txtEmailContact" style="border-radius:4px;width:100%;border: 1px solid #ccc;" /></td>
+                    </tr>
+                    <tr>
+                        <td><button class="button" type="button" id="btnAddContact"><span>Add</span></button></td>
+                    </tr>
+                </table>
+                <table width="100%" id="tblContacts" style="width: 100%;">
+                    <tr>
+                        <th style="color:midnightblue">
+                            First Name
+                        </th>
+                        <th style="color:midnightblue">
+                            Last Name
+                        </th>
+                        <th style="color:midnightblue">
+                            CellPhone Number
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
         <!-- /footer-->
         <div data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#FFFFFF;color:#a1a1a9;vertical-align:middle;">
             <table cellpadding=0 cellspacing=0 style="border: 1px solid #F2F2F2;width:100%;">
@@ -250,7 +352,50 @@
     <script type="text/javascript" src="jquery/jquery.mobile-1.4.5.js"></script>
     <script type="text/javascript" src="scripts/encodedecode.js"></script>
     <script type="text/javascript">
+        function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57) && (charCode != 43 && charCode != 32) && (charCode != 40 && charCode != 41) && charCode != 45) {
+                return false;
+            }
+            return true;
+        }
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
         $(document).ready(function () {
+            $("#tblContacts").hide();
+            //****************************************
+            // Get the modal
+            var modal = document.getElementById('modalAdd');
+            // Get the button that opens the modal
+            var btn = document.getElementById("btnAddContactModal");
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            // When the user clicks the button, open the modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+            $("#txtFirstNameContact").keypress(function (event) {
+                var inputValue = event.which;
+                // allow letters and whitespaces only.
+                if (!(inputValue >= 65 && inputValue <= 90) && (inputValue != 32 && inputValue != 0) && (inputValue != 241 && inputValue != 209) && !(inputValue >= 97 && inputValue <= 122)) {
+                    event.preventDefault();
+                }
+            });
+            $("#txtLastNameContact").keypress(function (event) {
+                var inputValue = event.which;
+                // allow letters and whitespaces only.
+                if (!(inputValue >= 65 && inputValue <= 90) && (inputValue != 32 && inputValue != 0) && (inputValue != 241 && inputValue != 209) && !(inputValue >= 97 && inputValue <= 122)) {
+                    event.preventDefault();
+                }
+            });
+            //*****************************************
             //****************************************
             $('.ihome').click(function () {
                 window.location.href = 'home.html';
@@ -265,6 +410,72 @@
                 window.location.href = 'profile.html';
             });
             //****************************************
+            $("#btnAddContact").click(function () {
+                if ($('#txtFirstNameContact').val().trim() == "") {
+                    navigator.notification.alert('Enter a First Name', function () { }, "ChancesR Validation");
+                    return false;
+                }
+                if ($('#txtLastNameContact').val().trim() == "") {
+                    navigator.notification.alert('Enter a Last Name', function () { }, "ChancesR Validation");
+                    return false;
+                }
+                if ($('#txtCellphoneContact').val().trim() == "") {
+                    navigator.notification.alert('Enter a Cellphone Number', function () { }, "ChancesR Validation");
+                    return false;
+                }
+                if ($('#txtEmailContact').val().trim() == "") {
+                    navigator.notification.alert('Enter an Email', function () { }, "ChancesR Validation");
+                    return false;
+                }
+                if (!(validateEmail($("#txtEmailContact").val()))) {
+                    navigator.notification.alert('Enter a valid Email', function () { }, "ChancesR Validation");
+                    return false;
+                }
+                //****************TRANSACTION *******************
+                var input =
+                    {
+                        Code: 3456,
+                        IdCompany: 91,
+                        Nombres: $("#txtFirstNameContact").val(),
+                        Apellidos: $("#txtLastNameContact").val(),
+                        CellPhone: $("#txtCellphoneContact").val(),
+                        Email: $("#txtEmailContact").val(),
+                    };
+                //**************************************
+                $.ajax({
+                    cache: true,
+                    url: "https://services.chancesrmis.com/ServicesMobile/wcfchancesR/Contact.svc/AddContact",
+                    async: true,
+                    crossDomain: true,
+                    type: "POST",
+                    data: JSON.stringify(input),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "Basic " + Base64.encode("jcJizIJh4EH/e4CBrJFW+A==" + ":" + "d6jlUv9AGSgd219JJvPShA=="));
+                        xhr.setRequestHeader("X-Mobile", "false");
+                        $('#loader').show();
+                    },
+                    error: function (xhr, textStatus, err) {
+                        var mensaje = "readyState: " + xhr.readyState + "\n";
+                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                        mensaje = mensaje + "status: " + xhr.status + "\n";
+                        mensaje = mensaje + "text status: " + textStatus + "\n";
+                        mensaje = mensaje + "error: " + err + "\n";
+                        $('#loader').hide();
+                        navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
+                    },
+                    success: function (lstObj) {
+                        navigator.notification.alert('Contact Added Successfully', function () { }, "ChancesR Confirmation");
+                        var appendhtml = "<tr><td>" + $("#txtFirstNameContact").val() + "</td><td>" + $("#txtLastNameContact").val() + "</td><td>" + $("#txtCellphoneContact").val() + "</td></tr>";
+                        $("#tblContacts").show();
+                        $("#tblContacts").append(appendhtml);
+                    },
+                    complete: function () {
+                        $('#loader').hide();
+                    }
+                });
+            });
             //****************************************
             var input =
                 {
@@ -275,7 +486,7 @@
             //**************************************
             $.ajax({
                 cache: true,
-                url: "https://services.chancesrmis.com/wcfchancesR/Vendor.svc/GetProfileVendor",
+                url: "https://services.chancesrmis.com/ServicesMobile/wcfchancesR/Vendor.svc/GetProfileVendor",
                 async: true,
                 crossDomain: true,
                 type: "POST",
@@ -297,15 +508,14 @@
                     navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
                 },
                 success: function (lstObj) {
-                    //alert('entro');
                     if (lstObj.GetProfileVendorResult.length > 0) {
-                        var vName = lstObj.GetProfileVendorResult[0].VendorName;
-                        var vFederalId = lstObj.GetProfileVendorResult[0].FederalId;
-                        var vAdress = lstObj.GetProfileVendorResult[0].Adress;
-                        var vPhone = lstObj.GetProfileVendorResult[0].Phone;
-                        var cName = lstObj.GetProfileVendorResult[0].ContactName;
-                        var cEmail = lstObj.GetProfileVendorResult[0].ContactEmail;
-                        var cPhone = lstObj.GetProfileVendorResult[0].ContactPhone;
+                        var vName = lstObj.GetProfileVendorResult.VendorName;
+                        var vFederalId = lstObj.GetProfileVendorResult.FederalId;
+                        var vAdress = lstObj.GetProfileVendorResult.Adress;
+                        var vPhone = lstObj.GetProfileVendorResult.Phone;
+                        var cName = lstObj.GetProfileVendorResult.ContactName;
+                        var cEmail = lstObj.GetProfileVendorResult.ContactEmail;
+                        var cPhone = lstObj.GetProfileVendorResult.ContactPhone;
                         document.getElementById("lblVendorName").innerHTML = vName;
                         document.getElementById("lblFederalId").innerHTML = vFederalId;
                         document.getElementById("lblVendorAddress").innerHTML = vAdress;

@@ -7,55 +7,70 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "io.cordova.myappa0a227"
-        },
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "io.cordova.myappa0a227"
-        },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "io.cordova.myappa0a227"
-        },
-        "cordova-plugin-media": {
-            "KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE": "NO",
-            "PACKAGE_NAME": "io.cordova.myappa0a227"
-        },
-        "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "io.cordova.myappa0a227"
-        },
-        "cordova-plugin-dialogs": {
-            "PACKAGE_NAME": "io.cordova.myappa0a227"
-        },
-        "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "io.cordova.myappa0a227"
-        },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "io.cordova.myappa0a227"
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "com.chancesr.app"
         },
         "cordova-plugin-battery-status": {
-            "PACKAGE_NAME": "com.chancesR.mobile"
+            "PACKAGE_NAME": "com.chancesr.app"
         },
         "cordova-plugin-camera": {
             "CAMERA_USAGE_DESCRIPTION": " ",
             "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
-            "PACKAGE_NAME": "com.chancesR.mobile"
+            "PACKAGE_NAME": "com.chancesr.app"
+        },
+        "cordova-plugin-customconfigparameters": {
+            "PACKAGE_NAME": "com.chancesr.app"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.chancesr.app"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.chancesr.app"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.chancesr.app"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.chancesr.app"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.chancesr.app"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.chancesr.app"
+        },
+        "cordova-plugin-media": {
+            "KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE": "NO",
+            "PACKAGE_NAME": "com.chancesr.app"
         },
         "cordova-plugin-media-capture": {
             "CAMERA_USAGE_DESCRIPTION": " ",
             "MICROPHONE_USAGE_DESCRIPTION": " ",
             "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
-            "PACKAGE_NAME": "com.chancesR.mobile"
+            "PACKAGE_NAME": "com.chancesr.app"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.chancesr.app"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.chancesr.app"
         },
         "cordova-plugin-vibration": {
-            "PACKAGE_NAME": "com.chancesR.mobile"
+            "PACKAGE_NAME": "com.chancesr.app"
         },
-        "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "com.chancesR.mobile"
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.chancesr.app"
+        },
+        "cordova-support-google-services": {
+            "PACKAGE_NAME": "com.chancesr.app"
+        },
+        "phonegap-plugin-multidex": {
+            "PACKAGE_NAME": "com.chancesr.app"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.chancesR.mobile"
+            "PACKAGE_NAME": "com.chancesr.app"
         }
     }
 }

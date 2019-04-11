@@ -1,0 +1,28 @@
+{
+  "android": {
+    "debug": {
+      "keystore": "C:\\ENIGMA\\ChanceRMobile\\ChancesR\\InsightERTMobile.keystore",
+      "storePassword": "@Santiago2015.",
+      "alias": "business",
+      "password": "@Santiago2014.",
+      "keystoreType": ""
+    },
+    "release": {
+      "keystore": "C:\\ENIGMA\\ChanceRMobile\\ChancesR\\InsightERTMobile.keystore",
+      "storePassword": "@Santiago2015.",
+      "alias": "business",
+      "password": "@Santiago2014.",
+      "keystoreType": ""
+    }
+  },
+  "ios": {
+    "debug": {
+      "developmentTeam": "MyTeamID"
+    },
+    "release": {
+      "developmentTeam": "MyTeamID",
+      "codeSignIdentity": "iPhone Developer",
+      "packageType": "ad-hoc"
+    }
+  }
+}

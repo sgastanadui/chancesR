@@ -1,0 +1,332 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.css" />
+    <link rel="stylesheet" type="text/css" href="css/set1.css" />
+    <script src="jquery/jquery.tablesorter.min.js"></script>
+    <title>Driver Accept</title>
+    <style>
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            display: inline-block;
+            padding: 0 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            width: 250px;
+            background: #0065B3;
+            background: -webkit-gradient(linear, 0 0, 0 70%, from(#0065B3), to(#0065B3));
+            background: linear-gradient(#0065B3, #0065B3 70%);
+            border: 1px solid #C97917;
+            font-size: 0.8em;
+            font-weight: 200;
+            font-family: Tahoma, Arial, Helvetica;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-shadow: 0 -1px 0 #0065B3;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+            .custom-file-upload:hover {
+                background-color: #0065B3;
+                color: #FFFFFF;
+            }
+
+        html, body, div[data-role ="page"] {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .ui-content {
+            max-height: 100%;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+            background-size: 100% 100%;
+            min-height: 100%;
+        }
+
+        .table_m_der {
+            border: solid #b3d1e7 1px;
+            border-collapse: collapse;
+        }
+
+        a {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        #tblTrips {
+            border-collapse: collapse;
+            table-layout: fixed;
+            width: 100%;
+        }
+
+            #tblTrips th {
+                border: solid 1px black;
+                width: 60%;
+                word-wrap: break-word;
+                background: #0065B3;
+                color: white;
+                font-size: 10px;
+                text-align: center;
+            }
+
+            #tblTrips td {
+                border: solid 1px black;
+                width: 60%;
+                word-wrap: break-word;
+                color: black;
+                font-size: 10px;
+                text-align: center;
+            }
+
+        /*.button {
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            display: inline-block;
+            padding: 0 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            width: 90%;
+            background: #0065B3;
+            background: -webkit-gradient(linear, 0 0, 0 70%, from(#0065B3), to(#0065B3));
+            background: linear-gradient(#0065B3, #0065B3 70%);
+            border: 1px solid #C97917;
+            font-size: 0.8em;
+            font-weight: 200;
+            font-family: Tahoma, Arial, Helvetica;
+            font-weight: bold;
+            color: #FFFFFF;
+            text-shadow: 0 -1px 0 #0065B3;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+            .button span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
+
+                .button span:after {
+                    content: '\00bb';
+                    position: absolute;
+                    opacity: 0;
+                    top: 0;
+                    right: -20px;
+                    transition: 0.5s;
+                }
+
+            .button:hover span {
+                padding-right: 25px;
+            }
+
+                .button:hover span:after {
+                    opacity: 1;
+                    right: 0;
+                }*/
+    </style>
+</head>
+<body>
+    <div data-role="page" id="driver-accept" data-title="Driver" data-url="driver">
+        <!-- /header-->
+        <div data-role="header" data-position="fixed" style="background-color:#0065B3;color:white;">
+            <h1 id="span1">Trip Information</h1>
+            <a href="javascript:history.back(1);" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-theme="b" data-iconshadow="false" data-inline="true"></a>
+        </div>
+
+        <!-- /body-->
+        <div data-role="content" style="background-color:white; padding-left:0; padding-right:0;">
+            <table style="width:100%;text-align:center">
+                <tr>
+                    <td>
+                        <span class="input input--hoshi">
+                            <input class="input__field input__field--hoshi" type="text" placeholder="Order No." readonly="readonly" id="txtOrderNo" />
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="input-6">
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="input input--hoshi">
+                            <input class="input__field input__field--hoshi" type="text" readonly="readonly" placeholder="Route No." id="txtRouteNo" />
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="input-6">
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="input input--hoshi">
+                            <input class="input__field input__field--hoshi" type="text" readonly="readonly" placeholder="Status" id="txtStatus" />
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="input-6">
+                            </label>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <span class="input input--hoshi">
+                            <input class="input__field input__field--hoshi" type="text" readonly="readonly" placeholder="Load Description" id="txtLoadDescription" />
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="input-6">
+                            </label>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:10px;text-align:center;padding-left:15px;padding-right:20px;width:100%" colspan="3">
+                        <textarea id="txtRequirements" placeholder="Requirements" readonly="readonly" style="width: 100%; height: 55px; margin: 0px;"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <span class="input input--hoshi">
+                            <input class="input__field input__field--hoshi" type="text" readonly="readonly" placeholder="Pickup Address" id="txtPickupAddress" />
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="input-6">
+                            </label>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <span class="input input--hoshi">
+                            <input class="input__field input__field--hoshi" readonly="readonly" type="text" placeholder="Delivery Address" id="txtDeliveryAddress" />
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="input-6">
+                            </label>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span class="input input--hoshi">
+                            <input class="input__field input__field--hoshi" readonly="readonly" type="text" placeholder="Pickup Date" id="txtPickupDate" />
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="input-6">
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="input input--hoshi">
+                            <input class="input__field input__field--hoshi" readonly="readonly" type="text" placeholder="Time" id="txtPickupTime" />
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="input-6">
+                            </label>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <span class="input input--hoshi">
+                            <input class="input__field input__field--hoshi" readonly="readonly" type="text" placeholder="Delivery Date" id="txtDeliveryDate" />
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="input-6">
+                            </label>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="input input--hoshi">
+                            <input class="input__field input__field--hoshi" readonly="readonly" type="text" placeholder="Time" id="txtDeliveryTime" />
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="input-6">
+                            </label>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size:10px;text-align:center;padding-left:15px;padding-right:20px;width:100%" colspan="3">
+                        <textarea id="txtInstructions" placeholder="Instructions" readonly="readonly" style="width: 100%; height: 70px; margin: 0px;"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <div id="divAccept">
+                <table style="width:100%;text-align:center">
+                    <tr>
+                        <td colspan="3" style="text-align:left;font-size:10px">
+                            <hr />
+                            If you press Accept, you agree to allow us to monitor your driving activity at all times when you are transporting our merchandise. We agree not to start any monitoring until you press "Start" in the app.
+                            <hr />
+                        </td>
+                    </tr>
+                </table>
+                <table style="width:100%; text-align:center">
+                    <tr>
+                        <td align="center"><input type="button" class="btn_Login" id="btnAccept" value="Accept" style="background-color:#0065B3;color:white" /></td>
+                        <td align="center"><input type="button" class="btn_Login" id="btnReject" value="Reject" style="background-color:red;color:white" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- /footer-->
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false" style="background-color:#FFFFFF;color:#a1a1a9;vertical-align:middle;">
+            <table cellpadding=0 cellspacing=0 style="border: 1px solid #F2F2F2;width:100%;">
+                <tr>
+                    <td class="ihome" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img id="imgHome" src="images/home-black.png" /><br>
+                            <label id="lblHome" style="color:grey">Home</label>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <script type="text/javascript" src="scripts/PushNotification.js"></script>
+    <script type="text/javascript" src="jquery/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="jquery/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="scripts/encodedecode.js"></script>
+    <script type="text/javascript" src="scripts/common.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnAccept").click(function () {
+                window.location.href = 'driver-main.html';
+            });
+            $("#btnReject").click(function () {
+                window.location.href = 'driver-main.html';
+            });
+            //****************************************
+            $(".ihome").click(function () {
+                window.location.href = 'driver-main.html';
+            });
+            //****************************************
+            $("#txtPickupAddress").click(function () {
+                window.open('https://www.google.com/maps/place/1855+Griffin+Rd,+Dania+Beach,+FL+33004,+EE.+UU./@26.0598038,-80.1636643,17z/data=!3m1!4b1!4m5!3m4!1s0x88d9aa6bc9e7c5ff:0xc706e539518cf6f2!8m2!3d26.0598038!4d-80.1614756');
+            });
+            $("#txtDeliveryAddress").click(function () {
+                window.open('https://www.google.com/maps/place/4757+The+Grove+Dr,+Windermere,+FL+34786/@28.4923282,-81.51254,17z/data=!3m1!4b1!4m5!3m4!1s0x88e77f56d4df24ef:0xb33366b1c8b48a3a!8m2!3d28.4923235!4d-81.5103513');
+            });
+            //****************************************
+            $("#txtPickupAddress").css('color', 'blue');
+            $("#txtPickupAddress").css('text-decoration', 'underline');
+            $("#txtDeliveryAddress").css('color', 'blue');
+            $("#txtDeliveryAddress").css('text-decoration', 'underline');
+            //****************************************
+            $("#imgTrip").attr('src', 'images/trip-blue.png');
+            $("#lblTrip").css('color', '#00C6FF');
+            //****************************************
+            $("#txtOrderNo").val('FEX-4356789');
+            $("#txtRouteNo").val('34');
+            $("#txtStatus").val('Pending');
+            $("#txtLoadDescription").val('98 loads of romaine lettuce');
+            $("#txtRequirements").val('At least 44´ refrigerated container and humidity cotroller');
+            $("#txtPickupAddress").val('1855 Griffin Road, Dania Beach, FL');
+            $("#txtDeliveryAddress").val('4757 The Grove Drive, Dania Beach, FL');
+            $("#txtPickupDate").val('15/12/2018');
+            $("#txtDeliveryDate").val('16/12/2018');
+            $("#txtPickupTime").val('10:00 A.M');
+            $("#txtDeliveryTime").val('3:45 P.M');
+            $("#txtInstructions").val('When you arrive to destination, please ask for Fresh Product Deliveries dock at the gate. The security officer will provide you with directions.');
+        });
+    </script>
+</body>
+</html>

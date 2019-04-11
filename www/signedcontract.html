@@ -262,11 +262,12 @@
         var arr = new Array();
         var reviewed = 0;
         $(document).ready(function () {
-            alert(window.localStorage["DocumentName"]);
+            //alert(window.localStorage["DocumentName"]);
             var CodeCompany = window.localStorage["Code"];//"3456";
-            var IdContract = window.localStorage["IdContract"];//3797;
+            var IdContract = getUrlVars()["idcon"];//3797;
             var IdVendor = window.localStorage["IdVendor"];//1268;
             var IdCompany = window.localStorage["IdCompany"];//91;
+            //alert(CodeCompany + ' - ' + IdContract + ' - ' + IdVendor + ' - ' + IdCompany);
             OpenFileContract(CodeCompany, IdContract, IdVendor, IdCompany);
             $('#FramePDF').height(getRealContentHeight() - 40);
             //$('.ui-content').css('background-image','url(Image/timer.png)');
@@ -334,15 +335,16 @@
                     CodeCompany: window.localStorage["Code"],
                     IdVendor: window.localStorage["IdVendor"],
                     IdCompany: window.localStorage["IdCompany"],
-                    IdJob: window.localStorage["IdJob"],
-                    IdContractType: window.localStorage["IdContractType"],
+                    IdJob: 1661,//window.localStorage["IdJob"],
+                    IdContractType: 40,//window.localStorage["IdContractType"],
                     SigneNameVendor: $("#txtSigneeName").val(),
                     TitleVendor: $("#txtTitleSignee").val(),
                     Signed: 0
                 };
                 //@IdVendor=939,@IdCompany=91,@IdJob=1157,@IdContractType=39
                 //@IdVendor=1125,@IdCompany=91,@IdJob=1661,@IdContractType=40
-                //alert({Entity: ETemplateContract });
+                //alert(JSON.stringify({ Entity: ETemplateContract }));
+                //navigator.notification.alert(JSON.stringify({ Entity: ETemplateContract }), function () { }, "ChancesR Error");
                 //**************************************
                 $.ajax({
                     cache: true,
@@ -411,7 +413,8 @@
                             //*****************************
                             $("#btnNext").click();
                             //*****************************
-                        } else {
+                        }
+                        else {
                             //*****************************
                             navigator.notification.alert('Federal ID no found', function () { }, "ChancesR Validation");
                             //*****************************
@@ -645,7 +648,7 @@
                 UserRegister: window.localStorage["IdContract"],
                 IdContractBoth: 0
             };
-            alert(JSON.stringify(input));
+            //alert(JSON.stringify(input));
             $.ajax({
                 cache: true,
                 url: "https://services.chancesrmis.com/ServicesMobile/wcfchancesR/ContractSigned.svc/ReviewedContract",

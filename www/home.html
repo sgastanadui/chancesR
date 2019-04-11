@@ -1,17 +1,63 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <!--<meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://services.chancesrmis.com/wcfchancesR/CertificateOfInsurance.svc/GetInformation 'unsafe-eval' 'unsafe-inline'; default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
     <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-
+    <!--<meta name="apple-mobile-web-app-capable" content="yes">-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="jquery/jquery.mobile-1.4.5.css" />
-    <!--<link rel="stylesheet" type="text/css" href="css/set1.css" />-->
-    <title></title>
+    <link rel="apple-touch-icon" href="icon.png">
+    <title>Home</title>
+    <style type="text/css">
+
+        #trips, #map-canvas, #map-canvas2 {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
     <style type="text/css">
 
         .ui-page {
@@ -82,38 +128,53 @@
                     right: 0;
                 }
 
-        .cl {
-            width: 93% !important;
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-weight: bold;
         }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
     </style>
+    <script type="text/javascript">
+
+
+    </script>
 </head>
 <body>
     <div data-role="page" id="home" data-title="home">
         <!-- /header -->
-        <div data-role="header" data-position="fixed">
-
+        <div id="header" data-position="fixed" data-role="header" style="background-color:white; text-align:center">
+            <img src="images/LogoHome.PNG" style="width:150px; height:40px; text-align:center" />
+            <a href="#home" id="btnBack" style="display:none" class="close" data-role="button" data-icon="arrow-l" data-iconpos="notext" data-theme="b" data-iconshadow="false" data-inline="true"></a>
         </div>
 
         <!-- /body -->
-        <div data-role="content">
-            <table width="93%">
-                <tr style="width:93%">
-                    <td colspan="2" align="right">
-                        <button class="button" type="button" style="width:30%" id="btnHelp">
+        <div data-role="content" id="content" style="background-color:white; padding-left:0; padding-right:0;text-align:center">
+            <table style="width:100%;text-align:center;">
+                <tr>
+                    <td style="text-align:right;" align="right" colspan="2">
+                        <button class="button" type="button" style="width:120px" id="btnHelp">
                             <span>Help</span>
                         </button>
                     </td>
                 </tr>
                 <tr>
-                    <td width="50%" style="padding-left:20px;">
-                        <label style="color:black"><b>CRM Compliance:</b></label>
+                    <td style="text-align:center;font-size:14px;color:black" width="50%">
+                        <b>CRM Compliance:</b>
                     </td>
-                    <td width="50%">
+                    <td style="text-align:right;font-size:14px" width="50%">
                         <div id="CRMYes" hidden="hidden">
-                            <table>
+                            <table style="width:100%">
                                 <tr>
                                     <td>
-                                        <input type="text" id="txtYES" readonly value="Yes" style="color:limegreen;text-align:center;font-weight:bold;" />
+                                        <label style="font-size:14px;color:limegreen;text-align:center;font-weight:bold;width:100%" id="txtYES">Yes</label>
                                     </td>
                                     <td>
                                         <img src="images/check.png" />
@@ -122,10 +183,10 @@
                             </table>
                         </div>
                         <div id="CRMNo" hidden="hidden">
-                            <table>
+                            <table style="width:100%">
                                 <tr>
                                     <td>
-                                        <label style="color:red;text-align:center;font-weight:bold;">No</label>
+                                        <label style="font-size:14px;color:red;text-align:center;font-weight:bold;width:100%" id="txtNo">No</label>
                                     </td>
                                     <td>
                                         <img src="images/X.png" />
@@ -135,71 +196,97 @@
                         </div>
                     </td>
                 </tr>
+            </table>
+            <table style="width:100%;">
                 <tr>
-                    <td align="left" colspan="2">
-                        <div>
-                            <table width="93%" style="padding-left:20px;">
+                    <td style="color:royalblue;font-size:14px;">
+                        <br />
+                        <hr />
+                        <label style="text-align:left"><b>JOB:</b></label>
+                        <label id="IdJob" style="display:none"></label>
+                        <label id="lblJob" style="color:gray;font-size:14px;text-align:center"></label>
+                        <hr />
+                    </td>
+                </tr>
+            </table>
+            <table style="width:100%">
+                <tr>
+                    <td style="background-color:white;color:red;font-size:14px" align="left" colspan="2">
+                        <div id="divContract">
+                            <table style="width:100%">
                                 <tr>
                                     <td>
-                                        <label style="color:royalblue;font-weight:bold">JOB:</label>
+                                        <b>Contract Deficiencies</b>
                                     </td>
-                                    <td>
-                                        <label id="lblJob" style="color:black;font-weight:bold"></label>
+                                    <td style="text-align:right;" align="right">
+                                        <button class="button" style="width:120px" type="button" onclick="OpenArchiveContract();" id="btnContract">
+                                            <span>Contract</span>
+                                        </button>
+                                        </tdstyle="text-align:right;">
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="padding-left:3%;">
+                                        <div style="border-bottom:1px solid silver;width:90%">
+                                            <table style="width:100%">
+                                                <tr>
+                                                    <td style="width:100%">
+                                                        <select id="ddlContract" style="border:none;" data-role="none"></select>
+                                                    </td>
+                                                    <td style="color:silver;width:5%;" onclick="ToClickSelect();">
+                                                        ▼
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div>
+                                            <table style="width:100%" id="DeficiencesContract"></table>
+                                        </div>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                     </td>
                 </tr>
+            </table>
+            <table style="width:100%">
                 <tr>
-                    <td colspan="2">
-                        <div id="divContract">
-                            <table style="width:93%">
-                                <tr>
-                                    <td style="width:70%;padding-left:20px;">
-                                        <label style="color:red;font-weight:bold;font-size:large">Contract Deficiences</label>
-                                    </td>
-                                    <td style="width:30%">
-                                        <button class="button" type="button" onclick="OpenArchiveContract();" id="btnContract">
-                                            <span>Contract</span>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <select id="ddlContract" class="cl" style="color:black;"></select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div>
-                                            <table width="93%" id="DeficiencesContract"></table>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
+                    <td style="background-color:white;color:red;font-size:14px" align="left" colspan="2">
                         <div id="divInsurance">
-                            <table style="width:93%">
+                            <table style="width:100%">
                                 <tr>
-                                    <td style="width:8¡70%;padding-left:20px;padding-top:3%;">
-                                        <label style="color:red;font-weight:bold;font-size:large">Insurance Deficiences</label>
+                                    <td>
+                                        <b>Insurance Deficiences</b>
                                     </td>
-                                    <td style="width:30%;content-align:left;">
-                                        <button class="button" type="button" onclick="OpenArchiveCOI();" id="btnCOI">
+                                    <td style="text-align:right;" align="right">
+                                        <button class="button" type="button" style="width:120px" onclick="OpenArchiveCOI();" id="btnCOI">
                                             <span>COI</span>
                                         </button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">
-                                        <select id="ddlCertificates" class="cl" style="color:black;"></select>
+                                    <td colspan="2" style="padding-left:3%;">
+                                        <div style="border-bottom:1px solid silver;width:90%;">
+                                            <table style="width:100%">
+                                                <tr>
+                                                    <td style="width:95%">
+                                                        <select id="ddlCertificates" style="border:none;" data-role="none"></select>
+                                                    </td>
+                                                    <td style="color:silver;width:5%;">
+                                                        ▼
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                         <div id="divGeneral" hidden="hidden">
-                            <table width="93%">
+                            <table style="width:100%">
                                 <tr>
                                     <td style="width:20px"></td>
                                     <td style="padding-top:3%">
@@ -216,7 +303,7 @@
                             </table>
                         </div>
                         <div id="divProducer" hidden="hidden">
-                            <table width="93%">
+                            <table style="width:100%">
                                 <tr>
                                     <td style="width:20px"></td>
                                     <td style="padding-top:3%">
@@ -233,7 +320,7 @@
                             </table>
                         </div>
                         <div id="divInsuredName" hidden="hidden">
-                            <table width="93%">
+                            <table style="width:100%">
                                 <tr>
                                     <td style="width:20px"></td>
                                     <td style="padding-top:3%">
@@ -250,7 +337,7 @@
                             </table>
                         </div>
                         <div id="divInsuredRatings" hidden="hidden">
-                            <table width="93%">
+                            <table style="width:93%">
                                 <tr>
                                     <td style="width:20px"></td>
                                     <td style="padding-top:3%">
@@ -267,7 +354,7 @@
                             </table>
                         </div>
                         <div id="divGeneralLiability" hidden="hidden">
-                            <table width="93%">
+                            <table style="width:93%">
                                 <tr>
                                     <td style="width:20px"></td>
                                     <td style="padding-top:3%">
@@ -284,7 +371,7 @@
                             </table>
                         </div>
                         <div id="divAutoLiability" hidden="hidden">
-                            <table width="93%">
+                            <table style="width:93%">
                                 <tr>
                                     <td style="width:20px"></td>
                                     <td style="padding-top:3%">
@@ -301,7 +388,7 @@
                             </table>
                         </div>
                         <div id="divUmbrellaLiability" hidden="hidden">
-                            <table width="93%">
+                            <table style="width:93%">
                                 <tr>
                                     <td style="width:20px"></td>
                                     <td style="padding-top:3%">
@@ -318,7 +405,7 @@
                             </table>
                         </div>
                         <div id="divWorkersCompensation" hidden="hidden">
-                            <table width="93%">
+                            <table style="width:93%">
                                 <tr>
                                     <td style="width:20px"></td>
                                     <td style="padding-top:3%">
@@ -335,7 +422,7 @@
                             </table>
                         </div>
                         <div id="divGarageKeepers" hidden="hidden">
-                            <table width="93%">
+                            <table style="width:93%">
                                 <tr>
                                     <td style="width:20px"></td>
                                     <td style="padding-top:3%">
@@ -352,7 +439,7 @@
                             </table>
                         </div>
                         <div id="divTrailerInterchange" hidden="hidden">
-                            <table width="93%">
+                            <table style="width:93%">
                                 <tr>
                                     <td style="width:20px"></td>
                                     <td style="padding-top:3%">
@@ -369,7 +456,7 @@
                             </table>
                         </div>
                         <div id="divCargoLiability" hidden="hidden">
-                            <table width="93%">
+                            <table style="width:93%">
                                 <tr>
                                     <td style="width:20px"></td>
                                     <td style="padding-top:3%">
@@ -386,7 +473,7 @@
                             </table>
                         </div>
                         <div id="divPollutionLiability" hidden="hidden">
-                            <table width="93%">
+                            <table style="width:93%">
                                 <tr>
                                     <td style="width:20px"></td>
                                     <td style="padding-top:3%">
@@ -403,7 +490,7 @@
                             </table>
                         </div>
                         <div id="divAircraftLiability" hidden="hidden">
-                            <table width="93%">
+                            <table style="width:93%">
                                 <tr>
                                     <td style="width:20px"></td>
                                     <td style="padding-top:3%">
@@ -420,7 +507,7 @@
                             </table>
                         </div>
                         <div id="divEndorsements" hidden="hidden">
-                            <table width="93%">
+                            <table style="width:93%">
                                 <tr>
                                     <td style="width:20px"></td>
                                     <td style="padding-top:3%">
@@ -436,131 +523,26 @@
                                 </tr>
                             </table>
                         </div>
+                    </td>
+                </tr>
+            </table>
+            <table style="width:100%">
+                <tr>
+                    <td style="background-color:white;color:red;font-size:14px" align="left" colspan="2">
+                        <hr />
+                        <b>Last Trip Report</b>
+                        <hr />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
                         <div>
-                            <table width="100%">
+                            <table style="width:100%">
                                 <tr>
-                                    <td style="width:20px"></td>
-                                    <td style="padding-top:3%">
-                                        <label style="color:red;font-weight:bold;font-size:large">Last Trip Report</label>
-                                    </td>
-                                </tr>
-                                <tr style="padding-top:0%">
-                                    <td></td>
-                                    <td>
-                                        <label style="color:black">No trips recorded</label>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3">
-                                        <div>
-                                            <table width="100%">
-                                                <tr>
-                                                    <td style="padding-left:20px">
-                                                        <div id="map" style="width:350px;height:300px">
-                                                            <script>
-                                                                function myMap() {
-                                                                    var mapOptions = {
-                                                                        center: new google.maps.LatLng(51.5, -0.12),
-                                                                        zoom: 10,
-                                                                        mapTypeId: google.maps.MapTypeId.HYBRID
-                                                                    }
-                                                                    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-                                                                }
-                                                            </script>
+                                    <td style="text-align:center">
+                                        <div id="map-canvas" style="width:100%;height:200px">
 
-                                                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtTcw1C9SfDbgy2aKfOt_5N8m2Ltpqdu8&callback=myMap"></script>
-                                                    </td>
-                                                </tr>
-                                            </table>
                                         </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div>
-                            <table width="100%">
-                                <tr>
-                                    <td align="right" style="width:50%">
-                                        <label style="font-size:x-large;color:black;"><b>Succesful trip:</b></label>
-                                    </td>
-                                    <td style="width:50%">
-                                        <div id="TripYes" hidden="hidden">
-                                            <input type="text" id="txtYES" readonly value="Yes" style="color:limegreen;text-align:center;width:60px;font-weight:bold;font-size:x-large" />
-                                            <img src="images/check.png" />
-                                        </div>
-                                        <div id="TripNo">
-                                            <label style="color:red;text-align:center;width:60px;font-weight:bold;font-size:x-large">No</label>
-                                            <img src="images/X.png" />
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div>
-                            <table width="100%">
-                                <tr>
-                                    <td width="50%" style="padding-left:20px">
-                                        <label style="color:red;font-weight:bold;font-size:large">Problems</label>
-                                    </td>
-                                    <td width="50%"></td>
-                                </tr>
-                                <tr>
-                                    <td width="20%" style="padding-left:20px">
-                                        <label style="font-size:large;color:black;"><b>* Delayed</b></label>
-                                    </td>
-                                    <td width="50%" align="left">
-                                        <label style="color:black">"X" hrs</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="20%" style="padding-left:20px">
-                                        <label style="font-size:large;color:black;"><b>* Speeding</b></label>
-                                    </td>
-                                    <td width="50%" align="left">
-                                        <label style="color:black">Over "X" mph</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="20%" style="padding-left:20px">
-                                        <label style="font-size:large;color:black;"><b>* Texting</b></label>
-                                    </td>
-                                    <td width="50%" align="left">
-                                        <label style="color:black">"X" times</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="20%" style="padding-left:20px">
-                                        <label style="font-size:large;color:black;"><b>* Phone Talking</b></label>
-                                    </td>
-                                    <td width="50%" align="left">
-                                        <label style="color:black">"X" minutes</label>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div>
-                            <table width="100%">
-                                <tr>
-                                    <td style="padding-left:20px">
-                                        <label style="color:red;font-weight:bold;font-size:large">Comments</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="padding-left:20px">
-                                        <input type="text" style="width:330px;height:130px" />
                                     </td>
                                 </tr>
                             </table>
@@ -568,6 +550,139 @@
                     </td>
                 </tr>
             </table>
+            <table style="width:100%;text-align:center;">
+                <tr>
+                    <td style="text-align:center;font-size:14px;color:black" width="50%">
+                        <br />
+                        <b>Succesful Trip:</b>
+                        <br />
+                    </td>
+                    <td style="text-align:right;font-size:14px" width="50%">
+                        <div id="TripYes">
+                            <table style="width:100%">
+                                <tr>
+                                    <td>
+                                        <label style="font-size:14px;color:limegreen;text-align:center;font-weight:bold;width:100%" id="txtYEST">Yes</label>
+                                    </td>
+                                    <td>
+                                        <img src="images/check.png" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="TripNo" hidden="hidden">
+                            <table style="width:100%">
+                                <tr>
+                                    <td>
+                                        <label style="font-size:14px;color:red;text-align:center;font-weight:bold;width:100%" id="txtNoT">No</label>
+                                    </td>
+                                    <td>
+                                        <img src="images/X.png" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table style="width:100%">
+                <tr>
+                    <td style="background-color:white;color:red;font-size:16px" align="left" colspan="2">
+                        <table style="width:100%">
+                            <tr>
+                                <td>
+                                    <hr />
+                                    Problems
+                                    <hr />
+                                </td>
+                            </tr>
+                        </table>
+                        <table style="width:100%">
+                            <tr>
+                                <td><b><label style="color:black;text-align:left">Delayed</label></b></td>
+                                <td><label id="lblDelayed" style="color:black">"4" hours</label></td>
+                            </tr>
+                            <tr>
+                                <td><b><label style="color:black">Speeding</label></b></td>
+                                <td><label id="lblSpeeding" style="color:black">Over "1500" mph</label></td>
+                            </tr>
+                            <tr>
+                                <td><b><label style="color:black">Texting</label></b></td>
+                                <td><label id="lblTexting" style="color:black">"6" times</label></td>
+                            </tr>
+                            <tr>
+                                <td><b><label style="color:black">Phone Talking</label></b></td>
+                                <td><label id="lblPhoneTalking" style="color:black">"2" minutes</label></td>
+                            </tr>
+                        </table>
+                        <table style="width:100%">
+                            <tr>
+                                <td>
+                                    Corrective Action
+                                </td>
+                                <td style="text-align:right;" align="right">
+                                    <button class="button" style="width:120px" type="button" id="btnCorrective">
+                                        <span>Explain</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div id="Corrective">
+                            <table id="tabCorrective" style="width:100%"></table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div id="modalCorrective" class="modal">
+                <div class="modal-content">
+                    <table style="width:100%">
+                        <tr>
+                            <td style="background-color:#0065B3;color:white;" align="center" colspan="2">
+                                Corrective Action
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width:100%;color:black">
+                        <tr>
+                            <td style="font-size:10px;color:#0065B3;text-align:right;width:100px">
+                                <b>Problem:</b>
+                            </td>
+                            <td>
+                                <select id="ddlProblem">
+                                    <option id="opt1">Select</option>
+                                    <option id="opt2">Delayed</option>
+                                    <option id="opt3">Speeding</option>
+                                    <option id="opt4">Texting</option>
+                                    <option id="opt5">Phone Talking</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-size:10px;color:#0065B3;text-align:right">
+                                <b>Corrective Action:</b>
+                            </td>
+                            <td>
+                                <textarea id="txtCorrectiveActions" placeholder="Corrective Action" readonly="readonly" style="width: 180px; height: 55px; margin: 0px;"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width:100%;color:black;">
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="button" onclick="btnSaveOnClick();" value="Save" style="background-color:cornflowerblue;color:black" id="btnSave" />
+                            </td>
+                            <td>
+                                <input type="button" class="close" value="Close" style="background-color:red;color:black;" id="btnCancel" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
 
         <!-- /footer -->
@@ -576,32 +691,59 @@
                 <tr>
                     <td class="ihome" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
                         <center>
-                            <img src="images/home1.png" /><br>
-                            <label style="color:grey">Home</label>
+                            <img id="imgHome" src="images/home-black.png" /><br>
+                            <label id="lblHome" style="color:grey">Home</label>
                         </center>
                     </td>
-                    <td class="ijobs" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                    <td class="ijob" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
                         <center>
-                            <img src="images/jobs1.png" /><br>
+                            <img src="images/job-black.png" /><br>
                             <label style="color:grey">Jobs</label>
                         </center>
                     </td>
                     <td class="itrip" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
                         <center>
-                            <img src="images/trip1.png" /><br>
+                            <img src="images/trip-black.png" /><br>
                             <label style="color:grey">Trips</label>
                         </center>
                     </td>
-                    <td class="iprofile" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                    <td class="iclaim" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
                         <center>
-                            <img src="images/profile1.png" /><br>
-                            <label style="color:grey">Profile</label>
+                            <img id="imgClaim" src="images/claim-black.png" /><br>
+                            <label id="lblClaim" style="color:grey">Claim</label>
+                        </center>
+                    </td>
+                    <td class="iadmin" style="border: none;font-size:0.7em;font-weight: normal;padding-top:5px">
+                        <center>
+                            <img id="imgAdmin" src="images/admin-black.png" /><br>
+                            <label id="lblAdmin" style="color:grey">Admin</label>
                         </center>
                     </td>
                 </tr>
             </table>
         </div>
     </div>
+
+    <div id="FullScreen" style="display:none">
+        <table style="width:100%">
+            <tr>
+                <td colspan="3">
+                    <div>
+                        <table style="width:100%">
+                            <tr>
+                                <td>
+                                    <div id="map-canvas2" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; width:100%; height:100%">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Div Loading -->
     <div id="loader" style="display:none;">
         <div id="center">
             <img src="images/ajax-loader.gif" />
@@ -610,12 +752,289 @@
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
     <script type="text/javascript" src="scripts/PushNotification.js"></script>
     <script type="text/javascript" src="jquery/jquery-2.1.3.min.js"></script>
-    <script type="text/javascript" src="jquery/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="jquery/jquery.mobile-1.4.5.min.js"></script>
     <script type="text/javascript" src="scripts/encodedecode.js"></script>
     <script type="text/javascript" src="scripts/common.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtTcw1C9SfDbgy2aKfOt_5N8m2Ltpqdu8"></script>
+
     <script type="text/javascript">
+
+        //***************************************
+        var oldpath;
+        var lastIndx = 0;
+        var arr = new Array();
+        var map;
+        var map2;
+        var apiServices = app.getapiServices();
+        //***************************************
+
+        window.onload = function () {
+            //*********************************
+            GetTrips("3456", 983, -1);
+            //*********************************
+        }
+
+        function GetTrips(Code, IdCompany, IdContact) {
+            var Longitude;
+            var Latitude;
+            var arr = new Array();
+
+            var input = {
+                Code: Code,
+                IdCompany: IdCompany,
+                IdContact: IdContact
+            };
+
+            $.ajax({
+                cache: true,
+                url: apiServices + "Trips.svc/GetTrips",
+                async: true,
+                crossDomain: true,
+                type: "POST",
+                data: JSON.stringify(input),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", "Basic " + Base64.encode("jcJizIJh4EH/e4CBrJFW+A==" + ":" + "d6jlUv9AGSgd219JJvPShA=="));
+                    xhr.setRequestHeader("X-Mobile", "false");
+                    $('#loader').show();
+                },
+                error: function (xhr, textStatus, err) {
+                    var mensaje = "readyState: " + xhr.readyState + "\n";
+                    mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                    mensaje = mensaje + "status: " + xhr.status + "\n";
+                    mensaje = mensaje + "text status: " + textStatus + "\n";
+                    mensaje = mensaje + "error: " + err + "\n";
+                    $('#loader').hide();
+                    navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
+                },
+                success: function (lstObj) {
+                    //******************************
+                    for (var i = 0; i < lstObj.GetTripsResult.length; i++) {
+                        //var arr = new Array();
+                        for (var j = 0; j < lstObj.GetTripsResult[i].Detail.length; j++) {
+                            //******************************
+                            var valueToPush = {}; // or "var valueToPush = new Object();" which is the same
+                            valueToPush["lat"] = lstObj.GetTripsResult[i].Detail[j].Latitude;
+                            valueToPush["lng"] = lstObj.GetTripsResult[i].Detail[j].Longitude;
+                            arr.push(valueToPush);
+                            //******************************
+                        }
+                        //******************************
+                        var Latitude = lstObj.GetTripsResult[0].Detail[0].Latitude;
+                        var Longitude = lstObj.GetTripsResult[0].Detail[0].Longitude;
+                        //******************************
+                        var divName = 'map-canvas';
+                        //Latitude = 27.9815483093262;
+                        //Longitude = -82.5336761474609;
+                        initialize(arr, Latitude, Longitude, divName);
+                        //******************************
+                    }
+                },
+                complete: function () {
+                    $('#loader').hide();
+                }
+            });
+        }
+
+        function initialize(data, mid_lat, mid_lon, nameDiv) {
+            var mapOptions = {
+                center: new google.maps.LatLng(mid_lat, mid_lon),
+                zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                backgroundColor: '#ffffff',
+                noClear: true,
+                disableDefaultUI: false,
+                keyboardShortcuts: true,
+                disableDoubleClickZoom: false,
+                draggable: true,
+                scrollwheel: true,
+                draggableCursor: 'pointer',
+                draggingCursor: 'crosshair',
+                mapTypeControl: false,
+                panControl: true,
+                fullscreenControl: true,
+                panControlOptions: {
+                    position: google.maps.ControlPosition.TOP_RIGHT
+                },
+                navigationControl: true,
+                streetViewControl: true,
+                streetViewControlOptions: {
+                    position: google.maps.ControlPosition.RIGHT_TOP
+                },
+                navigationControlOptions: {
+                    position: google.maps.ControlPosition.TOP_LEFT,
+                    style: google.maps.NavigationControlStyle.ANDROID
+                },
+                scaleControl: true,
+                zoomControlOptions: {
+                    //style: google.maps.ZoomControlStyle.LARGE,
+                    position: google.maps.ControlPosition.RIGHT_TOP
+                }
+            };
+
+            map = new google.maps.Map(document.getElementById(nameDiv), mapOptions);
+            map2 = new google.maps.Map(document.getElementById('map-canvas2'), mapOptions);
+
+            google.maps.event.addListenerOnce(map, 'idle', function () {
+                main(data);
+                //autoRefresh(map);
+            });
+
+            google.maps.event.addListenerOnce(map2, 'idle', function () {
+                main(data);
+                //autoRefresh(map);
+            });
+        }
+
+        function main(data) {
+
+            // initalise directions service
+            var directionsService = new google.maps.DirectionsService();
+
+            var travelWaypoints = []
+            for (var i = 0; i <= data.length - 1; ++i) {
+                travelWaypoints.push({ location: new google.maps.LatLng(data[i].lat, data[i].lng) })
+            }
+
+            // get directions and draw on map
+            gDirRequest(directionsService, travelWaypoints, function drawGDirLine(path) {
+                var line = new google.maps.Polyline({ clickable: false, map: map, path: path });
+                var line2 = new google.maps.Polyline({ clickable: false, map: map2, path: path });
+                //***************************************************
+                var lineSymbol = {
+                    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+                };
+                var car = "M17.402,0H5.643C2.526,0,0,3.467,0,6.584v34.804c0,3.116,2.526,5.644,5.643,5.644h11.759c3.116,0,5.644-2.527,5.644-5.644 V6.584C23.044,3.467,20.518,0,17.402,0z M22.057,14.188v11.665l-2.729,0.351v-4.806L22.057,14.188z M20.625,10.773 c-1.016,3.9-2.219,8.51-2.219,8.51H4.638l-2.222-8.51C2.417,10.773,11.3,7.755,20.625,10.773z M3.748,21.713v4.492l-2.73-0.349 V14.502L3.748,21.713z M1.018,37.938V27.579l2.73,0.343v8.196L1.018,37.938z M2.575,40.882l2.218-3.336h13.771l2.219,3.336H2.575z M19.328,35.805v-7.872l2.729-0.355v10.048L19.328,35.805z";
+                var icon = {
+                    path: car,
+                    scale: .7,
+                    strokeColor: 'white',
+                    strokeWeight: .10,
+                    fillOpacity: 1,
+                    fillColor: '#404040',
+                    offset: '5%',
+                    anchor: new google.maps.Point(10, 25)
+                };
+                var carPolyline = new google.maps.Polyline({
+                    map: map,
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2,
+                    icons: [{
+                        icon: icon,
+                        offset: '100%'
+                    }],
+                });
+                var carPolyline = new google.maps.Polyline({
+                    map: map2,
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2,
+                    icons: [{
+                        icon: icon,
+                        offset: '100%'
+                    }],
+                });
+
+                var carPath = new google.maps.MVCArray();
+                for (var i = 0; i < path.length; i++) {
+                    if (i === 0) {
+                        carPath.push(path[i]);
+                        carPolyline.setPath(carPath);
+                    } else {
+                        setTimeout((function (latLng) {
+                            return function () {
+                                carPath.push(latLng);
+                            };
+                        })(path[i]), 300 * i);
+                    }
+                }
+                //***************************************************
+            });
+        }
+
+        function gDirRequest(service, waypoints, userFunction, waypointIndex, path) {
+            // set defaults
+
+            waypointIndex = typeof waypointIndex !== 'undefined' ? waypointIndex : 0;
+            path = typeof path !== 'undefined' ? path : [];
+
+            // get next set of waypoints
+            var s = gDirGetNextSet(waypoints, waypointIndex);
+            // build request object
+            var startl = s[0].shift()["location"];
+            var endl = s[0].pop()["location"];
+            var request = {
+                origin: startl,
+                destination: endl,
+                waypoints: s[0],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                optimizeWaypoints: false,
+                provideRouteAlternatives: false,
+                avoidHighways: false,
+                avoidTolls: false
+            };
+            service.route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    path = path.concat(response.routes[0].overview_path);
+                    oldpath = path
+                    if (s[1] != null) {
+                        lastIndx = s[1]
+                        gDirRequest(service, waypoints, userFunction, s[1], path)
+                    } else {
+                        userFunction(path);
+                    }
+
+                } else {
+                    path = oldpath;
+                    lastIndx = lastIndx + 1
+                    if (s[lastIndx] != null) {
+                        gDirRequest(service, waypoints, userFunction, lastIndx, path)
+                    }
+                    else {
+                        userFunction(path);
+                    }
+                }
+            });
+        }
+
+        function gDirGetNextSet(waypoints, startIndex) {
+            //*******************************
+            var MAX_WAYPOINTS_PER_REQUEST = 8;
+            //*******************************
+            var w = [];    // array of waypoints to return
+            //*******************************
+            if (startIndex > waypoints.length - 1) { return [w, null]; } // no more waypoints to process
+            //*******************************
+            var endIndex = startIndex + MAX_WAYPOINTS_PER_REQUEST;
+            // adjust waypoints, because Google allows us to include the start and destination latlongs for free!
+            endIndex += 2;
+            //*******************************
+            if (endIndex > waypoints.length - 1) { endIndex = waypoints.length; }
+            //*******************************
+            for (var i = startIndex; i < endIndex; i++) {
+                w.push(waypoints[i]);
+            }
+            //*******************************
+            if (endIndex != waypoints.length) {
+                return [w, endIndex -= 1];
+            } else {
+                return [w, null];
+            }
+            //*******************************
+        }
+
+        function ToClickSelect() {
+            var dropdown = document.getElementById(id);
+            showDropdown(dropdown);
+        }
 
         populateDropdownCertificates = function (data) {
             var IdCertificate, DocumentName;
@@ -628,7 +1047,6 @@
         };
 
         populateDropDownContracts = function (data) {
-            //alert('entre');
             var IdContract, DocumentName;
             IdContract = this.IdContract;
             DocumentName = this.DocumentName;
@@ -638,28 +1056,97 @@
                     .text(DocumentName));
         };
 
+        populateDropDownProblems = function (data) {
+            var Id_Problem, Description;
+            Id_Problem = this.Id_Problem;
+            Description = this.Description;
+            $("#ddlProblem")
+                .append($("<option></option>")
+                    .val(Id_Problem)
+                    .text(Description));
+        };
+
         $(document).ready(function () {
+            $("#imgHome").attr('src', 'images/home-blue.png');
+            $("#lblHome").css('color', '#00C6FF');
+            //********************************************
+            // Get the modal
+            //var modal1 = document.getElementById('FullScreen');
+            var modal = document.getElementById('modalCorrective');
+            // Get the button that opens the modal
+            var btn = document.getElementById("btnCorrective");
+            var btn1 = document.getElementById("map-canvas");
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[1];
+            var span1 = document.getElementsByClassName("close")[0];
+            // When the user clicks the button, open the modal
+            btn1.onclick = function () {
+                $("#content").hide();
+                $("#FullScreen").show();
+                $("#btnBack").show();
+                $("#header").show();
+            }
+            //// When the user clicks on <span> (x), close the modal
+            span1.onclick = function () {
+                $("#content").show();
+                $("#FullScreen").hide();
+                $("#btnBack").hide();
+            }
+            // When the user clicks the button, open the modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
             //****************************************
-            var CodeCompany = "3456";//window.localStorage["CodeCompany"];
-            var IdVendor = 1250;
-            var IdJob = -1;
-            var IdCertificate = -1;//getUrlVars()["idcertificate"];
-            var IdContract = -1;//getUrlVars()["idcertificate"];
+            //alert(window.localStorage["CodeCompany"]);
+            var CodeCompany = window.localStorage["CodeCompany"];//window.localStorage["CodeCompany"];
+            var IdCompany = window.localStorage["IdCompany"];
+            var IdContact = window.localStorage["IdContact"];
+            var IdVendor = window.localStorage["IdVendor"];
+            var IdJob = getUrlVars()["idjob"];
+            var IdCertificate = getUrlVars()["idcertificate"];//getUrlVars()["idcertificate"];
+            var IdContract = getUrlVars()["idcontract"];//getUrlVars()["idcertificate"];
+            //alert(CodeCompany + '-' + IdCompany + '-' + IdContact + '-' + IdVendor + '-' + IdJob + '-' + IdCertificate + '-' + IdContract)
             //****************************************
             $(".ihome").click(function () {
-                window.location.href = 'home.html?idjob=' + IdJob;
+                window.location.href = 'home.html?idjob=-1&idcertificate=-1&idcontract=-1';
             });
-            $(".ijobs").click(function () {
-                window.location.href = 'jobs.html?';
+            $(".ijob").click(function () {
+                window.location.href = 'job.html';
             });
             $(".itrip").click(function () {
-                window.location.href = 'trip.html';
+                window.location.href = 'trip-main.html';
             });
-            $(".iprofile").click(function () {
-                window.location.href = 'profile.html';
+            $(".iclaim").click(function () {
+                window.location.href = 'claim.html';
+            });
+            $(".iadmin").click(function () {
+                window.location.href = 'admin.html';
+            });
+            $("#btnHelp").click(function () {
+                window.location.href = 'help.html';
+            });
+            //****************************************
+            $("#btnCancelCorrective").click(function () {
+                $("#home").show();
+                $("#Corrective_Action").hide();
             });
             //****************************************
             GetCertificateOfInsurance(CodeCompany, IdVendor, IdJob, IdCertificate, IdContract);
+            //****************************************
+            GetProblems();
+            //****************************************
+            GetCorrectiveActions(CodeCompany, IdCompany, IdVendor);
+            //****************************************
+            //****************************************
+            $("#btnSaveCorrective").click(function () {
+                CorrectiveAction($("#ddlProblem").val(), $("#txtDesc").val(), CodeCompany, IdCompany, IdVendor, IdContact);
+                $("#tabCorrective").html('');
+                GetCorrectiveActions(CodeCompany, IdCompany, IdVendor);
+            });
             //****************************************
         });
 
@@ -678,17 +1165,17 @@
                 //$.support.cors = true;
                 $.ajax({
                     cache: true,
-                    type: "POST",
-                    url: "https://services.chancesrmis.com/ServicesMobile/wcfchancesR/CertificateOfInsurance.svc/GetInformation",
+                    url: apiServices + "CertificateOfInsurance.svc/GetInformation",
                     async: true,
                     crossDomain: true,
+                    type: "POST",
                     data: JSON.stringify(input),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader("Authorization", "Basic " + Base64.encode("jcJizIJh4EH/e4CBrJFW+A==" + ":" + "d6jlUv9AGSgd219JJvPShA=="));
                         xhr.setRequestHeader("X-Mobile", "false");
-                        //$('#loader').show();
+                        $('#loader').show();
                     },
                     error: function (xhr, textStatus, err) {
                         var mensaje = "readyState: " + xhr.readyState + "\n";
@@ -696,9 +1183,9 @@
                         mensaje = mensaje + "status: " + xhr.status + "\n";
                         mensaje = mensaje + "text status: " + textStatus + "\n";
                         mensaje = mensaje + "error: " + err + "\n";
-                        alert(mensaje);
-                        //$('#loader').hide();
-                        //navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
+                        //alert(mensaje);
+                        $('#loader').hide();
+                        navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
                     },
                     success: function (lista) {
                         //******************************
@@ -709,8 +1196,7 @@
                                 //******************************
                                 //alert('e');
                                 $("#lblJob").text(lista.GetInformationResult.Header.JobName);
-                                window.localStorage["IdContractType"] = lista.GetInformationResult.Header.IdContractType;
-                                window.localStorage["IdJob"] = lista.GetInformationResult.Header.IdJob;
+                                $("#IdJob").text(lista.GetInformationResult.Header.IdJob);
                                 //alert(lista.GetInformationResult.Header.IdJob);
                                 if (lista.GetInformationResult.Header.Compliance == "Ok") {
                                     $("#CRMYes").show();
@@ -775,18 +1261,11 @@
                         }
                         //alert("hi");
                         //******************************
-                        window.localStorage["Code"] = "3456";
-                        window.localStorage["IdCompany"] = 91;
-                        window.localStorage["IdVendor"] = 1250;
-
-                        window.localStorage["IdCertificate"] = parseInt($("#ddlCertificates").val());
-                        window.localStorage["IdContract"] = parseInt($("#ddlContract").val());
-                        window.localStorage["DocumentName"] = $("#ddlContract option:selected").text();
                         //alert(window.localStorage["DocumentName"]);
                         //******************************
                         $("#ddlCertificates").change(function () {
-                            var IdVendor = 1250;//window.localStorage["IdVendor"];
-                            var IdJob = -1;//getUrlVars()["idjob"];
+                            var IdVendor = window.localStorage["IdVendor"];
+                            var IdJob = $("#IdJob").text();//getUrlVars()["idjob"];
                             var IdCertificate = parseInt($("#ddlCertificates").val());
                             var IdContract = parseInt($("#ddlContract").val());
                             IdContract = (IdContract.value == null ? -1 : IdContract);
@@ -826,8 +1305,8 @@
                         });
                         //******************************
                         $("#ddlContract").change(function () {
-                            var IdVendor = 1250;//window.localStorage["IdVendor"];
-                            var IdJob = -1;//getUrlVars()["idjob"];
+                            var IdVendor = window.localStorage["IdVendor"];
+                            var IdJob = $("#IdJob").text();//getUrlVars()["idjob"];
                             var IdCertificate = parseInt($("#ddlCertificates").val());
                             var IdContract = parseInt($("#ddlContract").val());
                             IdCertificate = (IdCertificate.value == null ? -1 : IdCertificate);
@@ -967,24 +1446,17 @@
             try {
                 var input =
                     {
-                        Code: "3456",//window.localStorage["CodeCompany"],
+                        Code: window.localStorage["CodeCompany"],
                         IdVendor: IdVendor,
                         IdJob: IdJob,
                         IdCertificate: IdCertificate,
                         IdContract: IdContract
                     };
-                window.localStorage["Code"] = "3456";
-                window.localStorage["IdCompany"] = 91;
-                window.localStorage["IdVendor"] = IdVendor;
-                window.localStorage["IdJob"] = IdJob;
-                window.localStorage["IdCertificate"] = IdCertificate;
-                window.localStorage["IdContract"] = IdContract;
-                window.localStorage["DocumentName"] = $("#ddlContract option:selected").text();;
                 //alert(JSON.stringify(input));
                 $.ajax({
                     cache: true,
                     type: "POST",
-                    url: "https://services.chancesrmis.com/ServicesMobile/wcfchancesR/CertificateOfInsurance.svc/Deficiences",
+                    url: apiServices + "CertificateOfInsurance.svc/Deficiences",
                     async: true,
                     crossDomain: true,
                     data: JSON.stringify(input),
@@ -993,7 +1465,7 @@
                     beforeSend: function (xhr) {
                         xhr.setRequestHeader("Authorization", "Basic " + Base64.encode("jcJizIJh4EH/e4CBrJFW+A==" + ":" + "d6jlUv9AGSgd219JJvPShA=="));
                         xhr.setRequestHeader("X-Mobile", "false");
-                        //$('#loader').show();
+                        $('#loader').show();
                     },
                     error: function (xhr, textStatus, err) {
                         var mensaje = "readyState: " + xhr.readyState + "\n";
@@ -1001,9 +1473,9 @@
                         mensaje = mensaje + "status: " + xhr.status + "\n";
                         mensaje = mensaje + "text status: " + textStatus + "\n";
                         mensaje = mensaje + "error: " + err + "\n";
-                        alert(mensaje);
-                        //$('#loader').hide();
-                        //navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
+                        //alert(mensaje);
+                        $('#loader').hide();
+                        navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
                     },
                     success: function (lstObj) {
                         //******************************
@@ -1101,9 +1573,156 @@
             }
         }
 
+        function GetProblems() {
+            try {
+                $.ajax({
+                    cache: true,
+                    url: apiServices + "Trips.svc/GetProblems",
+                    async: true,
+                    crossDomain: true,
+                    type: "POST",
+                    data: JSON.stringify(input),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "Basic " + Base64.encode("jcJizIJh4EH/e4CBrJFW+A==" + ":" + "d6jlUv9AGSgd219JJvPShA=="));
+                        xhr.setRequestHeader("X-Mobile", "false");
+                        $('#loader').show();
+                    },
+                    error: function (xhr, textStatus, err) {
+                        var mensaje = "readyState: " + xhr.readyState + "\n";
+                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                        mensaje = mensaje + "status: " + xhr.status + "\n";
+                        mensaje = mensaje + "text status: " + textStatus + "\n";
+                        mensaje = mensaje + "error: " + err + "\n";
+                        //alert(mensaje);
+                        $('#loader').hide();
+                        navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
+                    },
+                    success: function (obj) {
+                        //******************************
+                        if (obj.GetProblemsResult.length > 0) {
+                            $.each(obj.GetProblemsResult, populateDropDownProblems);
+                        }
+                        //******************************
+                    },
+                    complete: function () {
+                        $('#loader').hide();
+                    }
+                });
+            }
+            catch (ex) {
+                navigator.notification.alert(ex.message, function () { }, "ChancesR Error");
+            }
+        }
+
+        function CorrectiveAction(Id_Problem, Description, Code, IdCompany, IdVendor, IdContact) {
+            try {
+
+                var input = {
+                    Id_Problem: Id_Problem,
+                    Description: Description,
+                    Code: Code,
+                    IdCompany: IdCompany,
+                    IdVendor: IdVendor,
+                    IdContact: IdContact
+                };
+                //alert(JSON.stringify(input));
+                $.ajax({
+                    cache: true,
+                    type: "POST",
+                    url: apiServices + "Trips.svc/CorrectiveAction",
+                    async: true,
+                    crossDomain: true,
+                    data: JSON.stringify(input),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "Basic " + Base64.encode("jcJizIJh4EH/e4CBrJFW+A==" + ":" + "d6jlUv9AGSgd219JJvPShA=="));
+                        xhr.setRequestHeader("X-Mobile", "false");
+                        $('#loader').show();
+                    },
+                    error: function (xhr, textStatus, err) {
+                        var mensaje = "readyState: " + xhr.readyState + "\n";
+                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                        mensaje = mensaje + "status: " + xhr.status + "\n";
+                        mensaje = mensaje + "text status: " + textStatus + "\n";
+                        mensaje = mensaje + "error: " + err + "\n";
+                        //alert(mensaje);
+                        $('#loader').hide();
+                        navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
+                    },
+                    success: function () {
+                        //******************************
+                        navigator.notification.alert("Correctives actions registered", function () { }, "ChancesR");
+                        $("#home").show();
+                        $("#Corrective_Action").hide();
+                        //******************************
+                    },
+                    complete: function () {
+                        $('#loader').hide();
+                    }
+                });
+            }
+            catch (ex) {
+                navigator.notification.alert(ex.message, function () { }, "ChancesR Error");
+                $('#loader').hide();
+            }
+        }
+
+        function GetCorrectiveActions(Code, IdCompany, IdVendor) {
+            try {
+                var input = {
+                    Code: Code,
+                    IdCompany: IdCompany,
+                    IdVendor: IdVendor
+                };
+                //alert(JSON.stringify(input));
+                $.ajax({
+                    cache: true,
+                    type: "POST",
+                    url: apiServices + "Trips.svc/GetCorrectiveActions",
+                    async: true,
+                    crossDomain: true,
+                    data: JSON.stringify(input),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "Basic " + Base64.encode("jcJizIJh4EH/e4CBrJFW+A==" + ":" + "d6jlUv9AGSgd219JJvPShA=="));
+                        xhr.setRequestHeader("X-Mobile", "false");
+                    },
+                    error: function (xhr, textStatus, err) {
+                        var mensaje = "readyState: " + xhr.readyState + "\n";
+                        mensaje = mensaje + "responseText: " + xhr.responseText + "\n";
+                        mensaje = mensaje + "status: " + xhr.status + "\n";
+                        mensaje = mensaje + "text status: " + textStatus + "\n";
+                        mensaje = mensaje + "error: " + err + "\n";
+                        //alert(mensaje);
+                        navigator.notification.alert(mensaje, function () { }, "ChancesR Error");
+                    },
+                    success: function (obj) {
+                        //******************************
+                        if (obj.GetCorrectiveActionsResult.length > 0) {
+                            $.each(obj.GetCorrectiveActionsResult, function (data) {
+                                var actions = "<tr><td width='50%' style='padding-left:20px'><label style='font-size:large;color:black;'><b>* " + this.Problem_Description + "</b></label></td><td width='50%'><p style='color:black'>" + this.Description + "</p></td></tr>";
+                                $("#tabCorrective").append(actions);
+                                //navigator.notification.alert(this.titulo, function () { }, "ChancesR");
+                            });
+                        }
+                        //******************************
+                    },
+                    complete: function () {
+                    }
+                });
+            }
+            catch (ex) {
+                navigator.notification.alert(ex.message, function () { }, "ChancesR Error");
+            }
+        }
+
         function OpenArchiveContract() {
             try {
-                window.location.href = 'signedcontract.html?idcon=3797&idven=' + window.localStorage["IdVendor"] + '&idcom=' + window.localStorage["IdCompany"] + '';
+                window.location.href = 'signedcontract.html?idcon=' + $("#ddlContract").val() + '&idven=' + window.localStorage["IdVendor"] + '&idcom=' + window.localStorage["IdCompany"] + '';
             } catch (ex) {
                 alert(ex.message);
             }
@@ -1111,7 +1730,7 @@
 
         function OpenArchiveCOI() {
             try {
-                window.location.href = 'coi.html?idcom=' + window.localStorage["IdCompany"] + '&idven=' + window.localStorage["IdVendor"] + '&idcer=' + $("#ddlCertificates").val() + '&idjob=' + window.localStorage["IdJob"] + '';
+                window.location.href = 'coi.html?idcom=' + window.localStorage["IdCompany"] + '&idven=' + window.localStorage["IdVendor"] + '&idcer=' + $("#ddlCertificates").val() + '&idjob=' + $("#IdJob").text() + '&certificatename=' + $("#ddlCertificates option:selected").text() + '';
             } catch (ex) {
                 alert(ex.message);
             }
@@ -1130,4 +1749,3 @@
     </script>
 </body>
 </html>
-
