@@ -105,7 +105,7 @@
   <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
   <preference name="ShowTitle" value="True" />
   <plugin name="cordova-plugin-file-transfer" spec="^1.6.3" />
-  <plugin name="cordova-plugin-media-capture" spec="^1.4.3" />
+  <plugin name="cordova-plugin-media-capture" spec="^3.0.2" />
   <engine name="browser" spec="^5.0.4" />
   <preference name="SuppressesIncrementalRendering" value="False" />
   <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
