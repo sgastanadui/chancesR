@@ -93,7 +93,8 @@ var app = {
     },
 
     errorHandler: function (error) {
-        navigator.notification.alert(error, function () { }, "BCP Error");
+        alert(error);
+        //navigator.notification.alert(error, function () { }, "BCP Error");
     },
 
     // handle APNS notifications for iOS
@@ -196,11 +197,14 @@ var app = {
     receivedEvent: function (id) {
         if ($.mobile.activePage.attr("id") == "index") {
             try {
+                alert(device.platform);
+
                 var pushNotification = window.plugins.pushNotification;
 
                 //$("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
                 window.localStorage["SystemOperation"] = device.platform.toUpperCase();
                 if (device.platform == 'android' || device.platform == 'Android' || device.platform == 'amazon-fireos') {
+                    xxxxx
                     pushNotification.register(this.successHandler, this.errorHandler, {
                         //"senderID": "1052124741578",
                         "senderID": "653317226796",
