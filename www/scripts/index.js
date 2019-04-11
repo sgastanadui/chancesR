@@ -127,7 +127,8 @@ var app = {
     onNotification: function (e) {
 
         //$("#app-status-ul").append('<li>onNotification -> event:' + e.event + "</li>");
-        navigator.notification.alert(e.event, function () { }, "BCP Error");
+        alert(e.event);
+        //navigator.notification.alert(e.event, function () { }, "BCP Error");
         switch (e.event) {
             case 'registered':
                 if (e.regid.length > 0) {
