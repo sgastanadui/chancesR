@@ -48,6 +48,7 @@ var app = {
             alert(data.registrationId);
             //alert(data.registrationType);
             document.getElementById("registration").appendChild(document.createTextNode(data.registrationId));
+document.getElementById("registrationid").value = document.createTextNode(data.registrationId);
         });
 
         push.on('notification', function (data) {
