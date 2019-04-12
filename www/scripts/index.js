@@ -68,6 +68,7 @@ var app = {
         //    app.getapiServices();
         //}
         //****************************************
+       
         //*****************************************************
         app.receivedEvent('deviceready');
         //*****************************************************
@@ -127,6 +128,7 @@ var app = {
     onNotification: function (e) {
 
         //$("#app-status-ul").append('<li>onNotification -> event:' + e.event + "</li>");
+        alert('entro onNotification');
         alert(e);
         alert(e.event);
         //navigator.notification.alert(e.event, function () { }, "BCP Error");
