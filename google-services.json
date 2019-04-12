@@ -1,45 +1,39 @@
 {
   "project_info": {
-    "project_number": "1052124741578",
-    "firebase_url": "https://smiling-box-93721.firebaseio.com",
-    "project_id": "smiling-box-93721",
-    "storage_bucket": "smiling-box-93721.appspot.com"
+    "project_number": "171050319695",
+    "firebase_url": "https://phonegap-plugin-push-sam-e011d.firebaseio.com",
+    "project_id": "phonegap-plugin-push-sam-e011d",
+    "storage_bucket": "phonegap-plugin-push-sam-e011d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1052124741578:android:39085914d30e0721",
+        "mobilesdk_app_id": "1:171050319695:android:b71f283f00051af4",
         "android_client_info": {
-          "package_name": "com.chancesr.app"
+          "package_name": "es.phonegap.push.sample"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1052124741578-ggt5f3gjb7jgvst3fc528ttur2nmq5kt.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.chancesr.app",
-            "certificate_hash": "4b85085ef43acb07778c574b3a6fe847e8ed90b6"
-          }
-        },
-        {
-          "client_id": "1052124741578-4clgop3l7cuue5rb44fa5o7l2eaud8mt.apps.googleusercontent.com",
+          "client_id": "171050319695-h490j8i2ibh8ldnrjqnfibfacrj8bp4n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAuFWBBQ0ZoYUilT-8CR_xeyspTm9cFDGQ"
+          "current_key": "AIzaSyBwleqlZJkCiNb4C1FpKforrtx6IzlANKw"
         }
       ],
       "services": {
+        "analytics_service": {
+          "status": 1
+        },
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1052124741578-4clgop3l7cuue5rb44fa5o7l2eaud8mt.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
         }
       }
     }
