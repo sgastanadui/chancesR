@@ -46,7 +46,7 @@ var app = {
 
         push.on('registration', function (data) {
             alert(data.registrationId);
-            alert(data.registrationType);
+            //alert(data.registrationType);
             document.getElementById("registration").appendChild(document.createTextNode(data.registrationId));
         });
 
@@ -55,12 +55,12 @@ var app = {
             var li = document.createElement("li");
             li.appendChild(document.createTextNode(data.message));
             ul.appendChild(li);
-            console.log(data.message);
-            console.log(data.title);
-            console.log(data.count);
-            console.log(data.sound);
-            console.log(data.image);
-            console.log(data.additionalData);
+            alert(data.message);
+            alert(data.title);
+            //alert(data.count);
+            //alert(data.sound);
+            //console.log(data.image);
+            //console.log(data.additionalData);
         });
     }
 };
