@@ -111,5 +111,6 @@
   <plugin name="cordova-support-google-services" spec="~1.1.0" />
   <plugin name="phonegap-plugin-multidex" spec="~1.0.0" />
   <plugin name="phonegap-plugin-push" spec="~2.2.3" />
+  <plugin name="PushPlugin" value="com.plugin.gcm.PushPlugin" />
   <preference name="android-maxSdkVersion" value="28" />
 </widget>
