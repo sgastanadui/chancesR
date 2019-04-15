@@ -63,6 +63,11 @@ document.getElementById("registrationid").value = data.registrationId;
             //console.log(data.image);
             //console.log(data.additionalData);
         });
+
+	push.on('error', function (e) {
+            alert(e.message);
+        });
+
     }
 };
 
