@@ -1,33 +1,15 @@
 {
-  "name": "io.cordova.myappba1f44",
-  "version": "1.0.0",
-  "displayName": "PushAndroid",
-  "cordova": {
-    "platforms": [
-      "ios",
-      "android",
-      "windows"
+    "name": "com.example.hello",
+    "displayName": "HelloWorld",
+    "version": "1.0.0",
+    "description": "A sample Apache Cordova application that responds to the deviceready event.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "ecosystem:cordova"
     ],
-    "plugins": {
-      "cordova-plugin-whitelist": {},
-      "cordova-plugin-device": {},
-      "phonegap-plugin-push": {
-        "SENDER_ID": "653317226796",
-        "ANDROID_SUPPORT_V13_VERSION": "27.+",
-        "FCM_VERSION": "11.6.2"
-      }
-    }
-  },
-  "dependencies": {
-    "cordova-android": "8.0.0",
-    "cordova-ios": "4.2.0",
-    "cordova-support-google-services": "^1.1.0",
-    "cordova-windows": "4.4.2",
-    "phonegap-plugin-multidex": "^1.0.0"
-  },
-  "devDependencies": {
-    "cordova-plugin-device": "^2.0.2",
-    "cordova-plugin-whitelist": "^1.2.2",
-    "phonegap-plugin-push": "^2.2.3"
-  }
+    "author": "Apache Cordova Team",
+    "license": "Apache-2.0"
 }
